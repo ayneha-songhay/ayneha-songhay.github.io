@@ -1,42 +1,32 @@
-# AYNEHA — Site officiel
+# AYNEHA — L'alphabet songhay
 
-Site vitrine de **AYNEHA**, un système d'écriture original créé pour transcrire la langue Songhay parlée au Mali, Niger, Burkina Faso et Bénin.
+Site officiel d'**AYNEHA**, un système d'écriture original pour la langue songhay (Mali, Niger, Bénin, Burkina Faso). Gratuit, conçu pour l'apprentissage et l'écriture manuscrite.
 
-🔗 Site en ligne : *(ajoute ici le lien une fois publié, ex. via GitHub Pages)*
+*Official website of AYNEHA, an original writing system for the Songhay language. Free, designed for learning and handwriting.*
 
-## Pages du site
+**Site en ligne / Live site : https://ayneha-songhay.github.io/**
 
-- **index.html** — Accueil : présentation générale de l'alphabet AYNEHA
-- **alphabet.html** — L'alphabet : consonnes, voyelles et accents diacritiques
-- **clavier.html** — Test du clavier AYNEHA en ligne
-- **convertisseur.html** — Convertisseur automatique Latin → AYNEHA
-- **apropos.html** — À propos du projet et de son créateur
-- **ressources.html** — Ressources pédagogiques pour apprendre AYNEHA
+## Le script
+- Alphabet monocaméral, écrit de **droite à gauche** (RTL)
+- 22 consonnes, 5 voyelles, 7 variantes vocaliques, 10 chiffres, 4 diacritiques
+- 98 glyphes encodés dans la zone d'usage privé Unicode, U+E000–U+E061 (pas encore dans Unicode standard)
+- Police : *Ayneha Type* v2.0
+
+## Contenu du site
+Accueil · Alphabet · Teste clavier · Convertisseur (latin → AYNEHA) · Ressources · Horloge · À propos
 
 ## Structure
-ayneha-site/
-├── index.html
-├── alphabet.html
-├── clavier.html
-├── convertisseur.html
-├── apropos.html
-├── ressources.html
-└── assets/
-├── ayneha-keyboard.js
-├── nav.js
-├── style.css
-├── fonts/
-│ └── ayneha_regular.ttf
-└── img/
+Site statique (HTML/CSS/JS), hébergé sur GitHub Pages. Aucun serveur, aucune collecte de données.
 
-## À propos d'AYNEHA
+## Contribuer
+Les retours sont bienvenus (erreurs, suggestions, traductions) via les *Issues* de ce dépôt ou par e-mail.
 
-AYNEHA (aussi désigné par l'acronyme MAIGUS) compte 98 glyphes : 10 chiffres, 22 consonnes, 5 voyelles de base et leurs combinaisons avec accents. Le système s'écrit et se lit de droite à gauche (RTL). Le projet vise à terme une reconnaissance officielle dans le standard Unicode.
+## Licence / License
 
-## Auteur
+- **Code** : GNU GPL v3.0 ou ultérieure (voir [LICENSE](LICENSE)). Vous pouvez utiliser, étudier, modifier et partager ce code, à condition que toute version dérivée que vous distribuez reste libre sous la même licence. / Code: GNU GPL v3.0 or later. Derived versions you distribute must remain free under the same license.
+- **Police AYNEHA (Ayneha Type)** : SIL Open Font License 1.1 (fichier `OFL.txt` à conserver avec la police). / Font: SIL OFL 1.1.
+- **Nom « AYNEHA », logos et identité visuelle** : non couverts par la GPL ; me contacter avant tout usage commercial ou en tant que marque. / The AYNEHA name, logos and visual identity are not covered by the GPL.
 
-**Concepteur et créateur : Mahamadou Issiaka MAÏGA (MAIGUS)**
-
-## Licence
-
-Usage libre et gratuit de la police et de l'alphabet AYNEHA tels quels ; toute modification est interdite pour le moment, le temps que les glyphes soient reconnus internationalement.
+**Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS)**
+Contact : gwokmt2q@duck.com
+Site officiel : https://ayneha-songhay.github.io/ · Omniglot : https://www.omniglot.com/conscripts/ayneha.htm
