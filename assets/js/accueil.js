@@ -6,7 +6,7 @@
   var champ = document.getElementById("essai-champ");
   var sortie = document.getElementById("essai-sortie");
   if (!champ || !sortie || !window.Ayneha) return;
-  var exemples = ["fatumata", "mahamadu", "aminata", "issiaka", "hawa", "bamako", "gao"];
+  var exemples = ["mahamadu", "isiyaka", "mayga", "fatumata", "bamako", "hũsar"];
   var i = 0, timer = null;
 
   function afficher(txt) {

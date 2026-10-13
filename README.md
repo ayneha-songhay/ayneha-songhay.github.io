@@ -32,6 +32,8 @@ Après une modification dans `_src/`, lancer `python3 _src/build.py` depuis la r
 - **Logos, images et textes** : CC BY-SA 4.0.
 - **Nom « AYNEHA » et logo** : réservés aux applications officielles ; une version modifiée doit porter un autre nom. / The AYNEHA name and logo are reserved for the official apps.
 - La police Jost (`assets/fonts/jost-*.woff2`) : Copyright 2020 The Jost Project Authors, SIL Open Font License 1.1 (`assets/fonts/OFL-Jost.txt`).
+- Chiffres N'Ko (`assets/fonts/noto-nko-chiffres.woff2`) : extraits de Noto Sans NKo, Google, SIL Open Font License 1.1 (`assets/fonts/OFL-NotoSansNKo.txt`).
+- Chiffres Dogon NÈNÈ (`assets/fonts/nene-chiffres.woff2`) : extraits de la police DogonNene v2.0, Copyright (c) 2026 Sékou Salah GUINDO ; écriture Dogon NÈNÈ créée par Yahya Sékou Salah GUINDO.
 
 **Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS)**
 Contact : contact@ayneha.org
