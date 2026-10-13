@@ -140,7 +140,7 @@ def page_app(a):
     return f"""<section class="app-tete">
   <div class="wrap">
     {apps_nav(a['id'])}
-    <img class="couverture" src="assets/img/apps/{a['id']}-couverture.jpg" width="1200" height="480" alt="Couverture de l'application {E(a['nom'])}">
+    <img class="couverture" src="assets/img/apps/{a['id']}-couverture.jpg" width="1200" height="675" alt="Couverture de l'application {E(a['nom'])}">
     <div class="app-identite">
       {logo_app(a, " app-logo-grand")}
       <div>
