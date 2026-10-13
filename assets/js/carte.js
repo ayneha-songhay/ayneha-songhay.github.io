@@ -276,6 +276,8 @@
     var prevu = false;
     function maj() {
       lire();
+      cacherImage();
+      majLiens();
       try { localStorage.setItem(CLE, pseudo.value); } catch (e) { /* stockage indisponible */ }
       if (prevu) return;
       prevu = true;
@@ -316,29 +318,49 @@
     function nomFichier() { return "ma-carte-ayneha-" + d.modele + ".png"; }
     function enBlob(fn) { apercu.toBlob(function (b) { fn(b); }, "image/png"); }
     function telecharger(blob) {
-      var a = document.createElement("a");
-      a.href = URL.createObjectURL(blob); a.download = nomFichier();
-      document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+      try {
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob); a.download = nomFichier();
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+      } catch (e) { /* téléchargement bloqué : l'image affichée reste disponible */ }
     }
+    /* Solution de secours qui marche partout (navigateurs de TikTok, Facebook,
+       WhatsApp...) : la carte s'affiche en image, à garder par un appui long. */
+    var boiteImage = document.getElementById("carte-image");
+    var imageFinale = document.getElementById("carte-img");
+    function montrerImage(texte) {
+      imageFinale.src = apercu.toDataURL("image/png");
+      imageFinale.alt = "Votre carte : " + d.latin;
+      document.getElementById("carte-image-aide").textContent = texte;
+      boiteImage.hidden = false;
+      boiteImage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+    function cacherImage() { if (boiteImage && !boiteImage.hidden) { boiteImage.hidden = true; imageFinale.removeAttribute("src"); } }
+    var AIDE = "Si l'image n'apparaît pas dans vos téléchargements : appuyez longuement sur la carte ci-dessus, puis choisissez « Enregistrer l'image » ou « Partager l'image ».";
 
     document.getElementById("carte-partager").addEventListener("click", function () {
       if (!pret()) return;
       enBlob(function (blob) {
         var f;
         try { f = new File([blob], nomFichier(), { type: "image/png" }); } catch (e) { f = null; }
-        if (f && navigator.canShare && navigator.canShare({ files: [f] })) {
+        var possible = false;
+        try { possible = !!(f && navigator.canShare && navigator.canShare({ files: [f] })); } catch (e) { possible = false; }
+        if (possible) {
           navigator.share({ files: [f], title: "Ma carte AYNEHA", text: "Écrit en AYNEHA, l'écriture du songhay - https://" + SITE + "/carte.html" })
-            .catch(function () { /* partage annulé */ });
+            .catch(function (err) {
+              if (err && err.name === "AbortError") return; // partage annulé par la personne
+              montrerImage("Le partage direct n'est pas possible ici. Appuyez longuement sur la carte ci-dessus, puis choisissez « Partager l'image » ou « Enregistrer l'image ».");
+            });
         } else {
           telecharger(blob);
-          message("Votre appareil ne permet pas le partage direct : l'image est enregistrée dans vos téléchargements.");
+          montrerImage("Le partage direct n'est pas possible dans ce navigateur. " + AIDE);
         }
       });
     });
     document.getElementById("carte-enregistrer").addEventListener("click", function () {
       if (!pret()) return;
-      enBlob(function (blob) { telecharger(blob); message("Image enregistrée dans vos téléchargements."); });
+      enBlob(function (blob) { telecharger(blob); montrerImage("La carte est enregistrée dans vos téléchargements (dossier Download). " + AIDE); });
     });
 
     function texteProposition() {
@@ -358,13 +380,16 @@
         "J'accepte que ma carte soit publiée dans la galerie après relecture."
       ].join("\n");
     }
-    document.getElementById("carte-proposer-mail").addEventListener("click", function () {
-      if (!pret()) return;
-      location.href = "mailto:" + CONTACT + "?subject=" + encodeURIComponent("Ma carte AYNEHA - " + MODELES[d.modele].nom) + "&body=" + encodeURIComponent(texteProposition());
-    });
-    document.getElementById("carte-proposer-wa").addEventListener("click", function () {
-      if (!pret()) return;
-      window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texteProposition()), "_blank", "noopener");
+    /* Les boutons « Proposer » sont de vrais liens, mis à jour à chaque changement :
+       les navigateurs les ouvrent même là où les fenêtres automatiques sont bloquées. */
+    var lienMail = document.getElementById("carte-proposer-mail");
+    var lienWa = document.getElementById("carte-proposer-wa");
+    function majLiens() {
+      lienMail.href = "mailto:" + CONTACT + "?subject=" + encodeURIComponent("Ma carte AYNEHA - " + MODELES[d.modele].nom) + "&body=" + encodeURIComponent(texteProposition());
+      lienWa.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texteProposition());
+    }
+    [lienMail, lienWa].forEach(function (l) {
+      l.addEventListener("click", function (e) { if (!pret()) { e.preventDefault(); champ.scrollIntoView({ behavior: "smooth", block: "center" }); } });
     });
 
     try { var p = localStorage.getItem(CLE); if (p) pseudo.value = p; } catch (e) { /* rien */ }

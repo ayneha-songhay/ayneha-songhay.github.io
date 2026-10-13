@@ -54,6 +54,10 @@ scripts: assets/js/ayneha.js assets/js/cartes-data.js assets/js/carte.js
         <button type="button" id="carte-enregistrer">Enregistrer l'image</button>
       </div>
       <p class="message-etat" id="carte-etat" role="status"></p>
+      <div class="carte-image" id="carte-image" hidden>
+        <img id="carte-img" alt="">
+        <p id="carte-image-aide" role="status"></p>
+      </div>
     </div>
   </div>
 </section>
@@ -64,8 +68,8 @@ scripts: assets/js/ayneha.js assets/js/cartes-data.js assets/js/carte.js
       <h2>Proposer ma carte à AYNEHA</h2>
       <p>Votre carte peut rejoindre la galerie ci-dessous. C'est votre façon de faire vivre l'écriture de votre langue : chaque carte partagée, c'est un mot de plus écrit en AYNEHA, et une personne de plus qui le découvre.</p>
       <div class="boutons">
-        <button type="button" class="btn" id="carte-proposer-wa">Proposer par WhatsApp</button>
-        <button type="button" class="btn btn-ligne" id="carte-proposer-mail">Proposer par e-mail</button>
+        <a class="btn" id="carte-proposer-wa" href="https://wa.me/22366778763" target="_blank" rel="noopener">Proposer par WhatsApp</a>
+        <a class="btn btn-ligne" id="carte-proposer-mail" href="mailto:contact@ayneha.org">Proposer par e-mail</a>
       </div>
       <p class="doux petit">Le message est déjà rempli avec votre texte, votre modèle et votre pseudo. Il ne part que si vous l'envoyez vous-même. Vous pouvez y joindre l'image, mais ce n'est pas nécessaire.</p>
     </div>

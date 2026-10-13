@@ -581,3 +581,6 @@ td .ay { font-size: 2rem; color: var(--sable); }
   .carte-apercu { max-height: 60vh; }
   .accueil-carte { grid-template-columns: 1fr; }
 }
+.carte-image { margin-top: 16px; padding: 14px; border-radius: 14px; background: var(--nuit-2); border: 2px dashed var(--orange); text-align: center; }
+.carte-image img { display: block; width: 100%; max-width: 360px; height: auto; margin: 0 auto; border-radius: 10px; -webkit-touch-callout: default; }
+.carte-image p { margin: 12px 0 0; color: var(--sable); font-size: .95rem; }
