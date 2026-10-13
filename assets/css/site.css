@@ -544,3 +544,40 @@ td .ay { font-size: 2rem; color: var(--sable); }
 .outils-rangee a { display: inline-flex; align-items: center; gap: 12px; padding: 10px 18px 10px 12px; border-radius: 999px; background: var(--nuit-2); border: 1px solid var(--trait); color: var(--sable); text-decoration: none; font-weight: 500; }
 .outils-rangee a:hover { border-color: var(--orange); }
 .outils-rangee .rond { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--sable); color: var(--encre); font-size: 1.7rem; line-height: 1; }
+
+/* ---------- Ma carte AYNEHA ---------- */
+.carte-atelier { grid-template-columns: 1fr 1.05fr; }
+.carte-etape { font-weight: 600; color: var(--sable); margin: 22px 0 10px; }
+.carte-etape:first-child { margin-top: 0; }
+.carte-etape label { color: inherit; }
+.carte-reglages textarea { min-height: 96px; }
+.carte-choix { display: flex; flex-wrap: wrap; gap: 8px; }
+.carte-choix button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 14px 6px 8px; border-radius: 999px; border: 1px solid var(--trait); background: var(--nuit-2); color: var(--sable); font: inherit; font-size: .95rem; cursor: pointer; }
+.carte-choix button:hover { border-color: var(--orange); }
+.carte-choix button[aria-pressed="true"] { border-color: var(--orange); background: var(--nuit-3); box-shadow: 0 0 0 2px var(--orange); }
+.carte-choix i { display: inline-block; width: 28px; height: 28px; border-radius: 50%; flex: none; }
+.carte-choix i.forme-carre { width: 22px; height: 22px; border-radius: 4px; border: 2px solid var(--sable-2); margin: 0 3px; }
+.carte-choix i.forme-statut { width: 16px; height: 26px; border-radius: 4px; border: 2px solid var(--sable-2); margin: 0 6px; }
+.carte-case { display: flex; gap: 10px; align-items: center; margin-top: 12px; color: var(--texte); cursor: pointer; }
+.carte-case input { width: 20px; height: 20px; accent-color: var(--orange); }
+.carte-colonne { position: sticky; top: 16px; }
+.carte-apercu { display: block; width: 100%; height: auto; max-height: 78vh; object-fit: contain; border-radius: 14px; box-shadow: 0 18px 50px rgba(0, 0, 0, .35); background: var(--nuit-2); }
+.carte-boutons { justify-content: center; }
+.carte-boutons button { background: var(--nuit-2); color: var(--sable); border-color: var(--trait); }
+.carte-boutons button.principal { background: var(--orange); color: var(--nuit); border-color: var(--orange); }
+.carte-colonne .message-etat { text-align: center; color: var(--orange-clair); }
+.liste-regles { margin: 0; padding-left: 1.2em; }
+.liste-regles li { margin: .45em 0; color: var(--texte); }
+.carte-galerie { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; align-items: start; }
+.carte-galerie-item { margin: 0; }
+.carte-galerie-item canvas { display: block; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 28px rgba(0, 0, 0, .3); }
+.carte-galerie-item figcaption { margin-top: 8px; font-size: .92rem; color: var(--texte-doux); text-align: center; }
+.carte-galerie-vide { max-width: 560px; }
+.accueil-carte { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.accueil-carte canvas { width: 100%; max-width: 420px; height: auto; border-radius: 14px; box-shadow: 0 18px 50px rgba(0, 0, 0, .35); justify-self: center; }
+@media (max-width: 860px) {
+  .carte-atelier { grid-template-columns: 1fr; }
+  .carte-colonne { position: static; }
+  .carte-apercu { max-height: 60vh; }
+  .accueil-carte { grid-template-columns: 1fr; }
+}

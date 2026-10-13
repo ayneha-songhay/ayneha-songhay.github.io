@@ -1,7 +1,7 @@
 title: AYNEHA - l'écriture de la langue songhay
 description: AYNEHA est un alphabet original pour écrire le songhay, de droite à gauche, conçu par Mahamadou Issiaka MAIGA (MAIGUS). Découvrez les lettres, essayez-le en ligne et installez les applications gratuites.
 nav: index
-scripts: assets/js/ayneha.js assets/js/accueil.js assets/js/horloge.js
+scripts: assets/js/ayneha.js assets/js/accueil.js assets/js/horloge.js assets/js/carte.js
 ---
 <section class="hero">
   <div class="wrap">
@@ -80,7 +80,7 @@ scripts: assets/js/ayneha.js assets/js/accueil.js assets/js/horloge.js
   <div class="wrap">
     <div class="intro">
       <h2>Essayez tout de suite</h2>
-      <p>Cinq outils gratuits, directement dans votre navigateur.</p>
+      <p>Six outils gratuits, directement dans votre navigateur.</p>
     </div>
     <div class="outils-rangee">
       <a href="convertisseur.html">{{ay:TS|rond|}}Transcripteur</a>
@@ -88,7 +88,23 @@ scripts: assets/js/ayneha.js assets/js/accueil.js assets/js/horloge.js
       <a href="calculatrice.html">{{ay:D7|rond|}}Calculatrice</a>
       <a href="nombres.html">{{ay:D4|rond|}}Convertisseur de nombres</a>
       <a href="horloge.html">{{ay:I|rond|}}Horloge et calendrier</a>
+      <a href="carte.html">{{ay:M|rond|}}Ma carte AYNEHA</a>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap accueil-carte">
+    <div>
+      <h2>À vous de faire vivre l'AYNEHA</h2>
+      <p>Écrivez un vœu de fête, une salutation ou un proverbe en songhay : il s'écrit en AYNEHA sur une carte à envoyer à vos proches.</p>
+      <p class="doux">Proposez ensuite votre carte : relue, elle rejoindra la galerie de la communauté, avec votre pseudo. Chaque carte partagée, c'est une personne de plus qui découvre l'écriture du songhay.</p>
+      <div class="boutons">
+        <a class="btn" href="carte.html">Créer ma carte</a>
+        <a class="btn btn-ligne" href="carte.html#galerie">Voir la galerie</a>
+      </div>
+    </div>
+    <canvas id="accueil-carte" width="840" height="840" role="img" aria-label="Exemple de carte : AYNEHA, l'écriture du songhay"></canvas>
   </div>
 </section>
 

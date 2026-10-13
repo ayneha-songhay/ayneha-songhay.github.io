@@ -1,5 +1,5 @@
 {
-  "version": "20261013172210",
+  "version": "20261013175257",
   "files": [
     "404.html",
     "alphabet.html",
@@ -39,6 +39,8 @@
     "assets/js/apropos.js",
     "assets/js/ayneha.js",
     "assets/js/calculatrice.js",
+    "assets/js/carte.js",
+    "assets/js/cartes-data.js",
     "assets/js/clavier-page.js",
     "assets/js/clavier.js",
     "assets/js/horloge.js",
@@ -53,6 +55,7 @@
     "ayneha-numconvert.html",
     "ayneha-school.html",
     "calculatrice.html",
+    "carte.html",
     "clavier.html",
     "confidentialite-ayneha-calc.html",
     "confidentialite-ayneha-carnet.html",
@@ -62,6 +65,7 @@
     "confidentialite-ayneha-numconvert.html",
     "confidentialite-ayneha-school.html",
     "confidentialite-calculatrice.html",
+    "confidentialite-carte.html",
     "confidentialite-clavier.html",
     "confidentialite-horloge.html",
     "confidentialite-nombres.html",

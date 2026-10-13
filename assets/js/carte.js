@@ -1,0 +1,387 @@
+/* AYNEHA - « Ma carte AYNEHA » : créer une carte en AYNEHA, la partager,
+   la proposer à AYNEHA, et afficher la galerie des cartes validées.
+   Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS)
+   SPDX-License-Identifier: GPL-3.0-or-later */
+(function () {
+  "use strict";
+  var A = window.Ayneha;
+  if (!A) return;
+
+  var SITE = "ayneha-songhay.github.io";
+  var CONTACT = "contact@ayneha.org";
+  var WHATSAPP = "22366778763";
+
+  /* ------------------------------------------------------------ modèles */
+  var MODELES = {
+    salut:        { nom: "Salutation",     fond: "#0E1A30", texte: "#18213A", latin: "#B24E0B", doux: "#5A6378", pied: "#A8B3C7", accent: "#F07C22", tablette: true },
+    fete:         { nom: "Fête",           fond: "#123D33", texte: "#F5EDDF", latin: "#E3B34C", doux: "#BFD3C8", pied: "#BFD3C8", accent: "#E3B34C", orn: "etoiles" },
+    naissance:    { nom: "Naissance",      fond: "#F5EDDF", texte: "#18213A", latin: "#2E7D5B", doux: "#5A6378", pied: "#5A6378", accent: "#3E9A72", orn: "points" },
+    mariage:      { nom: "Mariage",        fond: "#0E1A30", texte: "#F5EDDF", latin: "#E3B34C", doux: "#A8B3C7", pied: "#A8B3C7", accent: "#E3B34C", orn: "cadre" },
+    anniversaire: { nom: "Anniversaire",   fond: "#F07C22", texte: "#0E1A30", latin: "#0E1A30", doux: "#3B2410", pied: "#3B2410", accent: "#0E1A30", orn: "confettis" },
+    condoleances: { nom: "Condoléances",   fond: "#26303F", texte: "#EAE3D6", latin: "#A8B3C7", doux: "#A8B3C7", pied: "#8792A6", accent: "#8792A6", orn: "sobre" },
+    fierte:       { nom: "Fierté songhay", fond: "#0E1A30", texte: "#F5EDDF", latin: "#FFA35A", doux: "#A8B3C7", pied: "#A8B3C7", accent: "#F07C22", orn: "frises" }
+  };
+  var FORMATS = { carre: { nom: "carré", ratio: 1 }, statut: { nom: "statut", ratio: 16 / 9 } };
+
+  function nettoyer(t) { return String(t || "").replace(/[‪-‮⁦-⁩‎‏]/g, ""); }
+
+  /* ------------------------------------------------------------ dessin */
+  function hasard(graine) {
+    return function () {
+      graine |= 0; graine = graine + 0x6D2B79F5 | 0;
+      var t = Math.imul(graine ^ graine >>> 15, 1 | graine);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  function couper(ctx, texte, largeur, visuel) {
+    var lignes = [];
+    texte.split("\n").forEach(function (para) {
+      var mots = para.split(/\s+/).filter(function (m) { return m.length; });
+      if (!mots.length) return;
+      var cour = "";
+      mots.forEach(function (m) {
+        var essai = cour ? cour + " " + m : m;
+        if (cour && ctx.measureText(visuel ? A.visualLine(essai) : essai).width > largeur) { lignes.push(cour); cour = m; }
+        else cour = essai;
+      });
+      lignes.push(cour);
+    });
+    return lignes;
+  }
+
+  function plusLarge(ctx, lignes, visuel) {
+    return lignes.reduce(function (mx, l) { return Math.max(mx, ctx.measureText(visuel ? A.visualLine(l) : l).width); }, 0);
+  }
+
+  function frise(ctx, y, x0, x1, u, couleur) {
+    ctx.save();
+    ctx.strokeStyle = couleur; ctx.lineWidth = u * 0.16; ctx.lineJoin = "round";
+    var pas = u * 2.8, n = Math.floor((x1 - x0) / pas), dx = x0 + ((x1 - x0) - n * pas) / 2;
+    for (var i = 0; i < n; i++) {
+      var cx = dx + i * pas + pas / 2;
+      ctx.beginPath();
+      ctx.moveTo(cx, y - u * 0.6); ctx.lineTo(cx + u * 0.7, y); ctx.lineTo(cx, y + u * 0.6); ctx.lineTo(cx - u * 0.7, y); ctx.closePath();
+      ctx.moveTo(cx - pas / 2, y); ctx.lineTo(cx - u * 0.9, y);
+      ctx.moveTo(cx + u * 0.9, y); ctx.lineTo(cx + pas / 2, y);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function etoile(ctx, x, y, r) {
+    ctx.beginPath();
+    for (var i = 0; i < 8; i++) {
+      var a = i * Math.PI / 4, rr = i % 2 ? r * 0.32 : r;
+      ctx.lineTo(x + Math.sin(a) * rr, y - Math.cos(a) * rr);
+    }
+    ctx.closePath(); ctx.fill();
+  }
+
+  function rondRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+
+  /* Ornements autour de la zone de texte ; ils restent sur les bords. */
+  function ornements(ctx, M, W, H, u) {
+    var r = hasard(23), i, x, y;
+    // en bas, le milieu est réservé au pseudo et à la signature
+    function cote(x, y) { return (y > H - u * 11 && x > W * 0.24 && x < W * 0.76) ? (x < W / 2 ? x * 0.35 : W - (W - x) * 0.35) : x; }
+    ctx.save();
+    if (M.orn === "etoiles") {
+      ctx.fillStyle = M.accent;
+      for (i = 0; i < 22; i++) {
+        x = r() * W; y = r() < 0.5 ? r() * H * 0.16 + u * 2 : H - r() * H * 0.14 - u * 4;
+        x = cote(x, y); ctx.globalAlpha = 0.35 + r() * 0.6; etoile(ctx, x, y, u * (0.35 + r() * 0.9));
+      }
+      ctx.globalAlpha = 0.9; ctx.beginPath();
+      ctx.arc(W * 0.86, H * 0.12, u * 2.2, 0, Math.PI * 2); ctx.arc(W * 0.86 + u * 0.9, H * 0.12 - u * 0.5, u * 1.9, 0, Math.PI * 2, true);
+      ctx.fill("evenodd");
+    } else if (M.orn === "points") {
+      ctx.fillStyle = M.accent;
+      var p = u * 1.6;
+      for (x = p; x < W; x += p) { ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.arc(x, u * 2.2, u * 0.28, 0, 7); ctx.arc(x, H - u * 2.2, u * 0.28, 0, 7); ctx.fill(); }
+      for (y = u * 2.2 + p; y < H - u * 2.2; y += p) { ctx.beginPath(); ctx.arc(u * 2.2, y, u * 0.28, 0, 7); ctx.arc(W - u * 2.2, y, u * 0.28, 0, 7); ctx.fill(); }
+      ctx.globalAlpha = 0.18;
+      for (i = 0; i < 7; i++) { y = r() < 0.5 ? H * 0.1 : H * 0.88; x = cote(r() * W, y); ctx.beginPath(); ctx.arc(x, y, u * (1 + r() * 2.5), 0, 7); ctx.fill(); }
+    } else if (M.orn === "cadre") {
+      ctx.strokeStyle = M.accent;
+      ctx.lineWidth = u * 0.22; rondRect(ctx, u * 1.6, u * 1.6, W - u * 3.2, H - u * 3.2, u * 1.2); ctx.stroke();
+      ctx.lineWidth = u * 0.08; rondRect(ctx, u * 2.3, u * 2.3, W - u * 4.6, H - u * 4.6, u * 0.8); ctx.stroke();
+      ctx.fillStyle = M.accent;
+      [[u * 1.6, u * 1.6], [W - u * 1.6, u * 1.6], [u * 1.6, H - u * 1.6], [W - u * 1.6, H - u * 1.6]].forEach(function (c) {
+        ctx.save(); ctx.translate(c[0], c[1]); ctx.rotate(Math.PI / 4); ctx.fillRect(-u * 0.5, -u * 0.5, u, u); ctx.restore();
+      });
+    } else if (M.orn === "confettis") {
+      var cs = ["#0E1A30", "#F5EDDF", "#FFD1A6", "#142441"];
+      for (i = 0; i < 46; i++) {
+        x = r() * W; y = r() < 0.5 ? r() * H * 0.17 : H - r() * H * 0.15 - u * 3;
+        x = cote(x, y); ctx.fillStyle = cs[i % cs.length]; ctx.globalAlpha = 0.55 + r() * 0.4;
+        ctx.save(); ctx.translate(x, y); ctx.rotate(r() * 3);
+        if (i % 3) ctx.fillRect(-u * 0.25, -u * 0.6, u * 0.5, u * 1.2); else { ctx.beginPath(); ctx.arc(0, 0, u * 0.4, 0, 7); ctx.fill(); }
+        ctx.restore();
+      }
+    } else if (M.orn === "sobre") {
+      ctx.strokeStyle = M.accent; ctx.lineWidth = u * 0.08; ctx.globalAlpha = 0.6;
+      ctx.beginPath(); ctx.moveTo(W * 0.38, H * 0.12); ctx.lineTo(W * 0.62, H * 0.12); ctx.stroke();
+    } else if (M.orn === "frises") {
+      for (i = 0; i < 3; i++) {
+        frise(ctx, u * (2 + i * 1.7), u * 2, W - u * 2, u * (1 - i * 0.12), M.accent);
+        frise(ctx, H - u * (9 + i * 1.7), u * 2, W - u * 2, u * (1 - i * 0.12), M.accent);
+      }
+    }
+    ctx.restore();
+  }
+
+  /* d = { modele, format, ayneha, latin, traduction, pseudo, montrerLatin } */
+  function dessiner(canvas, d, largeur) {
+    var M = MODELES[d.modele] || MODELES.salut;
+    var F = FORMATS[d.format] || FORMATS.carre;
+    var W = largeur || 1080, H = Math.round(W * F.ratio), u = W / 54;
+    canvas.width = W; canvas.height = H;
+    var ctx = canvas.getContext("2d");
+    ctx.textBaseline = "alphabetic";
+
+    ctx.fillStyle = M.fond; ctx.fillRect(0, 0, W, H);
+
+    var marge = u * 5, zoneHaut = H * (F.ratio > 1 ? 0.17 : 0.14), zoneBas = H - u * (d.pseudo ? 9.5 : 7);
+    if (M.tablette) {
+      frise(ctx, u * 2.2, u * 2, W - u * 2, u, M.accent);
+      frise(ctx, H - u * 6, u * 2, W - u * 2, u, M.accent);
+      ctx.fillStyle = "#F5EDDF";
+      rondRect(ctx, u * 2.5, u * 4.2, W - u * 5, H - u * 12.2, u * 1.4); ctx.fill();
+      ctx.fillStyle = "#F07C22"; ctx.fillRect(u * 2.5 + u * 1.4, u * 4.2, W - u * 7.8, u * 0.35);
+      zoneHaut = u * 7; zoneBas = H - u * (d.pseudo ? 12.5 : 10);
+    } else {
+      ornements(ctx, M, W, H, u);
+      if (M.orn === "frises") zoneBas = H - u * 13.5;
+      if (M.orn === "frises") zoneHaut = Math.max(zoneHaut, u * 7);
+    }
+    var largeurTexte = W - 2 * marge;
+
+    // AYNEHA : plus grand possible dans la zone, sur 5 lignes au plus (7 en statut)
+    var ay = d.ayneha || "";
+    var tLat = Math.round(u * 2.1), tTrad = Math.round(u * 1.75);
+    ctx.font = "500 " + tLat + "px Jost, sans-serif";
+    var lignesLat = d.montrerLatin && d.latin ? couper(ctx, d.latin, largeurTexte, false) : [];
+    ctx.font = "italic 400 " + tTrad + "px Jost, sans-serif";
+    var lignesTrad = d.traduction ? couper(ctx, d.traduction, largeurTexte, false) : [];
+    var bas = (lignesLat.length ? u * 2.2 + lignesLat.length * tLat * 1.3 : 0) + (lignesTrad.length ? u * 1.2 + lignesTrad.length * tTrad * 1.35 : 0);
+    var maxLignes = F.ratio > 1 ? 7 : 5, taille = Math.round(u * 8), lignesAy = [];
+    for (; taille > u * 1.6; taille -= Math.max(2, Math.round(u * 0.2))) {
+      ctx.font = taille + 'px "Ayneha Pro"';
+      lignesAy = ay ? couper(ctx, ay, largeurTexte, true) : [];
+      var h = lignesAy.length * taille * 1.3;
+      if (lignesAy.length <= maxLignes && plusLarge(ctx, lignesAy, true) <= largeurTexte && h + bas <= zoneBas - zoneHaut) break;
+    }
+    var hauteur = lignesAy.length * taille * 1.3 + bas;
+    var y = zoneHaut + Math.max(0, (zoneBas - zoneHaut - hauteur) / 2);
+
+    ctx.textAlign = "left";
+    ctx.fillStyle = M.texte;
+    ctx.font = taille + 'px "Ayneha Pro"';
+    lignesAy.forEach(function (l) {
+      var v = A.visualLine(l), w = ctx.measureText(v).width;
+      y += taille * 1.3;
+      ctx.fillText(v, (W - w) / 2, y - taille * 0.3);
+    });
+    ctx.textAlign = "center";
+    if (lignesLat.length) {
+      y += u * 2.2;
+      ctx.fillStyle = M.latin; ctx.font = "500 " + tLat + "px Jost, sans-serif";
+      lignesLat.forEach(function (l) { y += tLat * 1.3; ctx.fillText(l, W / 2, y - tLat * 0.3); });
+    }
+    if (lignesTrad.length) {
+      y += u * 1.2;
+      ctx.fillStyle = M.doux; ctx.font = "italic 400 " + tTrad + "px Jost, sans-serif";
+      lignesTrad.forEach(function (l) { y += tTrad * 1.35; ctx.fillText(l, W / 2, y - tTrad * 0.35); });
+    }
+
+    // pseudo et signature
+    var piedY = H - u * (M.tablette ? 2.6 : 3);
+    if (d.pseudo) {
+      ctx.fillStyle = M.tablette ? M.doux : M.texte;
+      ctx.font = "600 " + Math.round(u * 1.7) + "px Jost, sans-serif";
+      var py = M.tablette ? H - u * 9.6 : piedY - u * 3;
+      ctx.fillText("- " + d.pseudo, W / 2, py);
+    }
+    ctx.fillStyle = M.pied;
+    var tit = A.visualLine(A.transcribe("ayneha").text);
+    ctx.font = Math.round(u * 1.9) + 'px "Ayneha Pro"';
+    var wTit = ctx.measureText(tit).width;
+    ctx.font = "500 " + Math.round(u * 1.25) + "px Jost, sans-serif";
+    var sig = "AYNEHA  ·  " + SITE, wSig = ctx.measureText(sig).width, x0 = (W - wTit - u - wSig) / 2;
+    ctx.textAlign = "left";
+    ctx.fillText(sig, x0, piedY);
+    ctx.font = Math.round(u * 1.9) + 'px "Ayneha Pro"';
+    ctx.fillText(tit, x0 + wSig + u, piedY + u * 0.2);
+    return canvas;
+  }
+
+  function polices() {
+    if (!document.fonts || !document.fonts.load) return Promise.resolve();
+    return Promise.all([
+      document.fonts.load('64px "Ayneha Pro"'),
+      document.fonts.load("500 30px Jost"), document.fonts.load("600 30px Jost"), document.fonts.load("italic 400 30px Jost")
+    ]).catch(function () { /* on dessine quand même */ });
+  }
+
+  /* ------------------------------------------------------------ galerie */
+  function galerie() {
+    var zone = document.getElementById("carte-galerie");
+    if (!zone) return;
+    var cartes = (window.AYNEHA_CARTES || []).slice().reverse();
+    var vide = document.getElementById("carte-galerie-vide");
+    if (!cartes.length) { if (vide) vide.hidden = false; return; }
+    if (vide) vide.hidden = true;
+    cartes.forEach(function (c) {
+      var fig = document.createElement("figure");
+      fig.className = "carte-galerie-item";
+      var cv = document.createElement("canvas");
+      var ayTxt = c.ayneha ? nettoyer(c.ayneha) : A.transcribe(c.texte || "").text;
+      dessiner(cv, { modele: c.modele, format: c.format, ayneha: ayTxt, latin: c.texte, traduction: c.traduction, pseudo: c.pseudo, montrerLatin: c.montrerLatin !== false }, 540);
+      cv.setAttribute("role", "img");
+      cv.setAttribute("aria-label", "Carte " + ((MODELES[c.modele] || MODELES.salut).nom) + " : " + (c.texte || "") + (c.traduction ? " (" + c.traduction + ")" : ""));
+      var cap = document.createElement("figcaption");
+      cap.textContent = (c.pseudo ? c.pseudo : "Anonyme") + (c.date ? " - " + c.date : "");
+      fig.appendChild(cv); fig.appendChild(cap);
+      zone.appendChild(fig);
+    });
+  }
+
+  /* ------------------------------------------------------------ atelier */
+  function atelier() {
+    var apercu = document.getElementById("carte-apercu");
+    if (!apercu) return;
+    var champ = document.getElementById("carte-texte");
+    var trad = document.getElementById("carte-traduction");
+    var pseudo = document.getElementById("carte-pseudo");
+    var latin = document.getElementById("carte-latin");
+    var etat = document.getElementById("carte-etat");
+    var CLE = "ayneha-carte-pseudo";
+    var d = { modele: "salut", format: "carre" };
+
+    function message(t) { etat.textContent = t; if (t) setTimeout(function () { if (etat.textContent === t) etat.textContent = ""; }, 4000); }
+
+    function lire() {
+      d.latin = champ.value.trim();
+      d.ayneha = A.transcribe(d.latin).text;
+      d.traduction = trad.value.trim();
+      d.pseudo = pseudo.value.trim();
+      d.montrerLatin = latin.checked;
+    }
+    var prevu = false;
+    function maj() {
+      lire();
+      try { localStorage.setItem(CLE, pseudo.value); } catch (e) { /* stockage indisponible */ }
+      if (prevu) return;
+      prevu = true;
+      requestAnimationFrame(function () {
+        prevu = false;
+        var vide = !d.latin;
+        dessiner(apercu, vide ? Object.assign({}, d, { ayneha: A.transcribe("ayneha").text, latin: "ayneha" }) : d, 1080);
+        apercu.setAttribute("aria-label", vide ? "Aperçu de la carte" : "Aperçu de la carte : " + d.latin);
+      });
+    }
+
+    function choix(nomGroupe, cle) {
+      var groupe = document.querySelector('[data-groupe="' + nomGroupe + '"]');
+      groupe.addEventListener("click", function (e) {
+        var b = e.target.closest("button[data-v]");
+        if (!b) return;
+        groupe.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        d[cle] = b.getAttribute("data-v");
+        maj();
+      });
+    }
+    choix("modele", "modele");
+    choix("format", "format");
+
+    document.getElementById("carte-touches").addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-c]");
+      if (!b) return;
+      var c = b.getAttribute("data-c"), a = champ.selectionStart, f = champ.selectionEnd;
+      champ.value = champ.value.slice(0, a) + c + champ.value.slice(f);
+      champ.selectionStart = champ.selectionEnd = a + c.length;
+      champ.focus(); maj();
+    });
+
+    function pret() {
+      if (!d.latin) { message("Écrivez d'abord votre message en songhay."); champ.focus(); return false; }
+      return true;
+    }
+    function nomFichier() { return "ma-carte-ayneha-" + d.modele + ".png"; }
+    function enBlob(fn) { apercu.toBlob(function (b) { fn(b); }, "image/png"); }
+    function telecharger(blob) {
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob); a.download = nomFichier();
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+    }
+
+    document.getElementById("carte-partager").addEventListener("click", function () {
+      if (!pret()) return;
+      enBlob(function (blob) {
+        var f;
+        try { f = new File([blob], nomFichier(), { type: "image/png" }); } catch (e) { f = null; }
+        if (f && navigator.canShare && navigator.canShare({ files: [f] })) {
+          navigator.share({ files: [f], title: "Ma carte AYNEHA", text: "Écrit en AYNEHA, l'écriture du songhay - https://" + SITE + "/carte.html" })
+            .catch(function () { /* partage annulé */ });
+        } else {
+          telecharger(blob);
+          message("Votre appareil ne permet pas le partage direct : l'image est enregistrée dans vos téléchargements.");
+        }
+      });
+    });
+    document.getElementById("carte-enregistrer").addEventListener("click", function () {
+      if (!pret()) return;
+      enBlob(function (blob) { telecharger(blob); message("Image enregistrée dans vos téléchargements."); });
+    });
+
+    function texteProposition() {
+      var M = MODELES[d.modele];
+      return [
+        "Bonjour AYNEHA,",
+        "je propose ma carte pour la galerie « Ma carte AYNEHA ».",
+        "",
+        "Modèle : " + M.nom,
+        "Format : " + FORMATS[d.format].nom,
+        "Message en songhay (lettres latines) : " + d.latin,
+        "Message en AYNEHA : " + A.forPaste(d.ayneha),
+        "Texte latin affiché sur la carte : " + (d.montrerLatin ? "oui" : "non"),
+        "Traduction : " + (d.traduction || "(aucune)"),
+        "Pseudo : " + (d.pseudo || "(aucun)"),
+        "",
+        "J'accepte que ma carte soit publiée dans la galerie après relecture."
+      ].join("\n");
+    }
+    document.getElementById("carte-proposer-mail").addEventListener("click", function () {
+      if (!pret()) return;
+      location.href = "mailto:" + CONTACT + "?subject=" + encodeURIComponent("Ma carte AYNEHA - " + MODELES[d.modele].nom) + "&body=" + encodeURIComponent(texteProposition());
+    });
+    document.getElementById("carte-proposer-wa").addEventListener("click", function () {
+      if (!pret()) return;
+      window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texteProposition()), "_blank", "noopener");
+    });
+
+    try { var p = localStorage.getItem(CLE); if (p) pseudo.value = p; } catch (e) { /* rien */ }
+    [champ, trad, pseudo].forEach(function (el) { el.addEventListener("input", maj); });
+    latin.addEventListener("change", maj);
+    maj();
+    polices().then(maj);
+  }
+
+  /* Petite carte d'exemple sur la page d'accueil */
+  function exemple() {
+    var cv = document.getElementById("accueil-carte");
+    if (!cv) return;
+    dessiner(cv, { modele: "fierte", format: "carre", ayneha: A.transcribe("ayneha").text, latin: "ayneha", traduction: "l'écriture du songhay", pseudo: "", montrerLatin: true }, 840);
+  }
+
+  window.AynehaCarte = { dessiner: dessiner, MODELES: MODELES };
+  polices().then(function () { galerie(); exemple(); });
+  atelier();
+})();

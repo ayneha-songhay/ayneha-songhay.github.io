@@ -19,6 +19,7 @@ sys.path.insert(0, ICI)
 import glyphs as G  # noqa: E402
 import applications as APPS  # noqa: E402
 import confidentialite as CONF  # noqa: E402
+import cartes as CARTES  # noqa: E402
 
 SITE_URL = "https://ayneha-songhay.github.io"
 CONTACT = "contact@ayneha.org"
@@ -283,6 +284,7 @@ def pied():
           <li><a href="calculatrice.html">Calculatrice</a></li>
           <li><a href="nombres.html">Convertisseur de nombres</a></li>
           <li><a href="horloge.html">Horloge</a></li>
+          <li><a href="carte.html">Ma carte AYNEHA</a></li>
         </ul>
       </div>
       <div>
@@ -438,6 +440,9 @@ def main():
     os.makedirs(os.path.join(RACINE, "assets", "js"), exist_ok=True)
     with open(os.path.join(RACINE, "assets", "js", "ayneha.js"), "w", encoding="utf-8") as fh:
         fh.write(js_data())
+    with open(os.path.join(RACINE, "assets", "js", "cartes-data.js"), "w", encoding="utf-8") as fh:
+        fh.write("/* Généré par _src/build.py depuis _src/cartes.py - ne pas modifier à la main. */\n"
+                 "window.AYNEHA_CARTES = " + json.dumps(CARTES.CARTES, ensure_ascii=False, indent=1) + ";\n")
     with open(os.path.join(RACINE, "assets", "js", "alphabet-data.js"), "w", encoding="utf-8") as fh:
         fh.write("/* Généré par _src/build.py - ne pas modifier à la main. */\n" + alphabet_data())
 
