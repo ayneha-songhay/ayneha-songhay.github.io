@@ -354,7 +354,8 @@ def page(meta, corps):
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v={VERSION}">{extra_head}
+<link rel="stylesheet" href="assets/css/site.css?v={VERSION}">
+<script src="assets/js/essai.js?v={VERSION}"></script>{extra_head}
 </head>
 <body>
 {entete(meta.get("nav", ""))}
