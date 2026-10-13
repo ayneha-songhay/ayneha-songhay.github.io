@@ -52,7 +52,22 @@
     saisie.className = classe(source) + " nb-saisie";
     saisie.textContent = valeur ? versSysteme(valeur, source) : "";
     document.getElementById("nb-compte").textContent = valeur.length + " / " + MAX + " chiffres";
+    ajuster();
   }
+
+  /* Chaque nombre tient sur une seule ligne : si la place manque (téléphone),
+     la taille des chiffres diminue juste ce qu'il faut, sans barre de défilement. */
+  function ajuster() {
+    [saisie].concat([].slice.call(resultats.querySelectorAll(".nb-val"))).forEach(function (el) {
+      el.style.fontSize = "";
+      if (!el.textContent) return;
+      var t = parseFloat(getComputedStyle(el).fontSize), min = 15;
+      while (el.scrollWidth > el.clientWidth + 1 && t > min) { t -= 1; el.style.fontSize = t + "px"; }
+    });
+  }
+  var attente;
+  window.addEventListener("resize", function () { clearTimeout(attente); attente = setTimeout(ajuster, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajuster);
 
   function dessinerPave() {
     pave.innerHTML = "";
