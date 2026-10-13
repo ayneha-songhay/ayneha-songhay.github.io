@@ -1,5 +1,5 @@
 {
-  "version": "20261013183918",
+  "version": "20261013190309",
   "files": [
     "404.html",
     "alphabet.html",
@@ -43,6 +43,7 @@
     "assets/js/cartes-data.js",
     "assets/js/clavier-page.js",
     "assets/js/clavier.js",
+    "assets/js/essai.js",
     "assets/js/horloge.js",
     "assets/js/nombres.js",
     "assets/js/site.js",
