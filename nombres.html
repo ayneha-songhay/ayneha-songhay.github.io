@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Convertisseur de nombres AYNEHA</title>
-<meta name="description" content="Passez un nombre d&#x27;un système de chiffres à l&#x27;autre : AYNEHA, français, arabe et N&#x27;Ko, jusqu&#x27;à 17 chiffres, dans votre navigateur.">
+<meta name="description" content="Passez un nombre d&#x27;un système de chiffres à l&#x27;autre : AYNEHA, N&#x27;Ko, Dogon NÈNÈ, arabe et français, jusqu&#x27;à 17 chiffres, dans votre navigateur.">
 <meta name="author" content="Mahamadou Issiaka MAIGA (MAIGUS)">
 <meta name="theme-color" content="#0E1A30">
 <link rel="canonical" href="https://ayneha-songhay.github.io/nombres.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AYNEHA">
 <meta property="og:title" content="Convertisseur de nombres AYNEHA">
-<meta property="og:description" content="Passez un nombre d&#x27;un système de chiffres à l&#x27;autre : AYNEHA, français, arabe et N&#x27;Ko, jusqu&#x27;à 17 chiffres, dans votre navigateur.">
+<meta property="og:description" content="Passez un nombre d&#x27;un système de chiffres à l&#x27;autre : AYNEHA, N&#x27;Ko, Dogon NÈNÈ, arabe et français, jusqu&#x27;à 17 chiffres, dans votre navigateur.">
 <meta property="og:url" content="https://ayneha-songhay.github.io/nombres.html">
 <meta property="og:image" content="https://ayneha-songhay.github.io/assets/img/apercu.png">
 <meta property="og:locale" content="fr_FR">
@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=20261013163441">
+<link rel="stylesheet" href="assets/css/site.css?v=20261013170416">
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -45,7 +45,7 @@
 <section class="outil-tete">
   <div class="wrap">
     <h1>Convertisseur de nombres</h1>
-    <p>Tapez un nombre dans le système de votre choix : il s'affiche aussitôt en chiffres AYNEHA, français, arabes et N'Ko. Jusqu'à 17 chiffres.</p>
+    <p>Tapez un nombre dans le système de votre choix : il s'affiche aussitôt en chiffres AYNEHA, N'Ko, Dogon NÈNÈ, arabes et français. Jusqu'à 17 chiffres.</p>
   </div>
 </section>
 
@@ -55,9 +55,10 @@
       <label for="nb-source" class="nb-label">Saisir en</label>
       <select id="nb-source" class="champ nb-choix">
         <option value="ayneha" selected>Chiffres AYNEHA</option>
-        <option value="francais">Chiffres français</option>
-        <option value="arabe">Chiffres arabes</option>
         <option value="nko">Chiffres N'Ko</option>
+        <option value="dogon">Chiffres Dogon NÈNÈ</option>
+        <option value="arabe">Chiffres arabes</option>
+        <option value="francais">Chiffres français</option>
       </select>
       <div class="tablette calc-ecran" style="margin-top:18px">
         <p id="nb-saisie" class="nb-saisie" aria-live="polite"></p>
@@ -72,8 +73,9 @@
 <section class="section">
   <div class="wrap duo duo-haut">
     <div>
-      <h2>Quatre façons d'écrire un nombre</h2>
-      <p class="doux">En AYNEHA, en arabe et en N'Ko, un nombre se lit de droite à gauche : le premier chiffre est à droite. En français, il se lit de gauche à droite. La valeur est la même : seuls les chiffres changent.</p>
+      <h2>Cinq façons d'écrire un nombre</h2>
+      <p class="doux">En AYNEHA, en N'Ko et en Dogon NÈNÈ, un nombre se lit de droite à gauche : le premier chiffre est à droite. En arabe et en français, les chiffres d'un nombre se lisent de gauche à droite. La valeur est la même : seuls les chiffres changent.</p>
+      <p class="doux petit">L'écriture Dogon NÈNÈ a été créée par Yahya Sékou Salah GUINDO.</p>
     </div>
     <div class="encadre">
       <h3>Sur votre téléphone</h3>
@@ -82,6 +84,7 @@
     </div>
   </div>
 </section>
+<div class="wrap petit doux" style="padding-bottom:20px"><a href="confidentialite-nombres.html">Confidentialité de cet outil</a> : rien de ce que vous saisissez ne quitte votre appareil.</div>
 </main>
 <footer class="pied">
   <div class="frise" aria-hidden="true"></div>
@@ -137,7 +140,7 @@
   </div>
 </footer>
 <button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>
-<script src="assets/js/site.js?v=20261013163441"></script>
+<script src="assets/js/site.js?v=20261013170416"></script>
 <script src="assets/js/ayneha.js"></script>
 <script src="assets/js/nombres.js"></script>
 </body>

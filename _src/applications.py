@@ -150,18 +150,18 @@ APPS = [
         "id": "ayneha-numconvert",
         "nom": "AYNEHA NumConvert",
         "glyphe": "D4",
-        "resume": "Un nombre en chiffres AYNEHA, français, arabes et N'Ko.",
+        "resume": "Un nombre en chiffres AYNEHA, N'Ko, Dogon NÈNÈ, arabes et français.",
         "intro": [
-            "AYNEHA NumConvert passe un nombre d'un système de chiffres à l'autre : AYNEHA, français, arabe et N'Ko. Pratique pour apprendre les chiffres AYNEHA en partant de ceux que l'on connaît déjà.",
+            "AYNEHA NumConvert passe un nombre d'un système de chiffres à l'autre, entre cinq écritures : AYNEHA, N'Ko, Dogon NÈNÈ (écriture de Yahya Sékou Salah GUINDO), arabe et français. Pratique pour apprendre les chiffres AYNEHA en partant de ceux que l'on connaît déjà.",
         ],
         "points": [
             "Conversion dans les deux sens, jusqu'à 17 chiffres, avec séparateurs de milliers",
             "Le pavé numérique affiche les chiffres du système de départ",
-            "Les quatre résultats s'affichent en même temps",
+            "Les cinq résultats s'affichent en même temps",
         ],
         "etapes": [
             "Choisissez le système de départ.",
-            "Tapez le nombre : les trois autres versions s'affichent aussitôt.",
+            "Tapez le nombre : les autres versions s'affichent aussitôt.",
         ],
         "compat": "Android. Fonctionne sans connexion.",
         "naabiga": "",

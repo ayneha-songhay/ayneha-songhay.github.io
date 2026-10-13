@@ -18,6 +18,7 @@ RACINE = os.path.dirname(ICI)
 sys.path.insert(0, ICI)
 import glyphs as G  # noqa: E402
 import applications as APPS  # noqa: E402
+import confidentialite as CONF  # noqa: E402
 
 SITE_URL = "https://ayneha-songhay.github.io"
 CONTACT = "contact@ayneha.org"
@@ -166,11 +167,69 @@ def page_app(a):
         <h3>Confidentialité</h3>
         <p class="doux">{E(APPS.CONFIDENTIALITE)}</p>
         {code}
+        <p class="petit"><a href="confidentialite-{a['id']}.html">Politique de confidentialité complète</a></p>
         <p class="petit"><a href="installer-apk.html">Installer un fichier APK</a></p>
       </div>
       {outil}
     </aside>
   </div>
+</section>"""
+
+
+def page_confidentialite(c):
+    sections = list(c["sections"])
+    if c["type"].startswith("Application") and not any(t == "Logiciel libre" for t, _ in sections):
+        sections.append(CONF.libre(c["nom"]))
+    corps = "".join(f"<h2>{E(t)}</h2><p>{E(x)}</p>" for t, x in sections)
+    lien = ""
+    if c["type"].startswith("Application"):
+        lien = f'<a class="btn btn-ligne btn-petit" href="{c["id"]}.html">Voir {E(c["nom"])}</a>'
+    elif c.get("page"):
+        lien = f'<a class="btn btn-ligne btn-petit" href="{c["page"]}">Ouvrir l\'outil</a>'
+    return f"""<section class="page-tete">
+  <div class="wrap">
+    <p class="doux" style="margin:0 0 6px"><a href="confidentialite.html">Confidentialité</a> / {E(c['type'])}</p>
+    <h1>Confidentialité : {E(c['nom'])}</h1>
+    <p>{E(c['intro'])}</p>
+  </div>
+</section>
+<section class="section-serree">
+  <div class="wrap"><div class="texte-long">
+    {corps}
+    <h2>Contact</h2>
+    <p>Pour toute question sur cette politique : <a href="mailto:{CONTACT}">{CONTACT}</a>. Développé par MAIGUS.</p>
+    <p class="doux petit">Dernière mise à jour : {CONF.MAJ}.</p>
+    <div class="boutons">{lien}<a class="btn btn-ligne btn-petit" href="confidentialite.html">Toutes les politiques</a></div>
+  </div></div>
+</section>"""
+
+
+def page_confidentialite_index():
+    def liste(items):
+        return "".join(f'<li><div><h3>{E(c["nom"])}</h3><p>{E(c["type"])}</p></div><a class="btn btn-ligne btn-petit" href="confidentialite-{c["id"]}.html">Lire sa politique</a></li>' for items_ in [items] for c in items_)
+    return f"""<section class="page-tete">
+  <div class="wrap">
+    <h1>Confidentialité</h1>
+    <p>En bref : ni le site ni les applications AYNEHA ne collectent de données sur vous. Pas de compte, pas de traceur, pas de publicité. Chaque application et chaque outil a sa propre page, avec ses règles détaillées.</p>
+  </div>
+</section>
+<section class="section-serree">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Applications Android</h2>
+      <ul class="ressources">{liste(CONF.ANDROID)}</ul>
+    </div>
+    <div>
+      <h2>Site et outils web</h2>
+      <ul class="ressources">{liste(CONF.WEB)}</ul>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap"><div class="texte-long">
+    <p>Pour toute question : <a href="mailto:{CONTACT}">{CONTACT}</a>.</p>
+    <p class="doux petit">Dernière mise à jour : {CONF.MAJ}.</p>
+  </div></div>
 </section>"""
 
 
@@ -255,6 +314,13 @@ def pied():
 <button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>"""
 
 
+def lien_conf(nom):
+    for c in CONF.WEB:
+        if c.get("page") == nom:
+            return f'\n<div class="wrap petit doux" style="padding-bottom:20px"><a href="confidentialite-{c["id"]}.html">Confidentialité de cet outil</a> : rien de ce que vous saisissez ne quitte votre appareil.</div>'
+    return ""
+
+
 def page(meta, corps):
     titre = meta["title"]
     desc = meta["description"]
@@ -291,7 +357,7 @@ def page(meta, corps):
 <body>
 {entete(meta.get("nav", ""))}
 <main id="contenu">
-{corps.strip()}
+{corps.strip()}{lien_conf(nom)}
 </main>
 {pied()}
 <script src="assets/js/site.js?v={VERSION}"></script>{scripts}
@@ -358,6 +424,16 @@ def main():
         with open(os.path.join(RACINE, a["id"] + ".html"), "w", encoding="utf-8") as fh:
             fh.write(page(meta, macros(page_app(a))))
         produits.append(a["id"] + ".html")
+
+    meta = {"title": "Confidentialité - AYNEHA", "description": "Les règles de confidentialité du site et de chaque application et outil AYNEHA : aucune donnée collectée, pas de compte, pas de traceur, pas de publicité.", "nav": "", "_file": "confidentialite.html"}
+    with open(os.path.join(RACINE, "confidentialite.html"), "w", encoding="utf-8") as fh:
+        fh.write(page(meta, page_confidentialite_index()))
+    for c in CONF.ANDROID + CONF.WEB:
+        nom = f"confidentialite-{c['id']}.html"
+        meta = {"title": f"Confidentialité - {c['nom']}", "description": c["intro"], "nav": "", "_file": nom}
+        with open(os.path.join(RACINE, nom), "w", encoding="utf-8") as fh:
+            fh.write(page(meta, page_confidentialite(c)))
+        produits.append(nom)
 
     os.makedirs(os.path.join(RACINE, "assets", "js"), exist_ok=True)
     with open(os.path.join(RACINE, "assets", "js", "ayneha.js"), "w", encoding="utf-8") as fh:

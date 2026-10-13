@@ -1,8 +1,11 @@
-/* AYNEHA - convertisseur de nombres : AYNEHA, français, arabe et N'Ko.
+/* AYNEHA - convertisseur de nombres : AYNEHA, N'Ko, Dogon NÈNÈ, arabe et français.
    Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS)
    SPDX-License-Identifier: GPL-3.0-or-later
-   Version web d'AYNEHA NumConvert : jusqu'à 17 chiffres, séparateurs de milliers.
-   En AYNEHA, en arabe et en N'Ko, le premier chiffre est à droite. */
+   Version web d'AYNEHA NumConvert (mêmes tables de chiffres que l'application) :
+   jusqu'à 17 chiffres, séparateurs de milliers.
+   En AYNEHA, en N'Ko et en Dogon NÈNÈ, le premier chiffre est à droite.
+   Chiffres Dogon NÈNÈ : écriture de Yahya Sékou Salah GUINDO (police DogonNene,
+   zone d'usage privé U+E01A-U+E023). */
 (function () {
   "use strict";
   var A = window.Ayneha;
@@ -10,10 +13,11 @@
   var SYSTEMES = {
     ayneha: { nom: "AYNEHA", chiffres: "0123456789".split("").map(function (d) { return A.digits(d); }), rtl: true },
     francais: { nom: "Français", chiffres: "0123456789".split(""), rtl: false },
-    arabe: { nom: "Arabe", chiffres: "٠١٢٣٤٥٦٧٨٩".split(""), rtl: true },
-    nko: { nom: "N'Ko", chiffres: Array.from("߀߁߂߃߄߅߆߇߈߉"), rtl: true }
+    nko: { nom: "N'Ko", chiffres: Array.from("߀߁߂߃߄߅߆߇߈߉"), rtl: true },
+    dogon: { nom: "Dogon NÈNÈ", chiffres: ["\uE023", "\uE01A", "\uE01B", "\uE01C", "\uE01D", "\uE01E", "\uE01F", "\uE020", "\uE021", "\uE022"], rtl: true },
+    arabe: { nom: "Arabe", chiffres: "٠١٢٣٤٥٦٧٨٩".split(""), rtl: false, sep: "\u066C" }
   };
-  var ORDRE = ["ayneha", "francais", "arabe", "nko"];
+  var ORDRE = ["ayneha", "nko", "dogon", "arabe", "francais"];
   var MAX = 17;
   var valeur = "";
   var source = "ayneha";
@@ -26,7 +30,7 @@
   function versSysteme(chiffres, sys) {
     var s = SYSTEMES[sys], out = [];
     for (var i = 0; i < chiffres.length; i++) {
-      if (i > 0 && (chiffres.length - i) % 3 === 0) out.push(" ");
+      if (i > 0 && (chiffres.length - i) % 3 === 0) out.push(s.sep || "\u2009");
       out.push(s.chiffres[+chiffres[i]]);
     }
     return out.join("");
@@ -52,7 +56,10 @@
 
   function dessinerPave() {
     pave.innerHTML = "";
-    var dispo = ["9", "8", "7", "6", "5", "4", "3", "2", "1", "efface", "0", "tout"];
+    // Pavé en miroir pour les écritures de droite à gauche, comme dans l'application.
+    var dispo = SYSTEMES[source].rtl
+      ? ["9", "8", "7", "6", "5", "4", "3", "2", "1", "efface", "0", "tout"]
+      : ["7", "8", "9", "4", "5", "6", "1", "2", "3", "tout", "0", "efface"];
     dispo.forEach(function (k) {
       var b = document.createElement("button");
       b.type = "button";
