@@ -7,7 +7,7 @@
   var A = window.Ayneha;
   if (!A) return;
 
-  var SITE = "ayneha-songhay.github.io";
+  var SITE = "ayneha.org";  // adresse affichée sur les cartes et dans le message de partage
   var CONTACT = "contact@ayneha.org";
   var WHATSAPP = "22366778763";
 
@@ -208,16 +208,24 @@
       var py = M.tablette ? H - u * 9.6 : piedY - u * 3;
       ctx.fillText("- " + d.pseudo, W / 2, py);
     }
-    ctx.fillStyle = M.pied;
+    // signature : le mot AYNEHA en AYNEHA, puis l'adresse ayneha.org bien visible
     var tit = A.visualLine(A.transcribe("ayneha").text);
-    ctx.font = Math.round(u * 1.9) + 'px "Ayneha Pro"';
+    var tTit = Math.round(u * 2.1), tSite = Math.round(u * 1.75);
+    ctx.font = tTit + 'px "Ayneha Pro"';
     var wTit = ctx.measureText(tit).width;
-    ctx.font = "500 " + Math.round(u * 1.25) + "px Jost, sans-serif";
-    var sig = "AYNEHA  ·  " + SITE, wSig = ctx.measureText(sig).width, x0 = (W - wTit - u - wSig) / 2;
+    ctx.font = "600 " + tSite + "px Jost, sans-serif";
+    var wSite = ctx.measureText(SITE).width, ecart = u * 1.6;
+    var x0 = (W - wTit - ecart - wSite) / 2;
     ctx.textAlign = "left";
-    ctx.fillText(sig, x0, piedY);
-    ctx.font = Math.round(u * 1.9) + 'px "Ayneha Pro"';
-    ctx.fillText(tit, x0 + wSig + u, piedY + u * 0.2);
+    ctx.fillStyle = M.pied;
+    ctx.font = tTit + 'px "Ayneha Pro"';
+    ctx.fillText(tit, x0, piedY + u * 0.15);
+    ctx.globalAlpha = 0.5;
+    ctx.fillRect(x0 + wTit + ecart / 2 - u * 0.05, piedY - tSite * 0.8, u * 0.1, tSite * 0.95);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = M.accent;
+    ctx.font = "600 " + tSite + "px Jost, sans-serif";
+    ctx.fillText(SITE, x0 + wTit + ecart, piedY);
     return canvas;
   }
 
