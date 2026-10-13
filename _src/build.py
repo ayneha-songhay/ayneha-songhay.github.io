@@ -457,7 +457,7 @@ def main():
             chemin = os.path.normpath(os.path.join(rel, n)).replace(os.sep, "/")
             if chemin.startswith("./"):
                 chemin = chemin[2:]
-            if chemin in ("manifest.json", "version.txt", "README.md", "LICENSE", ".gitignore", "_headers") or n.startswith("."):
+            if chemin in ("manifest.json", "version.txt", "README.md", "LICENSE", ".gitignore", "_headers", "netlify.toml") or n.startswith("."):
                 continue
             if chemin.startswith("assets/telechargements/"):
                 continue  # fichiers à télécharger : pas besoin de les embarquer dans l'appli
