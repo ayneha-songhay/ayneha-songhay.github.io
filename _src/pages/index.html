@@ -1,0 +1,143 @@
+title: AYNEHA - l'écriture de la langue songhay
+description: AYNEHA est un alphabet original pour écrire le songhay, de droite à gauche, conçu par Mahamadou Issiaka MAIGA (MAIGUS). Découvrez les lettres, essayez-le en ligne et installez les applications gratuites.
+nav: index
+scripts: assets/js/ayneha.js assets/js/accueil.js assets/js/horloge.js
+---
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>AYNEHA, l'écriture de la langue songhay</h1>
+      <p class="chapeau">Un alphabet né en 2026 pour le songhay, langue parlée le long du fleuve Niger, au Mali, au Niger, au Bénin et au Burkina Faso. Chaque son a son caractère, et l'on écrit de droite à gauche.</p>
+      <p class="chapeau">Apprenez-le, écrivez-le sur votre téléphone, comptez avec ses chiffres : tout est gratuit.</p>
+      <div class="boutons">
+        <a class="btn" href="alphabet.html">Découvrir l'alphabet</a>
+        <a class="btn btn-ligne" href="applications.html">Installer les applications</a>
+      </div>
+    </div>
+
+    <div class="tablette" aria-labelledby="essai-titre">
+      <p class="ardoise-titre">{{ay:A Y:m N E H A}}</p>
+      <div class="ardoise-lecture">
+        <span class="lecture">se lit « ayneha », de droite à gauche</span>
+      </div>
+      <div class="essai">
+        <label id="essai-titre" for="essai-champ">Écrivez votre prénom en AYNEHA</label>
+        <input class="champ" id="essai-champ" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="60" placeholder="Par exemple : fatumata">
+        <p class="essai-sortie ay" id="essai-sortie" aria-live="polite"></p>
+        <p class="lecture petit">Écrivez comme vous prononcez : « ou » s'écrit u, « ch » s'écrit sh, « tch » s'écrit c. <a href="convertisseur.html">Transcrire un texte entier</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="frise" aria-hidden="true"></div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="intro">
+      <h2>27 lettres, lues de droite à gauche</h2>
+      <p>Cinq voyelles, puis vingt-deux consonnes : c'est l'ordre alphabétique de l'AYNEHA. Des accents ajoutent la nasalisation, l'ouverture, le doublement ou la consonne muette. Touchez une lettre pour voir sa fiche.</p>
+    </div>
+    <div class="tablette bande">
+      <div class="bande-lettres">
+        <a class="bande-lettre" href="alphabet.html#lettre-A">{{ay:A}}<small>a</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-E">{{ay:E}}<small>e</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-I">{{ay:I}}<small>i</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-O">{{ay:O}}<small>o</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-U">{{ay:U}}<small>u</small></a>
+        <span class="bande-sep" aria-hidden="true"></span>
+        <a class="bande-lettre" href="alphabet.html#lettre-B">{{ay:B}}<small>b</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-P">{{ay:P}}<small>p</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-M">{{ay:M}}<small>m</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-F">{{ay:F}}<small>f</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-W">{{ay:W}}<small>w</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-D">{{ay:D}}<small>d</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-T">{{ay:T}}<small>t</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-N">{{ay:N}}<small>n</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-L">{{ay:L}}<small>l</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-R">{{ay:R}}<small>r</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-S">{{ay:S}}<small>s</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-Z">{{ay:Z}}<small>z</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-SH">{{ay:SH}}<small>sh</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-TS">{{ay:TS}}<small>tch</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-J">{{ay:J}}<small>j</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-DJ">{{ay:DJ}}<small>dj</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-GN">{{ay:GN}}<small>ɲ</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-Y">{{ay:Y}}<small>y</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-G">{{ay:G}}<small>g</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-K">{{ay:K}}<small>k</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-H">{{ay:H}}<small>h</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-NG">{{ay:NG}}<small>ŋ</small></a>
+      </div>
+    </div>
+    <div class="boutons" style="margin-top:26px">
+      <a class="btn btn-ligne" href="alphabet.html">Voir l'alphabet complet, les accents et les chiffres</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-claire">
+  <div class="wrap vitrine">
+    <div class="app-une">
+      <span class="pastille pastille-orange">{{ay:H|logo|}}</span>
+      <h3 style="margin-top:18px">AYNEHA School <span class="etiquette">Nouveau</span></h3>
+      <p>L'application pour apprendre à lire et à écrire l'AYNEHA, seul, à son rythme et sans connexion : l'alphabet lettre par lettre, les accents, le syllabaire, les chiffres, le tracé au doigt, des quiz et un atelier de transcription.</p>
+      <div class="boutons">
+        <a class="btn" href="applications.html#ayneha-school">Voir AYNEHA School</a>
+      </div>
+    </div>
+    <div>
+      <h2>Écrire l'AYNEHA au quotidien</h2>
+      <p class="doux">Des applications Android gratuites, sans publicité et sans collecte de données, à télécharger sur Naabiga ou directement sur ce site.</p>
+      <ul class="liste-apps">
+        <li><span class="pastille">{{ay:H|logo|}}</span><a href="applications.html#ayneha"><h4>AYNEHA</h4><p>L'application officielle : tout le site, même hors connexion.</p></a></li>
+        <li><span class="pastille">{{ay:K|logo|}}</span><a href="applications.html#ayneha-keyboard"><h4>AYNEHA Keyboard</h4><p>Le clavier pour écrire en AYNEHA dans toutes vos applications.</p></a></li>
+        <li><span class="pastille">{{ay:D7|logo|}}</span><a href="applications.html#ayneha-calc"><h4>AYNEHA Calc</h4><p>La calculatrice en chiffres AYNEHA.</p></a></li>
+        <li><span class="pastille">{{ay:I|logo|}}</span><a href="applications.html#ayneha-horloge"><h4>AYNEHA Horloge</h4><p>L'heure et le calendrier en AYNEHA.</p></a></li>
+        <li><span class="pastille">{{ay:D4|logo|}}</span><a href="applications.html#ayneha-numconvert"><h4>AYNEHA NumConvert</h4><p>Les chiffres AYNEHA, français, arabes et N'Ko, d'un système à l'autre.</p></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap duo">
+    <div>
+      <h2>L'heure en AYNEHA</h2>
+      <p>Cette horloge affiche l'heure de votre appareil, le jour, le mois et l'année songhay, entièrement en AYNEHA. L'année songhay se calcule en ajoutant 2001 à l'année grégorienne.</p>
+      <p class="doux">Les chiffres se lisent eux aussi de droite à gauche.</p>
+      <div class="boutons"><a class="btn btn-ligne" href="horloge.html">Ouvrir l'horloge et le calendrier</a></div>
+    </div>
+    <div class="tablette horloge" aria-label="Horloge en AYNEHA">
+      <p class="ay horloge-heure" data-horloge="heure"></p>
+      <div class="horloge-ligne">
+        <div><span class="ay" data-horloge="jour"></span><small>jour</small></div>
+        <div><span class="ay" data-horloge="mois"></span><small>mois</small></div>
+        <div><span class="ay" data-horloge="annee"></span><small>année songhay</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-claire">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Pourquoi une écriture propre au songhay ?</h2>
+      <p>Le songhay s'écrit aujourd'hui avec l'alphabet latin ou en caractères arabes (ajami). Ces alphabets empruntés obligent à combiner des lettres pour noter des sons qui leur sont étrangers.</p>
+      <p>AYNEHA part des sons du songhay de Gao : un son, un caractère. Ses formes ont été longuement essayées à la main, au crayon et au stylo, avant de devenir une police numérique, un clavier et des applications.</p>
+      <p><a href="apropos.html">Lire l'histoire du projet</a></p>
+    </div>
+    <div>
+      <div class="encadre">
+        <h3>Présenté sur Omniglot</h3>
+        <p class="doux">AYNEHA figure dans la section des écritures construites d'Omniglot, l'encyclopédie en ligne des systèmes d'écriture et des langues.</p>
+        <a class="btn btn-ligne btn-petit" href="https://www.omniglot.com/conscripts/ayneha.htm" rel="noopener">Voir la page Omniglot</a>
+      </div>
+      <div class="anglais" lang="en" style="margin-top:30px">
+        <h2>AYNEHA in English</h2>
+        <p>AYNEHA is an original right-to-left alphabet for the Songhay language, created in 2026 by Mahamadou Issiaka MAIGA (MAIGUS), from Gao, Mali. It has 5 vowels, 22 consonants, 4 diacritics and its own 10 digits. The font, a keyboard and learning apps are free.</p>
+        <p><a href="presse.html#english">Press kit and short presentation in English</a></p>
+      </div>
+    </div>
+  </div>
+</section>

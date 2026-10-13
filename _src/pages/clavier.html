@@ -1,0 +1,41 @@
+title: Clavier AYNEHA en ligne
+description: Le clavier AYNEHA de l'application Android, dans votre navigateur : écrivez en AYNEHA de droite à gauche, avec les formes de chaque lettre par appui long.
+nav: outils
+scripts: assets/js/ayneha.js assets/js/clavier.js assets/js/clavier-page.js
+---
+<section class="page-tete">
+  <div class="wrap">
+    <h1>Le clavier AYNEHA</h1>
+    <p>Le même clavier que l'application AYNEHA Keyboard, directement dans votre navigateur. Touchez une lettre pour l'écrire ; gardez le doigt appuyé sur une lettre marquée d'un point orange pour choisir sa forme double, muette, nasalisée ou ouverte.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <div class="tablette" style="max-width:860px;margin:0 auto">
+      <label class="visually-hidden" for="ak-composer">Zone de composition AYNEHA</label>
+      <textarea class="composeur ay" id="ak-composer" inputmode="none" spellcheck="false" placeholder="Le texte en AYNEHA s'écrit ici, de droite à gauche."></textarea>
+      <div class="barre-outils">
+        <button type="button" id="ak-copier">Copier</button>
+        <button type="button" id="ak-image">Enregistrer en image</button>
+        <button type="button" id="ak-effacer">Tout effacer</button>
+      </div>
+      <p class="message-etat" id="ak-etat" role="status"></p>
+      <div class="clavier" id="ak-keyboard"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Sur votre téléphone</h2>
+      <p>Avec l'application AYNEHA Keyboard, ce clavier s'installe comme n'importe quel clavier Android et fonctionne dans toutes vos applications : messagerie, réseaux sociaux, notes.</p>
+      <div class="boutons"><a class="btn" href="applications.html#ayneha-keyboard">Voir AYNEHA Keyboard</a></div>
+    </div>
+    <div class="encadre">
+      <h3>Le clavier en quatre pages</h3>
+      <p class="doux">Les touches du bas passent des lettres aux symboles, au pavé numérique en chiffres AYNEHA et aux émojis. Les lettres sont rangées de droite à gauche : la première touche de chaque rangée est à droite.</p>
+    </div>
+  </div>
+</section>

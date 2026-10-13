@@ -3,84 +3,164 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Convertisseur Latin → AYNEHA</title>
-<meta name="description" content="Convertissez un texte du latin vers l'écriture AYNEHA grâce au transcripteur officiel.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=2">
+<title>Transcripteur latin vers AYNEHA</title>
+<meta name="description" content="Transcrivez un texte songhay écrit en lettres latines vers l&#x27;écriture AYNEHA, en direct, avec l&#x27;explication de chaque lettre. Copie et export en image.">
+<meta name="author" content="Mahamadou Issiaka MAIGA (MAIGUS)">
+<meta name="theme-color" content="#0E1A30">
+<link rel="canonical" href="https://ayneha-songhay.github.io/convertisseur.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AYNEHA">
+<meta property="og:title" content="Transcripteur latin vers AYNEHA">
+<meta property="og:description" content="Transcrivez un texte songhay écrit en lettres latines vers l&#x27;écriture AYNEHA, en direct, avec l&#x27;explication de chaque lettre. Copie et export en image.">
+<meta property="og:url" content="https://ayneha-songhay.github.io/convertisseur.html">
+<meta property="og:image" content="https://ayneha-songhay.github.io/assets/img/apercu.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css?v=20261013155210">
 </head>
 <body>
-
-<header class="site-header">
-  <nav class="nav">
-    <a class="brand" href="index.html">AYNEHA <small>Écriture Songhay</small></a>
-    <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="alphabet.html">Alphabet</a></li>
-      <li><a href="clavier.html">Teste clavier</a></li>
-      <li><a href="convertisseur.html" class="active">Convertisseur</a></li>
-      <li><a href="ressources.html">Ressources</a></li>
-      <li><a href="horloge.html">Horloge</a></li>
-      <li><a href="apropos.html">À propos</a></li>
-    </ul>
-  </nav>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <div class="wrap">
+    <a class="marque" href="index.html" aria-label="AYNEHA, accueil"><span class="ay logo" aria-hidden="true">􏾚</span><span class="marque-texte">AYNEHA</span></a>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="alphabet.html">L'alphabet</a></li>
+        <li><a href="applications.html">Applications</a></li>
+        <li><a href="outils.html" aria-current="page">Outils en ligne</a></li>
+        <li><a href="ressources.html">Ressources</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
+<main id="contenu">
+<section class="page-tete">
+  <div class="wrap">
+    <h1>Le transcripteur</h1>
+    <p>Écrivez en songhay avec les lettres latines, comme vous prononcez : le texte s'écrit en AYNEHA au fur et à mesure. Rien n'est envoyé sur internet, tout se passe dans votre navigateur.</p>
+  </div>
+</section>
 
-<section class="hero" style="padding:56px 0 40px">
-  <div class="glyph-grid" aria-hidden="true"></div>
-  <div class="container hero-grid">
+<section class="section-serree">
+  <div class="wrap atelier">
     <div>
-      <span class="eyebrow">Latin → AYNEHA</span>
-      <h1 style="font-size:clamp(2.1rem,4.6vw,3rem)">Le convertisseur AYNEHA</h1>
-    </div>
-    <div class="hero-side">
-      <p class="lede">
-        Écrivez un texte en songhay translittéré (alphabet latin) et obtenez sa transcription
-        fidèle en écriture AYNEHA, prête à être copiée, lue ou partagée.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="container">
-    <div class="panel">
-      <div class="panel-head">
-        <h3>Transcripteur Latin → AYNEHA</h3>
-        <a class="btn btn-outline" href="https://maigus223.github.io/TRANSCRIPTEUR-AYNEHA/" target="_blank" rel="noopener">Ouvrir en plein écran ↗</a>
+      <label for="tr-entree" style="display:block;font-weight:600;color:var(--sable);margin-bottom:8px">Texte en lettres latines</label>
+      <textarea class="champ" id="tr-entree" spellcheck="false" autocapitalize="off" placeholder="Par exemple : Maali ni cayɛno ga"></textarea>
+      <p class="doux petit" style="margin:10px 0 0">Lettres qui manquent sur votre clavier :</p>
+      <div class="touches-rapides" id="tr-touches">
+        <button type="button" data-c="ŋ">ŋ</button><button type="button" data-c="ɲ">ɲ</button><button type="button" data-c="š">š</button>
+        <button type="button" data-c="ɛ">ɛ</button><button type="button" data-c="ɔ">ɔ</button>
+        <button type="button" data-c="ã">ã</button><button type="button" data-c="ẽ">ẽ</button><button type="button" data-c="ĩ">ĩ</button><button type="button" data-c="õ">õ</button><button type="button" data-c="ũ">ũ</button>
       </div>
-      <iframe class="tool-frame" src="https://maigus223.github.io/TRANSCRIPTEUR-AYNEHA/" title="Transcripteur Latin vers AYNEHA" loading="lazy"></iframe>
+    </div>
+    <div>
+      <div class="tablette">
+        <p class="sortie ay" id="tr-sortie" aria-live="polite"></p>
+        <div class="barre-outils">
+          <button type="button" id="tr-copier">Copier le texte AYNEHA</button>
+          <button type="button" id="tr-image">Enregistrer en image</button>
+          <button type="button" id="tr-effacer">Tout effacer</button>
+        </div>
+        <p class="message-etat" id="tr-etat" role="status"></p>
+      </div>
+      <p class="doux petit" style="margin-top:12px">Le texte copié s'affiche en AYNEHA seulement chez les personnes qui ont la police Ayneha Pro. Pour l'envoyer sur WhatsApp ou ailleurs, l'image est plus sûre : elle se lit partout.</p>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="container grid grid-2" style="align-items:start;">
-    <div class="card">
-      <h3>Comment l'utiliser</h3>
-      <p>Tapez ou collez votre texte en songhay (transcription latine) dans le champ ci-dessus, puis laissez l'outil générer sa version en AYNEHA. Copiez le résultat où vous en avez besoin.</p>
-    </div>
-    <div class="card">
-      <h3>La calculatrice AYNEHA</h3>
-      <p>Pour les chiffres et opérations en AYNEHA, une calculatrice web dédiée existe également.</p>
-      <a class="btn btn-outline" href="https://store.naabiga.com/produit/ayneha-calc" target="_blank" rel="noopener">Ouvrir la calculatrice AYNEHA ↗</a>
-    </div>
+<section class="section-serree">
+  <div class="wrap">
+    <details class="explication encadre" id="tr-explication">
+      <summary>Pourquoi ces lettres ? Le détail mot par mot</summary>
+      <div id="tr-detail"><p class="doux">Écrivez un mot pour voir comment chaque lettre est choisie.</p></div>
+    </details>
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <span>© 2026 AYNEHA - <span class="creator-name">Mahamadou Issiaka MAIGA (MAIGUS)</span></span>
-    <span>
-      <a href="https://aynehasonghay.blogspot.com" target="_blank" rel="noopener">Blog officiel</a>
-      &nbsp;·&nbsp;
-      <a href="ressources.html">Ressources</a>
-    </span>
+<section class="section" id="regles-transcription">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Comment écrire en lettres latines</h2>
+      <p class="doux">Le transcripteur suit la prononciation du songhay de Gao. Quelques repères suffisent.</p>
+      <p class="doux">Une version installable du transcripteur existe aussi : <a href="https://maigus223.github.io/TRANSCRIPTEUR-AYNEHA/" rel="noopener">l'ouvrir</a>.</p>
+    </div>
+    <div class="tableau-defile">
+      <table>
+        <thead><tr><th>Vous tapez</th><th>Vous obtenez</th></tr></thead>
+        <tbody>
+          <tr><td>une voyelle suivie d'un seul n (an, en, un...)</td><td>la voyelle nasalisée</td></tr>
+          <tr><td>une lettre doublée (aa, bb, tt...)</td><td>l'accent double</td></tr>
+          <tr><td>un n en fin de mot de plus de trois lettres</td><td>N muette (pas de nasalisation)</td></tr>
+          <tr><td>une consonne qui n'est pas suivie d'une voyelle</td><td>la consonne muette</td></tr>
+          <tr><td>sh ou š</td><td>Ʃ (ch de « chat »)</td></tr>
+          <tr><td>c ou tch</td><td>TƩ (tch)</td></tr>
+          <tr><td>dj, ou di suivi d'une voyelle</td><td>DJ</td></tr>
+          <tr><td>ny, ou ni suivi d'une voyelle, ou ɲ</td><td>Ɲ (gn de « agneau »)</td></tr>
+          <tr><td>ŋ</td><td>Ŋ</td></tr>
+          <tr><td>ng, gn</td><td>les deux lettres, la première muette</td></tr>
+          <tr><td>ɛ ou è, ɔ ou ô</td><td>E et O ouverts</td></tr>
+          <tr><td>v</td><td>W</td></tr>
+          <tr><td>chiffres, virgule, point-virgule</td><td>chiffres et ponctuation AYNEHA</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="pied">
+  <div class="frise" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="pied-grille">
+      <div class="pied-marque">
+        <span class="ay" role="img" aria-label="AYNEHA">􏾜􏿌􏾍􏾝􏾚􏾜</span>
+        <p>AYNEHA, l'écriture de la langue songhay. Conçue et créée par Mahamadou Issiaka MAIGA (MAIGUS).</p>
+      </div>
+      <div>
+        <h2>Découvrir</h2>
+        <ul>
+          <li><a href="alphabet.html">L'alphabet</a></li>
+          <li><a href="applications.html">Applications</a></li>
+          <li><a href="outils.html">Outils en ligne</a></li>
+          <li><a href="ressources.html">Ressources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Le projet</h2>
+        <ul>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="presse.html">Espace presse</a></li>
+          <li><a href="apropos.html#soutenir">Soutenir le projet</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Suivre AYNEHA</h2>
+        <ul>
+          <li><a href="https://aynehasonghay.blogspot.com" rel="noopener">Blog</a></li>
+          <li><a href="https://www.tiktok.com/@ayneha.songhay" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/ayneha.songhay/" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/ayneha_songhay" rel="noopener">X</a></li>
+          <li><a href="https://whatsapp.com/channel/0029Vb8zu22HgZWfGLpgAA2U" rel="noopener">Chaîne WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>© 2026 AYNEHA. Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS).</span>
+      <span>Contact : <a href="mailto:contact@ayneha.org">contact@ayneha.org</a></span>
+    </div>
   </div>
 </footer>
-
-<button id="back-to-top" aria-label="Retour en haut de page">&#8593;</button>
-<script src="assets/nav.js"></script>
+<button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>
+<script src="assets/js/site.js?v=20261013155210"></script>
+<script src="assets/js/ayneha.js"></script>
+<script src="assets/js/transcripteur.js"></script>
 </body>
 </html>

@@ -1,0 +1,56 @@
+title: Horloge et calendrier AYNEHA
+description: L'heure, le jour, le mois et l'année songhay affichés en direct en écriture AYNEHA, avec un calendrier à parcourir mois par mois.
+nav: outils
+scripts: assets/js/ayneha.js assets/js/horloge.js
+---
+<section class="page-tete">
+  <div class="wrap">
+    <h1>Horloge et calendrier</h1>
+    <p>L'heure de votre appareil, le jour, le mois et l'année songhay, entièrement en AYNEHA, sans aucun caractère latin. Les chiffres se lisent de droite à gauche.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <div class="tablette horloge" style="max-width:720px;margin:0 auto">
+      <p class="ay petit-libelle" data-libelle="heure" style="font-size:1.6rem;margin:0"></p>
+      <p class="ay horloge-heure" data-horloge="heure" aria-live="off"></p>
+      <div class="horloge-ligne">
+        <div><span class="ay" data-libelle="jour" style="font-size:1.3rem"></span><span class="ay" data-horloge="jour"></span></div>
+        <div><span class="ay" data-libelle="mois" style="font-size:1.3rem"></span><span class="ay" data-horloge="mois"></span></div>
+        <div><span class="ay" data-horloge="annee"></span></div>
+      </div>
+      <div class="cal" data-calendrier>
+        <div class="cal-tete">
+          <button type="button" data-cal-suiv aria-label="Mois suivant">&#8249;</button>
+          <p class="ay" data-cal-titre style="margin:0"></p>
+          <button type="button" data-cal-prec aria-label="Mois précédent">&#8250;</button>
+        </div>
+        <div class="cal-grille" data-cal-grille></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Lire l'horloge</h2>
+      <ul>
+        <li>En haut, l'heure : heures, minutes et secondes, de droite à gauche.</li>
+        <li>Dessous, le nom du jour, le nom du mois et l'année songhay.</li>
+        <li>L'année songhay s'obtient en ajoutant 2001 à l'année grégorienne.</li>
+        <li>Le calendrier commence par le dimanche, à droite. Le jour d'aujourd'hui est en orange.</li>
+      </ul>
+      <p class="doux">Cette horloge suit le calendrier grégorien. Une version en calendrier lunaire songhay est prévue.</p>
+    </div>
+    <div class="encadre">
+      <h3>Sur votre téléphone</h3>
+      <p class="doux">L'application AYNEHA Horloge affiche cette horloge sur Android, avec des widgets pour l'écran d'accueil. Une version web installable existe aussi.</p>
+      <div class="boutons">
+        <a class="btn" href="applications.html#ayneha-horloge">Voir AYNEHA Horloge</a>
+        <a class="btn btn-ligne" href="https://maigus223.github.io/AYNEHA-CALENDRIER/" rel="noopener">Version installable</a>
+      </div>
+    </div>
+  </div>
+</section>

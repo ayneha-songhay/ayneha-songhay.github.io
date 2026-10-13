@@ -3,210 +3,129 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Teste clavier - AYNEHA</title>
-<meta name="description" content="Essayez le vrai clavier virtuel AYNEHA directement dans votre navigateur : lettres, variantes, chiffres et symboles.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=2">
-<style>
-  @font-face{
-    font-family:"AYNEHA";
-    src:url("assets/fonts/ayneha_regular.ttf") format("truetype");
-    font-display:swap;
-  }
-
-  .ak-panel{
-    border:1px solid var(--line);border-radius:var(--radius);background:var(--indigo-800);
-    padding:16px;
-  }
-  .ak-panel-head{
-    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
-    margin-bottom:14px;
-  }
-  .ak-panel-head h3{margin:0;font-size:0.95rem;color:var(--sand);}
-  .ak-composer{
-    width:100%;min-height:100px;resize:vertical;
-    background:var(--indigo-950);color:var(--sand);
-    border:1px solid var(--line);border-radius:10px;
-    padding:14px 16px;margin-bottom:14px;
-    font-family:"AYNEHA","Space Grotesk",sans-serif;
-    font-size:2.1rem;line-height:1.15;
-    direction:rtl;text-align:right;
-  }
-  .ak-composer::placeholder{
-    font-family:"Space Grotesk",sans-serif;font-size:0.95rem;color:var(--sand-dim);
-  }
-  .ak-toolbar{display:flex;justify-content:flex-end;gap:8px;margin-bottom:12px;}
-  .ak-toolbar button{
-    background:none;border:1px solid var(--line);color:var(--sand-dim);
-    border-radius:8px;padding:6px 12px;font-size:0.78rem;cursor:pointer;
-  }
-  .ak-toolbar button:hover{color:var(--sand);border-color:rgba(198,145,47,0.45);}
-
-  .ak-keyboard{
-    background:var(--indigo-950);border-radius:12px;padding:8px;
-    border:1px solid var(--line);
-  }
-  .ak-row{display:flex;gap:4px;margin-bottom:4px;}
-  .ak-row:last-child{margin-bottom:0;}
-  .ak-key{
-    position:relative;flex:1 1 0;min-width:0;
-    background:var(--indigo-700);color:var(--sand);
-    border:none;border-radius:7px;
-    height:46px;display:flex;align-items:center;justify-content:center;
-    cursor:pointer;touch-action:manipulation;user-select:none;
-    transition:background .08s;
-  }
-  .ak-row-bottom .ak-key{height:44px;}
-  .ak-key .ak-glyph{
-    font-family:"AYNEHA","Space Grotesk",sans-serif;
-    font-size:2.5rem;line-height:1;pointer-events:none;
-  }
-  .ak-key-space .ak-glyph{font-size:0.85rem;letter-spacing:0.04em;opacity:0.85;}
-  .ak-mirror{display:inline-block;transform:scaleX(-1);}
-  .ak-icon-mirror{display:inline-block;transform:scaleX(-1);}
-  .ak-key-action{background:var(--indigo-800);}
-  .ak-key-enter{background:var(--gold);color:var(--indigo-950);}
-  .ak-key.ak-icon{font-size:2.5rem;}
-  .ak-key.ak-pressed{background:var(--gold);color:var(--indigo-950);}
-  .ak-key-enter.ak-pressed{background:var(--gold-bright);}
-  .ak-has-variants::after{
-    content:"";position:absolute;top:5px;right:6px;
-    width:4px;height:4px;border-radius:50%;background:rgba(241,232,216,0.5);
-  }
-  @media (max-width:600px){
-    .ak-key{height:40px;}
-    .ak-key .ak-glyph{font-size:0.92rem;}
-    .ak-composer{font-size:1.4rem;}
-  }
-
-  .ak-popup{
-    position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
-    display:flex;gap:4px;background:var(--indigo-950);border:1px solid var(--gold);
-    border-radius:8px;padding:5px;box-shadow:0 6px 18px rgba(0,0,0,0.45);z-index:20;
-  }
-  .ak-popup-key{
-    min-width:75px;height:75px;background:var(--indigo-700);color:var(--sand);
-    border:none;border-radius:6px;display:flex;align-items:center;justify-content:center;
-    cursor:pointer;
-  }
-  .ak-popup-key:hover{background:var(--gold);color:var(--indigo-950);}
-  .ak-popup-key .ak-glyph{font-family:"AYNEHA","Space Grotesk",sans-serif;font-size:2.5rem;}
-</style>
+<title>Clavier AYNEHA en ligne</title>
+<meta name="description" content="Le clavier AYNEHA de l&#x27;application Android, dans votre navigateur : écrivez en AYNEHA de droite à gauche, avec les formes de chaque lettre par appui long.">
+<meta name="author" content="Mahamadou Issiaka MAIGA (MAIGUS)">
+<meta name="theme-color" content="#0E1A30">
+<link rel="canonical" href="https://ayneha-songhay.github.io/clavier.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AYNEHA">
+<meta property="og:title" content="Clavier AYNEHA en ligne">
+<meta property="og:description" content="Le clavier AYNEHA de l&#x27;application Android, dans votre navigateur : écrivez en AYNEHA de droite à gauche, avec les formes de chaque lettre par appui long.">
+<meta property="og:url" content="https://ayneha-songhay.github.io/clavier.html">
+<meta property="og:image" content="https://ayneha-songhay.github.io/assets/img/apercu.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css?v=20261013155210">
 </head>
 <body>
-
-<header class="site-header">
-  <nav class="nav">
-    <a class="brand" href="index.html">AYNEHA <small>Écriture Songhay</small></a>
-    <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="alphabet.html">Alphabet</a></li>
-      <li><a href="clavier.html" class="active">Teste clavier</a></li>
-      <li><a href="convertisseur.html">Convertisseur</a></li>
-      <li><a href="ressources.html">Ressources</a></li>
-      <li><a href="horloge.html">Horloge</a></li>
-      <li><a href="apropos.html">À propos</a></li>
-    </ul>
-  </nav>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <div class="wrap">
+    <a class="marque" href="index.html" aria-label="AYNEHA, accueil"><span class="ay logo" aria-hidden="true">􏾚</span><span class="marque-texte">AYNEHA</span></a>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="alphabet.html">L'alphabet</a></li>
+        <li><a href="applications.html">Applications</a></li>
+        <li><a href="outils.html" aria-current="page">Outils en ligne</a></li>
+        <li><a href="ressources.html">Ressources</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
-
-<section class="hero" style="padding:56px 0 40px">
-  <div class="glyph-grid" aria-hidden="true"></div>
-  <div class="container hero-grid">
-    <div>
-      <span class="eyebrow">Écrire en AYNEHA</span>
-      <h1 style="font-size:clamp(2.1rem,4.6vw,3rem)">Teste le clavier AYNEHA</h1>
-    </div>
-    <div class="hero-side">
-      <p class="lede">
-        Voici le vrai clavier virtuel AYNEHA, directement dans votre navigateur : mêmes touches,
-        mêmes appuis longs pour les variantes, même logique droite-à-gauche que sur l'application
-        Android. Essayez d'écrire ci-dessous.
-      </p>
-    </div>
+<main id="contenu">
+<section class="page-tete">
+  <div class="wrap">
+    <h1>Le clavier AYNEHA</h1>
+    <p>Le même clavier que l'application AYNEHA Keyboard, directement dans votre navigateur. Touchez une lettre pour l'écrire ; gardez le doigt appuyé sur une lettre marquée d'un point orange pour choisir sa forme double, muette, nasalisée ou ouverte.</p>
   </div>
 </section>
 
-<section style="padding-top:0">
-  <div class="container">
-    <div class="ak-panel">
-      <div class="ak-panel-head">
-        <h3>Zone de composition</h3>
+<section class="section-serree">
+  <div class="wrap">
+    <div class="tablette" style="max-width:860px;margin:0 auto">
+      <label class="visually-hidden" for="ak-composer">Zone de composition AYNEHA</label>
+      <textarea class="composeur ay" id="ak-composer" inputmode="none" spellcheck="false" placeholder="Le texte en AYNEHA s'écrit ici, de droite à gauche."></textarea>
+      <div class="barre-outils">
+        <button type="button" id="ak-copier">Copier</button>
+        <button type="button" id="ak-image">Enregistrer en image</button>
+        <button type="button" id="ak-effacer">Tout effacer</button>
       </div>
-      <textarea class="ak-composer" id="ak-composer" placeholder="Le texte en AYNEHA apparaît ici..." spellcheck="false"></textarea>
-      <div class="ak-toolbar">
-        <button type="button" id="ak-copy">Copier</button>
-        <button type="button" id="ak-clear">Effacer tout</button>
-      </div>
-      <div class="ak-keyboard" id="ak-keyboard"></div>
+      <p class="message-etat" id="ak-etat" role="status"></p>
+      <div class="clavier" id="ak-keyboard"></div>
     </div>
-    <p class="note" style="margin-top:16px">
-      Astuce : un appui long sur une touche pointée d'un petit repère fait apparaître ses variantes
-      (doublement, nasalisation, ouverture...). Les touches en bas à gauche/droite permettent de
-      basculer entre les 4 pages du clavier (lettres, symboles/chiffres, pavé numérique, émojis).
-    </p>
   </div>
 </section>
 
-<section>
-  <div class="container grid grid-2" style="align-items:center;">
+<section class="section">
+  <div class="wrap duo duo-haut">
     <div>
-      <span class="tag">Sur smartphone</span>
-      <h2>AYNEHA Keyboard pour Android</h2>
-      <p>
-        Pour écrire en AYNEHA au quotidien - dans la zone de composition de l'application -
-        l'application <strong>AYNEHA Keyboard</strong> s'installe comme n'importe quel clavier
-        Android et s'utilise partout sur votre téléphone.
-      </p>
-      <a class="btn btn-gold" href="https://store.naabiga.com/produit/ayneha-keyboard" target="_blank" rel="noopener">Télécharger AYNEHA Keyboard</a>
+      <h2>Sur votre téléphone</h2>
+      <p>Avec l'application AYNEHA Keyboard, ce clavier s'installe comme n'importe quel clavier Android et fonctionne dans toutes vos applications : messagerie, réseaux sociaux, notes.</p>
+      <div class="boutons"><a class="btn" href="applications.html#ayneha-keyboard">Voir AYNEHA Keyboard</a></div>
     </div>
-    <div class="card">
-      <h3>Disponible sur NAABIGA</h3>
-      <p>
-        Les applications AYNEHA (clavier, calculatrice) sont distribuées sur NAABIGA, la
-        boutique d'applications Android du Burkina Faso, en attendant une éventuelle diffusion
-        plus large.
-      </p>
+    <div class="encadre">
+      <h3>Le clavier en quatre pages</h3>
+      <p class="doux">Les touches du bas passent des lettres aux symboles, au pavé numérique en chiffres AYNEHA et aux émojis. Les lettres sont rangées de droite à gauche : la première touche de chaque rangée est à droite.</p>
     </div>
   </div>
 </section>
-
-<footer>
-  <div class="container">
-    <span>© 2026 AYNEHA - <span class="creator-name">Mahamadou Issiaka MAIGA (MAIGUS)</span></span>
-    <span>
-      <a href="https://aynehasonghay.blogspot.com" target="_blank" rel="noopener">Blog officiel</a>
-      &nbsp;·&nbsp;
-      <a href="ressources.html">Ressources</a>
-    </span>
+</main>
+<footer class="pied">
+  <div class="frise" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="pied-grille">
+      <div class="pied-marque">
+        <span class="ay" role="img" aria-label="AYNEHA">􏾜􏿌􏾍􏾝􏾚􏾜</span>
+        <p>AYNEHA, l'écriture de la langue songhay. Conçue et créée par Mahamadou Issiaka MAIGA (MAIGUS).</p>
+      </div>
+      <div>
+        <h2>Découvrir</h2>
+        <ul>
+          <li><a href="alphabet.html">L'alphabet</a></li>
+          <li><a href="applications.html">Applications</a></li>
+          <li><a href="outils.html">Outils en ligne</a></li>
+          <li><a href="ressources.html">Ressources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Le projet</h2>
+        <ul>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="presse.html">Espace presse</a></li>
+          <li><a href="apropos.html#soutenir">Soutenir le projet</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Suivre AYNEHA</h2>
+        <ul>
+          <li><a href="https://aynehasonghay.blogspot.com" rel="noopener">Blog</a></li>
+          <li><a href="https://www.tiktok.com/@ayneha.songhay" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/ayneha.songhay/" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/ayneha_songhay" rel="noopener">X</a></li>
+          <li><a href="https://whatsapp.com/channel/0029Vb8zu22HgZWfGLpgAA2U" rel="noopener">Chaîne WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>© 2026 AYNEHA. Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS).</span>
+      <span>Contact : <a href="mailto:contact@ayneha.org">contact@ayneha.org</a></span>
+    </div>
   </div>
 </footer>
-
-<button id="back-to-top" aria-label="Retour en haut de page">&#8593;</button>
-<script src="assets/nav.js"></script>
-<script src="assets/ayneha-keyboard.js?v=2"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var root = document.getElementById("ak-keyboard");
-    var composer = document.getElementById("ak-composer");
-    var kb = new window.AynehaKeyboard(root, composer);
-
-    document.getElementById("ak-clear").addEventListener("click", function () {
-      composer.value = "";
-      composer.focus();
-    });
-    document.getElementById("ak-copy").addEventListener("click", function () {
-      composer.select();
-      try {
-        document.execCommand("copy");
-      } catch (e) {
-        navigator.clipboard && navigator.clipboard.writeText(composer.value);
-      }
-      composer.setSelectionRange(composer.value.length, composer.value.length);
-    });
-  });
-</script>
+<button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>
+<script src="assets/js/site.js?v=20261013155210"></script>
+<script src="assets/js/ayneha.js"></script>
+<script src="assets/js/clavier.js"></script>
+<script src="assets/js/clavier-page.js"></script>
 </body>
 </html>

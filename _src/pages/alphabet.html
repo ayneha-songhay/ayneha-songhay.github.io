@@ -1,0 +1,172 @@
+title: L'alphabet AYNEHA - lettres, accents et chiffres
+description: Les 27 lettres de l'AYNEHA dans l'ordre alphabétique, leurs variantes, les 4 accents, les 10 chiffres et les règles d'écriture, dessinés avec la police officielle.
+nav: alphabet
+scripts: assets/js/ayneha.js assets/js/alphabet-data.js assets/js/alphabet.js
+---
+<section class="page-tete">
+  <div class="wrap">
+    <h1>L'alphabet AYNEHA</h1>
+    <p>Un alphabet sans majuscules ni minuscules, qui se lit et s'écrit de droite à gauche : 5 voyelles, 22 consonnes, 4 accents et 10 chiffres. Avec les variantes, la police compte 98 caractères.</p>
+    <nav class="pages-ancres" aria-label="Sur cette page">
+      <a href="#lettres">Les lettres</a>
+      <a href="#accents">Les accents</a>
+      <a href="#chiffres">Les chiffres</a>
+      <a href="#ponctuation">La ponctuation</a>
+      <a href="#regles">Les règles d'écriture</a>
+    </nav>
+  </div>
+</section>
+
+<section class="section-serree" id="lettres">
+  <div class="wrap">
+    <h2>Les 27 lettres</h2>
+    <p class="doux serre">Voici l'ordre alphabétique de l'AYNEHA, de droite à gauche : les voyelles d'abord, puis les consonnes. Touchez une lettre pour voir sa prononciation, son épellation et toutes ses variantes.</p>
+
+    <div class="groupe-titre"><h3>Les voyelles</h3><span class="doux">5 lettres</span></div>
+    <div class="grille-lettres" data-groupe="voyelle"></div>
+
+    <div class="groupe-titre"><h3>Les consonnes</h3><span class="doux">22 lettres</span></div>
+    <div class="grille-lettres" data-groupe="consonne"></div>
+
+    <div class="tablette fiche" id="fiche" hidden tabindex="-1" aria-live="polite">
+      <div class="fiche-grille">
+        <p class="ay fiche-glyphe" data-f="glyphe"></p>
+        <div>
+          <h3 data-f="titre"></h3>
+          <dl>
+            <dt>Se prononce</dt><dd data-f="son"></dd>
+            <dt>S'épelle</dt><dd data-f="epel"></dd>
+            <dt>Point de code</dt><dd><code data-f="cp"></code></dd>
+          </dl>
+          <h4>Ses formes, dans l'ordre officiel</h4>
+          <div class="variantes" data-f="variantes"></div>
+          <p class="lecture petit" data-f="note"></p>
+        </div>
+      </div>
+      <div class="fiche-nav">
+        <button type="button" data-f="suiv">Lettre suivante</button>
+        <button type="button" data-f="prec">Lettre précédente</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="accents">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Les 4 accents</h2>
+      <p>Les accents se placent au-dessus ou au-dessous d'une lettre et en changent le son. Un caractère ne porte jamais plus d'un accent à la fois.</p>
+    </div>
+    <div class="accents">
+      <article class="accent">
+        <div class="demo">{{ay:A:n}}{{ay:E:n}}{{ay:I:n}}{{ay:O:n}}{{ay:U:n}}</div>
+        <h3>L'accent nasalisé</h3>
+        <p>Deux points couchés au-dessus de la voyelle. Il donne ã, ẽ, ĩ, õ, ũ : la voyelle passe par le nez.</p>
+      </article>
+      <article class="accent">
+        <div class="demo">{{ay:E:o}}{{ay:O:o}}</div>
+        <h3>L'accent ouvert</h3>
+        <p>Un trait ondulé au-dessus de E et de O seulement. Il donne ɛ (è) et ɔ (o ouvert, comme dans « porte »).</p>
+      </article>
+      <article class="accent">
+        <div class="demo">{{ay:A:d}}{{ay:B:d}}{{ay:K:d}}{{ay:S:d}}</div>
+        <h3>L'accent double</h3>
+        <p>Deux barres sous la lettre. La voyelle est allongée, la consonne est doublée. Toutes les lettres le prennent, sauf H. Une consonne double est toujours suivie d'une voyelle.</p>
+      </article>
+      <article class="accent">
+        <div class="demo">{{ay:B:m}}{{ay:N:m}}{{ay:R:m}}{{ay:Y:m}}</div>
+        <h3>L'accent muet</h3>
+        <p>Un petit L renversé sous la consonne. Il marque une consonne qui n'est pas suivie directement d'une voyelle : en fin de mot, ou devant une autre consonne. Ʃ, TƩ, J, Ɲ et H ne le prennent pas.</p>
+      </article>
+    </div>
+
+    <h3 style="margin-top:44px">Exemple : le mot « ayneha »</h3>
+    <div class="tableau-defile">
+      <table>
+        <caption class="visually-hidden">Décomposition du mot ayneha, lettre par lettre, de droite à gauche</caption>
+        <thead><tr><th>Ordre de lecture</th><th>Caractère</th><th>Son</th><th>Pourquoi</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>{{ay:A}}</td><td>a</td><td>voyelle</td></tr>
+          <tr><td>2</td><td>{{ay:Y:m}}</td><td>y</td><td>suivie d'une consonne (n) : Y muette</td></tr>
+          <tr><td>3</td><td>{{ay:N}}</td><td>n</td><td>suivie d'une voyelle : forme initiale</td></tr>
+          <tr><td>4</td><td>{{ay:E}}</td><td>e</td><td>voyelle</td></tr>
+          <tr><td>5</td><td>{{ay:H}}</td><td>h</td><td>suivie d'une voyelle : forme initiale</td></tr>
+          <tr><td>6</td><td>{{ay:A}}</td><td>a</td><td>voyelle</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="doux" style="margin-top:14px">Le mot entier, de droite à gauche : {{ay:A Y:m N E H A}}</p>
+  </div>
+</section>
+
+<section class="section section-claire" id="chiffres">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Les 10 chiffres</h2>
+      <p>L'AYNEHA a ses propres chiffres. Comme les lettres, un nombre se lit de droite à gauche : le premier chiffre est à droite.</p>
+      <p>Trois chiffres reprennent l'allure des chiffres latins, redessinés à angles droits : 0 (un rectangle), 3 et 9.</p>
+      <p>Pour les nombres décimaux, la virgule AYNEHA se place en bas. Pour un ordinal (premier, deuxième...), on place la lettre I en haut, juste après le nombre.</p>
+      <label for="nombre-champ" style="display:block;font-weight:600;margin-top:24px;color:var(--sable)">Tapez un nombre</label>
+      <input class="champ" id="nombre-champ" type="text" inputmode="decimal" autocomplete="off" maxlength="24" placeholder="Par exemple : 2026" style="max-width:320px">
+    </div>
+    <div>
+      <div class="tablette">
+        <div class="chiffres">
+          <div class="chiffre">{{ay:D0}}<small>0</small></div>
+          <div class="chiffre">{{ay:D1}}<small>1</small></div>
+          <div class="chiffre">{{ay:D2}}<small>2</small></div>
+          <div class="chiffre">{{ay:D3}}<small>3</small></div>
+          <div class="chiffre">{{ay:D4}}<small>4</small></div>
+          <div class="chiffre">{{ay:D5}}<small>5</small></div>
+          <div class="chiffre">{{ay:D6}}<small>6</small></div>
+          <div class="chiffre">{{ay:D7}}<small>7</small></div>
+          <div class="chiffre">{{ay:D8}}<small>8</small></div>
+          <div class="chiffre">{{ay:D9}}<small>9</small></div>
+        </div>
+        <div class="essai">
+          <p class="ay essai-sortie" id="nombre-sortie" aria-live="polite"></p>
+          <p class="lecture petit" id="nombre-lecture"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ponctuation">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>La ponctuation</h2>
+      <p>La virgule et le point-virgule ont leur propre forme AYNEHA. Le point d'interrogation est retourné en miroir. Les autres signes (point, point d'exclamation, guillemets, signes mathématiques) sont les signes internationaux habituels.</p>
+    </div>
+    <div class="tablette">
+      <div class="chiffres">
+        <div class="chiffre">{{ay:,|lettre|virgule}}<small>virgule</small></div>
+        <div class="chiffre">{{ay:;|lettre|point-virgule}}<small>point-virgule</small></div>
+        <div class="chiffre"><span class="ay">&#x061F;</span><small>point d'interrogation</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-claire" id="regles">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Les règles d'écriture</h2>
+      <p>Ces règles décrivent comment les caractères AYNEHA se comportent entre eux. L'AYNEHA est jeune : les abréviations et les habitudes d'écriture à la main sont laissées à l'usage.</p>
+    </div>
+    <ol class="regles serre">
+      <li>On écrit et on lit de droite à gauche, les lettres comme les chiffres.</li>
+      <li>Il n'y a ni majuscules ni minuscules. Aucun signe ne marque pour l'instant les noms propres ou le début d'une phrase.</li>
+      <li>Un caractère ne porte jamais plus d'un accent à la fois.</li>
+      <li>Une consonne muette est une consonne qui n'est pas suivie directement d'une voyelle : seule en fin de mot, ou suivie d'une autre consonne.</li>
+      <li>Une consonne double est toujours suivie d'une voyelle.</li>
+      <li>Ʃ, TƩ, J, Ɲ et H ne se trouvent jamais en fin de mot. H est la seule lettre qui ne prend aucun accent.</li>
+      <li>Les formes d'une lettre se rangent dans cet ordre : initiale, nasalisée, ouverte, double, muette.</li>
+      <li>Pour épeler, on dit les voyelles telles quelles et on ajoute « a » aux consonnes : ba, pa, ma, fa, wa...</li>
+      <li>On ne met jamais en gras et on ne souligne jamais l'AYNEHA : cela cacherait les accents placés sous les lettres. Pour mettre un mot en valeur, on l'écrit plus grand.</li>
+      <li>On ne coupe pas un mot en fin de ligne : ses lettres sont reliées par une même ligne.</li>
+      <li>À côté d'un texte latin, l'AYNEHA s'écrit un point plus grand (par exemple 13 points pour un texte latin en 12).</li>
+      <li>En mathématiques, toute l'expression se lit de droite à gauche ; exposants et indices se placent en haut à gauche ; les variables (x, y) et les fonctions (sin, log) restent en lettres latines ; les signes orientés (&lt;, &gt;, flèches, parenthèses) sont retournés.</li>
+    </ol>
+  </div>
+</section>
