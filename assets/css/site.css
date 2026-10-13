@@ -304,6 +304,10 @@ td .ay { font-size: 2rem; color: var(--sable); }
 .chiffre { display: flex; flex-direction: column; align-items: center; min-width: 64px; }
 .chiffre .ay { font-size: 2.8rem; line-height: 1.3; }
 .chiffre small { color: #5A6378; font-weight: 600; }
+.ordinaux { display: flex; flex-direction: row-reverse; flex-wrap: wrap; gap: 8px 22px; justify-content: flex-end; margin-top: 18px; padding-top: 14px; border-top: 1px dashed rgba(24, 33, 58, .25); }
+.ordinal { font-size: 2.6rem; line-height: 1.3; }
+.ordinal .ay { font-size: 1em; }
+.ordinal sup { font-size: .5em; vertical-align: 0; position: relative; top: -.8em; }
 
 .regles { counter-reset: regle; list-style: none; padding: 0; }
 .regles li { position: relative; padding: 14px 0 14px 54px; border-bottom: 1px solid var(--trait); margin: 0; }
@@ -447,7 +451,7 @@ td .ay { font-size: 2rem; color: var(--sable); }
 /* ---------- Pied de page ---------- */
 .pied { margin-top: 40px; border-top: 1px solid var(--trait); background: var(--nuit-2); }
 .pied .frise { margin-top: -7px; }
-.pied-grille { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; padding: 44px 0 32px; }
+.pied-grille { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr; gap: 32px; padding: 44px 0 32px; }
 .pied h2 { font-size: 1rem; color: var(--texte-doux); font-weight: 500; letter-spacing: .02em; margin-bottom: 12px; }
 .pied ul { list-style: none; padding: 0; margin: 0; }
 .pied li { margin-bottom: 8px; }
@@ -463,3 +467,76 @@ td .ay { font-size: 2rem; color: var(--sable); }
 
 .erreur-404 { text-align: center; padding: 90px 0; }
 .erreur-404 .ay { font-size: 6rem; color: var(--orange); }
+
+/* ---------- Pages d'outils ---------- */
+.outil-tete { padding: 36px 0 8px; }
+.outil-tete h1 { font-size: clamp(2rem, 4.6vw, 3rem); margin-bottom: .3em; }
+.outil-tete p { color: var(--texte-doux); max-width: 40em; margin: 0; }
+
+/* Calculatrice */
+.calculatrice { max-width: 440px; margin: 0 auto; }
+.calc-ecran { padding: 20px 22px 16px; text-align: right; }
+.calc-expr { min-height: 1.6em; margin: 0; font-size: 1.5rem; color: #5A6378 !important; overflow-x: auto; white-space: nowrap; }
+.calc-resultat { min-height: 1.4em; margin: 4px 0 0; font-size: 3.4rem; line-height: 1.3; overflow-x: auto; white-space: nowrap; }
+.calc-pave { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 18px; }
+.calc-touche { height: 66px; border: 0; border-radius: 16px; background: var(--nuit-3); color: var(--sable); font: inherit; font-size: 1.6rem; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.calc-touche .ay { font-size: 2.3rem; line-height: 1; }
+.calc-touche:hover { background: var(--trait); }
+.calc-touche:active { transform: scale(.97); }
+.calc-o, .calc-v { background: var(--nuit-2); color: var(--orange-clair); box-shadow: inset 0 0 0 1px var(--trait); }
+.calc-c { background: var(--nuit-2); color: #F29B8A; box-shadow: inset 0 0 0 1px var(--trait); }
+.calc-b { background: var(--nuit-2); box-shadow: inset 0 0 0 1px var(--trait); transform: scaleX(-1); }
+.calc-e { background: var(--orange); color: var(--nuit); }
+.calc-e:hover { background: var(--orange-clair); }
+.calc-large { grid-column: span 2; }
+
+/* Convertisseur de nombres */
+@font-face { font-family: "Noto Sans NKo"; src: url("../fonts/noto-nko-chiffres.woff2") format("woff2"); unicode-range: U+07C0-07C9; font-display: swap; }
+.nb-atelier { display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); gap: 34px; align-items: start; }
+.nb-atelier .calculatrice { margin: 0; }
+.nb-label { display: block; font-weight: 600; color: var(--sable); margin-bottom: 8px; }
+.nb-choix { background: #FFFCF6; }
+.nb-saisie { min-height: 1.3em; margin: 0; font-size: 2.6rem; line-height: 1.3; text-align: right; overflow-x: auto; white-space: nowrap; color: var(--encre); }
+.nb-pave { grid-template-columns: repeat(3, 1fr); }
+.nb-resultats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.nb-plaque { background: var(--sable); color: var(--encre); border-radius: 18px; padding: 16px 20px; min-width: 0; }
+.nb-plaque h3 { color: #5A6378; font-size: .95rem; font-weight: 500; margin: 0 0 4px; }
+.nb-plaque.nb-source { box-shadow: 0 0 0 3px var(--orange); }
+.nb-val { margin: 0; font-size: 2.1rem; line-height: 1.35; min-height: 1.35em; overflow-x: auto; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.nb-rtl { direction: rtl; unicode-bidi: bidi-override; text-align: right; }
+.nb-ayneha { font-family: "Ayneha Pro"; font-size: 2.6rem; }
+.nb-nko { font-family: "Noto Sans NKo", "Ebrima", sans-serif; }
+.nb-arabe { font-family: "Noto Naskh Arabic", "Segoe UI", "Arial", sans-serif; }
+.nb-touche { font-size: 2rem; line-height: 1; }
+.nb-touche.nb-ayneha { font-size: 2.3rem; }
+.nb-francais { text-align: left; }
+@media (max-width: 860px) { .nb-atelier { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .nb-resultats { grid-template-columns: 1fr; } }
+
+/* ---------- Pages des applications ---------- */
+.app-logo { width: 72px; height: 72px; border-radius: 18px; display: block; flex: none; }
+.app-logo-petit { width: 56px; height: 56px; border-radius: 15px; }
+.app-logo-grand { width: 96px; height: 96px; border-radius: 24px; }
+.grille-apps { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.carte-app { display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: 20px; background: var(--nuit-2); border: 1px solid var(--trait); text-decoration: none; color: var(--texte); }
+.carte-app:hover { border-color: var(--orange); color: var(--texte); }
+.carte-app strong { font-size: 1.2rem; }
+.etiquette-calme { background: var(--nuit-3); color: var(--texte-doux); box-shadow: inset 0 0 0 1px var(--trait); }
+.apps-nav { margin-top: 0; }
+.apps-nav a[aria-current="page"] { border-color: var(--orange); color: var(--orange-clair); }
+.app-tete { padding: 28px 0 10px; }
+.couverture { display: block; width: 100%; height: auto; aspect-ratio: 5 / 2; object-fit: cover; border-radius: 22px; margin-top: 22px; border: 1px solid var(--trait); }
+.app-identite { display: flex; gap: 22px; align-items: flex-start; margin-top: -40px; padding: 0 24px; position: relative; }
+.app-identite .app-logo-grand { box-shadow: 0 0 0 6px var(--nuit); }
+.app-identite h1 { font-size: clamp(2rem, 4.4vw, 2.9rem); margin-top: 48px; }
+.app-identite .chapeau { color: var(--texte-doux); font-size: 1.15rem; }
+@media (max-width: 700px) {
+  .app-identite { flex-direction: column; gap: 6px; padding: 0 12px; margin-top: -36px; }
+  .app-identite h1 { margin-top: 6px; }
+  .app-identite .app-logo-grand { width: 80px; height: 80px; }
+}
+.liste-apps .app-logo-petit { width: 52px; height: 52px; }
+.outils-rangee { display: flex; flex-wrap: wrap; gap: 12px; }
+.outils-rangee a { display: inline-flex; align-items: center; gap: 12px; padding: 10px 18px 10px 12px; border-radius: 999px; background: var(--nuit-2); border: 1px solid var(--trait); color: var(--sable); text-decoration: none; font-weight: 500; }
+.outils-rangee a:hover { border-color: var(--orange); }
+.outils-rangee .rond { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--sable); color: var(--encre); font-size: 1.7rem; line-height: 1; }

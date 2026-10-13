@@ -1,72 +1,32 @@
-title: Applications AYNEHA - clavier, école, calculatrice, horloge
-description: Les applications Android gratuites pour apprendre et écrire l'AYNEHA : AYNEHA School, AYNEHA Keyboard, AYNEHA Calc, AYNEHA Horloge, AYNEHA NumConvert. À télécharger sur Naabiga ou directement sur le site.
+title: Applications AYNEHA - apprendre et écrire sur Android
+description: Les applications Android gratuites pour apprendre et écrire l'AYNEHA : AYNEHA School, AYNEHA Home, AYNEHA Keyboard, AYNEHA Calc, AYNEHA Horloge, AYNEHA NumConvert et AYNEHA Carnet.
 nav: applications
 ---
 <section class="page-tete">
   <div class="wrap">
     <h1>Les applications AYNEHA</h1>
     <p>Des applications Android gratuites, sans publicité, sans compte et sans collecte de données. Elles sont distribuées sur Naabiga, la boutique d'applications du Burkina Faso, et peuvent aussi se télécharger directement sur ce site : à vous de choisir.</p>
-    <nav class="pages-ancres" aria-label="Sur cette page">
-      <a href="#ayneha-school">AYNEHA School</a>
-      <a href="#ayneha">AYNEHA</a>
-      <a href="#ayneha-keyboard">Keyboard</a>
-      <a href="#ayneha-calc">Calc</a>
-      <a href="#ayneha-horloge">Horloge</a>
-      <a href="#ayneha-numconvert">NumConvert</a>
-      <a href="#installer">Installer un APK</a>
-      <a href="#developpeurs">Développeurs</a>
-    </nav>
+    {{apps-nav:aucune}}
   </div>
 </section>
 
 <section class="section-serree">
-  <div class="wrap apps">
+  <div class="wrap">
 {{applications}}
   </div>
 </section>
 
-<section class="section" id="installer">
-  <div class="wrap duo duo-haut">
-    <div>
-      <h2>Installer un fichier APK téléchargé ici</h2>
-      <p class="doux">Sur Naabiga, l'installation se fait comme dans toute boutique. Si vous téléchargez le fichier APK depuis ce site, Android vous demande une autorisation la première fois.</p>
-    </div>
-    <ol class="regles">
-      <li>Touchez « Télécharger l'APK ici » et attendez la fin du téléchargement.</li>
-      <li>Ouvrez le fichier depuis la notification ou le dossier Téléchargements.</li>
-      <li>Si Android le demande, autorisez votre navigateur à installer des applications. Ce réglage peut être désactivé ensuite.</li>
-      <li>Touchez « Installer ». Les mises à jour suivantes s'installent de la même façon, sans perdre vos réglages.</li>
-    </ol>
-  </div>
-</section>
-
-<section class="section section-claire" id="developpeurs">
-  <div class="wrap duo duo-haut">
-    <div>
-      <h2>Pour les développeurs</h2>
-      <p>Vous voulez ajouter l'AYNEHA à votre propre application ? Le <strong>AYNEHA Keyboard SDK</strong> est une bibliothèque Android en Kotlin qui propose trois façons de l'intégrer :</p>
-      <ul>
-        <li>le clavier AYNEHA posé directement dans un écran de votre application ;</li>
-        <li>la translittération à la volée : l'utilisateur tape en latin, le texte s'affiche en AYNEHA ;</li>
-        <li>le clavier système complet, à inclure dans votre application.</li>
-      </ul>
-      <p>Les 98 caractères AYNEHA et leurs points de code y sont fournis. Le code des applications AYNEHA est un logiciel libre (licence GNU GPL v3 ou ultérieure) et la police est sous licence SIL OFL 1.1.</p>
-    </div>
-    <div class="encadre">
-      <h3>Obtenir le SDK</h3>
-      <p class="doux">Écrivez-nous en présentant votre projet : nous vous enverrons le SDK et répondrons à vos questions.</p>
-      <a class="btn" href="mailto:{{contact}}?subject=AYNEHA%20Keyboard%20SDK">Écrire à {{contact}}</a>
-      <p class="doux petit" style="margin-top:16px">La police Ayneha Pro est en <a href="ressources.html#police">téléchargement libre</a>. Les caractères AYNEHA occupent la zone d'usage privé Unicode, de U+10FF7C à U+10FFDD.</p>
-    </div>
-  </div>
-</section>
-
 <section class="section">
-  <div class="wrap">
-    <div class="intro">
-      <h2>Sans rien installer</h2>
-      <p>Le transcripteur, le clavier, l'horloge et la calculatrice fonctionnent aussi dans le navigateur, sur téléphone comme sur ordinateur.</p>
-    </div>
-    <a class="btn btn-ligne" href="outils.html">Voir les outils en ligne</a>
+  <div class="wrap duo duo-haut">
+    <a class="outil" href="installer-apk.html">
+      <h3>Installer un APK</h3>
+      <p>Comment installer une application téléchargée directement sur ce site, en quatre étapes.</p>
+      <span class="lien">Voir les étapes</span>
+    </a>
+    <a class="outil" href="developpeurs.html">
+      <h3>Développeurs</h3>
+      <p>Le SDK libre pour ajouter le clavier et la translittération AYNEHA à votre propre application Android.</p>
+      <span class="lien">Découvrir le SDK</span>
+    </a>
   </div>
 </section>

@@ -76,26 +76,36 @@ scripts: assets/js/ayneha.js assets/js/accueil.js assets/js/horloge.js
   </div>
 </section>
 
+<section class="section-serree">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Essayez tout de suite</h2>
+      <p>Cinq outils gratuits, directement dans votre navigateur.</p>
+    </div>
+    <div class="outils-rangee">
+      <a href="convertisseur.html">{{ay:TS|rond|}}Transcripteur</a>
+      <a href="clavier.html">{{ay:K|rond|}}Clavier</a>
+      <a href="calculatrice.html">{{ay:D7|rond|}}Calculatrice</a>
+      <a href="nombres.html">{{ay:D4|rond|}}Convertisseur de nombres</a>
+      <a href="horloge.html">{{ay:I|rond|}}Horloge et calendrier</a>
+    </div>
+  </div>
+</section>
+
 <section class="section section-claire">
   <div class="wrap vitrine">
     <div class="app-une">
-      <span class="pastille pastille-orange">{{ay:H|logo|}}</span>
+      <img class="app-logo app-logo-grand" src="assets/img/apps/ayneha-school-logo.png" width="256" height="256" alt="">
       <h3 style="margin-top:18px">AYNEHA School <span class="etiquette">Nouveau</span></h3>
       <p>L'application pour apprendre à lire et à écrire l'AYNEHA, seul, à son rythme et sans connexion : l'alphabet lettre par lettre, les accents, le syllabaire, les chiffres, le tracé au doigt, des quiz et un atelier de transcription.</p>
       <div class="boutons">
-        <a class="btn" href="applications.html#ayneha-school">Voir AYNEHA School</a>
+        <a class="btn" href="ayneha-school.html">Voir AYNEHA School</a>
       </div>
     </div>
     <div>
       <h2>Écrire l'AYNEHA au quotidien</h2>
       <p class="doux">Des applications Android gratuites, sans publicité et sans collecte de données, à télécharger sur Naabiga ou directement sur ce site.</p>
-      <ul class="liste-apps">
-        <li><span class="pastille">{{ay:H|logo|}}</span><a href="applications.html#ayneha"><h4>AYNEHA</h4><p>L'application officielle : tout le site, même hors connexion.</p></a></li>
-        <li><span class="pastille">{{ay:K|logo|}}</span><a href="applications.html#ayneha-keyboard"><h4>AYNEHA Keyboard</h4><p>Le clavier pour écrire en AYNEHA dans toutes vos applications.</p></a></li>
-        <li><span class="pastille">{{ay:D7|logo|}}</span><a href="applications.html#ayneha-calc"><h4>AYNEHA Calc</h4><p>La calculatrice en chiffres AYNEHA.</p></a></li>
-        <li><span class="pastille">{{ay:I|logo|}}</span><a href="applications.html#ayneha-horloge"><h4>AYNEHA Horloge</h4><p>L'heure et le calendrier en AYNEHA.</p></a></li>
-        <li><span class="pastille">{{ay:D4|logo|}}</span><a href="applications.html#ayneha-numconvert"><h4>AYNEHA NumConvert</h4><p>Les chiffres AYNEHA, français, arabes et N'Ko, d'un système à l'autre.</p></a></li>
-      </ul>
+      {{apps-accueil}}
     </div>
   </div>
 </section>

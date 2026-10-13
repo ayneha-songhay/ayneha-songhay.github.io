@@ -53,45 +53,125 @@ def macros(src):
         return ay_span(names, cls, lab)
     src = re.sub(r"\{\{ay:([^}]*)\}\}", rep, src)
     src = re.sub(r"\{\{lecture:([^}]*)\}\}", lambda m: html.escape(G.reading(m.group(1))), src)
-    src = src.replace("{{applications}}", rendu_apps())
+    src = src.replace("{{applications}}", rendu_apps_grille())
+    src = src.replace("{{apps-accueil}}", rendu_apps_accueil())
+    src = re.sub(r"\{\{apps-nav:([a-z-]+)\}\}", lambda m: apps_nav(m.group(1)), src)
     src = src.replace("{{contact}}", CONTACT).replace("{{annee}}", str(ANNEE))
     return src
 
 
-def rendu_apps():
-    blocs = []
+E = html.escape
+SOUS_PAGES = [("installer-apk", "Installer un APK"), ("developpeurs", "Développeurs")]
+
+
+def logo_app(a, taille=""):
+    return f'<img class="app-logo{taille}" src="assets/img/apps/{a["id"]}-logo.png" width="256" height="256" alt="">'
+
+
+def etiquette(a):
+    st = a.get("statut")
+    if st == "nouveau":
+        return '<span class="etiquette">Nouveau</span>'
+    if st == "preparation":
+        return '<span class="etiquette etiquette-calme">En préparation</span>'
+    return ""
+
+
+def apps_nav(courant):
+    liens = []
     for a in APPS.APPS:
-        e = html.escape
-        cls = "app app-vedette" if a.get("nouveau") else "app"
-        past = "pastille pastille-orange" if a.get("orange") else "pastille"
-        badge = ' <span class="etiquette">Nouveau</span>' if a.get("nouveau") else ""
-        points = "".join(f"<li>{e(p)}</li>" for p in a["points"])
-        reserve = f'<p class="reserve">{e(a["reserve"])}</p>' if a.get("reserve") else ""
-        actions = []
-        if a["naabiga"]:
-            actions.append(f'<a class="btn" href="{a["naabiga"]}" rel="noopener">Télécharger sur Naabiga</a>')
-        else:
-            actions.append('<span class="btn" aria-disabled="true">Bientôt sur Naabiga</span>')
-        if a["apk"]:
-            actions.append(f'<a class="btn btn-ligne" href="{a["apk"]}" download>Télécharger l\'APK ici</a>')
-        else:
-            actions.append('<span class="btn" aria-disabled="true">Téléchargement direct bientôt</span>')
-        if a.get("code"):
-            actions.append(f'<a class="btn btn-ligne btn-petit" href="{a["code"]}" rel="noopener">Code source</a>')
-        blocs.append(f"""<article class="{cls}" id="{a['id']}">
-  <span class="{past}" aria-hidden="true"><span class="ay">{G.text(a['icone'])}</span></span>
-  <div>
-    <h3>{e(a['nom'])}{badge}</h3>
-    <p>{e(a['resume'])}</p>
-    <ul>{points}</ul>
-    {reserve}
-    <p class="meta">{e(a['compat'])} Sans publicité, aucune donnée collectée.</p>
+        cur = ' aria-current="page"' if a["id"] == courant else ""
+        liens.append(f'<a href="{a["id"]}.html"{cur}>{E(a["nom"])}</a>')
+    for i, nom in SOUS_PAGES:
+        cur = ' aria-current="page"' if i == courant else ""
+        liens.append(f'<a href="{i}.html"{cur}>{nom}</a>')
+    return '<nav class="pages-ancres apps-nav" aria-label="Pages des applications">' + "".join(liens) + "</nav>"
+
+
+def rendu_apps_grille():
+    cartes = []
+    for a in APPS.APPS:
+        cartes.append(f"""<a class="carte-app" href="{a['id']}.html">
+  {logo_app(a)}
+  <span><strong>{E(a['nom'])}</strong> {etiquette(a)}</span>
+  <span class="doux">{E(a['resume'])}</span>
+</a>""")
+    return '<div class="grille-apps">' + "\n".join(cartes) + "</div>"
+
+
+def rendu_apps_accueil():
+    items = []
+    for a in APPS.APPS:
+        if a["id"] == "ayneha-school":
+            continue
+        items.append(f'<li>{logo_app(a, " app-logo-petit")}<a href="{a["id"]}.html"><h4>{E(a["nom"])} {etiquette(a)}</h4><p>{E(a["resume"])}</p></a></li>')
+    return '<ul class="liste-apps">' + "".join(items) + "</ul>"
+
+
+def boutons_app(a):
+    out = []
+    if a.get("statut") == "preparation":
+        return '<span class="btn" aria-disabled="true">Bientôt disponible</span>'
+    if a["naabiga"]:
+        out.append(f'<a class="btn" href="{a["naabiga"]}" rel="noopener">Télécharger sur Naabiga</a>')
+    else:
+        out.append('<span class="btn" aria-disabled="true">Bientôt sur Naabiga</span>')
+    if a["apk"]:
+        out.append(f'<a class="btn btn-ligne" href="{a["apk"]}" download>Télécharger l\'APK ici</a>')
+    else:
+        out.append('<span class="btn" aria-disabled="true">Téléchargement direct bientôt</span>')
+    return "".join(out)
+
+
+def page_app(a):
+    intro = "".join(f"<p>{E(t)}</p>" for t in a["intro"])
+    points = "".join(f"<li>{E(t)}</li>" for t in a["points"])
+    etapes = ""
+    if a.get("etapes"):
+        etapes = '<h2>Comment l\'utiliser</h2><ol class="regles">' + "".join(f"<li>{E(t)}</li>" for t in a["etapes"]) + "</ol>"
+    reserve = f'<p class="reserve">{E(a["reserve"])}</p>' if a.get("reserve") else ""
+    reglages = f'<h3>Réglages</h3><p class="doux">{E(a["reglages"])}</p>' if a.get("reglages") else ""
+    code = f'<p><a href="{a["code"]}" rel="noopener">Code source (logiciel libre, GPL v3)</a></p>' if a.get("code") else ""
+    outil = ""
+    if a.get("outil"):
+        outil = f'<div class="encadre"><h3>Sans rien installer</h3><p class="doux">Une version de cet outil fonctionne directement sur le site.</p><a class="btn btn-ligne btn-petit" href="{a["outil"][0]}">{a["outil"][1]}</a></div>'
+    return f"""<section class="app-tete">
+  <div class="wrap">
+    {apps_nav(a['id'])}
+    <img class="couverture" src="assets/img/apps/{a['id']}-couverture.jpg" width="1200" height="480" alt="Couverture de l'application {E(a['nom'])}">
+    <div class="app-identite">
+      {logo_app(a, " app-logo-grand")}
+      <div>
+        <h1>{E(a['nom'])} {etiquette(a)}</h1>
+        <p class="chapeau">{E(a['resume'])}</p>
+        <div class="boutons">{boutons_app(a)}</div>
+      </div>
+    </div>
   </div>
-  <div class="app-actions">
-    {''.join(actions)}
+</section>
+<section class="section-serree">
+  <div class="wrap cote">
+    <div class="texte-long">
+      {intro}
+      {reserve}
+      <h2>Ce qu'elle fait</h2>
+      <ul>{points}</ul>
+      {etapes}
+    </div>
+    <aside>
+      <div class="encadre">
+        <h3>Compatibilité</h3>
+        <p class="doux">{E(a['compat'])}</p>
+        {reglages}
+        <h3>Confidentialité</h3>
+        <p class="doux">{E(APPS.CONFIDENTIALITE)}</p>
+        {code}
+        <p class="petit"><a href="installer-apk.html">Installer un fichier APK</a></p>
+      </div>
+      {outil}
+    </aside>
   </div>
-</article>""")
-    return "\n".join(blocs)
+</section>"""
 
 
 # ---------------------------------------------------------------- gabarit
@@ -131,9 +211,19 @@ def pied():
         <h2>Découvrir</h2>
         <ul>
           <li><a href="alphabet.html">L'alphabet</a></li>
+          <li><a href="alphabet.html#regles">Les 22 règles</a></li>
           <li><a href="applications.html">Applications</a></li>
-          <li><a href="outils.html">Outils en ligne</a></li>
           <li><a href="ressources.html">Ressources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Outils en ligne</h2>
+        <ul>
+          <li><a href="convertisseur.html">Transcripteur</a></li>
+          <li><a href="clavier.html">Clavier</a></li>
+          <li><a href="calculatrice.html">Calculatrice</a></li>
+          <li><a href="nombres.html">Convertisseur de nombres</a></li>
+          <li><a href="horloge.html">Horloge</a></li>
         </ul>
       </div>
       <div>
@@ -188,7 +278,7 @@ def page(meta, corps):
 <meta property="og:title" content="{html.escape(titre)}">
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE_URL}/assets/img/apercu.png">
+<meta property="og:image" content="{SITE_URL}/{meta.get("image", "assets/img/apercu.png")}">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -261,6 +351,13 @@ def main():
         with open(os.path.join(RACINE, f), "w", encoding="utf-8") as fh:
             fh.write(out)
         produits.append(f)
+
+    for a in APPS.APPS:
+        meta = {"title": f"{a['nom']} - application Android AYNEHA", "description": a["resume"] + " " + a["intro"][0][:110],
+                "nav": "applications", "_file": a["id"] + ".html", "image": f"assets/img/apps/{a['id']}-couverture.jpg"}
+        with open(os.path.join(RACINE, a["id"] + ".html"), "w", encoding="utf-8") as fh:
+            fh.write(page(meta, macros(page_app(a))))
+        produits.append(a["id"] + ".html")
 
     os.makedirs(os.path.join(RACINE, "assets", "js"), exist_ok=True)
     with open(os.path.join(RACINE, "assets", "js", "ayneha.js"), "w", encoding="utf-8") as fh:

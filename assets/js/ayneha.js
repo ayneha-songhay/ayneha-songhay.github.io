@@ -130,7 +130,7 @@
           Array.from(buf).forEach(function (c) {
             if (c === ",") out += ch(",");
             else if (c === ";") out += ch(";");
-            else if (c === "?") out += "؟";
+            else if (c === "?") out += "\u2E2E"; // point d'interrogation en miroir (règles v1)
             else out += c;
           });
         }

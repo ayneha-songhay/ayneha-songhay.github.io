@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=20261013155210">
+<link rel="stylesheet" href="assets/css/site.css?v=20261013163441">
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -144,7 +144,7 @@
       <h2>Les 10 chiffres</h2>
       <p>L'AYNEHA a ses propres chiffres. Comme les lettres, un nombre se lit de droite à gauche : le premier chiffre est à droite.</p>
       <p>Trois chiffres reprennent l'allure des chiffres latins, redessinés à angles droits : 0 (un rectangle), 3 et 9.</p>
-      <p>Pour les nombres décimaux, la virgule AYNEHA se place en bas. Pour un ordinal (premier, deuxième...), on place la lettre I en haut, juste après le nombre.</p>
+      <p>Pour les nombres décimaux, la virgule AYNEHA se place en bas. Pour un ordinal (premier, deuxième...), on place un petit « i » en haut, juste après le nombre.</p>
       <label for="nombre-champ" style="display:block;font-weight:600;margin-top:24px;color:var(--sable)">Tapez un nombre</label>
       <input class="champ" id="nombre-champ" type="text" inputmode="decimal" autocomplete="off" maxlength="24" placeholder="Par exemple : 2026" style="max-width:320px">
     </div>
@@ -162,6 +162,12 @@
           <div class="chiffre"><span class="ay" role="img" aria-label="8">􏾄</span><small>8</small></div>
           <div class="chiffre"><span class="ay" role="img" aria-label="9">􏾅</span><small>9</small></div>
         </div>
+        <div class="ordinaux" aria-label="Exemples d'ordinaux">
+          <div class="chiffre"><span class="ay ordinal" role="img" aria-label="1er"><span class="ay lettre" aria-hidden="true">􏽽</span><sup><span class="ay lettre" aria-hidden="true">􏾞</span></sup></span><small>1er</small></div>
+          <div class="chiffre"><span class="ay ordinal" role="img" aria-label="2e"><span class="ay lettre" aria-hidden="true">􏽾</span><sup><span class="ay lettre" aria-hidden="true">􏾞</span></sup></span><small>2e</small></div>
+          <div class="chiffre"><span class="ay ordinal" role="img" aria-label="3e"><span class="ay lettre" aria-hidden="true">􏽿</span><sup><span class="ay lettre" aria-hidden="true">􏾞</span></sup></span><small>3e</small></div>
+          <div class="chiffre"><span class="ay ordinal" role="img" aria-label="10e"><span class="ay lettre" aria-hidden="true">􏽽􏽼</span><sup><span class="ay lettre" aria-hidden="true">􏾞</span></sup></span><small>10e</small></div>
+        </div>
         <div class="essai">
           <p class="ay essai-sortie" id="nombre-sortie" aria-live="polite"></p>
           <p class="lecture petit" id="nombre-lecture"></p>
@@ -175,13 +181,13 @@
   <div class="wrap duo duo-haut">
     <div>
       <h2>La ponctuation</h2>
-      <p>La virgule et le point-virgule ont leur propre forme AYNEHA. Le point d'interrogation est retourné en miroir. Les autres signes (point, point d'exclamation, guillemets, signes mathématiques) sont les signes internationaux habituels.</p>
+      <p>La virgule et le point-virgule ont leur propre forme AYNEHA. Le point d'interrogation est retourné en miroir (⸮). Les autres signes (point, point d'exclamation, guillemets, signes mathématiques) sont les signes internationaux habituels.</p>
     </div>
     <div class="tablette">
       <div class="chiffres">
         <div class="chiffre"><span class="ay lettre" role="img" aria-label="virgule">􏿜</span><small>virgule</small></div>
         <div class="chiffre"><span class="ay lettre" role="img" aria-label="point-virgule">􏿝</span><small>point-virgule</small></div>
-        <div class="chiffre"><span class="ay">&#x061F;</span><small>point d'interrogation</small></div>
+        <div class="chiffre"><span class="ay">&#x2E2E;</span><small>point d'interrogation</small></div>
       </div>
     </div>
   </div>
@@ -190,22 +196,32 @@
 <section class="section section-claire" id="regles">
   <div class="wrap">
     <div class="intro">
-      <h2>Les règles d'écriture</h2>
+      <h2>Les 22 règles d'écriture</h2>
       <p>Ces règles décrivent comment les caractères AYNEHA se comportent entre eux. L'AYNEHA est jeune : les abréviations et les habitudes d'écriture à la main sont laissées à l'usage.</p>
     </div>
     <ol class="regles serre">
-      <li>On écrit et on lit de droite à gauche, les lettres comme les chiffres.</li>
-      <li>Il n'y a ni majuscules ni minuscules. Aucun signe ne marque pour l'instant les noms propres ou le début d'une phrase.</li>
-      <li>Un caractère ne porte jamais plus d'un accent à la fois.</li>
-      <li>Une consonne muette est une consonne qui n'est pas suivie directement d'une voyelle : seule en fin de mot, ou suivie d'une autre consonne.</li>
-      <li>Une consonne double est toujours suivie d'une voyelle.</li>
-      <li>Ʃ, TƩ, J, Ɲ et H ne se trouvent jamais en fin de mot. H est la seule lettre qui ne prend aucun accent.</li>
-      <li>Les formes d'une lettre se rangent dans cet ordre : initiale, nasalisée, ouverte, double, muette.</li>
-      <li>Pour épeler, on dit les voyelles telles quelles et on ajoute « a » aux consonnes : ba, pa, ma, fa, wa...</li>
-      <li>On ne met jamais en gras et on ne souligne jamais l'AYNEHA : cela cacherait les accents placés sous les lettres. Pour mettre un mot en valeur, on l'écrit plus grand.</li>
-      <li>On ne coupe pas un mot en fin de ligne : ses lettres sont reliées par une même ligne.</li>
-      <li>À côté d'un texte latin, l'AYNEHA s'écrit un point plus grand (par exemple 13 points pour un texte latin en 12).</li>
-      <li>En mathématiques, toute l'expression se lit de droite à gauche ; exposants et indices se placent en haut à gauche ; les variables (x, y) et les fonctions (sin, log) restent en lettres latines ; les signes orientés (&lt;, &gt;, flèches, parenthèses) sont retournés.</li>
+      <li><strong>De droite à gauche</strong> : l'AYNEHA s'écrit et se lit de droite à gauche, les lettres comme les chiffres.</li>
+      <li><strong>Une seule forme par lettre</strong> : il n'y a ni majuscules ni minuscules.</li>
+      <li><strong>Un son, un caractère</strong> : chaque son du songhay a son propre caractère. Ʃ, TƩ, DJ, Ɲ et Ŋ sont des lettres uniques, pas des combinaisons.</li>
+      <li><strong>La ligne de liaison</strong> : toutes les lettres d'un mot sont reliées par la même ligne de base.</li>
+      <li><strong>L'ordre alphabétique</strong> : les voyelles d'abord (A, E, I, O, U), puis les consonnes, de l'avant vers l'arrière de la bouche.</li>
+      <li><strong>L'ordre des formes</strong> : chaque lettre est suivie de ses formes, toujours dans cet ordre : initiale, nasalisée, ouverte, double, muette.</li>
+      <li><strong>L'épellation</strong> : on dit les voyelles telles quelles et on ajoute « a » aux consonnes : ba, pa, ma, fa, wa...</li>
+      <li><strong>Un seul accent</strong> : un caractère ne porte jamais plus d'un accent à la fois.</li>
+      <li><strong>L'accent nasalisé</strong> : deux points au-dessus, sur les 5 voyelles seulement.</li>
+      <li><strong>L'accent ouvert</strong> : un tilde au-dessus, sur E et O seulement (Ɛ et Ɔ).</li>
+      <li><strong>L'accent double</strong> : deux barres en dessous, sur toutes les lettres sauf H. Une consonne double est toujours suivie d'une voyelle : elle ne finit jamais un mot.</li>
+      <li><strong>L'accent muet</strong> : un petit L renversé en dessous. Une consonne est muette quand elle n'est pas suivie directement d'une voyelle : seule en fin de mot, ou devant une autre consonne.</li>
+      <li><strong>Les lettres jamais muettes</strong> : Ʃ, TƩ, J, Ɲ et H ne portent jamais l'accent muet : ces consonnes ne se trouvent jamais en fin de mot. H est la seule lettre sans aucun accent.</li>
+      <li><strong>La voyelle ouverte et nasalisée</strong> : comme un seul accent est permis, Ɛ nasalisé s'écrit Ẽ et Ɔ nasalisé s'écrit Õ.</li>
+      <li><strong>Les nombres</strong> : ils s'écrivent de droite à gauche : le chiffre de plus grande valeur est à droite.</li>
+      <li><strong>Trois chiffres familiers</strong> : 0, 3 et 9 reprennent la forme des chiffres latins, redessinée à angles droits (le 0 est un rectangle).</li>
+      <li><strong>Les ordinaux</strong> : on place un petit « i » en haut, juste après le nombre : 1er, 2e, 3e...</li>
+      <li><strong>La virgule décimale</strong> : c'est la virgule AYNEHA, placée en bas.</li>
+      <li><strong>La ponctuation</strong> : la virgule et le point-virgule ont leur caractère AYNEHA ; le point d'interrogation est retourné en miroir (⸮) ; les autres signes (point, point d'exclamation, guillemets, parenthèses) sont les signes internationaux.</li>
+      <li><strong>Les mathématiques</strong> : toute l'expression se lit de droite à gauche ; exposants et indices se placent en haut à gauche ; variables et fonctions (x, y, sin, log) restent en lettres latines ; les signes orientés (&lt;, &gt;, flèches) sont retournés.</li>
+      <li><strong>Pas de coupure de mot</strong> : ses lettres étant reliées, un mot ne se coupe jamais en fin de ligne.</li>
+      <li><strong>Ni gras ni souligné</strong> : ils cachent ou déforment les accents ; pour mettre un mot en valeur, on l'écrit plus grand. À côté d'un texte latin, l'AYNEHA s'écrit un point plus grand (13 pour 12).</li>
     </ol>
   </div>
 </section>
@@ -222,9 +238,19 @@
         <h2>Découvrir</h2>
         <ul>
           <li><a href="alphabet.html">L'alphabet</a></li>
+          <li><a href="alphabet.html#regles">Les 22 règles</a></li>
           <li><a href="applications.html">Applications</a></li>
-          <li><a href="outils.html">Outils en ligne</a></li>
           <li><a href="ressources.html">Ressources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Outils en ligne</h2>
+        <ul>
+          <li><a href="convertisseur.html">Transcripteur</a></li>
+          <li><a href="clavier.html">Clavier</a></li>
+          <li><a href="calculatrice.html">Calculatrice</a></li>
+          <li><a href="nombres.html">Convertisseur de nombres</a></li>
+          <li><a href="horloge.html">Horloge</a></li>
         </ul>
       </div>
       <div>
@@ -254,7 +280,7 @@
   </div>
 </footer>
 <button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>
-<script src="assets/js/site.js?v=20261013155210"></script>
+<script src="assets/js/site.js?v=20261013163441"></script>
 <script src="assets/js/ayneha.js"></script>
 <script src="assets/js/alphabet-data.js"></script>
 <script src="assets/js/alphabet.js"></script>
