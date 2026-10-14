@@ -134,6 +134,7 @@ code { font-family: ui-monospace, "Cascadia Mono", Menlo, monospace; font-size: 
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--trait);
 }
+.entete .nav { order: 2; }
 .entete .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 66px; }
 .marque { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--sable); }
 .marque .logo { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 12px; background: var(--orange); color: var(--nuit); font-size: 2rem; line-height: 1; padding-top: 2px; }
@@ -677,3 +678,11 @@ td .ay { font-size: 2rem; color: var(--sable); }
 .faq summary { cursor: pointer; padding: 16px 18px; font-weight: 600; color: var(--sable); list-style-position: outside; }
 .faq details[open] summary { border-bottom: 1px solid var(--trait); }
 .faq details > p, .faq details > ul { margin: 14px 18px; color: var(--texte); }
+
+/* ---------- Choix de la langue FR | EN ---------- */
+.entete-droite { display: flex; align-items: center; gap: 10px; order: 3; }
+.langues { display: inline-flex; border: 1px solid var(--trait); border-radius: 999px; overflow: hidden; font-size: .88rem; font-weight: 600; }
+.langues a, .langues span { padding: 6px 11px; line-height: 1; text-decoration: none; }
+.langues a { color: var(--texte-doux); }
+.langues a:hover { color: var(--sable); background: var(--nuit-3); }
+.langues span[aria-current] { background: var(--orange); color: var(--nuit); }

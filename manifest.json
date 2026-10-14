@@ -1,5 +1,5 @@
 {
-  "version": "20261014131959",
+  "version": "20261014140036",
   "files": [
     "404.html",
     "alphabet.html",
@@ -78,6 +78,11 @@
     "confidentialite.html",
     "convertisseur.html",
     "developpeurs.html",
+    "en/alphabet.html",
+    "en/apprendre.html",
+    "en/apropos.html",
+    "en/faq.html",
+    "en/index.html",
     "faq.html",
     "galerie.html",
     "horloge.html",

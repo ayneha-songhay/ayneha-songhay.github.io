@@ -41,6 +41,32 @@ NAV = [
 ]
 
 
+NAV_EN = [
+    ("index", "index.html", "Home"),
+    ("alphabet", "alphabet.html", "The alphabet"),
+    ("quiz", "quiz.html", "Quiz"),
+    ("applications", "applications.html", "Apps"),
+    ("outils", "outils.html", "Online tools"),
+    ("galerie", "galerie.html", "Gallery"),
+    ("ressources", "ressources.html", "Resources"),
+    ("apropos", "apropos.html", "About"),
+]
+# Pages traduites en anglais : _src/pages-en/<nom>.html  ->  en/<nom>.html
+PAGES_EN = set()
+
+
+def page_en_existe(nom):
+    return nom in PAGES_EN
+
+
+def bascule_langue(nom, lang):
+    """Lien FR | EN de l'en-tête, vers la même page dans l'autre langue."""
+    if lang == "fr":
+        cible = "en/" + (nom if page_en_existe(nom) else "index.html")
+        return f'<div class="langues" role="group" aria-label="Langue / Language"><span aria-current="true">FR</span><a href="{cible}" hreflang="en" lang="en">EN</a></div>'
+    return f'<div class="langues" role="group" aria-label="Language / Langue"><a href="../{nom}" hreflang="fr" lang="fr">FR</a><span aria-current="true">EN</span></div>'
+
+
 # ---------------------------------------------------------------- macros AYNEHA
 def ay_span(names, cls="", label=None):
     txt = G.text(names)
@@ -248,17 +274,21 @@ MARQUE = ay_span("A Y:m N E H A", label="AYNEHA")
 LOGO = f'<span class="ay logo" aria-hidden="true">{G.text("H")}</span>'
 
 
-def entete(actif):
+def entete(actif, nom="index.html", lang="fr"):
     liens = []
-    for key, href, label in NAV:
+    en = lang == "en"
+    for key, href, label in (NAV_EN if en else NAV):
         cur = ' aria-current="page"' if key == actif else ""
         liens.append(f'<li><a href="{href}"{cur}>{label}</a></li>')
-    return f"""<a class="skip" href="#contenu">Aller au contenu</a>
+    return f"""<a class="skip" href="#contenu">{"Skip to content" if en else "Aller au contenu"}</a>
 <header class="entete">
   <div class="wrap">
-    <a class="marque" href="index.html" aria-label="AYNEHA, accueil">{LOGO}<span class="marque-texte">AYNEHA</span></a>
+    <a class="marque" href="index.html" aria-label="{"AYNEHA, home" if en else "AYNEHA, accueil"}">{LOGO}<span class="marque-texte">AYNEHA</span></a>
+    <div class="entete-droite">
+    {bascule_langue(nom, lang)}
     <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
-    <nav class="nav" id="nav" aria-label="Navigation principale">
+    </div>
+    <nav class="nav" id="nav" aria-label="{"Main navigation" if en else "Navigation principale"}">
       <ul>
         {chr(10).join('        ' + x for x in liens).strip()}
       </ul>
@@ -267,7 +297,70 @@ def entete(actif):
 </header>"""
 
 
-def pied():
+PIED_EN = """<footer class="pied">
+  <div class="frise" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="pied-grille">
+      <div class="pied-marque">
+        {MARQUE}
+        <p>AYNEHA, the writing system of the Songhay language. Designed and created by Mahamadou Issiaka MAIGA (MAIGUS).</p>
+      </div>
+      <div>
+        <h2>Discover</h2>
+        <ul>
+          <li><a href="apprendre.html">Start here</a></li>
+          <li><a href="alphabet.html">The alphabet</a></li>
+          <li><a href="alphabet.html#regles">The 22 rules</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="galerie.html">Card gallery</a></li>
+          <li><a href="applications.html">Apps</a></li>
+          <li><a href="ressources.html">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Online tools</h2>
+        <ul>
+          <li><a href="convertisseur.html">Latin → AYNEHA transcriber</a></li>
+          <li><a href="clavier.html">Keyboard</a></li>
+          <li><a href="calculatrice.html">Calculator</a></li>
+          <li><a href="nombres.html">Number converter</a></li>
+          <li><a href="horloge.html">Clock</a></li>
+          <li><a href="carte.html">My AYNEHA card</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>The project</h2>
+        <ul>
+          <li><a href="apropos.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="presse.html">Press kit</a></li>
+          <li><a href="apropos.html#soutenir">Support the AYNEHA Project</a></li>
+          <li><a href="confidentialite.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Follow AYNEHA</h2>
+        <ul>
+          <li><a href="https://aynehasonghay.blogspot.com" rel="noopener">Blog</a></li>
+          <li><a href="https://www.tiktok.com/@ayneha.songhay" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/ayneha.songhay/" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/ayneha_songhay" rel="noopener">X</a></li>
+          <li><a href="https://whatsapp.com/channel/0029Vb8zu22HgZWfGLpgAA2U" rel="noopener">WhatsApp channel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>© {ANNEE} AYNEHA. Designer and creator: Mahamadou Issiaka MAIGA (MAIGUS).</span>
+      <span>Contact: <a href="mailto:{CONTACT}">{CONTACT}</a></span>
+    </div>
+  </div>
+</footer>
+<button class="haut-page" type="button" aria-label="Back to top">&#8593;</button>"""
+
+
+def pied(lang="fr"):
+    if lang == "en":
+        return PIED_EN.format(MARQUE=MARQUE, ANNEE=ANNEE, CONTACT=CONTACT)
     return f"""<footer class="pied">
   <div class="frise" aria-hidden="true"></div>
   <div class="wrap">
@@ -336,16 +429,24 @@ def lien_conf(nom):
     return ""
 
 
-def page(meta, corps):
+def page(meta, corps, lang="fr"):
     titre = meta["title"]
     desc = meta["description"]
     nom = meta["_file"]
-    url = f"{SITE_URL}/" + ("" if nom == "index.html" else nom)
+    en = lang == "en"
+    url_fr = f"{SITE_URL}/" + ("" if nom == "index.html" else nom)
+    url_en = f"{SITE_URL}/en/" + ("" if nom == "index.html" else nom)
+    url = url_en if en else url_fr
+    alternates = ""
+    if page_en_existe(nom):
+        alternates = (f'\n<link rel="alternate" hreflang="fr" href="{url_fr}">'
+                      f'\n<link rel="alternate" hreflang="en" href="{url_en}">'
+                      f'\n<link rel="alternate" hreflang="x-default" href="{url_fr}">')
     scripts = "".join(f'\n<script src="{s}"></script>' for s in meta.get("scripts", "").split() if s)
     extra_head = meta.get("head", "")
     robots = '\n<meta name="robots" content="noindex">' if meta.get("noindex") else ""
     return f"""<!doctype html>
-<html lang="fr">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -353,14 +454,14 @@ def page(meta, corps):
 <meta name="description" content="{html.escape(desc)}">
 <meta name="author" content="Mahamadou Issiaka MAIGA (MAIGUS)">
 <meta name="theme-color" content="#0E1A30">{robots}
-<link rel="canonical" href="{url}">
+<link rel="canonical" href="{url}">{alternates}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AYNEHA">
 <meta property="og:title" content="{html.escape(titre)}">
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{SITE_URL}/{meta.get("image", "assets/img/apercu.png")}">
-<meta property="og:locale" content="fr_FR">
+<meta property="og:locale" content="{"en_GB" if en else "fr_FR"}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
@@ -371,11 +472,11 @@ def page(meta, corps):
 <script src="assets/js/essai.js?v={VERSION}"></script>{extra_head}
 </head>
 <body>
-{entete(meta.get("nav", ""))}
+{entete(meta.get("nav", ""), nom, lang)}
 <main id="contenu">
-{corps.strip()}{lien_conf(nom)}
+{corps.strip()}{"" if en else lien_conf(nom)}
 </main>
-{pied()}
+{pied(lang)}
 <script src="assets/js/site.js?v={VERSION}"></script>{scripts}
 </body>
 </html>
@@ -421,9 +522,28 @@ def alphabet_data():
 VERSION = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d%H%M%S")
 
 
+def relier_en(src):
+    """Une page anglaise vit dans en/ : les fichiers du site (assets) sont un niveau plus haut,
+    et les liens vers des pages pas encore traduites mènent à la version française."""
+    def lien(m):
+        attr, cible = m.group(1), m.group(2)
+        if re.match(r"^(https?:|mailto:|tel:|#|\.\./|data:|/)", cible):
+            return m.group(0)
+        if cible.startswith("assets/"):
+            return f'{attr}="../{cible}"'
+        nom = re.split(r"[#?]", cible)[0]
+        if nom.endswith(".html") and nom not in PAGES_EN:
+            return f'{attr}="../{cible}"'
+        return m.group(0)
+    return re.sub(r'(href|src)="([^"]*)"', lien, src)
+
+
 def main():
     pages_dir = os.path.join(ICI, "pages")
+    pages_en_dir = os.path.join(ICI, "pages-en")
     produits = []
+    if os.path.isdir(pages_en_dir):
+        PAGES_EN.update(f for f in os.listdir(pages_en_dir) if f.endswith(".html"))
     for f in sorted(os.listdir(pages_dir)):
         if not f.endswith(".html"):
             continue
@@ -433,6 +553,15 @@ def main():
         with open(os.path.join(RACINE, f), "w", encoding="utf-8") as fh:
             fh.write(out)
         produits.append(f)
+
+    os.makedirs(os.path.join(RACINE, "en"), exist_ok=True)
+    for f in sorted(PAGES_EN):
+        meta, corps = lire_page(os.path.join(pages_en_dir, f))
+        meta["_file"] = f
+        out = relier_en(page(meta, macros(corps), "en"))
+        with open(os.path.join(RACINE, "en", f), "w", encoding="utf-8") as fh:
+            fh.write(out)
+        produits.append("en/" + f)
 
     for a in APPS.APPS:
         meta = {"title": f"{a['nom']} - application Android AYNEHA", "description": a["resume"] + " " + a["intro"][0][:110],

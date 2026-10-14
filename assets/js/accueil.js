@@ -12,11 +12,11 @@
   function afficher(txt) {
     var r = window.Ayneha.transcribe(txt);
     sortie.textContent = r.text;
-    sortie.setAttribute("aria-label", txt ? txt + ", écrit en AYNEHA" : "");
+    sortie.setAttribute("aria-label", txt ? txt + (document.documentElement.lang === "en" ? ", written in AYNEHA" : ", écrit en AYNEHA") : "");
   }
   function demo() {
     afficher(exemples[i % exemples.length]);
-    champ.placeholder = "Par exemple : " + exemples[i % exemples.length];
+    champ.placeholder = (document.documentElement.lang === "en" ? "For example: " : "Par exemple : ") + exemples[i % exemples.length];
     i++;
   }
   champ.addEventListener("input", function () {
@@ -50,6 +50,6 @@
     spans.forEach(function (s) { s.classList.remove("trace-lettre"); void s.offsetWidth; s.classList.add("trace-lettre"); });
   }
   titre.parentNode.style.cursor = "pointer";
-  titre.parentNode.setAttribute("title", "Toucher pour revoir le sens d'écriture");
+  titre.parentNode.setAttribute("title", document.documentElement.lang === "en" ? "Tap to replay the writing direction" : "Toucher pour revoir le sens d'écriture");
   titre.parentNode.addEventListener("click", rejouer);
 })();

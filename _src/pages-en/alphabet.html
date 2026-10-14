@@ -1,0 +1,208 @@
+title: The AYNEHA alphabet - letters, diacritics and digits
+description: The 27 letters of AYNEHA in alphabetical order, their forms, the 4 diacritics, the 10 digits and the writing rules, drawn with the official font.
+nav: alphabet
+scripts: assets/js/ayneha.js assets/js/alphabet-data.js assets/js/alphabet.js
+---
+<section class="page-tete">
+  <div class="wrap">
+    <h1>The AYNEHA alphabet</h1>
+    <p>An alphabet with no upper or lower case, read and written from right to left: 5 vowels, 22 consonants, 4 diacritics and 10 digits. With all the forms, the font has 98 characters.</p>
+    <nav class="pages-ancres" aria-label="On this page">
+      <a href="#lettres">Letters</a>
+      <a href="#accents">Diacritics</a>
+      <a href="#chiffres">Digits</a>
+      <a href="#ponctuation">Punctuation</a>
+      <a href="#regles">Writing rules</a>
+    </nav>
+  </div>
+</section>
+
+<section class="section-serree" id="systeme">
+  <div class="wrap">
+    <h2>The system at a glance</h2>
+    <p class="doux serre">The 98 characters of the Ayneha Pro font fall into five families. Only the 27 basic letters make up the alphabet; the others are forms of these letters or signs.</p>
+    <div class="tableau-defile">
+      <table class="tableau-systeme">
+        <thead><tr><th>Family</th><th>What it is</th><th>Number</th></tr></thead>
+        <tbody>
+          <tr><td>Basic letters</td><td>5 vowels and 22 consonants: the alphabet itself</td><td>27</td></tr>
+          <tr><td>Marked forms</td><td>a basic letter carrying a diacritic (nasalised, open or double vowel, double or silent consonant)</td><td>50</td></tr>
+          <tr><td>Diacritics alone</td><td>4 diacritics (nasalisation, openness, double, silent), drawn on their own to explain them; nasalisation has one form per vowel and openness one form for E and one for O</td><td>9</td></tr>
+          <tr><td>Digits</td><td>0 to 9, read from right to left</td><td>10</td></tr>
+          <tr><td>Punctuation</td><td>the AYNEHA comma and semicolon</td><td>2</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="2">Total in the font</td><td>98</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section-serree" id="lettres">
+  <div class="wrap">
+    <h2>The 27 letters</h2>
+    <p class="doux serre">This is the alphabetical order of AYNEHA, from right to left: vowels first, then consonants. Tap a letter to see its pronunciation, its spelling name and all its forms.</p>
+
+    <div class="groupe-titre"><h3>Vowels</h3><span class="doux">5 letters</span></div>
+    <div class="grille-lettres" data-groupe="voyelle"></div>
+
+    <div class="groupe-titre"><h3>Consonants</h3><span class="doux">22 letters</span></div>
+    <div class="grille-lettres" data-groupe="consonne"></div>
+
+    <div class="tablette fiche" id="fiche" hidden tabindex="-1" aria-live="polite">
+      <div class="fiche-grille">
+        <p class="ay fiche-glyphe" data-f="glyphe"></p>
+        <div>
+          <h3 data-f="titre"></h3>
+          <dl>
+            <dt>Pronounced</dt><dd data-f="son"></dd>
+            <dt>Spelled</dt><dd data-f="epel"></dd>
+            <dt>Code point</dt><dd><code data-f="cp"></code></dd>
+          </dl>
+          <h4>Its forms, in the official order</h4>
+          <div class="variantes" data-f="variantes"></div>
+          <p class="lecture petit" data-f="note"></p>
+        </div>
+      </div>
+      <div class="fiche-nav">
+        <button type="button" data-f="suiv">Next letter</button>
+        <button type="button" data-f="prec">Previous letter</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="accents">
+  <div class="wrap">
+    <div class="intro">
+      <h2>The 4 diacritics</h2>
+      <p>Diacritics are placed above or below a letter and change its sound. A character never carries more than one diacritic at a time.</p>
+    </div>
+    <div class="accents">
+      <article class="accent">
+        <div class="demo">{{ay:A:n}}{{ay:E:n}}{{ay:I:n}}{{ay:O:n}}{{ay:U:n}}</div>
+        <h3>Nasalisation</h3>
+        <p>Two dots lying above the vowel. It gives ã, ẽ, ĩ, õ, ũ: the vowel goes through the nose.</p>
+      </article>
+      <article class="accent">
+        <div class="demo">{{ay:E:o}}{{ay:O:o}}</div>
+        <h3>Openness</h3>
+        <p>A wavy line above E and O only. It gives ɛ (as in “bed”) and ɔ (as in “law”).</p>
+      </article>
+      <article class="accent">
+        <div class="demo">{{ay:A:d}}{{ay:B:d}}{{ay:K:d}}{{ay:S:d}}</div>
+        <h3>Double</h3>
+        <p>Two bars under the letter. The vowel is lengthened, the consonant is doubled. All letters take it except H. A double consonant is always followed by a vowel.</p>
+      </article>
+      <article class="accent">
+        <div class="demo">{{ay:B:m}}{{ay:N:m}}{{ay:R:m}}{{ay:Y:m}}</div>
+        <h3>Silent</h3>
+        <p>A small upside-down L under the consonant. It marks a consonant that is not directly followed by a vowel: at the end of a word, or before another consonant. Ʃ, TƩ, J, Ɲ and H never take it.</p>
+      </article>
+    </div>
+
+    <h3 style="margin-top:44px">Example: the word “ayneha”</h3>
+    <div class="tableau-defile">
+      <table>
+        <caption class="visually-hidden">The word ayneha, letter by letter, from right to left</caption>
+        <thead><tr><th>Reading order</th><th>Character</th><th>Sound</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>{{ay:A}}</td><td>a</td><td>vowel</td></tr>
+          <tr><td>2</td><td>{{ay:Y:m}}</td><td>y</td><td>followed by a consonant (n): silent Y</td></tr>
+          <tr><td>3</td><td>{{ay:N}}</td><td>n</td><td>followed by a vowel: basic form</td></tr>
+          <tr><td>4</td><td>{{ay:E}}</td><td>e</td><td>vowel</td></tr>
+          <tr><td>5</td><td>{{ay:H}}</td><td>h</td><td>followed by a vowel: basic form</td></tr>
+          <tr><td>6</td><td>{{ay:A}}</td><td>a</td><td>vowel</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="doux" style="margin-top:14px">The whole word, from right to left: {{ay:A Y:m N E H A}}</p>
+  </div>
+</section>
+
+<section class="section section-claire" id="chiffres">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>The 10 digits</h2>
+      <p>AYNEHA has its own digits. Like letters, a number is read from right to left: the first digit is on the right. For example, 2026 is written {{ay:D2 D0 D2 D6|ay-inline|2026}}: the 2 of the thousands is on the far right, the 6 of the units on the far left.</p>
+      <p>Three digits echo the shape of Latin digits, redrawn with right angles: 0 (a rectangle), 3 and 9.</p>
+      <p>For decimal numbers, the AYNEHA comma sits at the bottom. For an ordinal (first, second...), a small “i” is placed at the top, right after the number.</p>
+      <label for="nombre-champ" style="display:block;font-weight:600;margin-top:24px;color:var(--sable)">Type a number</label>
+      <input class="champ" id="nombre-champ" type="text" inputmode="decimal" autocomplete="off" maxlength="24" placeholder="For example: 2026" style="max-width:320px">
+    </div>
+    <div>
+      <div class="tablette">
+        <div class="chiffres">
+          <div class="chiffre">{{ay:D0}}<small>0</small></div>
+          <div class="chiffre">{{ay:D1}}<small>1</small></div>
+          <div class="chiffre">{{ay:D2}}<small>2</small></div>
+          <div class="chiffre">{{ay:D3}}<small>3</small></div>
+          <div class="chiffre">{{ay:D4}}<small>4</small></div>
+          <div class="chiffre">{{ay:D5}}<small>5</small></div>
+          <div class="chiffre">{{ay:D6}}<small>6</small></div>
+          <div class="chiffre">{{ay:D7}}<small>7</small></div>
+          <div class="chiffre">{{ay:D8}}<small>8</small></div>
+          <div class="chiffre">{{ay:D9}}<small>9</small></div>
+        </div>
+        <div class="ordinaux" aria-label="Ordinal examples">
+          <div class="chiffre"><span class="ay ordinal" role="img" aria-label="1st">{{ay:D1|lettre|}}<sup>{{ay:I|lettre|}}</sup></span><small>1st</small></div>
+          <div class="chiffre"><span class="ay ordinal" role="img" aria-label="2nd">{{ay:D2|lettre|}}<sup>{{ay:I|lettre|}}</sup></span><small>2nd</small></div>
+          <div class="chiffre"><span class="ay ordinal" role="img" aria-label="3rd">{{ay:D3|lettre|}}<sup>{{ay:I|lettre|}}</sup></span><small>3rd</small></div>
+          <div class="chiffre"><span class="ay ordinal" role="img" aria-label="10th">{{ay:D1 D0|lettre|}}<sup>{{ay:I|lettre|}}</sup></span><small>10th</small></div>
+        </div>
+        <div class="essai">
+          <p class="ay essai-sortie" id="nombre-sortie" aria-live="polite"></p>
+          <p class="lecture petit" id="nombre-lecture"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ponctuation">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Punctuation</h2>
+      <p>The comma and the semicolon have their own AYNEHA shape. The question mark is mirrored (⸮). Other signs (full stop, exclamation mark, quotation marks, mathematical signs) are the usual international ones.</p>
+    </div>
+    <div class="tablette">
+      <div class="chiffres">
+        <div class="chiffre">{{ay:,|lettre|comma}}<small>comma</small></div>
+        <div class="chiffre">{{ay:;|lettre|semicolon}}<small>semicolon</small></div>
+        <div class="chiffre"><span class="ay">&#x2E2E;</span><small>question mark</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-claire" id="regles">
+  <div class="wrap">
+    <div class="intro">
+      <h2>The 22 writing rules</h2>
+      <p>These rules describe how AYNEHA characters behave together. AYNEHA is young: abbreviations and handwriting habits are left to usage.</p>
+    </div>
+    <ol class="regles serre">
+      <li><strong>Right to left</strong>: AYNEHA is written and read from right to left, letters and digits alike.</li>
+      <li><strong>One form per letter</strong>: there is no upper or lower case.</li>
+      <li><strong>One sound, one character</strong>: each sound retained in the system (Songhay of Gao) has its own character. Ʃ, TƩ, DJ, Ɲ and Ŋ are single letters, not combinations.</li>
+      <li><strong>The joining line</strong>: all the letters of a word are joined by the same baseline.</li>
+      <li><strong>Alphabetical order</strong>: vowels first (A, E, I, O, U), then consonants, from the front to the back of the mouth.</li>
+      <li><strong>Order of forms</strong>: each letter is followed by its forms, always in this order: basic, nasalised, open, double, silent.</li>
+      <li><strong>Spelling names</strong>: vowels are said as they are, and “a” is added to consonants: ba, pa, ma, fa, wa...</li>
+      <li><strong>One diacritic only</strong>: a character never carries more than one diacritic at a time.</li>
+      <li><strong>Nasalisation</strong>: two dots above, on the 5 vowels only.</li>
+      <li><strong>Openness</strong>: a tilde above, on E and O only (Ɛ and Ɔ).</li>
+      <li><strong>Double</strong>: two bars below, on all letters except H. A double consonant is always followed by a vowel: it never ends a word.</li>
+      <li><strong>Silent</strong>: a small upside-down L below. A consonant is silent when it is not directly followed by a vowel: alone at the end of a word, or before another consonant.</li>
+      <li><strong>Letters that are never silent</strong>: Ʃ, TƩ, J, Ɲ and H never take the silent mark: these consonants are never found at the end of a word. H is the only letter with no diacritic at all.</li>
+      <li><strong>Open and nasalised vowels</strong>: since only one diacritic is allowed, nasalised Ɛ is written Ẽ and nasalised Ɔ is written Õ.</li>
+      <li><strong>Numbers</strong>: they are written from right to left: the digit with the highest value is on the right.</li>
+      <li><strong>Three familiar digits</strong>: 0, 3 and 9 take the shape of Latin digits, redrawn with right angles (0 is a rectangle).</li>
+      <li><strong>Ordinals</strong>: a small “i” is placed at the top, right after the number: 1st, 2nd, 3rd...</li>
+      <li><strong>Decimal comma</strong>: it is the AYNEHA comma, placed at the bottom.</li>
+      <li><strong>Punctuation</strong>: the comma and semicolon have their own AYNEHA character; the question mark is mirrored (⸮); other signs (full stop, exclamation mark, quotation marks, brackets) are the international ones.</li>
+      <li><strong>Mathematics</strong>: the whole expression is read from right to left; exponents and indices go at the top left; variables and functions (x, y, sin, log) stay in Latin letters; directional signs (&lt;, &gt;, arrows) are mirrored.</li>
+      <li><strong>No word breaks</strong>: since its letters are joined, a word is never split at the end of a line.</li>
+      <li><strong>No bold, no underline</strong>: they hide or distort the diacritics; to emphasise a word, write it larger. Next to Latin text, AYNEHA is written one point larger (13 for 12).</li>
+    </ol>
+  </div>
+</section>

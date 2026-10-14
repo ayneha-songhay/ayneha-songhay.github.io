@@ -3,6 +3,16 @@
    SPDX-License-Identifier: GPL-3.0-or-later */
 (function () {
   "use strict";
+  var EN = document.documentElement.lang === "en";
+  var SON_EN = {
+    A: "a as in “father”", E: "e as in “they” (French é)", I: "i as in “machine”", O: "o as in “go”", U: "u as in “food”",
+    B: "b as in “bed”", P: "p as in “pen”", M: "m as in “man”", F: "f as in “fan”", W: "w as in “we”", D: "d as in “day”",
+    T: "t as in “top”", N: "n as in “no”", L: "l as in “leg”", R: "rolled r", S: "s always voiceless, as in “sun”",
+    Z: "z as in “zoo”", SH: "sh as in “ship”", TS: "ch as in “church”", J: "s as in “measure”", DJ: "j as in “jam”",
+    GN: "ny as in “canyon”", Y: "y as in “yes”", G: "g always hard, as in “go”", K: "k as in “kite”",
+    H: "h always pronounced, as in “hat”", NG: "ng as in “sing”"
+  };
+  var FORME_EN = { "initiale": "basic", "nasalisée": "nasalised", "ouverte": "open", "double": "double", "muette": "silent" };
   var L = window.AYNEHA_LETTRES || [];
   var A = window.Ayneha;
   var fiche = document.getElementById("fiche");
@@ -23,7 +33,7 @@
     b.querySelector(".ay").textContent = lettre.glyphe;
     b.querySelector("b").textContent = lettre.nom;
     b.querySelector(".son").textContent = lettre.epel;
-    b.setAttribute("aria-label", "Lettre " + lettre.nom + ", se dit " + lettre.epel);
+    b.setAttribute("aria-label", (EN ? "Letter " + lettre.nom + ", said " : "Lettre " + lettre.nom + ", se dit ") + lettre.epel);
     b.addEventListener("click", function () { ouvrir(i, true); });
     grille.appendChild(b);
     cartes[lettre.id] = b;
@@ -36,9 +46,9 @@
     actuel = i;
     cartes[lettre.id].setAttribute("aria-expanded", "true");
     f("glyphe").textContent = lettre.glyphe;
-    f("titre").textContent = (lettre.type === "voyelle" ? "La voyelle " : "La consonne ") + lettre.nom;
-    f("son").textContent = lettre.son;
-    f("epel").textContent = "« " + lettre.epel + " »";
+    f("titre").textContent = (EN ? (lettre.type === "voyelle" ? "The vowel " : "The consonant ") : (lettre.type === "voyelle" ? "La voyelle " : "La consonne ")) + lettre.nom;
+    f("son").textContent = EN ? (SON_EN[lettre.id] || lettre.son) : lettre.son;
+    f("epel").textContent = EN ? "“" + lettre.epel + "”" : "« " + lettre.epel + " »";
     f("cp").textContent = lettre.cp;
     var v = f("variantes");
     v.innerHTML = "";
@@ -47,14 +57,14 @@
       d.className = "variante";
       d.innerHTML = '<span class="ay" aria-hidden="true"></span><small></small>';
       d.querySelector(".ay").textContent = va.g;
-      d.querySelector("small").textContent = va.nom + " : " + va.lat;
+      d.querySelector("small").textContent = (EN ? (FORME_EN[va.nom] || va.nom) + ": " : va.nom + " : ") + va.lat;
       d.title = va.cp;
       v.appendChild(d);
     });
     var note = "";
-    if (lettre.id === "H") note = "H est la seule lettre qui ne prend aucun accent. Elle ne se trouve jamais en fin de mot.";
-    else if (["SH", "TS", "J", "GN"].indexOf(lettre.id) >= 0) note = "Cette consonne ne prend pas l'accent muet : elle ne se trouve jamais en fin de mot.";
-    else if (lettre.type === "voyelle" && (lettre.id === "E" || lettre.id === "O")) note = "E et O sont les seules voyelles qui ont une forme ouverte.";
+    if (lettre.id === "H") note = EN ? "H is the only letter that takes no diacritic. It is never found at the end of a word." : "H est la seule lettre qui ne prend aucun accent. Elle ne se trouve jamais en fin de mot.";
+    else if (["SH", "TS", "J", "GN"].indexOf(lettre.id) >= 0) note = EN ? "This consonant never takes the silent mark: it is never found at the end of a word." : "Cette consonne ne prend pas l'accent muet : elle ne se trouve jamais en fin de mot.";
+    else if (lettre.type === "voyelle" && (lettre.id === "E" || lettre.id === "O")) note = EN ? "E and O are the only vowels with an open form." : "E et O sont les seules voyelles qui ont une forme ouverte.";
     f("note").textContent = note;
     var grilleLettre = cartes[lettre.id].parentNode;
     if (grilleLettre.nextElementSibling !== fiche) grilleLettre.parentNode.insertBefore(fiche, grilleLettre.nextSibling);
@@ -87,7 +97,7 @@
       var txt = A.digits(parties[0] || "");
       if (parties.length > 1) txt += A.ch(",") + A.digits(parties.slice(1).join(""));
       sortie.textContent = txt;
-      lecture.textContent = propre ? "Se lit de droite à gauche : " + propre : "";
+      lecture.textContent = propre ? (EN ? "Read from right to left: " : "Se lit de droite à gauche : ") + propre : "";
     };
     champ.addEventListener("input", maj);
     champ.value = "2026";
