@@ -7,21 +7,23 @@
   var A = window.Ayneha;
   if (!A) return;
 
+  var EN = document.documentElement.lang === "en";
+  function T(fr, en) { return EN ? en : fr; }
   var SITE = "ayneha.org";  // adresse affichée sur les cartes et dans le message de partage
   var CONTACT = "contact@ayneha.org";
   var WHATSAPP = "22366778763";
 
   /* ------------------------------------------------------------ modèles */
   var MODELES = {
-    salut:        { nom: "Salutation",     fond: "#0E1A30", texte: "#18213A", latin: "#B24E0B", doux: "#5A6378", pied: "#A8B3C7", accent: "#F07C22", tablette: true },
-    fete:         { nom: "Fête",           fond: "#123D33", texte: "#F5EDDF", latin: "#E3B34C", doux: "#BFD3C8", pied: "#BFD3C8", accent: "#E3B34C", orn: "etoiles" },
-    naissance:    { nom: "Naissance",      fond: "#F5EDDF", texte: "#18213A", latin: "#2E7D5B", doux: "#5A6378", pied: "#5A6378", accent: "#3E9A72", orn: "points" },
-    mariage:      { nom: "Mariage",        fond: "#0E1A30", texte: "#F5EDDF", latin: "#E3B34C", doux: "#A8B3C7", pied: "#A8B3C7", accent: "#E3B34C", orn: "cadre" },
-    anniversaire: { nom: "Anniversaire",   fond: "#F07C22", texte: "#0E1A30", latin: "#0E1A30", doux: "#3B2410", pied: "#3B2410", accent: "#0E1A30", orn: "confettis" },
-    condoleances: { nom: "Condoléances",   fond: "#26303F", texte: "#EAE3D6", latin: "#A8B3C7", doux: "#A8B3C7", pied: "#8792A6", accent: "#8792A6", orn: "sobre" },
-    fierte:       { nom: "Fierté songhay", fond: "#0E1A30", texte: "#F5EDDF", latin: "#FFA35A", doux: "#A8B3C7", pied: "#A8B3C7", accent: "#F07C22", orn: "frises" }
+    salut:        { nom: T("Salutation", "Greeting"),     fond: "#0E1A30", texte: "#18213A", latin: "#B24E0B", doux: "#5A6378", pied: "#A8B3C7", accent: "#F07C22", tablette: true },
+    fete:         { nom: T("Fête", "Celebration"),           fond: "#123D33", texte: "#F5EDDF", latin: "#E3B34C", doux: "#BFD3C8", pied: "#BFD3C8", accent: "#E3B34C", orn: "etoiles" },
+    naissance:    { nom: T("Naissance", "Birth"),      fond: "#F5EDDF", texte: "#18213A", latin: "#2E7D5B", doux: "#5A6378", pied: "#5A6378", accent: "#3E9A72", orn: "points" },
+    mariage:      { nom: T("Mariage", "Wedding"),        fond: "#0E1A30", texte: "#F5EDDF", latin: "#E3B34C", doux: "#A8B3C7", pied: "#A8B3C7", accent: "#E3B34C", orn: "cadre" },
+    anniversaire: { nom: T("Anniversaire", "Birthday"),   fond: "#F07C22", texte: "#0E1A30", latin: "#0E1A30", doux: "#3B2410", pied: "#3B2410", accent: "#0E1A30", orn: "confettis" },
+    condoleances: { nom: T("Condoléances", "Condolences"),   fond: "#26303F", texte: "#EAE3D6", latin: "#A8B3C7", doux: "#A8B3C7", pied: "#8792A6", accent: "#8792A6", orn: "sobre" },
+    fierte:       { nom: T("Fierté songhay", "Songhay pride"), fond: "#0E1A30", texte: "#F5EDDF", latin: "#FFA35A", doux: "#A8B3C7", pied: "#A8B3C7", accent: "#F07C22", orn: "frises" }
   };
-  var FORMATS = { carre: { nom: "carré", ratio: 1 }, statut: { nom: "statut", ratio: 16 / 9 } };
+  var FORMATS = { carre: { nom: T("carré", "square"), ratio: 1 }, statut: { nom: T("statut", "status"), ratio: 16 / 9 } };
 
   function nettoyer(t) { return String(t || "").replace(/[‪-‮⁦-⁩‎‏]/g, ""); }
 
@@ -252,11 +254,11 @@
       fig.setAttribute("data-modele", c.modele || "salut");
       var cv = document.createElement("canvas");
       var ayTxt = c.ayneha ? nettoyer(c.ayneha) : A.transcribe(c.texte || "").text;
-      dessiner(cv, { modele: c.modele, format: c.format, ayneha: ayTxt, latin: c.texte, traduction: c.traduction, pseudo: c.pseudo, montrerLatin: c.montrerLatin !== false }, 540);
+      dessiner(cv, { modele: c.modele, format: c.format, ayneha: ayTxt, latin: c.texte, traduction: (EN && c.traduction_en) ? c.traduction_en : c.traduction, pseudo: c.pseudo, montrerLatin: c.montrerLatin !== false }, 540);
       cv.setAttribute("role", "img");
-      cv.setAttribute("aria-label", "Carte " + ((MODELES[c.modele] || MODELES.salut).nom) + " : " + (c.texte || "") + (c.traduction ? " (" + c.traduction + ")" : ""));
+      cv.setAttribute("aria-label", T("Carte ", "Card ") + ((MODELES[c.modele] || MODELES.salut).nom) + " : " + (c.texte || "") + (c.traduction ? " (" + c.traduction + ")" : ""));
       var cap = document.createElement("figcaption");
-      cap.textContent = (c.exemple ? "Exemple AYNEHA" + (c.pseudo ? " - " + c.pseudo : "") : (c.pseudo ? c.pseudo : "Anonyme") + (c.date ? " - " + c.date : ""));
+      cap.textContent = (c.exemple ? T("Exemple AYNEHA", "AYNEHA example") + (c.pseudo ? " - " + c.pseudo : "") : (c.pseudo ? c.pseudo : T("Anonyme", "Anonymous")) + (c.date ? " - " + c.date : ""));
       if (c.exemple) fig.classList.add("carte-exemple");
       fig.appendChild(cv); fig.appendChild(cap);
       zone.appendChild(fig); items.push(fig);
@@ -266,7 +268,7 @@
     var presents = Object.keys(MODELES).filter(function (k) { return cartes.some(function (c) { return (c.modele || "salut") === k; }); });
     if (!filtres || presents.length < 2) return;
     filtres.hidden = false;
-    var liste = [["tous", "Toutes (" + cartes.length + ")"]].concat(presents.map(function (k) { return [k, MODELES[k].nom]; }));
+    var liste = [["tous", T("Toutes (", "All (") + cartes.length + ")"]].concat(presents.map(function (k) { return [k, MODELES[k].nom]; }));
     liste.forEach(function (f, i) {
       var b = document.createElement("button");
       b.type = "button"; b.textContent = f[1]; b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
@@ -311,7 +313,7 @@
         prevu = false;
         var vide = !d.latin;
         dessiner(apercu, vide ? Object.assign({}, d, { ayneha: A.transcribe("ayneha").text, latin: "ayneha" }) : d, 1080);
-        apercu.setAttribute("aria-label", vide ? "Aperçu de la carte" : "Aperçu de la carte : " + d.latin);
+        apercu.setAttribute("aria-label", vide ? T("Aperçu de la carte", "Card preview") : T("Aperçu de la carte : ", "Card preview: ") + d.latin);
       });
     }
 
@@ -338,7 +340,7 @@
     });
 
     function pret() {
-      if (!d.latin) { message("Écrivez d'abord votre message en songhay."); champ.focus(); return false; }
+      if (!d.latin) { message(T("Écrivez d'abord votre message en songhay.", "First write your message in Songhay.")); champ.focus(); return false; }
       return true;
     }
     function nomFichier() { return "ma-carte-ayneha-" + d.modele + ".png"; }
@@ -357,13 +359,13 @@
     var imageFinale = document.getElementById("carte-img");
     function montrerImage(texte) {
       imageFinale.src = apercu.toDataURL("image/png");
-      imageFinale.alt = "Votre carte : " + d.latin;
+      imageFinale.alt = T("Votre carte : ", "Your card: ") + d.latin;
       document.getElementById("carte-image-aide").textContent = texte;
       boiteImage.hidden = false;
       boiteImage.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
     function cacherImage() { if (boiteImage && !boiteImage.hidden) { boiteImage.hidden = true; imageFinale.removeAttribute("src"); } }
-    var AIDE = "Si l'image n'apparaît pas dans vos téléchargements : appuyez longuement sur la carte ci-dessus, puis choisissez « Enregistrer l'image » ou « Partager l'image ».";
+    var AIDE = T("Si l'image n'apparaît pas dans vos téléchargements : appuyez longuement sur la carte ci-dessus, puis choisissez « Enregistrer l'image » ou « Partager l'image ».", "If the image does not appear in your downloads: press and hold the card above, then choose “Save image” or “Share image”.");
 
     document.getElementById("carte-partager").addEventListener("click", function () {
       if (!pret()) return;
@@ -373,37 +375,37 @@
         var possible = false;
         try { possible = !!(f && navigator.canShare && navigator.canShare({ files: [f] })); } catch (e) { possible = false; }
         if (possible) {
-          navigator.share({ files: [f], title: "Ma carte AYNEHA", text: "Écrit en AYNEHA, l'écriture du songhay - https://" + SITE + "/carte.html" })
+          navigator.share({ files: [f], title: T("Ma carte AYNEHA", "My AYNEHA card"), text: T("Écrit en AYNEHA, l'écriture du songhay - https://", "Written in AYNEHA, the writing system of Songhay - https://") + SITE + (EN ? "/en" : "") + "/carte.html" })
             .catch(function (err) {
               if (err && err.name === "AbortError") return; // partage annulé par la personne
-              montrerImage("Le partage direct n'est pas possible ici. Appuyez longuement sur la carte ci-dessus, puis choisissez « Partager l'image » ou « Enregistrer l'image ».");
+              montrerImage(T("Le partage direct n'est pas possible ici. Appuyez longuement sur la carte ci-dessus, puis choisissez « Partager l'image » ou « Enregistrer l'image ».", "Direct sharing is not possible here. Press and hold the card above, then choose “Share image” or “Save image”."));
             });
         } else {
           telecharger(blob);
-          montrerImage("Le partage direct n'est pas possible dans ce navigateur. " + AIDE);
+          montrerImage(T("Le partage direct n'est pas possible dans ce navigateur. ", "Direct sharing is not possible in this browser. ") + AIDE);
         }
       });
     });
     document.getElementById("carte-enregistrer").addEventListener("click", function () {
       if (!pret()) return;
-      enBlob(function (blob) { telecharger(blob); montrerImage("La carte est enregistrée dans vos téléchargements (dossier Download). " + AIDE); });
+      enBlob(function (blob) { telecharger(blob); montrerImage(T("La carte est enregistrée dans vos téléchargements (dossier Download). ", "The card is saved in your downloads (Download folder). ") + AIDE); });
     });
 
     function texteProposition() {
       var M = MODELES[d.modele];
       return [
-        "Bonjour AYNEHA,",
-        "je propose ma carte pour la galerie « Ma carte AYNEHA ».",
+        T("Bonjour AYNEHA,", "Hello AYNEHA,"),
+        T("je propose ma carte pour la galerie « Ma carte AYNEHA ».", "I am submitting my card for the “My AYNEHA card” gallery."),
         "",
-        "Modèle : " + M.nom,
-        "Format : " + FORMATS[d.format].nom,
-        "Message en songhay (lettres latines) : " + d.latin,
-        "Message en AYNEHA : " + A.forPaste(d.ayneha),
-        "Texte latin affiché sur la carte : " + (d.montrerLatin ? "oui" : "non"),
-        "Traduction : " + (d.traduction || "(aucune)"),
-        "Pseudo : " + (d.pseudo || "(aucun)"),
+        T("Modèle : ", "Template: ") + M.nom,
+        T("Format : ", "Format: ") + FORMATS[d.format].nom,
+        T("Message en songhay (lettres latines) : ", "Message in Songhay (Latin letters): ") + d.latin,
+        T("Message en AYNEHA : ", "Message in AYNEHA: ") + A.forPaste(d.ayneha),
+        T("Texte latin affiché sur la carte : ", "Latin text shown on the card: ") + (d.montrerLatin ? T("oui", "yes") : T("non", "no")),
+        T("Traduction : ", "Translation: ") + (d.traduction || T("(aucune)", "(none)")),
+        T("Pseudo : ", "Nickname: ") + (d.pseudo || T("(aucun)", "(none)")),
         "",
-        "J'accepte que ma carte soit publiée dans la galerie après relecture, sous licence CC BY-SA 4.0."
+        T("J'accepte que ma carte soit publiée dans la galerie après relecture, sous licence CC BY-SA 4.0.", "I agree that my card may be published in the gallery after review, under the CC BY-SA 4.0 licence.")
       ].join("\n");
     }
     /* Les boutons « Proposer » sont de vrais liens, mis à jour à chaque changement :
@@ -411,7 +413,7 @@
     var lienMail = document.getElementById("carte-proposer-mail");
     var lienWa = document.getElementById("carte-proposer-wa");
     function majLiens() {
-      lienMail.href = "mailto:" + CONTACT + "?subject=" + encodeURIComponent("Ma carte AYNEHA - " + MODELES[d.modele].nom) + "&body=" + encodeURIComponent(texteProposition());
+      lienMail.href = "mailto:" + CONTACT + "?subject=" + encodeURIComponent(T("Ma carte AYNEHA - ", "My AYNEHA card - ") + MODELES[d.modele].nom) + "&body=" + encodeURIComponent(texteProposition());
       lienWa.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texteProposition());
     }
     [lienMail, lienWa].forEach(function (l) {

@@ -1,5 +1,5 @@
 {
-  "version": "20261014140229",
+  "version": "20261014145626",
   "files": [
     "404.html",
     "alphabet.html",
@@ -82,10 +82,13 @@
     "en/applications.html",
     "en/apprendre.html",
     "en/apropos.html",
+    "en/carte.html",
     "en/faq.html",
+    "en/galerie.html",
     "en/index.html",
     "en/outils.html",
     "en/presse.html",
+    "en/quiz.html",
     "en/ressources.html",
     "faq.html",
     "galerie.html",

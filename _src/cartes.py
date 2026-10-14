@@ -15,6 +15,7 @@
 #   ayneha      : facultatif ; le texte AYNEHA exact, collé depuis le clavier AYNEHA,
 #                 seulement si la transcription automatique du texte latin ne convient pas
 #   traduction  : facultatif, en français
+#   traduction_en: facultatif, la traduction anglaise affichée sur la version anglaise de la galerie
 #   pseudo      : tel qu'écrit par la personne ("" si aucun)
 #   montrerLatin: True ou False (afficher le texte latin sur la carte)
 #   date        : date de publication, par exemple "14 octobre 2026"
@@ -26,7 +27,7 @@
 CARTES = [
     # Exemples préparés par AYNEHA (marqués « Exemple » dans la galerie)
     {"exemple": True, "modele": "fierte", "format": "carre", "texte": "ayneha",
-     "traduction": "l'écriture du songhay", "pseudo": "", "montrerLatin": True},
+     "traduction": "l'écriture du songhay", "traduction_en": "the writing system of Songhay", "pseudo": "", "montrerLatin": True},
     {"exemple": True, "modele": "fete", "format": "carre", "texte": "wa key yeshi, war ma alhanaŋ",
-     "traduction": "Vous souhaite bonne fête et vous demande pardon", "pseudo": "MAIGUS", "montrerLatin": True},
+     "traduction": "Vous souhaite bonne fête et vous demande pardon", "traduction_en": "Wishing you a happy celebration and asking your forgiveness", "pseudo": "MAIGUS", "montrerLatin": True},
 ]

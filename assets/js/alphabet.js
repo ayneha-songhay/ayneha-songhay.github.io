@@ -4,14 +4,6 @@
 (function () {
   "use strict";
   var EN = document.documentElement.lang === "en";
-  var SON_EN = {
-    A: "a as in “father”", E: "e as in “they” (French é)", I: "i as in “machine”", O: "o as in “go”", U: "u as in “food”",
-    B: "b as in “bed”", P: "p as in “pen”", M: "m as in “man”", F: "f as in “fan”", W: "w as in “we”", D: "d as in “day”",
-    T: "t as in “top”", N: "n as in “no”", L: "l as in “leg”", R: "rolled r", S: "s always voiceless, as in “sun”",
-    Z: "z as in “zoo”", SH: "sh as in “ship”", TS: "ch as in “church”", J: "s as in “measure”", DJ: "j as in “jam”",
-    GN: "ny as in “canyon”", Y: "y as in “yes”", G: "g always hard, as in “go”", K: "k as in “kite”",
-    H: "h always pronounced, as in “hat”", NG: "ng as in “sing”"
-  };
   var FORME_EN = { "initiale": "basic", "nasalisée": "nasalised", "ouverte": "open", "double": "double", "muette": "silent" };
   var L = window.AYNEHA_LETTRES || [];
   var A = window.Ayneha;
@@ -47,7 +39,7 @@
     cartes[lettre.id].setAttribute("aria-expanded", "true");
     f("glyphe").textContent = lettre.glyphe;
     f("titre").textContent = (EN ? (lettre.type === "voyelle" ? "The vowel " : "The consonant ") : (lettre.type === "voyelle" ? "La voyelle " : "La consonne ")) + lettre.nom;
-    f("son").textContent = EN ? (SON_EN[lettre.id] || lettre.son) : lettre.son;
+    f("son").textContent = EN ? (lettre.son_en || lettre.son) : lettre.son;
     f("epel").textContent = EN ? "“" + lettre.epel + "”" : "« " + lettre.epel + " »";
     f("cp").textContent = lettre.cp;
     var v = f("variantes");

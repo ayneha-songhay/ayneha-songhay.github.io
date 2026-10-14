@@ -504,13 +504,23 @@ def js_data():
     return src
 
 
+SON_EN = {
+    "A": "a as in “father”", "E": "e as in “they” (French é)", "I": "i as in “machine”", "O": "o as in “go”", "U": "u as in “food”",
+    "B": "b as in “bed”", "P": "p as in “pen”", "M": "m as in “man”", "F": "f as in “fan”", "W": "w as in “we”", "D": "d as in “day”",
+    "T": "t as in “top”", "N": "n as in “no”", "L": "l as in “leg”", "R": "rolled r", "S": "s always voiceless, as in “sun”",
+    "Z": "z as in “zoo”", "SH": "sh as in “ship”", "TS": "ch as in “church”", "J": "s as in “measure”", "DJ": "j as in “jam”",
+    "GN": "ny as in “canyon”", "Y": "y as in “yes”", "G": "g always hard, as in “go”", "K": "k as in “kite”",
+    "H": "h always pronounced, as in “hat”", "NG": "ng as in “sing”",
+}
+
+
 def alphabet_data():
     """Données de la page Alphabet : lettres, variantes, points de code."""
     out = []
     for L in G.LETTERS:
         label, son, epel, lat = G.INFO[L]
         out.append({
-            "id": L, "nom": label, "son": son, "epel": epel,
+            "id": L, "nom": label, "son": son, "son_en": SON_EN.get(L, son), "epel": epel,
             "type": "voyelle" if L in G.VOWELS else "consonne",
             "glyphe": chr(G.CP[L]), "cp": G.cp_hex(L),
             "variantes": [{"g": chr(G.CP[n]), "nom": lab, "lat": G.latin(n), "cp": G.cp_hex(n)} for n, lab in G.variants(L)],

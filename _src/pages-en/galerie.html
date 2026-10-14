@@ -1,0 +1,43 @@
+title: AYNEHA card gallery - the community's cards
+description: Cards written in AYNEHA by the Songhay community: wishes, greetings, proverbs. Create yours and submit it to the gallery.
+nav: galerie
+scripts: assets/js/ayneha.js assets/js/cartes-data.js assets/js/carte.js
+---
+<section class="outil-tete">
+  <div class="wrap">
+    <h1>The card gallery</h1>
+    <p>Wishes, greetings and proverbs written in AYNEHA by the community, from the most recent to the oldest. Every card is reviewed before being published. Cards marked “example” were prepared by AYNEHA to show what a card looks like.</p>
+    <div class="boutons"><a class="btn" href="carte.html">Create my card</a><a class="btn btn-ligne" href="carte.html#proposer">Submit my card</a></div>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <div class="carte-filtres" id="carte-filtres" role="group" aria-label="Filter by template" hidden></div>
+    <div class="carte-galerie" id="carte-galerie"></div>
+    <div class="encadre carte-galerie-vide" id="carte-galerie-vide" hidden>
+      <h3>The gallery is waiting for you</h3>
+      <p class="doux">No card has been published yet. Create yours and submit it: it could be the very first one.</p>
+      <a class="btn btn-petit" href="carte.html">Create my card</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-claire">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Gallery rules</h2>
+      <ul class="liste-regles">
+        <li>Every card submitted is reviewed, and corrected if necessary, before being published.</li>
+        <li>The nickname appears on the card exactly as the person typed it.</li>
+        <li>A card containing an insult or disrespect towards a person is not published.</li>
+        <li>Every approved card is published in the gallery.</li>
+        <li>Published cards are under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a> licence: anyone may share them, crediting AYNEHA and the nickname.</li>
+      </ul>
+    </div>
+    <div class="encadre">
+      <h3>Removing a card</h3>
+      <p class="doux">You submitted a card and would like it removed? Write to <a href="mailto:{{contact}}?subject=Remove%20my%20card">{{contact}}</a>.</p>
+    </div>
+  </div>
+</section>
