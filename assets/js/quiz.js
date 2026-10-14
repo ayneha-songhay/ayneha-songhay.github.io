@@ -205,5 +205,6 @@
     suivante();
   }
 
-  accueil();
+  var direct = JEUX.filter(function (j) { return "#" + j.id === location.hash; })[0];
+  if (direct) jouer(direct); else accueil();
 })();

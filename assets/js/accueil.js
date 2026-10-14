@@ -28,3 +28,28 @@
   demo();
   if (!reduit) timer = setInterval(function () { if (!champ.value) demo(); }, 2600);
 })();
+
+/* Le mot AYNEHA s'écrit lettre par lettre, de droite à gauche (2 secondes), pour montrer le sens de lecture. */
+(function () {
+  "use strict";
+  var titre = document.querySelector(".ardoise-titre .ay");
+  if (!titre) return;
+  var reduit = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var lettres = Array.from(titre.textContent);
+  titre.textContent = "";
+  var spans = lettres.map(function (c, i) {
+    var s = document.createElement("span");
+    s.className = "trace-lettre";
+    s.style.animationDelay = (0.25 + i * 0.3) + "s";
+    s.textContent = c;
+    titre.appendChild(s);
+    return s;
+  });
+  if (reduit) { spans.forEach(function (s) { s.classList.add("fixe"); }); return; }
+  function rejouer() {
+    spans.forEach(function (s) { s.classList.remove("trace-lettre"); void s.offsetWidth; s.classList.add("trace-lettre"); });
+  }
+  titre.parentNode.style.cursor = "pointer";
+  titre.parentNode.setAttribute("title", "Toucher pour revoir le sens d'écriture");
+  titre.parentNode.addEventListener("click", rejouer);
+})();

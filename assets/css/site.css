@@ -628,3 +628,52 @@ td .ay { font-size: 2rem; color: var(--sable); }
 .quiz-message { font-size: 1.15rem; margin: 8px 0; }
 .quiz-fin .boutons { justify-content: center; margin-top: 22px; }
 @media (max-width: 520px) { .quiz-ordre { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- Sens de lecture ---------- */
+.trace-lettre { display: inline-block; opacity: 0; animation: trace-apparait .45s ease-out forwards; }
+.trace-lettre.fixe { opacity: 1; animation: none; }
+@keyframes trace-apparait { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
+.sens-lecture { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; color: #B24E0B; font-weight: 600; white-space: nowrap; }
+.sens-lecture b { font-size: 1.3rem; line-height: 1; animation: fleche 1.6s ease-in-out infinite; display: inline-block; }
+@keyframes fleche { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-6px); } }
+@media (prefers-reduced-motion: reduce) { .sens-lecture b { animation: none; } }
+.sens-lecture-bloc { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.sens-lecture-bloc .sens-lecture { background: var(--sable); padding: 4px 12px; border-radius: 999px; }
+.ay-inline { font-size: 1.5em; line-height: 1; vertical-align: -0.12em; color: var(--sable); }
+.tablette .ay-inline { color: var(--encre); }
+
+/* ---------- Tableau du système ---------- */
+.tableau-systeme td:last-child, .tableau-systeme th:last-child { text-align: right; font-weight: 600; white-space: nowrap; }
+.tableau-systeme tfoot td { font-weight: 700; border-top: 2px solid var(--trait); }
+
+/* ---------- Soutien, plateformes ---------- */
+.soutien-bientot { margin: 14px 0 0; padding: 12px 14px; border-radius: 12px; border: 1px dashed var(--trait); color: var(--texte-doux); font-size: .97rem; }
+.note-plateforme { color: var(--texte-doux); font-size: .97rem; margin-top: 6px; }
+
+/* ---------- Étapes de la carte ---------- */
+.etapes-carte-zone { padding-top: 6px; padding-bottom: 0; }
+.etapes-carte p { margin: 3px 0 0; }
+.outil-tete .boutons { margin-top: 18px; }
+.etapes-carte { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.etapes-carte li { display: flex; gap: 12px; align-items: flex-start; background: var(--nuit-2); border: 1px solid var(--trait); border-radius: 16px; padding: 14px 16px; color: var(--texte); }
+.etapes-carte span { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--orange); color: var(--nuit); font-weight: 700; }
+.etapes-carte strong { color: var(--sable); }
+@media (max-width: 760px) { .etapes-carte { grid-template-columns: 1fr; } }
+.carte-exemple figcaption { color: var(--orange-clair); }
+
+/* ---------- Parcours ---------- */
+.parcours { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; max-width: 860px; }
+.parcours li { display: flex; gap: 18px; align-items: flex-start; background: var(--nuit-2); border: 1px solid var(--trait); border-radius: 20px; padding: 22px; }
+.parcours-num { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; background: var(--orange); color: var(--nuit); font-weight: 700; font-size: 1.3rem; }
+.parcours h2 { font-size: 1.35rem; margin: 6px 0 6px; }
+.parcours p { color: var(--texte-doux); margin: 0 0 12px; }
+@media (max-width: 520px) { .parcours li { flex-direction: column; gap: 10px; padding: 18px; } }
+
+/* ---------- FAQ ---------- */
+.faq { max-width: 860px; }
+.faq-groupe { font-size: 1.15rem; color: var(--orange-clair); margin: 30px 0 10px; text-transform: uppercase; letter-spacing: .06em; }
+.faq-groupe:first-child { margin-top: 0; }
+.faq details { background: var(--nuit-2); border: 1px solid var(--trait); border-radius: 14px; margin-bottom: 10px; }
+.faq summary { cursor: pointer; padding: 16px 18px; font-weight: 600; color: var(--sable); list-style-position: outside; }
+.faq details[open] summary { border-bottom: 1px solid var(--trait); }
+.faq details > p, .faq details > ul { margin: 14px 18px; color: var(--texte); }

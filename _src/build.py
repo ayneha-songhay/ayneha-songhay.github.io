@@ -279,6 +279,7 @@ def pied():
       <div>
         <h2>Découvrir</h2>
         <ul>
+          <li><a href="apprendre.html">Commencer ici</a></li>
           <li><a href="alphabet.html">L'alphabet</a></li>
           <li><a href="alphabet.html#regles">Les 22 règles</a></li>
           <li><a href="quiz.html">Quiz</a></li>
@@ -290,7 +291,7 @@ def pied():
       <div>
         <h2>Outils en ligne</h2>
         <ul>
-          <li><a href="convertisseur.html">Transcripteur</a></li>
+          <li><a href="convertisseur.html">Transcripteur latin → AYNEHA</a></li>
           <li><a href="clavier.html">Clavier</a></li>
           <li><a href="calculatrice.html">Calculatrice</a></li>
           <li><a href="nombres.html">Convertisseur de nombres</a></li>
@@ -302,6 +303,7 @@ def pied():
         <h2>Le projet</h2>
         <ul>
           <li><a href="apropos.html">À propos</a></li>
+          <li><a href="faq.html">Questions fréquentes</a></li>
           <li><a href="presse.html">Espace presse</a></li>
           <li><a href="apropos.html#soutenir">Soutenir le projet</a></li>
           <li><a href="confidentialite.html">Confidentialité</a></li>

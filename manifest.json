@@ -1,9 +1,10 @@
 {
-  "version": "20261014114124",
+  "version": "20261014131959",
   "files": [
     "404.html",
     "alphabet.html",
     "applications.html",
+    "apprendre.html",
     "apropos.html",
     "assets/css/site.css",
     "assets/fonts/OFL-Jost.txt",
@@ -77,6 +78,7 @@
     "confidentialite.html",
     "convertisseur.html",
     "developpeurs.html",
+    "faq.html",
     "galerie.html",
     "horloge.html",
     "index.html",

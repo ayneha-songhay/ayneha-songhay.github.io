@@ -24,4 +24,9 @@
 #    "pseudo": "Fati de Gao", "montrerLatin": True, "date": "14 octobre 2026"},
 
 CARTES = [
+    # Exemples préparés par AYNEHA (marqués « Exemple » dans la galerie)
+    {"exemple": True, "modele": "fierte", "format": "carre", "texte": "ayneha",
+     "traduction": "l'écriture du songhay", "pseudo": "", "montrerLatin": True},
+    {"exemple": True, "modele": "fete", "format": "carre", "texte": "wa key yeshi, war ma alhanaŋ",
+     "traduction": "Vous souhaite bonne fête et vous demande pardon", "pseudo": "MAIGUS", "montrerLatin": True},
 ]

@@ -256,7 +256,8 @@
       cv.setAttribute("role", "img");
       cv.setAttribute("aria-label", "Carte " + ((MODELES[c.modele] || MODELES.salut).nom) + " : " + (c.texte || "") + (c.traduction ? " (" + c.traduction + ")" : ""));
       var cap = document.createElement("figcaption");
-      cap.textContent = (c.pseudo ? c.pseudo : "Anonyme") + (c.date ? " - " + c.date : "");
+      cap.textContent = (c.exemple ? "Exemple AYNEHA" + (c.pseudo ? " - " + c.pseudo : "") : (c.pseudo ? c.pseudo : "Anonyme") + (c.date ? " - " + c.date : ""));
+      if (c.exemple) fig.classList.add("carte-exemple");
       fig.appendChild(cv); fig.appendChild(cap);
       zone.appendChild(fig); items.push(fig);
     });
@@ -402,7 +403,7 @@
         "Traduction : " + (d.traduction || "(aucune)"),
         "Pseudo : " + (d.pseudo || "(aucun)"),
         "",
-        "J'accepte que ma carte soit publiée dans la galerie après relecture."
+        "J'accepte que ma carte soit publiée dans la galerie après relecture, sous licence CC BY-SA 4.0."
       ].join("\n");
     }
     /* Les boutons « Proposer » sont de vrais liens, mis à jour à chaque changement :
