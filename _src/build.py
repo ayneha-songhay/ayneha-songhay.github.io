@@ -9,6 +9,7 @@
 import datetime
 import html
 import json
+from urllib.parse import quote
 import os
 import re
 import sys
@@ -23,6 +24,9 @@ import cartes as CARTES  # noqa: E402
 
 SITE_URL = "https://ayneha-songhay.github.io"
 CONTACT = "contact@ayneha.org"
+# Questions techniques sur les applications : alias du développeur
+# (à remplacer par dev@ayneha.org quand l'offre e-mail OVH le permettra).
+CONTACT_DEV = "gwokmt2q@duck.com"
 ANNEE = 2026
 
 NAV = [
@@ -58,7 +62,7 @@ def macros(src):
     src = src.replace("{{applications}}", rendu_apps_grille())
     src = src.replace("{{apps-accueil}}", rendu_apps_accueil())
     src = re.sub(r"\{\{apps-nav:([a-z-]+)\}\}", lambda m: apps_nav(m.group(1)), src)
-    src = src.replace("{{contact}}", CONTACT).replace("{{annee}}", str(ANNEE))
+    src = src.replace("{{contact-dev}}", CONTACT_DEV).replace("{{contact}}", CONTACT).replace("{{annee}}", str(ANNEE))
     return src
 
 
@@ -170,6 +174,8 @@ def page_app(a):
         {code}
         <p class="petit"><a href="confidentialite-{a['id']}.html">Politique de confidentialité complète</a></p>
         <p class="petit"><a href="installer-apk.html">Installer un fichier APK</a></p>
+        <h3>Une question technique ?</h3>
+        <p class="doux">Écrivez au développeur : <a href="mailto:{CONTACT_DEV}?subject={quote(a['nom'])}">{CONTACT_DEV}</a></p>
       </div>
       {outil}
     </aside>
@@ -182,6 +188,7 @@ def page_confidentialite(c):
     if c["type"].startswith("Application") and not any(t == "Logiciel libre" for t, _ in sections):
         sections.append(CONF.libre(c["nom"]))
     corps = "".join(f"<h2>{E(t)}</h2><p>{E(x)}</p>" for t, x in sections)
+    adresse = CONTACT_DEV if c["type"].startswith("Application") else CONTACT
     lien = ""
     if c["type"].startswith("Application"):
         lien = f'<a class="btn btn-ligne btn-petit" href="{c["id"]}.html">Voir {E(c["nom"])}</a>'
@@ -198,7 +205,7 @@ def page_confidentialite(c):
   <div class="wrap"><div class="texte-long">
     {corps}
     <h2>Contact</h2>
-    <p>Pour toute question sur cette politique : <a href="mailto:{CONTACT}">{CONTACT}</a>. Développé par MAIGUS.</p>
+    <p>Pour toute question sur cette politique : <a href="mailto:{adresse}">{adresse}</a>. Développé par MAIGUS.</p>
     <p class="doux petit">Dernière mise à jour : {CONF.MAJ}.</p>
     <div class="boutons">{lien}<a class="btn btn-ligne btn-petit" href="confidentialite.html">Toutes les politiques</a></div>
   </div></div>
