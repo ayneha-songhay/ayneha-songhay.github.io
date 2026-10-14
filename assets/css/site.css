@@ -686,3 +686,12 @@ td .ay { font-size: 2rem; color: var(--sable); }
 .langues a { color: var(--texte-doux); }
 .langues a:hover { color: var(--sable); background: var(--nuit-3); }
 .langues span[aria-current] { background: var(--orange); color: var(--nuit); }
+.liste-apps-en { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+.liste-apps-en li { display: flex; gap: 16px; align-items: flex-start; background: var(--nuit-2); border: 1px solid var(--trait); border-radius: 18px; padding: 18px; }
+.liste-apps-en h3 { margin: 0 0 6px; font-size: 1.15rem; }
+.liste-apps-en h3 a { color: var(--sable); text-decoration: none; }
+.liste-apps-en h3 a:hover { color: var(--orange-clair); }
+.liste-apps-en p { margin: 0; color: var(--texte-doux); }
+.liste-simple { padding-left: 1.2em; }
+.liste-simple li { margin: .4em 0; }
+@media (max-width: 420px) { .liste-apps-en { grid-template-columns: 1fr; } }
