@@ -85,7 +85,7 @@ h2 {{ font-size: 13pt; margin: 4mm 0 2mm; color: #0E1A30; font-weight: 600; }}
 /* affiche */
 .affiche {{ padding: 10mm 12mm 10mm; }}
 .affiche h2 {{ margin: 3mm 0 1.5mm; font-size: 12pt; }}
-.ponc .tuile {{ width: 18mm; height: 19mm; }}
+.ponc .tuile {{ width: 18mm; height: 21mm; }}
 .ponc .tuile span {{ font-size: 7.5pt; white-space: nowrap; }}
 .ponc {{ flex-wrap: nowrap; gap: 1.8mm; }}
 .ponc .tuile .ay {{ font-size: 32pt; }}
@@ -96,23 +96,23 @@ h2 {{ font-size: 13pt; margin: 4mm 0 2mm; color: #0E1A30; font-weight: 600; }}
 .sens {{ display: inline-block; margin-top: 3mm; background: #0E1A30; color: #fff; border-radius: 10mm; padding: 1.2mm 5mm; font-size: 10pt; }}
 .sens b {{ color: #F07C22; }}
 .grille {{ display: flex; flex-direction: row-reverse; flex-wrap: wrap; gap: 2mm; justify-content: center; }}
-.tuile {{ width: 20.5mm; height: 22mm; border: 0.35mm solid #C9CED6; border-radius: 2mm; display: flex; flex-direction: column; align-items: center; justify-content: center; }}
+.tuile {{ width: 20.5mm; height: 24mm; padding: 1mm 0 2.5mm; border: 0.35mm solid #C9CED6; border-radius: 2mm; display: flex; flex-direction: column; align-items: center; justify-content: center; }}
 .tuile .ay {{ font-size: 40pt; }}
 .tuile span {{ font-size: 9pt; margin-top: 0.5mm; font-weight: 600; }}
 .tuile span small {{ font-weight: 400; color: #5b6780; }}
-.voy .tuile {{ border-color: #F07C22; border-width: 0.6mm; width: 26mm; height: 25mm; }}
+.voy .tuile {{ border-color: #F07C22; border-width: 0.6mm; width: 26mm; height: 27mm; }}
 .voy .tuile .ay {{ font-size: 48pt; }}
-.chif .tuile {{ width: 12.2mm; height: 19mm; background: #0E1A30; border-color: #0E1A30; color: #fff; }}
+.chif .tuile {{ width: 12.2mm; height: 21mm; background: #0E1A30; border-color: #0E1A30; color: #fff; }}
 .chif .tuile .ay {{ font-size: 28pt; color: #fff; }}
 .chif {{ gap: 1.8mm; flex-wrap: nowrap; }}
 .chif .tuile span {{ color: #FFA35A; }}
 .bas {{ display: flex; gap: 6mm; margin-top: 3mm; }}
 .bas > div {{ flex: 1; }}
 .acc {{ display: flex; flex-direction: row-reverse; gap: 2mm; flex-wrap: wrap; justify-content: center; }}
-.acc .tuile {{ width: 42mm; height: 22mm; flex-direction: column; }}
+.acc .tuile {{ width: 42mm; height: 30mm; flex-direction: column; padding: 2mm 0 3.5mm; gap: 1.5mm; }}
 .acc .paire {{ display: flex; flex-direction: row-reverse; align-items: center; gap: 2.5mm; font-size: 36pt; }}
 .acc .paire i {{ font-style: normal; font-size: 12pt; color: #F07C22; font-family: "Jost"; }}
-.acc span {{ font-size: 8.5pt; text-align: center; }}
+.acc span {{ font-size: 8.5pt; text-align: center; line-height: 1.35; }}
 .total {{ text-align: center; font-size: 9.5pt; color: #3a4660; margin: 3mm 0 0; }}
 h2.centre {{ text-align: center; }}
 """
