@@ -19,6 +19,7 @@ RACINE = os.path.dirname(ICI)
 sys.path.insert(0, ICI)
 import glyphs as G  # noqa: E402
 import applications as APPS  # noqa: E402
+import applications_en as APPS_EN  # noqa: E402
 import confidentialite as CONF  # noqa: E402
 import confidentialite_en as CONF_EN  # noqa: E402
 import cartes as CARTES  # noqa: E402
@@ -78,7 +79,7 @@ def ay_span(names, cls="", label=None):
     return f'<span class="{c}" role="img" aria-label="{html.escape(lecture)}">{txt}</span>'
 
 
-def macros(src):
+def macros(src, lang="fr"):
     # {{ay:A Y:m N E H A}}  ou  {{ay:A Y:m N E H A|classe|lecture}}
     def rep(m):
         parts = m.group(1).split("|")
@@ -90,37 +91,50 @@ def macros(src):
     src = re.sub(r"\{\{lecture:([^}]*)\}\}", lambda m: html.escape(G.reading(m.group(1))), src)
     src = src.replace("{{applications}}", rendu_apps_grille())
     src = src.replace("{{apps-accueil}}", rendu_apps_accueil())
-    src = re.sub(r"\{\{apps-nav:([a-z-]+)\}\}", lambda m: apps_nav(m.group(1)), src)
+    src = re.sub(r"\{\{apps-nav:([a-z-]+)\}\}", lambda m: apps_nav(m.group(1), lang == "en"), src)
     src = src.replace("{{contact-dev}}", CONTACT_DEV).replace("{{contact}}", CONTACT).replace("{{annee}}", str(ANNEE))
     return src
 
 
 E = html.escape
 SOUS_PAGES = [("installer-apk", "Installer un APK"), ("developpeurs", "Développeurs")]
+SOUS_PAGES_EN = {"installer-apk": "Installing an APK", "developpeurs": "Developers"}
+
+
+def app_en(a):
+    """La fiche d'une application avec ses textes anglais (liens inchangés)."""
+    b = dict(a)
+    t = APPS_EN.TEXTES[a["id"]]
+    for k, v in t.items():
+        if k != "outil":
+            b[k] = v
+    if a.get("outil"):
+        b["outil"] = (a["outil"][0], t.get("outil", a["outil"][1]))
+    return b
 
 
 def logo_app(a, taille=""):
     return f'<img class="app-logo{taille}" src="assets/img/apps/{a["id"]}-logo.png" width="256" height="256" alt="">'
 
 
-def etiquette(a):
+def etiquette(a, en=False):
     st = a.get("statut")
     if st == "nouveau":
-        return '<span class="etiquette">Nouveau</span>'
+        return f'<span class="etiquette">{"New" if en else "Nouveau"}</span>'
     if st == "preparation":
-        return '<span class="etiquette etiquette-calme">En préparation</span>'
+        return f'<span class="etiquette etiquette-calme">{"In preparation" if en else "En préparation"}</span>'
     return ""
 
 
-def apps_nav(courant):
+def apps_nav(courant, en=False):
     liens = []
     for a in APPS.APPS:
         cur = ' aria-current="page"' if a["id"] == courant else ""
         liens.append(f'<a href="{a["id"]}.html"{cur}>{E(a["nom"])}</a>')
     for i, nom in SOUS_PAGES:
         cur = ' aria-current="page"' if i == courant else ""
-        liens.append(f'<a href="{i}.html"{cur}>{nom}</a>')
-    return '<nav class="pages-ancres apps-nav" aria-label="Pages des applications">' + "".join(liens) + "</nav>"
+        liens.append(f'<a href="{i}.html"{cur}>{SOUS_PAGES_EN[i] if en else nom}</a>')
+    return f'<nav class="pages-ancres apps-nav" aria-label="{"App pages" if en else "Pages des applications"}">' + "".join(liens) + "</nav>"
 
 
 def rendu_apps_grille():
@@ -143,43 +157,46 @@ def rendu_apps_accueil():
     return '<ul class="liste-apps">' + "".join(items) + "</ul>"
 
 
-def boutons_app(a):
+def boutons_app(a, en=False):
     out = []
     if a.get("statut") == "preparation":
-        return '<span class="btn" aria-disabled="true">Bientôt disponible</span>'
+        return f'<span class="btn" aria-disabled="true">{"Coming soon" if en else "Bientôt disponible"}</span>'
     if a["naabiga"]:
-        out.append(f'<a class="btn" href="{a["naabiga"]}" rel="noopener">Télécharger sur Naabiga</a>')
+        out.append(f'<a class="btn" href="{a["naabiga"]}" rel="noopener">{"Download on Naabiga" if en else "Télécharger sur Naabiga"}</a>')
     else:
-        out.append('<span class="btn" aria-disabled="true">Bientôt sur Naabiga</span>')
+        out.append(f'<span class="btn" aria-disabled="true">{"Soon on Naabiga" if en else "Bientôt sur Naabiga"}</span>')
     if a["apk"]:
-        out.append(f'<a class="btn btn-ligne" href="{a["apk"]}" download>Télécharger l\'APK ici</a>')
+        out.append(f'<a class="btn btn-ligne" href="{a["apk"]}" download>{"Download the APK here" if en else "Télécharger l&#39;APK ici"}</a>')
     else:
-        out.append('<span class="btn" aria-disabled="true">Téléchargement direct bientôt</span>')
+        out.append(f'<span class="btn" aria-disabled="true">{"Direct download soon" if en else "Téléchargement direct bientôt"}</span>')
     return "".join(out)
 
 
-def page_app(a):
+def page_app(a, en=False):
+    if en:
+        a = app_en(a)
+    T = (lambda f, e: e) if en else (lambda f, e: f)
     intro = "".join(f"<p>{E(t)}</p>" for t in a["intro"])
     points = "".join(f"<li>{E(t)}</li>" for t in a["points"])
     etapes = ""
     if a.get("etapes"):
-        etapes = '<h2>Comment l\'utiliser</h2><ol class="regles">' + "".join(f"<li>{E(t)}</li>" for t in a["etapes"]) + "</ol>"
+        etapes = '<h2>' + T("Comment l'utiliser", "How to use it") + '</h2><ol class="regles">' + "".join(f"<li>{E(t)}</li>" for t in a["etapes"]) + "</ol>"
     reserve = f'<p class="reserve">{E(a["reserve"])}</p>' if a.get("reserve") else ""
-    reglages = f'<h3>Réglages</h3><p class="doux">{E(a["reglages"])}</p>' if a.get("reglages") else ""
-    code = f'<p><a href="{a["code"]}" rel="noopener">Code source (logiciel libre, GPL v3)</a></p>' if a.get("code") else ""
+    reglages = f'<h3>{T("Réglages", "Settings")}</h3><p class="doux">{E(a["reglages"])}</p>' if a.get("reglages") else ""
+    code = f'<p><a href="{a["code"]}" rel="noopener">{T("Code source (logiciel libre, GPL v3)", "Source code (free software, GPL v3)")}</a></p>' if a.get("code") else ""
     outil = ""
     if a.get("outil"):
-        outil = f'<div class="encadre"><h3>Sans rien installer</h3><p class="doux">Une version de cet outil fonctionne directement sur le site.</p><a class="btn btn-ligne btn-petit" href="{a["outil"][0]}">{a["outil"][1]}</a></div>'
+        outil = f'<div class="encadre"><h3>{T("Sans rien installer", "Nothing to install")}</h3><p class="doux">{T("Une version de cet outil fonctionne directement sur le site.", "A version of this tool works right on the website.")}</p><a class="btn btn-ligne btn-petit" href="{a["outil"][0]}">{a["outil"][1]}</a></div>'
     return f"""<section class="app-tete">
   <div class="wrap">
-    {apps_nav(a['id'])}
-    <img class="couverture" src="assets/img/apps/{a['id']}-couverture.jpg" width="1200" height="675" alt="Couverture de l'application {E(a['nom'])}">
+    {apps_nav(a['id'], en)}
+    <img class="couverture" src="assets/img/apps/{a['id']}-couverture.jpg" width="1200" height="675" alt="{T('Couverture de l&#39;application', 'Cover of the app')} {E(a['nom'])}">
     <div class="app-identite">
       {logo_app(a, " app-logo-grand")}
       <div>
-        <h1>{E(a['nom'])} {etiquette(a)}</h1>
+        <h1>{E(a['nom'])} {etiquette(a, en)}</h1>
         <p class="chapeau">{E(a['resume'])}</p>
-        <div class="boutons">{boutons_app(a)}</div>
+        <div class="boutons">{boutons_app(a, en)}</div>
       </div>
     </div>
   </div>
@@ -189,22 +206,22 @@ def page_app(a):
     <div class="texte-long">
       {intro}
       {reserve}
-      <h2>Ce qu'elle fait</h2>
+      <h2>{T("Ce qu'elle fait", "What it does")}</h2>
       <ul>{points}</ul>
       {etapes}
     </div>
     <aside>
       <div class="encadre">
-        <h3>Compatibilité</h3>
+        <h3>{T("Compatibilité", "Compatibility")}</h3>
         <p class="doux">{E(a['compat'])}</p>
         {reglages}
-        <h3>Confidentialité</h3>
-        <p class="doux">{E(APPS.CONFIDENTIALITE)}</p>
+        <h3>{T("Confidentialité", "Privacy")}</h3>
+        <p class="doux">{E(APPS_EN.CONFIDENTIALITE if en else APPS.CONFIDENTIALITE)}</p>
         {code}
-        <p class="petit"><a href="confidentialite-{a['id']}.html">Politique de confidentialité complète</a></p>
-        <p class="petit"><a href="installer-apk.html">Installer un fichier APK</a></p>
-        <h3>Une question technique ?</h3>
-        <p class="doux">Écrivez au développeur : <a href="mailto:{CONTACT_DEV}?subject={quote(a['nom'])}">{CONTACT_DEV}</a></p>
+        <p class="petit"><a href="confidentialite-{a['id']}.html">{T("Politique de confidentialité complète", "Full privacy policy")}</a></p>
+        <p class="petit"><a href="installer-apk.html">{T("Installer un fichier APK", "Installing an APK file")}</a></p>
+        <h3>{T("Une question technique ?", "A technical question?")}</h3>
+        <p class="doux">{T("Écrivez au développeur :", "Write to the developer:")} <a href="mailto:{CONTACT_DEV}?subject={quote(a['nom'])}">{CONTACT_DEV}</a></p>
       </div>
       {outil}
     </aside>
@@ -608,6 +625,7 @@ def main():
     if os.path.isdir(pages_en_dir):
         PAGES_EN.update(f for f in os.listdir(pages_en_dir) if f.endswith(".html"))
     PAGES_EN.add("confidentialite.html")
+    PAGES_EN.update(a["id"] + ".html" for a in APPS.APPS)
     PAGES_EN.update(f"confidentialite-{c['id']}.html" for c in CONF_EN.ANDROID + CONF_EN.WEB)
     for f in sorted(os.listdir(pages_dir)):
         if not f.endswith(".html"):
@@ -623,7 +641,7 @@ def main():
     for f in sorted(x for x in PAGES_EN if os.path.exists(os.path.join(pages_en_dir, x))):
         meta, corps = lire_page(os.path.join(pages_en_dir, f))
         meta["_file"] = f
-        out = relier_en(page(meta, macros(corps), "en"))
+        out = relier_en(page(meta, macros(corps, "en"), "en"))
         with open(os.path.join(RACINE, "en", f), "w", encoding="utf-8") as fh:
             fh.write(out)
         produits.append("en/" + f)
@@ -645,6 +663,12 @@ def main():
         with open(os.path.join(RACINE, a["id"] + ".html"), "w", encoding="utf-8") as fh:
             fh.write(page(meta, macros(page_app(a))))
         produits.append(a["id"] + ".html")
+        b = app_en(a)
+        meta = {"title": f"{a['nom']} - AYNEHA Android app", "description": b["resume"] + " " + b["intro"][0][:110],
+                "nav": "applications", "_file": a["id"] + ".html", "image": f"assets/img/apps/{a['id']}-couverture.jpg"}
+        with open(os.path.join(RACINE, "en", a["id"] + ".html"), "w", encoding="utf-8") as fh:
+            fh.write(relier_en(page(meta, macros(page_app(a, True), "en"), "en")))
+        produits.append("en/" + a["id"] + ".html")
 
     meta = {"title": "Confidentialité - AYNEHA", "description": "Les règles de confidentialité du site et de chaque application et outil AYNEHA : aucune donnée collectée, pas de compte, pas de traceur, pas de publicité.", "nav": "", "_file": "confidentialite.html"}
     with open(os.path.join(RACINE, "confidentialite.html"), "w", encoding="utf-8") as fh:

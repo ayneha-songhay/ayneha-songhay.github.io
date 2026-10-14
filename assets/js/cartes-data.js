@@ -19,5 +19,15 @@ window.AYNEHA_CARTES = [
   "traduction_en": "Wishing you a happy celebration and asking your forgiveness",
   "pseudo": "MAIGUS",
   "montrerLatin": true
+ },
+ {
+  "modele": "fierte",
+  "format": "statut",
+  "texte": "mo kãga ni bey no ma ni hẽ",
+  "traduction": "C’est l’œil qui te connaît qui te pleure",
+  "traduction_en": "It is the eye that knows you that weeps for you",
+  "pseudo": "Albachar",
+  "montrerLatin": true,
+  "date": "14 octobre 2026"
  }
 ];

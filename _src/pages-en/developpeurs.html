@@ -1,0 +1,45 @@
+title: AYNEHA for developers - Keyboard SDK
+description: The free AYNEHA Keyboard SDK for Android (Kotlin): embedded keyboard, Latin to AYNEHA transliteration and system keyboard, with the 98 AYNEHA characters.
+nav: applications
+---
+<section class="page-tete">
+  <div class="wrap">
+    {{apps-nav:developpeurs}}
+    <h1 style="margin-top:28px">For developers</h1>
+    <p>Add the AYNEHA writing system to your own Android app with the AYNEHA Keyboard SDK, a free library written in Kotlin.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap cote">
+    <div class="texte-long">
+      <h2>Three ways to integrate it</h2>
+      <ol class="regles">
+        <li><strong>The keyboard in your screen</strong>: the AYNEHA keyboard placed directly in your app, without the user switching system keyboards.</li>
+        <li><strong>Transliteration</strong>: the user types in Latin letters on their usual keyboard, and the text is written in AYNEHA on the fly.</li>
+        <li><strong>The system keyboard</strong>: the complete AYNEHA keyboard, usable in every app, to include in your project.</li>
+      </ol>
+      <p>Modes 1 and 3 share the same key layout. The 98 AYNEHA characters and their code points are provided.</p>
+      <h2>Installation</h2>
+      <p>The SDK is provided as source code, as a Gradle module <code>:ayneha-keyboard</code> to include in your project. It can also be built as an <code>.aar</code> library. The full instructions are in the repository.</p>
+      <h2>Good to know</h2>
+      <ul>
+        <li>AYNEHA characters are in the Unicode Private Use Area, from U+10FF7C to U+10FFDD: each one takes two UTF-16 code units. Work with code points, never with isolated chars.</li>
+        <li>For Android, these code points are "strong left-to-right": for correct right-to-left display, reverse the order of the characters before drawing them.</li>
+        <li>Never apply bold or underline to AYNEHA: to emphasise, make the text larger.</li>
+      </ul>
+    </div>
+    <aside>
+      <div class="encadre">
+        <h3>The source code</h3>
+        <p class="doux">Free software: code under the GNU LGPL v3, font under the SIL OFL 1.1.</p>
+        <a class="btn" href="https://github.com/maigus223/ayneha-keyboard-sdk" rel="noopener">Open the GitHub repository</a>
+      </div>
+      <div class="encadre">
+        <h3>A question?</h3>
+        <p class="doux">For a project that integrates AYNEHA, write to <a href="mailto:{{contact-dev}}?subject=AYNEHA%20Keyboard%20SDK">{{contact-dev}}</a>.</p>
+        <a class="btn btn-ligne btn-petit" href="ressources.html#police">Download the font</a>
+      </div>
+    </aside>
+  </div>
+</section>

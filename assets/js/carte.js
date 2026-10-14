@@ -8,6 +8,15 @@
   if (!A) return;
 
   var EN = document.documentElement.lang === "en";
+  var MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+  var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  function dateLangue(d) {
+    if (!EN) return d;
+    var m = /^(\d{1,2}) (\S+) (\d{4})$/.exec(d);
+    var k = m ? MOIS.indexOf(m[2].toLowerCase()) : -1;
+    return k < 0 ? d : m[1] + " " + MONTHS[k] + " " + m[3];
+  }
+
   function T(fr, en) { return EN ? en : fr; }
   var SITE = "ayneha.org";  // adresse affichée sur les cartes et dans le message de partage
   var CONTACT = "contact@ayneha.org";
@@ -258,7 +267,7 @@
       cv.setAttribute("role", "img");
       cv.setAttribute("aria-label", T("Carte ", "Card ") + ((MODELES[c.modele] || MODELES.salut).nom) + " : " + (c.texte || "") + (c.traduction ? " (" + c.traduction + ")" : ""));
       var cap = document.createElement("figcaption");
-      cap.textContent = (c.exemple ? T("Exemple AYNEHA", "AYNEHA example") + (c.pseudo ? " - " + c.pseudo : "") : (c.pseudo ? c.pseudo : T("Anonyme", "Anonymous")) + (c.date ? " - " + c.date : ""));
+      cap.textContent = (c.exemple ? T("Exemple AYNEHA", "AYNEHA example") + (c.pseudo ? " - " + c.pseudo : "") : (c.pseudo ? c.pseudo : T("Anonyme", "Anonymous")) + (c.date ? " - " + dateLangue(c.date) : ""));
       if (c.exemple) fig.classList.add("carte-exemple");
       fig.appendChild(cv); fig.appendChild(cap);
       zone.appendChild(fig); items.push(fig);
