@@ -1,9 +1,9 @@
-/* AYNEHA - convertisseur de nombres : AYNEHA, N'Ko, Dogon NÈNÈ, arabe et français.
+/* AYNEHA - convertisseur de nombres : AYNEHA, N'Ko, Adlam, Dogon NÈNÈ, arabe et français.
    Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS)
    SPDX-License-Identifier: GPL-3.0-or-later
    Version web d'AYNEHA NumConvert (mêmes tables de chiffres que l'application) :
    jusqu'à 17 chiffres, séparateurs de milliers.
-   En AYNEHA, en N'Ko et en Dogon NÈNÈ, le premier chiffre est à droite.
+   En AYNEHA, en N'Ko, en adlam et en Dogon NÈNÈ, le premier chiffre est à droite.
    Chiffres Dogon NÈNÈ : écriture de Yahya Sékou Salah GUINDO (police DogonNene,
    zone d'usage privé U+E01A-U+E023). */
 (function () {
@@ -16,10 +16,11 @@
     ayneha: { nom: "AYNEHA", chiffres: "0123456789".split("").map(function (d) { return A.digits(d); }), rtl: true },
     francais: { nom: T("Français", "Western"), chiffres: "0123456789".split(""), rtl: false },
     nko: { nom: "N'Ko", chiffres: Array.from("߀߁߂߃߄߅߆߇߈߉"), rtl: true },
+    adlam: { nom: "Adlam", chiffres: Array.from("\u{1E950}\u{1E951}\u{1E952}\u{1E953}\u{1E954}\u{1E955}\u{1E956}\u{1E957}\u{1E958}\u{1E959}"), rtl: true },
     dogon: { nom: "Dogon NÈNÈ", chiffres: ["\uE023", "\uE01A", "\uE01B", "\uE01C", "\uE01D", "\uE01E", "\uE01F", "\uE020", "\uE021", "\uE022"], rtl: true },
     arabe: { nom: T("Arabe", "Arabic"), chiffres: "٠١٢٣٤٥٦٧٨٩".split(""), rtl: false, sep: "\u066C" }
   };
-  var ORDRE = ["ayneha", "nko", "dogon", "arabe", "francais"];
+  var ORDRE = ["ayneha", "nko", "adlam", "dogon", "arabe", "francais"];
   var MAX = 17;
   var valeur = "";
   var source = "ayneha";

@@ -493,6 +493,7 @@ td .ay { font-size: 2rem; color: var(--sable); }
 
 /* Convertisseur de nombres */
 @font-face { font-family: "Dogon Nene Chiffres"; src: url("../fonts/nene-chiffres.woff2") format("woff2"); unicode-range: U+E01A-E023; font-display: swap; }
+@font-face { font-family: "Noto Sans Adlam"; src: url("../fonts/noto-adlam-chiffres.woff2") format("woff2"); unicode-range: U+1E950-1E959; font-display: swap; }
 @font-face { font-family: "Noto Sans NKo"; src: url("../fonts/noto-nko-chiffres.woff2") format("woff2"); unicode-range: U+07C0-07C9; font-display: swap; }
 .nb-atelier { display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); gap: 34px; align-items: start; }
 .nb-atelier .calculatrice { margin: 0; min-width: 0; }
@@ -510,6 +511,7 @@ td .ay { font-size: 2rem; color: var(--sable); }
 .nb-rtl { direction: rtl; unicode-bidi: bidi-override; text-align: right; }
 .nb-ayneha { font-family: "Ayneha Pro"; font-size: 2.6rem; }
 .nb-nko { font-family: "Noto Sans NKo", "Ebrima", sans-serif; }
+.nb-adlam { font-family: "Noto Sans Adlam", "Ebrima", sans-serif; }
 .nb-dogon { font-family: "Dogon Nene Chiffres", sans-serif; font-size: 2.4rem; }
 .nb-arabe { direction: rtl; text-align: right; }
 .nb-arabe { font-family: "Noto Naskh Arabic", "Segoe UI", "Arial", sans-serif; }
@@ -721,3 +723,11 @@ td .ay { font-size: 2rem; color: var(--sable); }
 .vide-partenaires { border: 1px dashed var(--trait); border-radius: var(--rayon); padding: 22px; text-align: center; color: var(--texte-doux); }
 .trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 @media (max-width: 860px) { .trio { grid-template-columns: 1fr; } }
+
+/* ---------- Lexique ---------- */
+.lex-outils { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 18px; }
+.lex-outils .champ { flex: 1 1 260px; }
+.lex-liste { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 12px; }
+.lex-mot { background: var(--nuit-2); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 16px; display: grid; gap: 4px; margin: 0; }
+.lex-mot[hidden] { display: none; }
+.lex-ay { font-size: 2.1rem; color: var(--sable); text-align: right; overflow-wrap: anywhere; margin-bottom: 6px; }

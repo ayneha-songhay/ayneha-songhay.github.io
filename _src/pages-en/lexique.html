@@ -1,0 +1,49 @@
+title: Songhay - AYNEHA glossary: words, numbers, verbs
+description: A small Songhay glossary written in AYNEHA and in Latin letters, with the meaning in English: numbers, verbs and everyday words. Suggest your own words.
+nav: alphabet
+scripts: assets/js/ayneha.js assets/js/lexique-data.js assets/js/lexique.js assets/js/message.js
+---
+<section class="page-tete">
+  <div class="wrap">
+    <h1>Songhay - AYNEHA glossary</h1>
+    <p>Songhay words written in AYNEHA and in Latin letters, with their meaning. The glossary starts with the words already published by the creator of AYNEHA, and grows with the words you suggest.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <div class="lex-outils">
+      <input class="champ" id="lex-recherche" type="search" placeholder="Search a word" aria-label="Search a word" autocomplete="off" spellcheck="false">
+      <span class="doux" id="lex-compte" role="status"></span>
+    </div>
+    <div class="carte-choix" id="lex-filtres" role="group" aria-label="Category" style="margin-bottom:20px">
+      <button type="button" data-v="tout" aria-pressed="true">All</button>
+      <button type="button" data-v="nombres" aria-pressed="false">Numbers</button>
+      <button type="button" data-v="verbes" aria-pressed="false">Verbs</button>
+      <button type="button" data-v="quotidien" aria-pressed="false">Everyday words</button>
+    </div>
+    <ul class="lex-liste" id="lex-liste"></ul>
+  </div>
+</section>
+
+<section class="section section-claire" id="proposer">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Suggest a word</h2>
+      <p>An everyday word, a greeting, a modern word (phone, computer, trade)? Suggest it with its meaning. Every word is reviewed before being added to the glossary.</p>
+      <p class="doux petit">The form prepares a message that you send yourself, by WhatsApp or e-mail. The website records nothing.</p>
+    </div>
+    <form class="form-message encadre" data-sujet="A word for the AYNEHA glossary" data-intro="Hello AYNEHA,&#10;I would like to suggest a word for the glossary.&#10;" data-vide="Please write at least the word and its meaning." data-envoye="Your app is opening: you just need to send the message. Thank you!">
+      <div class="q"><label for="lx-mot">The word in Songhay <span class="doux">(Latin letters)</span></label><input class="champ" id="lx-mot" type="text" maxlength="60" spellcheck="false" autocapitalize="off" data-label="Word:"></div>
+      <div class="q"><label for="lx-sens">Its meaning</label><input class="champ" id="lx-sens" type="text" maxlength="100" data-label="Meaning:"></div>
+      <div class="q"><label for="lx-ex">An example sentence <span class="doux">(optional)</span></label><input class="champ" id="lx-ex" type="text" maxlength="160" data-label="Example:"></div>
+      <div class="q"><label for="lx-lieu">Where is this word used? <span class="doux">(optional)</span></label><input class="champ" id="lx-lieu" type="text" maxlength="60" placeholder="For example: Gao, Timbuktu, Niamey" data-label="Region:"></div>
+      <div class="q"><label for="lx-pseudo">Your nickname <span class="doux">(optional)</span></label><input class="champ" id="lx-pseudo" type="text" maxlength="30" autocomplete="off" data-label="Nickname:" data-auto></div>
+      <div class="boutons">
+        <a class="btn" data-canal="wa" href="https://wa.me/22366778763" target="_blank" rel="noopener">Suggest by WhatsApp</a>
+        <a class="btn btn-ligne" data-canal="mail" href="mailto:{{contact}}">Suggest by e-mail</a>
+      </div>
+      <p class="message-etat" role="status"></p>
+    </form>
+  </div>
+</section>

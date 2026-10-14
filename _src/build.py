@@ -23,6 +23,7 @@ import applications_en as APPS_EN  # noqa: E402
 import confidentialite as CONF  # noqa: E402
 import confidentialite_en as CONF_EN  # noqa: E402
 import cartes as CARTES  # noqa: E402
+import lexique as LEXIQUE  # noqa: E402
 
 SITE_URL = "https://ayneha-songhay.github.io"
 CONTACT = "contact@ayneha.org"
@@ -382,6 +383,7 @@ PIED_EN = """<footer class="pied">
           <li><a href="quiz.html">Quiz</a></li>
           <li><a href="galerie.html">Card gallery</a></li>
           <li><a href="applications.html">Apps</a></li>
+          <li><a href="lexique.html">Glossary</a></li>
           <li><a href="ressources.html">Resources</a></li>
           <li><a href="education.html">Teaching AYNEHA</a></li>
         </ul>
@@ -448,6 +450,7 @@ def pied(lang="fr", nom="index.html"):
           <li><a href="quiz.html">Quiz</a></li>
           <li><a href="galerie.html">Galerie des cartes</a></li>
           <li><a href="applications.html">Applications</a></li>
+          <li><a href="lexique.html">Lexique</a></li>
           <li><a href="ressources.html">Ressources</a></li>
           <li><a href="education.html">Enseigner l'AYNEHA</a></li>
         </ul>
@@ -687,6 +690,10 @@ def main():
     os.makedirs(os.path.join(RACINE, "assets", "js"), exist_ok=True)
     with open(os.path.join(RACINE, "assets", "js", "ayneha.js"), "w", encoding="utf-8") as fh:
         fh.write(js_data())
+    with open(os.path.join(RACINE, "assets", "js", "lexique-data.js"), "w", encoding="utf-8") as fh:
+        mots = [{"latin": m[0], "fr": m[1], "en": m[2], "cat": m[3]} for m in LEXIQUE.MOTS]
+        fh.write("/* Généré par _src/build.py depuis _src/lexique.py - ne pas modifier à la main. */\n"
+                 "window.AYNEHA_LEXIQUE = " + json.dumps(mots, ensure_ascii=False) + ";\n")
     with open(os.path.join(RACINE, "assets", "js", "cartes-data.js"), "w", encoding="utf-8") as fh:
         fh.write("/* Généré par _src/build.py depuis _src/cartes.py - ne pas modifier à la main. */\n"
                  "window.AYNEHA_CARTES = " + json.dumps(CARTES.CARTES, ensure_ascii=False, indent=1) + ";\n")

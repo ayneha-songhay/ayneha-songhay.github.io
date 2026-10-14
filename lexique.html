@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lexique songhay - AYNEHA : mots, nombres, verbes</title>
+<meta name="description" content="Un petit lexique songhay écrit en AYNEHA et en lettres latines, avec le sens en français : nombres, verbes et mots du quotidien. Proposez vos mots.">
+<meta name="author" content="Mahamadou Issiaka MAIGA (MAIGUS)">
+<meta name="theme-color" content="#0E1A30">
+<link rel="canonical" href="https://ayneha-songhay.github.io/lexique.html">
+<link rel="alternate" hreflang="fr" href="https://ayneha-songhay.github.io/lexique.html">
+<link rel="alternate" hreflang="en" href="https://ayneha-songhay.github.io/en/lexique.html">
+<link rel="alternate" hreflang="x-default" href="https://ayneha-songhay.github.io/lexique.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AYNEHA">
+<meta property="og:title" content="Lexique songhay - AYNEHA : mots, nombres, verbes">
+<meta property="og:description" content="Un petit lexique songhay écrit en AYNEHA et en lettres latines, avec le sens en français : nombres, verbes et mots du quotidien. Proposez vos mots.">
+<meta property="og:url" content="https://ayneha-songhay.github.io/lexique.html">
+<meta property="og:image" content="https://ayneha-songhay.github.io/assets/img/apercu.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css?v=20261014170135">
+<script src="assets/js/essai.js?v=20261014170135"></script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <div class="wrap">
+    <a class="marque" href="index.html" aria-label="AYNEHA, accueil"><span class="ay logo" aria-hidden="true">􏾚</span><span class="marque-texte">AYNEHA</span></a>
+    <div class="entete-droite">
+    <div class="langues" role="group" aria-label="Langue / Language"><span aria-current="true">FR</span><a href="en/lexique.html" hreflang="en" lang="en">EN</a></div>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="alphabet.html" aria-current="page">L'alphabet</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="applications.html">Applications</a></li>
+        <li><a href="outils.html">Outils en ligne</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="ressources.html">Ressources</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="contenu">
+<section class="page-tete">
+  <div class="wrap">
+    <h1>Lexique songhay - AYNEHA</h1>
+    <p>Des mots songhay écrits en AYNEHA et en lettres latines, avec leur sens. Le lexique commence avec les mots déjà publiés par le créateur d'AYNEHA, et il grandit avec les mots que vous proposez.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <div class="lex-outils">
+      <input class="champ" id="lex-recherche" type="search" placeholder="Chercher un mot" aria-label="Chercher un mot" autocomplete="off" spellcheck="false">
+      <span class="doux" id="lex-compte" role="status"></span>
+    </div>
+    <div class="carte-choix" id="lex-filtres" role="group" aria-label="Catégorie" style="margin-bottom:20px">
+      <button type="button" data-v="tout" aria-pressed="true">Tout</button>
+      <button type="button" data-v="nombres" aria-pressed="false">Les nombres</button>
+      <button type="button" data-v="verbes" aria-pressed="false">Les verbes</button>
+      <button type="button" data-v="quotidien" aria-pressed="false">Le quotidien</button>
+    </div>
+    <ul class="lex-liste" id="lex-liste"></ul>
+  </div>
+</section>
+
+<section class="section section-claire" id="proposer">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Proposer un mot</h2>
+      <p>Un mot de tous les jours, une salutation, un mot d'aujourd'hui (téléphone, ordinateur, métier) ? Proposez-le avec son sens. Chaque mot est relu avant d'être ajouté au lexique.</p>
+      <p class="doux petit">Le formulaire prépare un message que vous envoyez vous-même, par WhatsApp ou par e-mail. Le site n'enregistre rien.</p>
+    </div>
+    <form class="form-message encadre" data-sujet="Un mot pour le lexique AYNEHA" data-intro="Bonjour AYNEHA,&#10;je propose un mot pour le lexique.&#10;" data-vide="Écrivez au moins le mot et son sens." data-envoye="Votre application s'ouvre : il ne reste qu'à envoyer le message. Merci !">
+      <div class="q"><label for="lx-mot">Le mot en songhay <span class="doux">(lettres latines)</span></label><input class="champ" id="lx-mot" type="text" maxlength="60" spellcheck="false" autocapitalize="off" data-label="Mot :"></div>
+      <div class="q"><label for="lx-sens">Son sens en français</label><input class="champ" id="lx-sens" type="text" maxlength="100" data-label="Sens :"></div>
+      <div class="q"><label for="lx-ex">Un exemple de phrase <span class="doux">(facultatif)</span></label><input class="champ" id="lx-ex" type="text" maxlength="160" data-label="Exemple :"></div>
+      <div class="q"><label for="lx-lieu">Où dit-on ce mot ? <span class="doux">(facultatif)</span></label><input class="champ" id="lx-lieu" type="text" maxlength="60" placeholder="Par exemple : Gao, Tombouctou, Niamey" data-label="Région :"></div>
+      <div class="q"><label for="lx-pseudo">Votre pseudo <span class="doux">(facultatif)</span></label><input class="champ" id="lx-pseudo" type="text" maxlength="30" autocomplete="off" data-label="Pseudo :" data-auto></div>
+      <div class="boutons">
+        <a class="btn" data-canal="wa" href="https://wa.me/22366778763" target="_blank" rel="noopener">Proposer par WhatsApp</a>
+        <a class="btn btn-ligne" data-canal="mail" href="mailto:contact@ayneha.org">Proposer par e-mail</a>
+      </div>
+      <p class="message-etat" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+<footer class="pied">
+  <div class="frise" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="pied-grille">
+      <div class="pied-marque">
+        <span class="ay" role="img" aria-label="AYNEHA">􏾜􏿌􏾍􏾝􏾚􏾜</span>
+        <p>AYNEHA, l'écriture de la langue songhay. Conçue et créée par Mahamadou Issiaka MAIGA (MAIGUS).</p>
+      </div>
+      <div>
+        <h2>Découvrir</h2>
+        <ul>
+          <li><a href="apprendre.html">Commencer ici</a></li>
+          <li><a href="alphabet.html">L'alphabet</a></li>
+          <li><a href="alphabet.html#regles">Les 22 règles</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="galerie.html">Galerie des cartes</a></li>
+          <li><a href="applications.html">Applications</a></li>
+          <li><a href="lexique.html">Lexique</a></li>
+          <li><a href="ressources.html">Ressources</a></li>
+          <li><a href="education.html">Enseigner l'AYNEHA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Outils en ligne</h2>
+        <ul>
+          <li><a href="convertisseur.html">Transcripteur latin → AYNEHA</a></li>
+          <li><a href="clavier.html">Clavier</a></li>
+          <li><a href="calculatrice.html">Calculatrice</a></li>
+          <li><a href="nombres.html">Convertisseur de nombres</a></li>
+          <li><a href="horloge.html">Horloge</a></li>
+          <li><a href="carte.html">Ma carte AYNEHA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Le projet</h2>
+        <ul>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="faq.html">Questions fréquentes</a></li>
+          <li><a href="presse.html">Espace presse</a></li>
+          <li><a href="apropos.html#soutenir">Soutenir le projet</a></li>
+          <li><a href="avis.html?depuis=lexique.html">Donner mon avis</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Suivre AYNEHA</h2>
+        <ul>
+          <li><a href="https://aynehasonghay.blogspot.com" rel="noopener">Blog</a></li>
+          <li><a href="https://www.tiktok.com/@ayneha.songhay" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/ayneha.songhay/" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/ayneha_songhay" rel="noopener">X</a></li>
+          <li><a href="https://whatsapp.com/channel/0029Vb8zu22HgZWfGLpgAA2U" rel="noopener">Chaîne WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>© 2026 AYNEHA. Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS).</span>
+      <span>Contact : <a href="mailto:contact@ayneha.org">contact@ayneha.org</a></span>
+    </div>
+  </div>
+</footer>
+<button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>
+<script src="assets/js/site.js?v=20261014170135"></script>
+<script src="assets/js/ayneha.js"></script>
+<script src="assets/js/lexique-data.js"></script>
+<script src="assets/js/lexique.js"></script>
+<script src="assets/js/message.js"></script>
+</body>
+</html>

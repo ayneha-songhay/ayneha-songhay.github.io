@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Songhay - AYNEHA glossary: words, numbers, verbs</title>
+<meta name="description" content="A small Songhay glossary written in AYNEHA and in Latin letters, with the meaning in English: numbers, verbs and everyday words. Suggest your own words.">
+<meta name="author" content="Mahamadou Issiaka MAIGA (MAIGUS)">
+<meta name="theme-color" content="#0E1A30">
+<link rel="canonical" href="https://ayneha-songhay.github.io/en/lexique.html">
+<link rel="alternate" hreflang="fr" href="https://ayneha-songhay.github.io/lexique.html">
+<link rel="alternate" hreflang="en" href="https://ayneha-songhay.github.io/en/lexique.html">
+<link rel="alternate" hreflang="x-default" href="https://ayneha-songhay.github.io/lexique.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AYNEHA">
+<meta property="og:title" content="Songhay - AYNEHA glossary: words, numbers, verbs">
+<meta property="og:description" content="A small Songhay glossary written in AYNEHA and in Latin letters, with the meaning in English: numbers, verbs and everyday words. Suggest your own words.">
+<meta property="og:url" content="https://ayneha-songhay.github.io/en/lexique.html">
+<meta property="og:image" content="https://ayneha-songhay.github.io/assets/img/apercu.png">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css?v=20261014170135">
+<script src="../assets/js/essai.js?v=20261014170135"></script>
+</head>
+<body>
+<a class="skip" href="#contenu">Skip to content</a>
+<header class="entete">
+  <div class="wrap">
+    <a class="marque" href="index.html" aria-label="AYNEHA, home"><span class="ay logo" aria-hidden="true">􏾚</span><span class="marque-texte">AYNEHA</span></a>
+    <div class="entete-droite">
+    <div class="langues" role="group" aria-label="Language / Langue"><a href="../lexique.html" hreflang="fr" lang="fr">FR</a><span aria-current="true">EN</span></div>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="alphabet.html" aria-current="page">The alphabet</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="applications.html">Apps</a></li>
+        <li><a href="outils.html">Online tools</a></li>
+        <li><a href="galerie.html">Gallery</a></li>
+        <li><a href="ressources.html">Resources</a></li>
+        <li><a href="apropos.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="contenu">
+<section class="page-tete">
+  <div class="wrap">
+    <h1>Songhay - AYNEHA glossary</h1>
+    <p>Songhay words written in AYNEHA and in Latin letters, with their meaning. The glossary starts with the words already published by the creator of AYNEHA, and grows with the words you suggest.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <div class="lex-outils">
+      <input class="champ" id="lex-recherche" type="search" placeholder="Search a word" aria-label="Search a word" autocomplete="off" spellcheck="false">
+      <span class="doux" id="lex-compte" role="status"></span>
+    </div>
+    <div class="carte-choix" id="lex-filtres" role="group" aria-label="Category" style="margin-bottom:20px">
+      <button type="button" data-v="tout" aria-pressed="true">All</button>
+      <button type="button" data-v="nombres" aria-pressed="false">Numbers</button>
+      <button type="button" data-v="verbes" aria-pressed="false">Verbs</button>
+      <button type="button" data-v="quotidien" aria-pressed="false">Everyday words</button>
+    </div>
+    <ul class="lex-liste" id="lex-liste"></ul>
+  </div>
+</section>
+
+<section class="section section-claire" id="proposer">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Suggest a word</h2>
+      <p>An everyday word, a greeting, a modern word (phone, computer, trade)? Suggest it with its meaning. Every word is reviewed before being added to the glossary.</p>
+      <p class="doux petit">The form prepares a message that you send yourself, by WhatsApp or e-mail. The website records nothing.</p>
+    </div>
+    <form class="form-message encadre" data-sujet="A word for the AYNEHA glossary" data-intro="Hello AYNEHA,&#10;I would like to suggest a word for the glossary.&#10;" data-vide="Please write at least the word and its meaning." data-envoye="Your app is opening: you just need to send the message. Thank you!">
+      <div class="q"><label for="lx-mot">The word in Songhay <span class="doux">(Latin letters)</span></label><input class="champ" id="lx-mot" type="text" maxlength="60" spellcheck="false" autocapitalize="off" data-label="Word:"></div>
+      <div class="q"><label for="lx-sens">Its meaning</label><input class="champ" id="lx-sens" type="text" maxlength="100" data-label="Meaning:"></div>
+      <div class="q"><label for="lx-ex">An example sentence <span class="doux">(optional)</span></label><input class="champ" id="lx-ex" type="text" maxlength="160" data-label="Example:"></div>
+      <div class="q"><label for="lx-lieu">Where is this word used? <span class="doux">(optional)</span></label><input class="champ" id="lx-lieu" type="text" maxlength="60" placeholder="For example: Gao, Timbuktu, Niamey" data-label="Region:"></div>
+      <div class="q"><label for="lx-pseudo">Your nickname <span class="doux">(optional)</span></label><input class="champ" id="lx-pseudo" type="text" maxlength="30" autocomplete="off" data-label="Nickname:" data-auto></div>
+      <div class="boutons">
+        <a class="btn" data-canal="wa" href="https://wa.me/22366778763" target="_blank" rel="noopener">Suggest by WhatsApp</a>
+        <a class="btn btn-ligne" data-canal="mail" href="mailto:contact@ayneha.org">Suggest by e-mail</a>
+      </div>
+      <p class="message-etat" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+<footer class="pied">
+  <div class="frise" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="pied-grille">
+      <div class="pied-marque">
+        <span class="ay" role="img" aria-label="AYNEHA">􏾜􏿌􏾍􏾝􏾚􏾜</span>
+        <p>AYNEHA, the writing system of the Songhay language. Designed and created by Mahamadou Issiaka MAIGA (MAIGUS).</p>
+      </div>
+      <div>
+        <h2>Discover</h2>
+        <ul>
+          <li><a href="apprendre.html">Start here</a></li>
+          <li><a href="alphabet.html">The alphabet</a></li>
+          <li><a href="alphabet.html#regles">The 22 rules</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="galerie.html">Card gallery</a></li>
+          <li><a href="applications.html">Apps</a></li>
+          <li><a href="lexique.html">Glossary</a></li>
+          <li><a href="ressources.html">Resources</a></li>
+          <li><a href="education.html">Teaching AYNEHA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Online tools</h2>
+        <ul>
+          <li><a href="convertisseur.html">Latin → AYNEHA transcriber</a></li>
+          <li><a href="clavier.html">Keyboard</a></li>
+          <li><a href="calculatrice.html">Calculator</a></li>
+          <li><a href="nombres.html">Number converter</a></li>
+          <li><a href="horloge.html">Clock</a></li>
+          <li><a href="carte.html">My AYNEHA card</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>The project</h2>
+        <ul>
+          <li><a href="apropos.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="presse.html">Press kit</a></li>
+          <li><a href="apropos.html#soutenir">Support the AYNEHA Project</a></li>
+          <li><a href="avis.html?depuis=en/lexique.html">Give my feedback</a></li>
+          <li><a href="confidentialite.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Follow AYNEHA</h2>
+        <ul>
+          <li><a href="https://aynehasonghay.blogspot.com" rel="noopener">Blog</a></li>
+          <li><a href="https://www.tiktok.com/@ayneha.songhay" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/ayneha.songhay/" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/ayneha_songhay" rel="noopener">X</a></li>
+          <li><a href="https://whatsapp.com/channel/0029Vb8zu22HgZWfGLpgAA2U" rel="noopener">WhatsApp channel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>© 2026 AYNEHA. Designer and creator: Mahamadou Issiaka MAIGA (MAIGUS).</span>
+      <span>Contact: <a href="mailto:contact@ayneha.org">contact@ayneha.org</a></span>
+    </div>
+  </div>
+</footer>
+<button class="haut-page" type="button" aria-label="Back to top">&#8593;</button>
+<script src="../assets/js/site.js?v=20261014170135"></script>
+<script src="../assets/js/ayneha.js"></script>
+<script src="../assets/js/lexique-data.js"></script>
+<script src="../assets/js/lexique.js"></script>
+<script src="../assets/js/message.js"></script>
+</body>
+</html>

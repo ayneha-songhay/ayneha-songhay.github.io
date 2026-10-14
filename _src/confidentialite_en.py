@@ -137,7 +137,7 @@ WEB = [
     },
     {
         "id": "nombres", "nom": "Number converter", "type": "Web tool", "page": "nombres.html",
-        "intro": "The converter shows a number in AYNEHA, N'Ko, Dogon NÈNÈ, Arabic and Western digits.",
+        "intro": "The converter shows a number in AYNEHA, N'Ko, Adlam, Dogon NÈNÈ, Arabic and Western digits.",
         "sections": [
             ("Everything stays in your browser", "The numbers you enter are neither recorded nor sent."),
             CHANGES,
