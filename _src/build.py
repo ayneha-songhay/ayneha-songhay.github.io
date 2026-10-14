@@ -383,6 +383,7 @@ PIED_EN = """<footer class="pied">
           <li><a href="galerie.html">Card gallery</a></li>
           <li><a href="applications.html">Apps</a></li>
           <li><a href="ressources.html">Resources</a></li>
+          <li><a href="education.html">Teaching AYNEHA</a></li>
         </ul>
       </div>
       <div>
@@ -403,6 +404,7 @@ PIED_EN = """<footer class="pied">
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="presse.html">Press kit</a></li>
           <li><a href="apropos.html#soutenir">Support the AYNEHA Project</a></li>
+          <li><a href="avis.html?depuis={DEPUIS}">Give my feedback</a></li>
           <li><a href="confidentialite.html">Privacy</a></li>
         </ul>
       </div>
@@ -426,9 +428,9 @@ PIED_EN = """<footer class="pied">
 <button class="haut-page" type="button" aria-label="Back to top">&#8593;</button>"""
 
 
-def pied(lang="fr"):
+def pied(lang="fr", nom="index.html"):
     if lang == "en":
-        return PIED_EN.format(MARQUE=MARQUE, ANNEE=ANNEE, CONTACT=CONTACT)
+        return PIED_EN.format(MARQUE=MARQUE, ANNEE=ANNEE, CONTACT=CONTACT, DEPUIS="en/" + nom)
     return f"""<footer class="pied">
   <div class="frise" aria-hidden="true"></div>
   <div class="wrap">
@@ -447,6 +449,7 @@ def pied(lang="fr"):
           <li><a href="galerie.html">Galerie des cartes</a></li>
           <li><a href="applications.html">Applications</a></li>
           <li><a href="ressources.html">Ressources</a></li>
+          <li><a href="education.html">Enseigner l'AYNEHA</a></li>
         </ul>
       </div>
       <div>
@@ -467,6 +470,7 @@ def pied(lang="fr"):
           <li><a href="faq.html">Questions fréquentes</a></li>
           <li><a href="presse.html">Espace presse</a></li>
           <li><a href="apropos.html#soutenir">Soutenir le projet</a></li>
+          <li><a href="avis.html?depuis={nom}">Donner mon avis</a></li>
           <li><a href="confidentialite.html">Confidentialité</a></li>
         </ul>
       </div>
@@ -546,7 +550,7 @@ def page(meta, corps, lang="fr"):
 <main id="contenu">
 {corps.strip()}{lien_conf(nom, lang)}
 </main>
-{pied(lang)}
+{pied(lang, nom)}
 <script src="assets/js/site.js?v={VERSION}"></script>{scripts}
 </body>
 </html>

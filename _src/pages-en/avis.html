@@ -1,0 +1,53 @@
+title: Your feedback on the AYNEHA website
+description: Tell us what you think of the AYNEHA website and what you would like to see there soon. Every message is read.
+nav:
+scripts: assets/js/message.js
+---
+<section class="page-tete">
+  <div class="wrap">
+    <h1>Your feedback</h1>
+    <p>This website is built together with the people who use it. Tell us what you like, what bothers you and what you want to see soon: every message is read.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap duo duo-haut">
+    <form class="form-message encadre" data-sujet="My feedback on the AYNEHA website" data-intro="Hello AYNEHA,&#10;here is my feedback on the website.&#10;" data-vide="Please write at least a few words in one of the boxes." data-envoye="Your app is opening: you just need to send the message. Thank you!">
+      <fieldset data-label="Overall impression:">
+        <legend>Your overall impression</legend>
+        <div class="cases">
+          <label><input type="radio" name="note" value="very good"> Very good</label>
+          <label><input type="radio" name="note" value="good"> Good</label>
+          <label><input type="radio" name="note" value="average"> Average</label>
+          <label><input type="radio" name="note" value="needs improvement"> Needs improvement</label>
+        </div>
+      </fieldset>
+      <div class="q"><label for="av-aime">What you like</label><textarea class="champ" id="av-aime" maxlength="600" data-label="What I like:"></textarea></div>
+      <div class="q"><label for="av-veut">What you want to see soon</label><textarea class="champ" id="av-veut" maxlength="600" placeholder="A page, a tool, an explanation, a language..." data-label="What I want to see soon:"></textarea></div>
+      <div class="q"><label for="av-pb">A problem you ran into <span class="doux">(optional)</span></label><textarea class="champ" id="av-pb" maxlength="600" placeholder="What does not work, on which phone or computer" data-label="Problem:"></textarea></div>
+      <div class="q"><label for="av-page">Page concerned <span class="doux">(optional)</span></label><input class="champ" id="av-page" name="depuis" type="text" maxlength="80" data-label="Page:" data-auto></div>
+      <div class="q"><label for="av-pseudo">Your nickname <span class="doux">(optional)</span></label><input class="champ" id="av-pseudo" type="text" maxlength="30" autocomplete="off" data-label="Nickname:" data-auto></div>
+      <div class="boutons">
+        <a class="btn" data-canal="wa" href="https://wa.me/22366778763" target="_blank" rel="noopener">Send by WhatsApp</a>
+        <a class="btn btn-ligne" data-canal="mail" href="mailto:{{contact}}">Send by e-mail</a>
+      </div>
+      <p class="message-etat" role="status"></p>
+      <p class="doux petit">The form prepares a message that you send yourself. The website records nothing and never publishes feedback without agreement.</p>
+    </form>
+    <div>
+      <h2>Already done thanks to your feedback</h2>
+      <ul class="liste-faite">
+        <li>An English version of the whole website</li>
+        <li>The <a href="apprendre.html">Start here</a> path, to take the first step</li>
+        <li>A <a href="quiz.html">quiz</a> page and a <a href="galerie.html">card gallery</a></li>
+        <li>The <a href="faq.html">frequently asked questions</a></li>
+        <li>A <a href="education.html">poster and a tracing workbook</a> to print</li>
+      </ul>
+      <h2 style="margin-top:32px">Coming soon</h2>
+      <ul>
+        <li>The pronunciation of each letter, to listen to</li>
+        <li>A small Songhay - AYNEHA glossary: greetings, numbers, days, modern words</li>
+      </ul>
+    </div>
+  </div>
+</section>

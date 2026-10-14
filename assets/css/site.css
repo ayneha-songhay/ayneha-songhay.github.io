@@ -695,3 +695,29 @@ td .ay { font-size: 2rem; color: var(--sable); }
 .liste-simple { padding-left: 1.2em; }
 .liste-simple li { margin: .4em 0; }
 @media (max-width: 420px) { .liste-apps-en { grid-template-columns: 1fr; } }
+
+/* ---------- Formulaires « message préparé » (avis, éducation) ---------- */
+.form-message { display: grid; gap: 18px; }
+.form-message .q { display: grid; gap: 8px; }
+.form-message .q > label, .form-message legend { font-weight: 600; color: var(--sable); }
+.form-message .q > label .doux, .form-message legend .doux { font-weight: 400; }
+.form-message fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.form-message legend { padding: 0; margin-bottom: 8px; }
+.form-message textarea.champ { min-height: 96px; resize: vertical; }
+.cases { display: flex; flex-wrap: wrap; gap: 8px; }
+.cases label { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--trait); background: var(--nuit-2); cursor: pointer; font-size: .95rem; }
+.cases label:has(input:checked) { border-color: var(--orange); box-shadow: 0 0 0 2px var(--orange); background: var(--nuit-3); }
+.cases input { accent-color: var(--orange); width: 18px; height: 18px; margin: 0; }
+.form-message .boutons { margin-top: 4px; }
+.form-message .message-etat { text-align: left; color: var(--orange-clair); }
+.liste-faite { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.liste-faite li { padding-left: 30px; position: relative; }
+.liste-faite li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--orange); font-weight: 700; }
+.grille-materiel { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 16px; }
+.grille-materiel .encadre { display: flex; flex-direction: column; gap: 8px; }
+.grille-materiel .encadre h3 { margin: 0; }
+.grille-materiel .encadre p { margin: 0; flex: 1; }
+.grille-materiel .encadre .btn { align-self: flex-start; margin-top: 6px; }
+.vide-partenaires { border: 1px dashed var(--trait); border-radius: var(--rayon); padding: 22px; text-align: center; color: var(--texte-doux); }
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 860px) { .trio { grid-template-columns: 1fr; } }
