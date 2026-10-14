@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AYNEHA clock and calendar</title>
+<meta name="description" content="The time, day, month and Songhay year shown live in AYNEHA script, with a calendar to browse month by month.">
+<meta name="author" content="Mahamadou Issiaka MAIGA (MAIGUS)">
+<meta name="theme-color" content="#0E1A30">
+<link rel="canonical" href="https://ayneha-songhay.github.io/en/horloge.html">
+<link rel="alternate" hreflang="fr" href="https://ayneha-songhay.github.io/horloge.html">
+<link rel="alternate" hreflang="en" href="https://ayneha-songhay.github.io/en/horloge.html">
+<link rel="alternate" hreflang="x-default" href="https://ayneha-songhay.github.io/horloge.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AYNEHA">
+<meta property="og:title" content="AYNEHA clock and calendar">
+<meta property="og:description" content="The time, day, month and Songhay year shown live in AYNEHA script, with a calendar to browse month by month.">
+<meta property="og:url" content="https://ayneha-songhay.github.io/en/horloge.html">
+<meta property="og:image" content="https://ayneha-songhay.github.io/assets/img/apercu.png">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css?v=20261014145845">
+<script src="../assets/js/essai.js?v=20261014145845"></script>
+</head>
+<body>
+<a class="skip" href="#contenu">Skip to content</a>
+<header class="entete">
+  <div class="wrap">
+    <a class="marque" href="index.html" aria-label="AYNEHA, home"><span class="ay logo" aria-hidden="true">􏾚</span><span class="marque-texte">AYNEHA</span></a>
+    <div class="entete-droite">
+    <div class="langues" role="group" aria-label="Language / Langue"><a href="../horloge.html" hreflang="fr" lang="fr">FR</a><span aria-current="true">EN</span></div>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="alphabet.html">The alphabet</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="applications.html">Apps</a></li>
+        <li><a href="outils.html" aria-current="page">Online tools</a></li>
+        <li><a href="galerie.html">Gallery</a></li>
+        <li><a href="ressources.html">Resources</a></li>
+        <li><a href="apropos.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="contenu">
+<section class="outil-tete">
+  <div class="wrap">
+    <h1>Clock and calendar</h1>
+    <p>Your device's time, the day, the month and the Songhay year, entirely in AYNEHA, without a single Latin character. Digits are read from right to left.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <div class="tablette horloge" style="max-width:720px;margin:0 auto">
+      <p class="ay petit-libelle" data-libelle="heure" style="font-size:1.6rem;margin:0"></p>
+      <p class="ay horloge-heure" data-horloge="heure" aria-live="off"></p>
+      <div class="horloge-ligne">
+        <div><span class="ay" data-libelle="jour" style="font-size:1.3rem"></span><span class="ay" data-horloge="jour"></span></div>
+        <div><span class="ay" data-libelle="mois" style="font-size:1.3rem"></span><span class="ay" data-horloge="mois"></span></div>
+        <div><span class="ay" data-horloge="annee"></span></div>
+      </div>
+      <div class="cal" data-calendrier>
+        <div class="cal-tete">
+          <button type="button" data-cal-suiv aria-label="Next month">&#8249;</button>
+          <p class="ay" data-cal-titre style="margin:0"></p>
+          <button type="button" data-cal-prec aria-label="Previous month">&#8250;</button>
+        </div>
+        <div class="cal-grille" data-cal-grille></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Reading the clock</h2>
+      <ul>
+        <li>At the top, the time: hours, minutes and seconds, from right to left.</li>
+        <li>Below, the name of the day, the name of the month and the Songhay year.</li>
+        <li>The Songhay year is the Gregorian year plus 2001: 2026 + 2001 = 4027, written <span class="ay ay-inline" role="img" aria-label="4027">􏾀􏽼􏽾􏾃</span>.</li>
+        <li>The calendar starts on Sunday, on the right. Today is shown in orange.</li>
+      </ul>
+      <p class="doux">This clock follows the Gregorian calendar. A version with the Songhay lunar calendar is planned.</p>
+    </div>
+    <div class="encadre">
+      <h3>On your phone</h3>
+      <p class="doux">The AYNEHA Horloge app shows this clock on Android, with home-screen widgets.</p>
+      <div class="boutons">
+        <a class="btn" href="../ayneha-horloge.html">See AYNEHA Horloge</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="pied">
+  <div class="frise" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="pied-grille">
+      <div class="pied-marque">
+        <span class="ay" role="img" aria-label="AYNEHA">􏾜􏿌􏾍􏾝􏾚􏾜</span>
+        <p>AYNEHA, the writing system of the Songhay language. Designed and created by Mahamadou Issiaka MAIGA (MAIGUS).</p>
+      </div>
+      <div>
+        <h2>Discover</h2>
+        <ul>
+          <li><a href="apprendre.html">Start here</a></li>
+          <li><a href="alphabet.html">The alphabet</a></li>
+          <li><a href="alphabet.html#regles">The 22 rules</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="galerie.html">Card gallery</a></li>
+          <li><a href="applications.html">Apps</a></li>
+          <li><a href="ressources.html">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Online tools</h2>
+        <ul>
+          <li><a href="convertisseur.html">Latin → AYNEHA transcriber</a></li>
+          <li><a href="clavier.html">Keyboard</a></li>
+          <li><a href="calculatrice.html">Calculator</a></li>
+          <li><a href="nombres.html">Number converter</a></li>
+          <li><a href="horloge.html">Clock</a></li>
+          <li><a href="carte.html">My AYNEHA card</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>The project</h2>
+        <ul>
+          <li><a href="apropos.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="presse.html">Press kit</a></li>
+          <li><a href="apropos.html#soutenir">Support the AYNEHA Project</a></li>
+          <li><a href="../confidentialite.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Follow AYNEHA</h2>
+        <ul>
+          <li><a href="https://aynehasonghay.blogspot.com" rel="noopener">Blog</a></li>
+          <li><a href="https://www.tiktok.com/@ayneha.songhay" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/ayneha.songhay/" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/ayneha_songhay" rel="noopener">X</a></li>
+          <li><a href="https://whatsapp.com/channel/0029Vb8zu22HgZWfGLpgAA2U" rel="noopener">WhatsApp channel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>© 2026 AYNEHA. Designer and creator: Mahamadou Issiaka MAIGA (MAIGUS).</span>
+      <span>Contact: <a href="mailto:contact@ayneha.org">contact@ayneha.org</a></span>
+    </div>
+  </div>
+</footer>
+<button class="haut-page" type="button" aria-label="Back to top">&#8593;</button>
+<script src="../assets/js/site.js?v=20261014145845"></script>
+<script src="../assets/js/ayneha.js"></script>
+<script src="../assets/js/horloge.js"></script>
+</body>
+</html>

@@ -8,14 +8,16 @@
    zone d'usage privé U+E01A-U+E023). */
 (function () {
   "use strict";
+  var EN = document.documentElement.lang === "en";
+  function T(fr, en) { return EN ? en : fr; }
   var A = window.Ayneha;
   if (!A) return;
   var SYSTEMES = {
     ayneha: { nom: "AYNEHA", chiffres: "0123456789".split("").map(function (d) { return A.digits(d); }), rtl: true },
-    francais: { nom: "Français", chiffres: "0123456789".split(""), rtl: false },
+    francais: { nom: T("Français", "Western"), chiffres: "0123456789".split(""), rtl: false },
     nko: { nom: "N'Ko", chiffres: Array.from("߀߁߂߃߄߅߆߇߈߉"), rtl: true },
     dogon: { nom: "Dogon NÈNÈ", chiffres: ["\uE023", "\uE01A", "\uE01B", "\uE01C", "\uE01D", "\uE01E", "\uE01F", "\uE020", "\uE021", "\uE022"], rtl: true },
-    arabe: { nom: "Arabe", chiffres: "٠١٢٣٤٥٦٧٨٩".split(""), rtl: false, sep: "\u066C" }
+    arabe: { nom: T("Arabe", "Arabic"), chiffres: "٠١٢٣٤٥٦٧٨٩".split(""), rtl: false, sep: "\u066C" }
   };
   var ORDRE = ["ayneha", "nko", "dogon", "arabe", "francais"];
   var MAX = 17;
@@ -45,13 +47,13 @@
       var h = document.createElement("h3"); h.textContent = SYSTEMES[sys].nom;
       var p = document.createElement("p"); p.className = classe(sys);
       p.textContent = valeur ? versSysteme(valeur, sys) : "";
-      p.setAttribute("aria-label", SYSTEMES[sys].nom + " : " + (valeur || "vide"));
+      p.setAttribute("aria-label", SYSTEMES[sys].nom + (EN ? ": " : " : ") + (valeur || T("vide", "empty")));
       d.appendChild(h); d.appendChild(p);
       resultats.appendChild(d);
     });
     saisie.className = classe(source) + " nb-saisie";
     saisie.textContent = valeur ? versSysteme(valeur, source) : "";
-    document.getElementById("nb-compte").textContent = valeur.length + " / " + MAX + " chiffres";
+    document.getElementById("nb-compte").textContent = valeur.length + " / " + MAX + T(" chiffres", " digits");
     ajuster();
   }
 
@@ -79,8 +81,8 @@
       var b = document.createElement("button");
       b.type = "button";
       b.className = "calc-touche";
-      if (k === "efface") { b.textContent = "⌫"; b.classList.add("calc-b"); b.setAttribute("aria-label", "Effacer un chiffre"); }
-      else if (k === "tout") { b.textContent = "C"; b.classList.add("calc-c"); b.setAttribute("aria-label", "Tout effacer"); }
+      if (k === "efface") { b.textContent = "⌫"; b.classList.add("calc-b"); b.setAttribute("aria-label", T("Effacer un chiffre", "Delete a digit")); }
+      else if (k === "tout") { b.textContent = "C"; b.classList.add("calc-c"); b.setAttribute("aria-label", T("Tout effacer", "Clear all")); }
       else {
         var s = document.createElement("span");
         s.className = classe(source).replace("nb-val", "nb-touche");

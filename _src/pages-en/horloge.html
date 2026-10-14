@@ -1,0 +1,55 @@
+title: AYNEHA clock and calendar
+description: The time, day, month and Songhay year shown live in AYNEHA script, with a calendar to browse month by month.
+nav: outils
+scripts: assets/js/ayneha.js assets/js/horloge.js
+---
+<section class="outil-tete">
+  <div class="wrap">
+    <h1>Clock and calendar</h1>
+    <p>Your device's time, the day, the month and the Songhay year, entirely in AYNEHA, without a single Latin character. Digits are read from right to left.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <div class="tablette horloge" style="max-width:720px;margin:0 auto">
+      <p class="ay petit-libelle" data-libelle="heure" style="font-size:1.6rem;margin:0"></p>
+      <p class="ay horloge-heure" data-horloge="heure" aria-live="off"></p>
+      <div class="horloge-ligne">
+        <div><span class="ay" data-libelle="jour" style="font-size:1.3rem"></span><span class="ay" data-horloge="jour"></span></div>
+        <div><span class="ay" data-libelle="mois" style="font-size:1.3rem"></span><span class="ay" data-horloge="mois"></span></div>
+        <div><span class="ay" data-horloge="annee"></span></div>
+      </div>
+      <div class="cal" data-calendrier>
+        <div class="cal-tete">
+          <button type="button" data-cal-suiv aria-label="Next month">&#8249;</button>
+          <p class="ay" data-cal-titre style="margin:0"></p>
+          <button type="button" data-cal-prec aria-label="Previous month">&#8250;</button>
+        </div>
+        <div class="cal-grille" data-cal-grille></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Reading the clock</h2>
+      <ul>
+        <li>At the top, the time: hours, minutes and seconds, from right to left.</li>
+        <li>Below, the name of the day, the name of the month and the Songhay year.</li>
+        <li>The Songhay year is the Gregorian year plus 2001: 2026 + 2001 = 4027, written {{ay:D4 D0 D2 D7|ay-inline|4027}}.</li>
+        <li>The calendar starts on Sunday, on the right. Today is shown in orange.</li>
+      </ul>
+      <p class="doux">This clock follows the Gregorian calendar. A version with the Songhay lunar calendar is planned.</p>
+    </div>
+    <div class="encadre">
+      <h3>On your phone</h3>
+      <p class="doux">The AYNEHA Horloge app shows this clock on Android, with home-screen widgets.</p>
+      <div class="boutons">
+        <a class="btn" href="ayneha-horloge.html">See AYNEHA Horloge</a>
+      </div>
+    </div>
+  </div>
+</section>

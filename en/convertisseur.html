@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latin to AYNEHA transcriber</title>
+<meta name="description" content="Transcribe Songhay text typed in Latin letters into the AYNEHA script, live, with an explanation of each letter. Copy or export as an image.">
+<meta name="author" content="Mahamadou Issiaka MAIGA (MAIGUS)">
+<meta name="theme-color" content="#0E1A30">
+<link rel="canonical" href="https://ayneha-songhay.github.io/en/convertisseur.html">
+<link rel="alternate" hreflang="fr" href="https://ayneha-songhay.github.io/convertisseur.html">
+<link rel="alternate" hreflang="en" href="https://ayneha-songhay.github.io/en/convertisseur.html">
+<link rel="alternate" hreflang="x-default" href="https://ayneha-songhay.github.io/convertisseur.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AYNEHA">
+<meta property="og:title" content="Latin to AYNEHA transcriber">
+<meta property="og:description" content="Transcribe Songhay text typed in Latin letters into the AYNEHA script, live, with an explanation of each letter. Copy or export as an image.">
+<meta property="og:url" content="https://ayneha-songhay.github.io/en/convertisseur.html">
+<meta property="og:image" content="https://ayneha-songhay.github.io/assets/img/apercu.png">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css?v=20261014145845">
+<script src="../assets/js/essai.js?v=20261014145845"></script>
+</head>
+<body>
+<a class="skip" href="#contenu">Skip to content</a>
+<header class="entete">
+  <div class="wrap">
+    <a class="marque" href="index.html" aria-label="AYNEHA, home"><span class="ay logo" aria-hidden="true">􏾚</span><span class="marque-texte">AYNEHA</span></a>
+    <div class="entete-droite">
+    <div class="langues" role="group" aria-label="Language / Langue"><a href="../convertisseur.html" hreflang="fr" lang="fr">FR</a><span aria-current="true">EN</span></div>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="alphabet.html">The alphabet</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="applications.html">Apps</a></li>
+        <li><a href="outils.html" aria-current="page">Online tools</a></li>
+        <li><a href="galerie.html">Gallery</a></li>
+        <li><a href="ressources.html">Resources</a></li>
+        <li><a href="apropos.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="contenu">
+<section class="outil-tete">
+  <div class="wrap">
+    <h1>Latin → AYNEHA transcriber</h1>
+    <p>Write Songhay in Latin letters, the way you pronounce it: the text is written in AYNEHA as you type. Nothing is sent over the internet; everything happens in your browser.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap atelier">
+    <div>
+      <label for="tr-entree" style="display:block;font-weight:600;color:var(--sable);margin-bottom:8px">Text in Latin letters</label>
+      <textarea class="champ" id="tr-entree" spellcheck="false" autocapitalize="off" placeholder="For example: Maali ni cayɛno ga"></textarea>
+      <p class="doux petit" style="margin:10px 0 0">Letters missing from your keyboard:</p>
+      <div class="touches-rapides" id="tr-touches">
+        <button type="button" data-c="ŋ">ŋ</button><button type="button" data-c="ɲ">ɲ</button><button type="button" data-c="š">š</button>
+        <button type="button" data-c="ɛ">ɛ</button><button type="button" data-c="ɔ">ɔ</button>
+        <button type="button" data-c="ã">ã</button><button type="button" data-c="ẽ">ẽ</button><button type="button" data-c="ĩ">ĩ</button><button type="button" data-c="õ">õ</button><button type="button" data-c="ũ">ũ</button>
+      </div>
+    </div>
+    <div>
+      <div class="tablette">
+        <p class="sortie ay" id="tr-sortie" aria-live="polite"></p>
+        <div class="barre-outils">
+          <button type="button" id="tr-copier">Copy the AYNEHA text</button>
+          <button type="button" id="tr-image">Save as image</button>
+          <button type="button" id="tr-effacer">Clear all</button>
+        </div>
+        <p class="message-etat" id="tr-etat" role="status"></p>
+      </div>
+      <p class="doux petit" style="margin-top:12px">Copied text only appears in AYNEHA for people who have the Ayneha Pro font. To send it on WhatsApp or elsewhere, an image is safer: it can be read everywhere.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <details class="explication encadre" id="tr-explication">
+      <summary>Why these letters? Word by word</summary>
+      <div id="tr-detail"><p class="doux">Type a word to see how each letter is chosen.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="section" id="regles-transcription">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>How to type in Latin letters</h2>
+      <p class="doux">The transcriber follows the pronunciation of the Songhay of Gao. A few landmarks are enough.</p>
+      <p class="doux petit">Important: the transcriber applies automatic rules. It does not replace a linguistic check of each word; if in doubt, have the result checked.</p>
+    </div>
+    <div class="tableau-defile">
+      <table>
+        <thead><tr><th>You type</th><th>You get</th></tr></thead>
+        <tbody>
+          <tr><td>a vowel followed by a single n (an, en, un...)</td><td>the nasalised vowel</td></tr>
+          <tr><td>a doubled letter (aa, bb, tt...)</td><td>the double diacritic</td></tr>
+          <tr><td>an n at the end of a word longer than three letters</td><td>silent N (no nasalisation)</td></tr>
+          <tr><td>a consonant not followed by a vowel</td><td>the silent consonant</td></tr>
+          <tr><td>sh or š</td><td>Ʃ (sh as in “ship”)</td></tr>
+          <tr><td>c or tch</td><td>TƩ (ch as in “church”)</td></tr>
+          <tr><td>dj, or di followed by a vowel</td><td>DJ</td></tr>
+          <tr><td>ny, or ni followed by a vowel, or ɲ</td><td>Ɲ (ny as in “canyon”)</td></tr>
+          <tr><td>ŋ</td><td>Ŋ</td></tr>
+          <tr><td>ng, gn</td><td>both letters, the first one silent</td></tr>
+          <tr><td>ɛ or è, ɔ or ô</td><td>open E and O</td></tr>
+          <tr><td>v</td><td>W</td></tr>
+          <tr><td>digits, comma, semicolon</td><td>AYNEHA digits and punctuation</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="pied">
+  <div class="frise" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="pied-grille">
+      <div class="pied-marque">
+        <span class="ay" role="img" aria-label="AYNEHA">􏾜􏿌􏾍􏾝􏾚􏾜</span>
+        <p>AYNEHA, the writing system of the Songhay language. Designed and created by Mahamadou Issiaka MAIGA (MAIGUS).</p>
+      </div>
+      <div>
+        <h2>Discover</h2>
+        <ul>
+          <li><a href="apprendre.html">Start here</a></li>
+          <li><a href="alphabet.html">The alphabet</a></li>
+          <li><a href="alphabet.html#regles">The 22 rules</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="galerie.html">Card gallery</a></li>
+          <li><a href="applications.html">Apps</a></li>
+          <li><a href="ressources.html">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Online tools</h2>
+        <ul>
+          <li><a href="convertisseur.html">Latin → AYNEHA transcriber</a></li>
+          <li><a href="clavier.html">Keyboard</a></li>
+          <li><a href="calculatrice.html">Calculator</a></li>
+          <li><a href="nombres.html">Number converter</a></li>
+          <li><a href="horloge.html">Clock</a></li>
+          <li><a href="carte.html">My AYNEHA card</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>The project</h2>
+        <ul>
+          <li><a href="apropos.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="presse.html">Press kit</a></li>
+          <li><a href="apropos.html#soutenir">Support the AYNEHA Project</a></li>
+          <li><a href="../confidentialite.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Follow AYNEHA</h2>
+        <ul>
+          <li><a href="https://aynehasonghay.blogspot.com" rel="noopener">Blog</a></li>
+          <li><a href="https://www.tiktok.com/@ayneha.songhay" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/ayneha.songhay/" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/ayneha_songhay" rel="noopener">X</a></li>
+          <li><a href="https://whatsapp.com/channel/0029Vb8zu22HgZWfGLpgAA2U" rel="noopener">WhatsApp channel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>© 2026 AYNEHA. Designer and creator: Mahamadou Issiaka MAIGA (MAIGUS).</span>
+      <span>Contact: <a href="mailto:contact@ayneha.org">contact@ayneha.org</a></span>
+    </div>
+  </div>
+</footer>
+<button class="haut-page" type="button" aria-label="Back to top">&#8593;</button>
+<script src="../assets/js/site.js?v=20261014145845"></script>
+<script src="../assets/js/ayneha.js"></script>
+<script src="../assets/js/transcripteur.js"></script>
+</body>
+</html>

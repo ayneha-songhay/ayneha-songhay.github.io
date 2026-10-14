@@ -148,21 +148,23 @@
   }
 
   /* Explication d'un mot, en français simple. */
-  var MOD_LABEL = { d: "double", n: "nasalisée", o: "ouverte", m: "muette" };
+  var EN = typeof document !== "undefined" && document.documentElement.lang === "en";
+  function T(fr, en) { return EN ? en : fr; }
+  var MOD_LABEL = EN ? { d: "double", n: "nasalised", o: "open", m: "silent" } : { d: "double", n: "nasalisée", o: "ouverte", m: "muette" };
   function explain(tk) {
     var name = tokenName(tk);
     var label = LATIN[tk.b] ? LATIN[tk.b].label : tk.b;
     var why = "";
     if (tk.t === "V") {
-      if (tk.m === "n") why = "voyelle suivie d'un n simple : voyelle nasalisée";
-      else if (tk.m === "d") why = "voyelle doublée : accent double";
-      else if (tk.m === "o") why = "voyelle ouverte";
-      else why = "voyelle simple";
+      if (tk.m === "n") why = T("voyelle suivie d'un n simple : voyelle nasalisée", "vowel followed by a single n: nasalised vowel");
+      else if (tk.m === "d") why = T("voyelle doublée : accent double", "doubled vowel: double diacritic");
+      else if (tk.m === "o") why = T("voyelle ouverte", "open vowel");
+      else why = T("voyelle simple", "plain vowel");
     } else {
-      if (tk.m === "d") why = "lettre doublée : accent double";
+      if (tk.m === "d") why = T("lettre doublée : accent double", "doubled letter: double diacritic");
       else if (tk.m === "m") {
-        why = CP[tk.b + ":m"] ? "pas suivie d'une voyelle : consonne muette" : "pas suivie d'une voyelle (cette lettre ne porte pas l'accent muet)";
-      } else why = "suivie d'une voyelle : forme initiale";
+        why = CP[tk.b + ":m"] ? T("pas suivie d'une voyelle : consonne muette", "not followed by a vowel: silent consonant") : T("pas suivie d'une voyelle (cette lettre ne porte pas l'accent muet)", "not followed by a vowel (this letter never takes the silent mark)");
+      } else why = T("suivie d'une voyelle : forme initiale", "followed by a vowel: basic form");
     }
     return { glyph: ch(name), raw: tk.r, label: label + (tk.m && name !== tk.b ? " " + MOD_LABEL[tk.m] : ""), why: why };
   }

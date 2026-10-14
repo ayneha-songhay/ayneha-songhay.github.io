@@ -3,6 +3,8 @@
    SPDX-License-Identifier: GPL-3.0-or-later */
 (function () {
   "use strict";
+  var EN = document.documentElement.lang === "en";
+  function T(fr, en) { return EN ? en : fr; }
   var A = window.Ayneha;
   var entree = document.getElementById("tr-entree");
   var sortie = document.getElementById("tr-sortie");
@@ -22,7 +24,7 @@
       sortie.textContent = dernier.text;
     } else {
       sortie.classList.add("sortie-vide");
-      sortie.textContent = "Le texte en AYNEHA apparaît ici.";
+      sortie.textContent = T("Le texte en AYNEHA apparaît ici.", "The AYNEHA text appears here.");
     }
     try { localStorage.setItem(CLE, v); } catch (e) { /* stockage indisponible */ }
     expliquer();
@@ -30,7 +32,7 @@
 
   function expliquer() {
     var mots = dernier.words.slice(0, 40);
-    if (!mots.length) { detail.innerHTML = '<p class="doux">Écrivez un mot pour voir comment chaque lettre est choisie.</p>'; return; }
+    if (!mots.length) { detail.innerHTML = '<p class="doux">' + T("Écrivez un mot pour voir comment chaque lettre est choisie.", "Type a word to see how each letter is chosen.") + '</p>'; return; }
     detail.innerHTML = "";
     mots.forEach(function (m) {
       var bloc = document.createElement("div"); bloc.className = "mot-detail";
@@ -42,7 +44,7 @@
         li.innerHTML = '<span class="ay" aria-hidden="true"></span><code></code><span></span>';
         li.children[0].textContent = e.glyph;
         li.children[1].textContent = e.raw;
-        li.children[2].textContent = e.label + " : " + e.why;
+        li.children[2].textContent = e.label + (EN ? ": " : " : ") + e.why;
         ul.appendChild(li);
       });
       bloc.appendChild(ul);
@@ -62,8 +64,8 @@
   });
 
   document.getElementById("tr-copier").addEventListener("click", function () {
-    if (!dernier.text) { message("Il n'y a rien à copier pour l'instant."); return; }
-    window.aynehaCopier(A.forPaste(dernier.text)).then(function () { message("Texte AYNEHA copié."); }, function () { message("La copie a échoué. Sélectionnez le texte et copiez-le à la main."); });
+    if (!dernier.text) { message(T("Il n'y a rien à copier pour l'instant.", "There is nothing to copy yet.")); return; }
+    window.aynehaCopier(A.forPaste(dernier.text)).then(function () { message(T("Texte AYNEHA copié.", "AYNEHA text copied.")); }, function () { message(T("La copie a échoué. Sélectionnez le texte et copiez-le à la main.", "Copying failed. Select the text and copy it by hand.")); });
   });
 
   document.getElementById("tr-effacer").addEventListener("click", function () {
@@ -71,8 +73,8 @@
   });
 
   document.getElementById("tr-image").addEventListener("click", function () {
-    if (!dernier.text.trim()) { message("Écrivez d'abord un texte."); return; }
-    A.enImage(dernier.text, function () { message("Image enregistrée dans vos téléchargements."); });
+    if (!dernier.text.trim()) { message(T("Écrivez d'abord un texte.", "First write some text.")); return; }
+    A.enImage(dernier.text, function () { message(T("Image enregistrée dans vos téléchargements.", "Image saved in your downloads.")); });
   });
 
   try { var sauve = localStorage.getItem(CLE); if (sauve) entree.value = sauve; } catch (e) { /* rien */ }

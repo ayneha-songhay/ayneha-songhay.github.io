@@ -6,6 +6,8 @@
    Lecture de droite à gauche ; virgule décimale = virgule AYNEHA (règles v1). */
 (function () {
   "use strict";
+  var EN = document.documentElement.lang === "en";
+  function T(fr, en) { return EN ? en : fr; }
   var A = window.Ayneha;
   var ligneExpr = document.getElementById("calc-expr");
   var ligneRes = document.getElementById("calc-resultat");
@@ -70,7 +72,7 @@
     ["3", "d"], ["2", "d"], ["1", "d"], ["+", "o"],
     ["0", "d"], ["=", "e"]
   ];
-  var NOMS = { c: "Tout effacer", b: "Effacer un chiffre", v: "Virgule", e: "Égal", "÷": "Diviser", "×": "Multiplier", "−": "Soustraire", "+": "Additionner" };
+  var NOMS = EN ? { c: "Clear all", b: "Delete a digit", v: "Decimal comma", e: "Equals", "÷": "Divide", "×": "Multiply", "−": "Subtract", "+": "Add" } : { c: "Tout effacer", b: "Effacer un chiffre", v: "Virgule", e: "Égal", "÷": "Diviser", "×": "Multiplier", "−": "Soustraire", "+": "Additionner" };
   DISPOSITION.forEach(function (k) {
     var b = document.createElement("button");
     b.type = "button";

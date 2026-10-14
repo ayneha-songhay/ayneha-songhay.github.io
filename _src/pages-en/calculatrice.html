@@ -1,0 +1,42 @@
+title: AYNEHA online calculator
+description: A calculator in AYNEHA digits, read from right to left, in your browser: addition, subtraction, multiplication, division, decimals.
+nav: outils
+scripts: assets/js/ayneha.js assets/js/calculatrice.js
+---
+<section class="outil-tete">
+  <div class="wrap">
+    <h1>Calculator</h1>
+    <p>Count in AYNEHA digits. The result is read from right to left. On a computer, the keyboard works too.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <div class="calculatrice">
+      <div class="tablette calc-ecran">
+        <p class="ay calc-expr" id="calc-expr" aria-hidden="true"></p>
+        <p class="ay calc-resultat" id="calc-resultat" aria-live="polite"></p>
+      </div>
+      <div class="calc-pave" id="calc-pave"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Reading numbers</h2>
+      <ul>
+        <li>The first digit of a number is on the right: read from right to left.</li>
+        <li>The decimal separator is the AYNEHA comma, placed at the bottom.</li>
+        <li>Large numbers are split into groups of three digits.</li>
+        <li>The calculation signs (+, −, ×, ÷, =) are the international ones.</li>
+      </ul>
+    </div>
+    <div class="encadre">
+      <h3>On your phone</h3>
+      <p class="doux">The AYNEHA Calc app works offline, with percentages as well.</p>
+      <a class="btn" href="ayneha-calc.html">See AYNEHA Calc</a>
+    </div>
+  </div>
+</section>
