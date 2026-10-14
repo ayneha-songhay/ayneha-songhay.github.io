@@ -1,5 +1,5 @@
 {
-  "version": "20261014113352",
+  "version": "20261014114124",
   "files": [
     "404.html",
     "alphabet.html",
@@ -46,6 +46,7 @@
     "assets/js/essai.js",
     "assets/js/horloge.js",
     "assets/js/nombres.js",
+    "assets/js/quiz.js",
     "assets/js/site.js",
     "assets/js/transcripteur.js",
     "ayneha-calc.html",
@@ -70,17 +71,20 @@
     "confidentialite-clavier.html",
     "confidentialite-horloge.html",
     "confidentialite-nombres.html",
+    "confidentialite-quiz.html",
     "confidentialite-site.html",
     "confidentialite-transcripteur.html",
     "confidentialite.html",
     "convertisseur.html",
     "developpeurs.html",
+    "galerie.html",
     "horloge.html",
     "index.html",
     "installer-apk.html",
     "nombres.html",
     "outils.html",
     "presse.html",
+    "quiz.html",
     "ressources.html"
   ]
 }

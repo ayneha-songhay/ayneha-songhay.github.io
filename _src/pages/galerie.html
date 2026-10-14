@@ -1,0 +1,42 @@
+title: Galerie des cartes AYNEHA - les cartes de la communauté
+description: Les cartes écrites en AYNEHA par la communauté songhay : vœux, salutations, proverbes. Créez la vôtre et proposez-la pour la galerie.
+nav: galerie
+scripts: assets/js/ayneha.js assets/js/cartes-data.js assets/js/carte.js
+---
+<section class="outil-tete">
+  <div class="wrap">
+    <h1>La galerie des cartes</h1>
+    <p>Des vœux, des salutations et des proverbes écrits en AYNEHA par la communauté, de la plus récente à la plus ancienne. Chaque carte est relue avant d'être publiée.</p>
+    <div class="boutons"><a class="btn" href="carte.html">Créer ma carte</a><a class="btn btn-ligne" href="carte.html#proposer">Proposer ma carte</a></div>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <div class="carte-filtres" id="carte-filtres" role="group" aria-label="Filtrer par modèle" hidden></div>
+    <div class="carte-galerie" id="carte-galerie"></div>
+    <div class="encadre carte-galerie-vide" id="carte-galerie-vide" hidden>
+      <h3>La galerie vous attend</h3>
+      <p class="doux">Aucune carte n'a encore été publiée. Créez la vôtre et proposez-la : elle pourrait être la toute première.</p>
+      <a class="btn btn-petit" href="carte.html">Créer ma carte</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-claire">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Les règles de la galerie</h2>
+      <ul class="liste-regles">
+        <li>Chaque carte proposée est relue, et corrigée si nécessaire, avant d'être publiée.</li>
+        <li>Le pseudo s'affiche sur la carte tel que la personne l'a écrit.</li>
+        <li>Une carte qui contient une insulte ou qui manque de respect à une personne n'est pas publiée.</li>
+        <li>Toute carte validée est publiée dans la galerie.</li>
+      </ul>
+    </div>
+    <div class="encadre">
+      <h3>Retirer une carte</h3>
+      <p class="doux">Vous avez proposé une carte et souhaitez qu'elle soit retirée ? Écrivez à <a href="mailto:{{contact}}?subject=Retirer%20ma%20carte">{{contact}}</a>.</p>
+    </div>
+  </div>
+</section>

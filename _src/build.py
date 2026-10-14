@@ -32,8 +32,10 @@ ANNEE = 2026
 NAV = [
     ("index", "index.html", "Accueil"),
     ("alphabet", "alphabet.html", "L'alphabet"),
+    ("quiz", "quiz.html", "Quiz"),
     ("applications", "applications.html", "Applications"),
     ("outils", "outils.html", "Outils en ligne"),
+    ("galerie", "galerie.html", "Galerie"),
     ("ressources", "ressources.html", "Ressources"),
     ("apropos", "apropos.html", "À propos"),
 ]
@@ -279,6 +281,8 @@ def pied():
         <ul>
           <li><a href="alphabet.html">L'alphabet</a></li>
           <li><a href="alphabet.html#regles">Les 22 règles</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="galerie.html">Galerie des cartes</a></li>
           <li><a href="applications.html">Applications</a></li>
           <li><a href="ressources.html">Ressources</a></li>
         </ul>

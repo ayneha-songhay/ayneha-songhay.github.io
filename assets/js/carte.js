@@ -245,9 +245,11 @@
     var vide = document.getElementById("carte-galerie-vide");
     if (!cartes.length) { if (vide) vide.hidden = false; return; }
     if (vide) vide.hidden = true;
+    var items = [];
     cartes.forEach(function (c) {
       var fig = document.createElement("figure");
       fig.className = "carte-galerie-item";
+      fig.setAttribute("data-modele", c.modele || "salut");
       var cv = document.createElement("canvas");
       var ayTxt = c.ayneha ? nettoyer(c.ayneha) : A.transcribe(c.texte || "").text;
       dessiner(cv, { modele: c.modele, format: c.format, ayneha: ayTxt, latin: c.texte, traduction: c.traduction, pseudo: c.pseudo, montrerLatin: c.montrerLatin !== false }, 540);
@@ -256,7 +258,22 @@
       var cap = document.createElement("figcaption");
       cap.textContent = (c.pseudo ? c.pseudo : "Anonyme") + (c.date ? " - " + c.date : "");
       fig.appendChild(cv); fig.appendChild(cap);
-      zone.appendChild(fig);
+      zone.appendChild(fig); items.push(fig);
+    });
+    // filtres par modèle, seulement pour les modèles présents dans la galerie
+    var filtres = document.getElementById("carte-filtres");
+    var presents = Object.keys(MODELES).filter(function (k) { return cartes.some(function (c) { return (c.modele || "salut") === k; }); });
+    if (!filtres || presents.length < 2) return;
+    filtres.hidden = false;
+    var liste = [["tous", "Toutes (" + cartes.length + ")"]].concat(presents.map(function (k) { return [k, MODELES[k].nom]; }));
+    liste.forEach(function (f, i) {
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = f[1]; b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+      b.addEventListener("click", function () {
+        filtres.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        items.forEach(function (it) { it.hidden = f[0] !== "tous" && it.getAttribute("data-modele") !== f[0]; });
+      });
+      filtres.appendChild(b);
     });
   }
 

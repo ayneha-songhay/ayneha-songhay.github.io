@@ -156,6 +156,15 @@ WEB = [
         ],
     },
     {
+        "id": "quiz", "nom": "Quiz", "type": "Outil web", "page": "quiz.html",
+        "intro": "Les quiz permettent de s'exercer à lire l'AYNEHA, directement dans le navigateur.",
+        "sections": [
+            ("Tout reste dans votre navigateur", "Vos réponses ne sont ni enregistrées ni envoyées."),
+            ("Meilleurs scores", "Votre meilleur score à chaque jeu est gardé dans le stockage de votre navigateur, sur votre appareil seulement. Effacer les données du site dans votre navigateur le supprime."),
+            MODIFS,
+        ],
+    },
+    {
         "id": "horloge", "nom": "Horloge et calendrier", "type": "Outil web", "page": "horloge.html",
         "intro": "L'horloge affiche l'heure et le calendrier en AYNEHA.",
         "sections": [

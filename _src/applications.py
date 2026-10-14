@@ -17,6 +17,7 @@ APPS = [
     {
         "id": "ayneha-school",
         "nom": "AYNEHA School",
+        "outil": ("quiz.html", "Faire les quiz en ligne"),
         "statut": "nouveau",
         "glyphe": "H",
         "orange": True,
