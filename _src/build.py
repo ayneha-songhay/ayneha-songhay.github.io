@@ -20,6 +20,7 @@ sys.path.insert(0, ICI)
 import glyphs as G  # noqa: E402
 import applications as APPS  # noqa: E402
 import confidentialite as CONF  # noqa: E402
+import confidentialite_en as CONF_EN  # noqa: E402
 import cartes as CARTES  # noqa: E402
 
 SITE_URL = "https://ayneha-songhay.github.io"
@@ -211,17 +212,38 @@ def page_app(a):
 </section>"""
 
 
-def page_confidentialite(c):
+def page_confidentialite(c, lang="fr"):
+    en = lang == "en"
+    M = CONF_EN if en else CONF
+    est_app = c["type"].startswith("Android") or c["type"].startswith("Application")
     sections = list(c["sections"])
-    if c["type"].startswith("Application") and not any(t == "Logiciel libre" for t, _ in sections):
-        sections.append(CONF.libre(c["nom"]))
+    libre_titre = "Free software" if en else "Logiciel libre"
+    if est_app and not any(t == libre_titre for t, _ in sections):
+        sections.append(M.libre(c["nom"]))
     corps = "".join(f"<h2>{E(t)}</h2><p>{E(x)}</p>" for t, x in sections)
-    adresse = CONTACT_DEV if c["type"].startswith("Application") else CONTACT
+    adresse = CONTACT_DEV if est_app else CONTACT
     lien = ""
-    if c["type"].startswith("Application"):
-        lien = f'<a class="btn btn-ligne btn-petit" href="{c["id"]}.html">Voir {E(c["nom"])}</a>'
+    if est_app:
+        lien = f'<a class="btn btn-ligne btn-petit" href="{c["id"]}.html">{"See" if en else "Voir"} {E(c["nom"])}</a>'
     elif c.get("page"):
-        lien = f'<a class="btn btn-ligne btn-petit" href="{c["page"]}">Ouvrir l\'outil</a>'
+        lien = f'<a class="btn btn-ligne btn-petit" href="{c["page"]}">{"Open the tool" if en else "Ouvrir l&#39;outil"}</a>'
+    if en:
+        return f"""<section class="page-tete">
+  <div class="wrap">
+    <p class="doux" style="margin:0 0 6px"><a href="confidentialite.html">Privacy</a> / {E(c['type'])}</p>
+    <h1>Privacy: {E(c['nom'])}</h1>
+    <p>{E(c['intro'])}</p>
+  </div>
+</section>
+<section class="section-serree">
+  <div class="wrap"><div class="texte-long">
+    {corps}
+    <h2>Contact</h2>
+    <p>For any question about this policy: <a href="mailto:{adresse}">{adresse}</a>. Developed by MAIGUS.</p>
+    <p class="doux petit">Last updated: {M.MAJ}.</p>
+    <div class="boutons">{lien}<a class="btn btn-ligne btn-petit" href="confidentialite.html">All policies</a></div>
+  </div></div>
+</section>"""
     return f"""<section class="page-tete">
   <div class="wrap">
     <p class="doux" style="margin:0 0 6px"><a href="confidentialite.html">Confidentialité</a> / {E(c['type'])}</p>
@@ -236,6 +258,35 @@ def page_confidentialite(c):
     <p>Pour toute question sur cette politique : <a href="mailto:{adresse}">{adresse}</a>. Développé par MAIGUS.</p>
     <p class="doux petit">Dernière mise à jour : {CONF.MAJ}.</p>
     <div class="boutons">{lien}<a class="btn btn-ligne btn-petit" href="confidentialite.html">Toutes les politiques</a></div>
+  </div></div>
+</section>"""
+
+
+def page_confidentialite_index_en():
+    def liste(items):
+        return "".join(f'<li><div><h3>{E(c["nom"])}</h3><p>{E(c["type"])}</p></div><a class="btn btn-ligne btn-petit" href="confidentialite-{c["id"]}.html">Read its policy</a></li>' for c in items)
+    return f"""<section class="page-tete">
+  <div class="wrap">
+    <h1>Privacy</h1>
+    <p>In short: neither the website nor the AYNEHA apps collect data about you. No account, no tracker, no advertising. Each app and each tool has its own page, with its detailed rules.</p>
+  </div>
+</section>
+<section class="section-serree">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Android apps</h2>
+      <ul class="ressources">{liste(CONF_EN.ANDROID)}</ul>
+    </div>
+    <div>
+      <h2>Website and web tools</h2>
+      <ul class="ressources">{liste(CONF_EN.WEB)}</ul>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap"><div class="texte-long">
+    <p>For any question: <a href="mailto:{CONTACT}">{CONTACT}</a>. The French version of these policies is the reference text.</p>
+    <p class="doux petit">Last updated: {CONF_EN.MAJ}.</p>
   </div></div>
 </section>"""
 
@@ -422,9 +473,11 @@ def pied(lang="fr"):
 <button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>"""
 
 
-def lien_conf(nom):
+def lien_conf(nom, lang="fr"):
     for c in CONF.WEB:
         if c.get("page") == nom:
+            if lang == "en":
+                return f'\n<div class="wrap petit doux" style="padding-bottom:20px"><a href="confidentialite-{c["id"]}.html">Privacy of this tool</a>: nothing you type leaves your device.</div>'
             return f'\n<div class="wrap petit doux" style="padding-bottom:20px"><a href="confidentialite-{c["id"]}.html">Confidentialité de cet outil</a> : rien de ce que vous saisissez ne quitte votre appareil.</div>'
     return ""
 
@@ -474,7 +527,7 @@ def page(meta, corps, lang="fr"):
 <body>
 {entete(meta.get("nav", ""), nom, lang)}
 <main id="contenu">
-{corps.strip()}{"" if en else lien_conf(nom)}
+{corps.strip()}{lien_conf(nom, lang)}
 </main>
 {pied(lang)}
 <script src="assets/js/site.js?v={VERSION}"></script>{scripts}
@@ -554,6 +607,8 @@ def main():
     produits = []
     if os.path.isdir(pages_en_dir):
         PAGES_EN.update(f for f in os.listdir(pages_en_dir) if f.endswith(".html"))
+    PAGES_EN.add("confidentialite.html")
+    PAGES_EN.update(f"confidentialite-{c['id']}.html" for c in CONF_EN.ANDROID + CONF_EN.WEB)
     for f in sorted(os.listdir(pages_dir)):
         if not f.endswith(".html"):
             continue
@@ -565,13 +620,24 @@ def main():
         produits.append(f)
 
     os.makedirs(os.path.join(RACINE, "en"), exist_ok=True)
-    for f in sorted(PAGES_EN):
+    for f in sorted(x for x in PAGES_EN if os.path.exists(os.path.join(pages_en_dir, x))):
         meta, corps = lire_page(os.path.join(pages_en_dir, f))
         meta["_file"] = f
         out = relier_en(page(meta, macros(corps), "en"))
         with open(os.path.join(RACINE, "en", f), "w", encoding="utf-8") as fh:
             fh.write(out)
         produits.append("en/" + f)
+
+    meta = {"title": "Privacy - AYNEHA", "description": "The privacy policies of the AYNEHA website and of each app and tool: no data collected, no account, no tracker, no advertising.", "nav": "", "_file": "confidentialite.html"}
+    with open(os.path.join(RACINE, "en", "confidentialite.html"), "w", encoding="utf-8") as fh:
+        fh.write(relier_en(page(meta, page_confidentialite_index_en(), "en")))
+    produits.append("en/confidentialite.html")
+    for c in CONF_EN.ANDROID + CONF_EN.WEB:
+        nom = f"confidentialite-{c['id']}.html"
+        meta = {"title": f"Privacy - {c['nom']}", "description": c["intro"], "nav": "", "_file": nom}
+        with open(os.path.join(RACINE, "en", nom), "w", encoding="utf-8") as fh:
+            fh.write(relier_en(page(meta, page_confidentialite(c, "en"), "en")))
+        produits.append("en/" + nom)
 
     for a in APPS.APPS:
         meta = {"title": f"{a['nom']} - application Android AYNEHA", "description": a["resume"] + " " + a["intro"][0][:110],
