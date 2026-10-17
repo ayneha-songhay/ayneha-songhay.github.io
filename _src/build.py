@@ -38,7 +38,9 @@ NAV = [
     ("quiz", "quiz.html", "Quiz"),
     ("applications", "applications.html", "Applications"),
     ("outils", "outils.html", "Outils en ligne"),
+    ("education", "education.html", "Enseigner l'AYNEHA"),
     ("galerie", "galerie.html", "Galerie"),
+    ("lexique", "lexique.html", "Lexique"),
     ("ressources", "ressources.html", "Ressources"),
     ("apropos", "apropos.html", "À propos"),
 ]
@@ -50,7 +52,9 @@ NAV_EN = [
     ("quiz", "quiz.html", "Quiz"),
     ("applications", "applications.html", "Apps"),
     ("outils", "outils.html", "Online tools"),
+    ("education", "education.html", "Teaching AYNEHA"),
     ("galerie", "galerie.html", "Gallery"),
+    ("lexique", "lexique.html", "Glossary"),
     ("ressources", "ressources.html", "Resources"),
     ("apropos", "apropos.html", "About"),
 ]
