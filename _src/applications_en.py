@@ -130,7 +130,7 @@ TEXTES = {
         ],
         "points": [
             "Six digit systems: AYNEHA, N'Ko, Adlam, Dogon NÈNÈ, Arabic and Western",
-            'Conversion in every direction, up to 17 digits, with thousands separators',
+            'Conversion in every direction, up to 10 digits, with thousands separators',
             "The number pad shows the digits of the starting system, right to left for AYNEHA, N'Ko, Adlam and Dogon NÈNÈ",
             'All six results are shown at the same time, as you type',
             'The AYNEHA and Adlam fonts are built into the app',

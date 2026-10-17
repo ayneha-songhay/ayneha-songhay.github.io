@@ -170,7 +170,7 @@ APPS = [
         ],
         "points": [
             "Six systèmes de chiffres : AYNEHA, N'Ko, adlam, Dogon NÈNÈ, arabe et français",
-            "Conversion dans tous les sens, jusqu'à 17 chiffres, avec séparateurs de milliers",
+            "Conversion dans tous les sens, jusqu'à 10 chiffres, avec séparateurs de milliers",
             "Le pavé numérique affiche les chiffres du système de départ, de droite à gauche pour l'AYNEHA, le N'Ko, l'adlam et le Dogon NÈNÈ",
             "Les six résultats s'affichent en même temps, à mesure que vous tapez",
             "Les polices AYNEHA et adlam sont intégrées à l'application",
