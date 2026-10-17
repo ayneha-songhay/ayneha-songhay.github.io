@@ -51,9 +51,9 @@ TEXTES = {
         "compat": "Android 7 or newer. Uses the internet only to update the content.",
     },
     "ayneha-keyboard": {
-        "resume": "The keyboard to write AYNEHA in every app on your phone.",
+        "resume": "The keyboard to write AYNEHA on your phone and share your texts as images.",
         "intro": [
-            "AYNEHA Keyboard installs like any other Android keyboard. It works in all your apps: messaging, social networks, notes. Its Share button turns your text into an image, readable even by people who do not have the AYNEHA font.",
+            "AYNEHA Keyboard installs like an Android keyboard. Because AYNEHA is in the Unicode Private Use Area, phones and apps such as WhatsApp or Facebook do not display it yet: AYNEHA text typed directly there would show as squares. So write your text in the keyboard's test area, then tap Share: it becomes an image that everyone can read, even without the AYNEHA font.",
         ],
         "points": [
             "Right-to-left layout: the first key of each row is on the right",
@@ -65,8 +65,8 @@ TEXTES = {
         "etapes": [
             "Open AYNEHA Keyboard and tap « Enable the AYNEHA keyboard ».",
             "In Android's list of keyboards, enable AYNEHA Keyboard.",
-            "In any app, switch keyboards (keyboard icon or long press on the space bar) and choose AYNEHA.",
-            "To send a text everyone can read, write it in « Test the keyboard » then tap Share.",
+            "Go back to the app and tap « Test the keyboard ».",
+            "Write your text, then tap Share: it goes out as an image, by WhatsApp or elsewhere, and everyone can read it.",
         ],
         "compat": "Android 7 or newer.",
         "reglages": "Vibration on touch; timestamp on shared images; nickname shown on images (20 characters at most).",

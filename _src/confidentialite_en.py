@@ -48,7 +48,7 @@ ANDROID = [
     },
     {
         "id": "ayneha-keyboard", "nom": "AYNEHA Keyboard", "type": "Android app",
-        "intro": "AYNEHA Keyboard is a keyboard to write AYNEHA in all your apps. Android shows a general warning for any installed keyboard: here is what this one actually does.",
+        "intro": "AYNEHA Keyboard is a keyboard to write AYNEHA on your phone. Android shows a general warning for any installed keyboard: here is what this one actually does.",
         "sections": [
             ("No keystrokes recorded", "No keystroke and no text typed or composed is recorded, sent or shared. The keyboard works entirely on your device, with no account and no server."),
             ("Sharing as an image", "The Share button creates a temporary image of your text, passed only to the app you choose. It is neither kept nor sent anywhere else."),

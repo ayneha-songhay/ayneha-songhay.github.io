@@ -48,7 +48,7 @@ ANDROID = [
     },
     {
         "id": "ayneha-keyboard", "nom": "AYNEHA Keyboard", "type": "Application Android",
-        "intro": "AYNEHA Keyboard est un clavier pour écrire en AYNEHA dans toutes vos applications. Android affiche un avertissement général pour tout clavier installé : voici ce que fait réellement celui-ci.",
+        "intro": "AYNEHA Keyboard est un clavier pour écrire en AYNEHA sur votre téléphone. Android affiche un avertissement général pour tout clavier installé : voici ce que fait réellement celui-ci.",
         "sections": [
             ("Aucune frappe enregistrée", "Aucune frappe, aucun texte saisi ou composé n'est enregistré, envoyé ni partagé. Le clavier fonctionne entièrement sur votre appareil, sans compte et sans serveur."),
             ("Partage en image", "Le bouton Partager crée une image temporaire de votre texte, transmise seulement à l'application que vous choisissez. Elle n'est ni conservée ni envoyée ailleurs."),

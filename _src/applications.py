@@ -76,9 +76,9 @@ APPS = [
         "id": "ayneha-keyboard",
         "nom": "AYNEHA Keyboard",
         "glyphe": "K",
-        "resume": "Le clavier pour écrire en AYNEHA dans toutes les applications du téléphone.",
+        "resume": "Le clavier pour écrire en AYNEHA sur votre téléphone et partager vos textes en image.",
         "intro": [
-            "AYNEHA Keyboard s'installe comme n'importe quel clavier Android. Il fonctionne dans toutes vos applications : messagerie, réseaux sociaux, notes. Son bouton Partager transforme votre texte en image, lisible même par ceux qui n'ont pas la police AYNEHA.",
+            "AYNEHA Keyboard s'installe comme un clavier Android. Comme l'AYNEHA se trouve dans la zone d'usage privé d'Unicode, il n'est pas encore affiché par les téléphones ni par les applications comme WhatsApp ou Facebook : un texte AYNEHA tapé directement s'y afficherait en carrés. Écrivez donc votre texte dans la zone de test du clavier, puis touchez Partager : il devient une image, lisible par tous, même sans la police AYNEHA.",
         ],
         "points": [
             "Disposition de droite à gauche : la première touche de chaque rangée est à droite",
@@ -90,8 +90,8 @@ APPS = [
         "etapes": [
             "Ouvrez AYNEHA Keyboard et touchez « Activer le clavier AYNEHA ».",
             "Dans la liste des claviers d'Android, activez AYNEHA Keyboard.",
-            "Dans une application, changez de clavier (icône du clavier ou appui long sur la barre d'espace) et choisissez AYNEHA.",
-            "Pour envoyer un texte lisible par tous, écrivez-le dans « Tester le clavier » puis touchez Partager.",
+            "Revenez dans l'application et touchez « Tester le clavier ».",
+            "Écrivez votre texte, puis touchez Partager : il part en image, par WhatsApp ou ailleurs, et chacun peut le lire.",
         ],
         "compat": "Android 7 ou plus récent.",
         "reglages": "Vibration au toucher ; horodatage sur les images partagées ; pseudo affiché sur les images (20 caractères au plus).",
