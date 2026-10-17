@@ -18,6 +18,6 @@
   });
   document.getElementById("ak-image").addEventListener("click", function () {
     if (!composer.value.trim()) { message(T("Écrivez d'abord un texte.", "First write some text.")); return; }
-    window.Ayneha.enImage(composer.value, function () { message(T("Image enregistrée dans vos téléchargements.", "Image saved in your downloads.")); });
+    window.Ayneha.enImage(composer.value, function (r) { message(r === "app" ? (window.AynehaApp.enregistreDansGalerie && !window.AynehaApp.enregistreDansGalerie() ? T("Choisissez où enregistrer ou envoyer l'image.", "Choose where to save or send the image.") : T("Image enregistrée dans vos images (dossier Pictures/AYNEHA).", "Image saved in your pictures (Pictures/AYNEHA folder).")) : r === "echec" ? T("L'image n'a pas pu être enregistrée.", "The image could not be saved.") : T("Image enregistrée dans vos téléchargements.", "Image saved in your downloads.")); });
   });
 })();

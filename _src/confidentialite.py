@@ -5,7 +5,7 @@
 # Chaque entrée produit une page  confidentialite-<id>.html  dont l'adresse peut être
 # donnée aux boutiques d'applications (AppGallery...).
 
-MAJ = "13 octobre 2026"
+MAJ = "17 octobre 2026"
 
 ENFANTS = ("Utilisation par des enfants",
            "Comme aucune donnée personnelle n'est collectée, l'application peut être utilisée sans risque particulier par un public jeune, par exemple dans un cadre scolaire.")
@@ -42,6 +42,8 @@ ANDROID = [
         "sections": [
             ("Aucune donnée collectée", "L'application affiche le contenu du site AYNEHA. Elle ne collecte, n'enregistre et n'envoie aucune donnée personnelle."),
             ("Connexion à internet", "Quand une connexion est disponible, l'application vérifie sur le site AYNEHA (hébergé par GitHub Pages) s'il existe une nouvelle version du contenu, puis la télécharge. Comme pour toute visite de site, l'hébergeur peut enregistrer des informations techniques de connexion, comme l'adresse IP."),
+            ("Images", "Quand vous enregistrez une image créée sur le site (carte, texte en AYNEHA), elle est rangée dans vos images, dossier Pictures/AYNEHA. Quand vous la partagez, elle est transmise seulement à l'application que vous choisissez."),
+            ("Liens et téléchargements", "Les liens vers WhatsApp, l'e-mail ou d'autres sites, et les fichiers à télécharger (PDF, police, applications), s'ouvrent dans l'application correspondante de votre téléphone ou dans votre navigateur."),
             ("Permissions", "Internet et état du réseau, uniquement pour mettre à jour le contenu."),
             PAS_DE_SUIVI, ENFANTS, MODIFS,
         ],

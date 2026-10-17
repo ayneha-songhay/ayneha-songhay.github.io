@@ -44,6 +44,7 @@ TEXTES = {
             "Content already installed stays available offline",
             "Automatic and safe updates: if a file is missing, the previous version stays intact",
             "Pull down to refresh, a back button that follows your navigation",
+            "Images created on the website (card, AYNEHA text) are saved to your pictures or shared directly",
         ],
         "etapes": [
             "Install the app, then open it: it starts on the home page.",

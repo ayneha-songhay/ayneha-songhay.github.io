@@ -60,6 +60,7 @@ APPS = [
             "Le contenu déjà installé reste disponible sans connexion",
             "Mise à jour automatique et sûre : si un fichier manque, l'ancienne version reste intacte",
             "Tirer vers le bas pour actualiser, bouton retour qui suit votre navigation",
+            "Les images créées sur le site (carte, texte en AYNEHA) s'enregistrent dans vos images ou se partagent directement",
         ],
         "etapes": [
             "Installez l'application, puis ouvrez-la : elle démarre sur la page d'accueil.",

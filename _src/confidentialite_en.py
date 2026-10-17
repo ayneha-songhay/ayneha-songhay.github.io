@@ -5,7 +5,7 @@
 #
 # Each entry produces  en/confidentialite-<id>.html
 
-MAJ = "13 October 2026"
+MAJ = "17 October 2026"
 
 CHILDREN = ("Use by children",
             "Since no personal data is collected, the app can be used without particular risk by young people, for example at school.")
@@ -42,6 +42,8 @@ ANDROID = [
         "sections": [
             ("No data collected", "The app displays the content of the AYNEHA website. It does not collect, store or send any personal data."),
             ("Internet connection", "When a connection is available, the app checks the AYNEHA website (hosted by GitHub Pages) for a new version of the content, then downloads it. As with any website visit, the host may record technical connection information, such as the IP address."),
+            ("Images", "When you save an image created on the website (card, AYNEHA text), it goes to your pictures, in the Pictures/AYNEHA folder. When you share it, it is sent only to the app you choose."),
+            ("Links and downloads", "Links to WhatsApp, e-mail or other websites, and files to download (PDF, font, apps), open in the matching app on your phone or in your browser."),
             ("Permissions", "Internet and network state, only to update the content."),
             NO_TRACKING, CHILDREN, CHANGES,
         ],

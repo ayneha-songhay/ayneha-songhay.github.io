@@ -354,6 +354,8 @@
     }
     function nomFichier() { return "ma-carte-ayneha-" + d.modele + ".png"; }
     function enBlob(fn) { apercu.toBlob(function (b) { fn(b); }, "image/png"); }
+    /* Application AYNEHA Home : partage et enregistrement passent par l'application. */
+    var APP = window.AynehaApp && window.AynehaApp.enregistrerImage ? window.AynehaApp : null;
     function telecharger(blob) {
       try {
         var a = document.createElement("a");
@@ -378,6 +380,12 @@
 
     document.getElementById("carte-partager").addEventListener("click", function () {
       if (!pret()) return;
+      if (APP && APP.partagerImage) {
+        var okp = false;
+        try { okp = APP.partagerImage(apercu.toDataURL("image/png"), nomFichier(), T("Écrit en AYNEHA, l'écriture du songhay - https://", "Written in AYNEHA, the writing system of Songhay - https://") + SITE + (EN ? "/en" : "") + "/carte.html"); } catch (e) { okp = false; }
+        if (!okp) message(T("Le partage n'a pas pu s'ouvrir.", "Sharing could not be opened."));
+        return;
+      }
       enBlob(function (blob) {
         var f;
         try { f = new File([blob], nomFichier(), { type: "image/png" }); } catch (e) { f = null; }
@@ -397,6 +405,12 @@
     });
     document.getElementById("carte-enregistrer").addEventListener("click", function () {
       if (!pret()) return;
+      if (APP) {
+        var oke = false;
+        try { oke = APP.enregistrerImage(apercu.toDataURL("image/png"), nomFichier()); } catch (e) { oke = false; }
+        message(oke ? (window.AynehaApp.enregistreDansGalerie && !window.AynehaApp.enregistreDansGalerie() ? T("Choisissez où enregistrer ou envoyer l'image.", "Choose where to save or send the image.") : T("La carte est enregistrée dans vos images (dossier Pictures/AYNEHA).", "The card is saved in your pictures (Pictures/AYNEHA folder).")) : T("L'image n'a pas pu être enregistrée.", "The image could not be saved."));
+        return;
+      }
       enBlob(function (blob) { telecharger(blob); montrerImage(T("La carte est enregistrée dans vos téléchargements (dossier Download). ", "The card is saved in your downloads (Download folder). ") + AIDE); });
     });
 

@@ -31,15 +31,16 @@
 
   /* Copie dans le presse-papiers avec repli pour les anciens navigateurs. */
   window.aynehaCopier = function (texte) {
-    if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(texte);
-    }
-    return new Promise(function (ok, ko) {
+    function repli() { return new Promise(function (ok, ko) {
       var t = document.createElement("textarea");
       t.value = texte; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
       document.body.appendChild(t); t.select();
       try { document.execCommand("copy") ? ok() : ko(); } catch (e) { ko(e); }
       document.body.removeChild(t);
-    });
+    }); }
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(texte).catch(repli);
+    }
+    return repli();
   };
 })();

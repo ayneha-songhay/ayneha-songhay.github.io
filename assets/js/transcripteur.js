@@ -74,7 +74,7 @@
 
   document.getElementById("tr-image").addEventListener("click", function () {
     if (!dernier.text.trim()) { message(T("Écrivez d'abord un texte.", "First write some text.")); return; }
-    A.enImage(dernier.text, function () { message(T("Image enregistrée dans vos téléchargements.", "Image saved in your downloads.")); });
+    A.enImage(dernier.text, function (r) { message(r === "app" ? (window.AynehaApp.enregistreDansGalerie && !window.AynehaApp.enregistreDansGalerie() ? T("Choisissez où enregistrer ou envoyer l'image.", "Choose where to save or send the image.") : T("Image enregistrée dans vos images (dossier Pictures/AYNEHA).", "Image saved in your pictures (Pictures/AYNEHA folder).")) : r === "echec" ? T("L'image n'a pas pu être enregistrée.", "The image could not be saved.") : T("Image enregistrée dans vos téléchargements.", "Image saved in your downloads.")); });
   });
 
   try { var sauve = localStorage.getItem(CLE); if (sauve) entree.value = sauve; } catch (e) { /* rien */ }
