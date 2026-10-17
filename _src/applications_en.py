@@ -1,5 +1,5 @@
 # English texts of the AYNEHA Android app pages (en/<id>.html).
-# Same ids as applications.py, which holds links (Naabiga, APK, code) and stays the reference.
+# Same ids as applications.py, which holds links (APK, code) and stays the reference.
 # Designer and creator: Mahamadou Issiaka MAIGA (MAIGUS)
 # SPDX-License-Identifier: GPL-3.0-or-later
 

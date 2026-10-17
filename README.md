@@ -19,7 +19,7 @@ Site statique (HTML, CSS, JavaScript), hébergé sur GitHub Pages. Aucun serveur
 
 - `_src/pages/` : le contenu de chaque page
 - `_src/glyphs.py` : la matrice des 98 caractères AYNEHA
-- `_src/applications.py` : les fiches des applications (liens Naabiga et APK)
+- `_src/applications.py` : les fiches des applications (liens de téléchargement APK)
 - `_src/build.py` : assemble les pages et régénère `manifest.json` et `version.txt`
 
 Après une modification dans `_src/`, lancer `python3 _src/build.py` depuis la racine du dépôt.

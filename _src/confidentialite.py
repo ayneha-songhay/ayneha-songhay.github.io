@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 # Chaque entrée produit une page  confidentialite-<id>.html  dont l'adresse peut être
-# donnée aux boutiques d'applications (Naabiga, AppGallery...).
+# donnée aux boutiques d'applications (AppGallery...).
 
 MAJ = "13 octobre 2026"
 
@@ -104,7 +104,7 @@ WEB = [
             ("Aucune donnée collectée", "Aucun cookie, aucun traceur, aucune mesure d'audience, aucune publicité."),
             ("Aucun service tiers", "Les polices et les scripts sont hébergés sur le site lui-même : en affichant les pages, votre navigateur ne contacte aucun autre service."),
             ("Hébergement", "Le site est hébergé par GitHub Pages, qui peut enregistrer des informations techniques de connexion (comme l'adresse IP) pour assurer le service et sa sécurité."),
-            ("Liens externes", "Les liens vers d'autres sites (Naabiga, Omniglot, réseaux sociaux, Google Drive) mènent à des services qui ont leurs propres règles."),
+            ("Liens externes", "Les liens vers d'autres sites (Omniglot, réseaux sociaux, Google Drive) mènent à des services qui ont leurs propres règles."),
             MODIFS,
         ],
     },

@@ -104,7 +104,7 @@ WEB = [
             ("No data collected", "No cookies, no trackers, no audience measurement, no advertising."),
             ("No third-party services", "Fonts and scripts are hosted on the website itself: when displaying the pages, your browser does not contact any other service."),
             ("Hosting", "The website is hosted by GitHub Pages, which may record technical connection information (such as the IP address) to provide the service and keep it secure."),
-            ("External links", "Links to other websites (Naabiga, Omniglot, social networks, Google Drive) lead to services that have their own rules."),
+            ("External links", "Links to other websites (Omniglot, social networks, Google Drive) lead to services that have their own rules."),
             CHANGES,
         ],
     },

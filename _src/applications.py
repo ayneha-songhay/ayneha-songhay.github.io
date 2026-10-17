@@ -5,12 +5,10 @@
 # Pour mettre à jour une application :
 #   - "apk" : lien du fichier APK (par ex. "assets/telechargements/ayneha-school.apk"
 #     ou ".../releases/latest/download/xxx.apk") ; "" = bouton « bientôt » ;
-#   - "naabiga" : page de l'application sur store.naabiga.com ; "" = « bientôt » ;
 #   - "code" : dépôt du code source ; "" = pas de lien ;
 #   - logo et couverture : remplacer assets/img/apps/<id>-logo.png et <id>-couverture.jpg
 #     par les vrais fichiers (mêmes noms), puis relancer  python3 _src/build.py
 
-NAABIGA = "https://store.naabiga.com/produit/"
 CONFIDENTIALITE = "Aucun compte, aucun serveur, aucune publicité, aucun outil d'analyse. Rien de ce que vous tapez n'est enregistré ni envoyé."
 
 APPS = [
@@ -46,7 +44,6 @@ APPS = [
         ],
         "compat": "Android 8 ou plus récent. Fonctionne sans connexion et ne demande aucune autorisation.",
         "reglages": "Thème automatique, clair ou sombre ; taille du texte AYNEHA ; pseudo et horodatage pour les images partagées.",
-        "naabiga": "",
         "apk": "",
         "code": "",
     },
@@ -70,7 +67,6 @@ APPS = [
             "Quand vous avez du réseau, l'application vérifie seule s'il existe du nouveau contenu.",
         ],
         "compat": "Android 7 ou plus récent. Utilise internet seulement pour mettre à jour le contenu.",
-        "naabiga": NAABIGA + "ayneha",
         "apk": "",
         "code": "",
     },
@@ -97,7 +93,6 @@ APPS = [
         ],
         "compat": "Android 7 ou plus récent.",
         "reglages": "Vibration au toucher ; horodatage sur les images partagées ; pseudo affiché sur les images (20 caractères au plus).",
-        "naabiga": NAABIGA + "ayneha-keyboard",
         "apk": "",
         "code": "",
     },
@@ -120,7 +115,6 @@ APPS = [
             "Touchez « = » pour le résultat, « AC » pour tout effacer.",
         ],
         "compat": "Android 7 ou plus récent. Fonctionne sans connexion.",
-        "naabiga": NAABIGA + "ayneha-calc-2",
         "apk": "",
         "code": "",
         "outil": ("calculatrice.html", "Essayer la calculatrice en ligne"),
@@ -144,7 +138,6 @@ APPS = [
             "Pour un widget : appui long sur l'écran d'accueil, « Widgets », puis « AYNEHA Horloge ».",
         ],
         "compat": "Android 7 ou plus récent.",
-        "naabiga": NAABIGA + "ayneha-horloge",
         "apk": "",
         "code": "",
         "outil": ("horloge.html", "Voir l'horloge en ligne"),
@@ -167,7 +160,6 @@ APPS = [
             "Tapez le nombre : les autres versions s'affichent aussitôt.",
         ],
         "compat": "Android. Fonctionne sans connexion.",
-        "naabiga": "",
         "apk": "",
         "code": "https://github.com/maigus223/ayneha-numconvert",
         "outil": ("nombres.html", "Essayer le convertisseur en ligne"),
@@ -189,7 +181,6 @@ APPS = [
         ],
         "etapes": [],
         "compat": "Android.",
-        "naabiga": "",
         "apk": "",
         "code": "",
     },

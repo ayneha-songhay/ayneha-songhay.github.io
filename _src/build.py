@@ -166,14 +166,10 @@ def boutons_app(a, en=False):
     out = []
     if a.get("statut") == "preparation":
         return f'<span class="btn" aria-disabled="true">{"Coming soon" if en else "Bientôt disponible"}</span>'
-    if a["naabiga"]:
-        out.append(f'<a class="btn" href="{a["naabiga"]}" rel="noopener">{"Download on Naabiga" if en else "Télécharger sur Naabiga"}</a>')
-    else:
-        out.append(f'<span class="btn" aria-disabled="true">{"Soon on Naabiga" if en else "Bientôt sur Naabiga"}</span>')
     if a["apk"]:
-        out.append(f'<a class="btn btn-ligne" href="{a["apk"]}" download>{"Download the APK here" if en else "Télécharger l&#39;APK ici"}</a>')
+        out.append(f'<a class="btn" href="{a["apk"]}" download>{"Download the app" if en else "Télécharger l&#39;application"}</a>')
     else:
-        out.append(f'<span class="btn" aria-disabled="true">{"Direct download soon" if en else "Téléchargement direct bientôt"}</span>')
+        out.append(f'<span class="btn" aria-disabled="true">{"Download coming soon" if en else "Téléchargement bientôt disponible"}</span>')
     return "".join(out)
 
 
