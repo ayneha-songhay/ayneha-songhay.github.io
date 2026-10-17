@@ -34,6 +34,8 @@ APPS = [
             "Six jeux de quiz : reconnaître, retrouver, quel accent, lire la syllabe, chiffres, remettre dans l'ordre",
             "Un atelier de transcription du latin vers l'AYNEHA, avec l'explication de chaque lettre et le partage en image",
             "Des exercices de lecture sur de vrais mots, des noms de régions, des patronymes et l'hymne national, tous vérifiés par l'auteur",
+            "Un lexique de près de 400 mots rangés par thème, avec recherche en songhay ou en français",
+            "Le nom de chaque nombre en songhay, en lettres latines et en AYNEHA, jusqu'à 999 999",
         ],
         "etapes": [
             "Ouvrez l'application et commencez par « L'alphabet ».",

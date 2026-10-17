@@ -21,6 +21,8 @@ TEXTES = {
             "Six quiz games: recognise, find, which diacritic, read the syllable, digits, put in order",
             "A Latin to AYNEHA transcription workshop, with an explanation of each letter and sharing as an image",
             "Reading exercises on real words, region names, family names and the national anthem, all checked by the author",
+            "A glossary of nearly 400 words sorted by theme, with search in Songhay or French",
+            "The name of each number in Songhay, in Latin letters and in AYNEHA, up to 999,999",
         ],
         "etapes": [
             "Open the app and start with « The alphabet ».",
