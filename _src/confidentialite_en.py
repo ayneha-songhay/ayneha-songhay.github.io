@@ -88,11 +88,12 @@ ANDROID = [
         ],
     },
     {
-        "id": "ayneha-carnet", "nom": "AYNEHA Carnet", "type": "Android app (in preparation)",
-        "intro": "AYNEHA Carnet is a notebook in AYNEHA, in preparation. This policy describes how it is planned to work; it will be confirmed on release.",
+        "id": "ayneha-carnet", "nom": "AYNEHA Carnet", "type": "Android app",
+        "intro": "AYNEHA Carnet is a notebook entirely in AYNEHA.",
         "sections": [
             ("Your notes stay with you", "Notes are stored only on your device. No account, no server: they are never sent anywhere else. Uninstalling the app erases them."),
             ("Sharing", "A note is only shared if you decide so, with the app you choose."),
+            ("Permissions", "No permissions: no internet, contacts, location or files."),
             NO_TRACKING, CHANGES,
         ],
     },

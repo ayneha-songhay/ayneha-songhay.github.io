@@ -88,11 +88,12 @@ ANDROID = [
         ],
     },
     {
-        "id": "ayneha-carnet", "nom": "AYNEHA Carnet", "type": "Application Android (en préparation)",
-        "intro": "AYNEHA Carnet est un carnet de notes en AYNEHA, en préparation. Cette politique décrit son fonctionnement prévu ; elle sera confirmée à sa sortie.",
+        "id": "ayneha-carnet", "nom": "AYNEHA Carnet", "type": "Application Android",
+        "intro": "AYNEHA Carnet est un carnet de notes entièrement en AYNEHA.",
         "sections": [
             ("Vos notes restent chez vous", "Les notes sont enregistrées uniquement sur votre appareil. Aucun compte, aucun serveur : elles ne sont jamais envoyées ailleurs. Désinstaller l'application les efface."),
             ("Partage", "Une note n'est partagée que si vous le décidez, avec l'application que vous choisissez."),
+            ("Permissions", "Aucune permission : ni internet, ni contacts, ni position, ni fichiers."),
             PAS_DE_SUIVI, MODIFS,
         ],
     },

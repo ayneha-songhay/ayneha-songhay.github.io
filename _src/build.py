@@ -178,7 +178,16 @@ def boutons_app(a, en=False):
     if a.get("statut") == "preparation":
         return f'<span class="btn" aria-disabled="true">{"Coming soon" if en else "Bientôt disponible"}</span>'
     if a["apk"]:
-        out.append(f'<a class="btn" href="{a["apk"]}" download>{"Download the app" if en else "Télécharger l&#39;application"}</a>')
+        taille = ""
+        try:
+            mo = os.path.getsize(os.path.join(RACINE, a["apk"])) / 1_000_000
+            taille = f"{mo:.1f} MB" if en else f"{mo:.1f} Mo".replace(".", ",")
+        except OSError:
+            pass
+        lib = "Download the app" if en else "Télécharger l&#39;application"
+        out.append(f'<a class="btn" href="{a["apk"]}" download>{lib}{f" ({taille})" if taille else ""}</a>')
+        if a.get("version"):
+            out.append(f'<p class="petit doux" style="margin:8px 0 0">{"Version" if en else "Version"} {a["version"]} - {"APK file for Android" if en else "fichier APK pour Android"}</p>')
     else:
         out.append(f'<span class="btn" aria-disabled="true">{"Download coming soon" if en else "Téléchargement bientôt disponible"}</span>')
     return "".join(out)

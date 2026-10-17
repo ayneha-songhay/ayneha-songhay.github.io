@@ -125,12 +125,12 @@ TEXTES = {
             "Choose the starting system.",
             "Type the number: the other versions appear at once.",
         ],
-        "compat": "Android. Works offline.",
+        "compat": "Android 7 or newer. Works offline.",
     },
     "ayneha-carnet": {
         "resume": "A notebook entirely in AYNEHA.",
         "intro": [
-            "AYNEHA Carnet is a notebook whose whole interface is written in AYNEHA, without a single Latin character. It is in preparation: it will be offered here as soon as it is ready.",
+            "AYNEHA Carnet is a notebook whose whole interface is written in AYNEHA, without a single Latin character. Your notes stay on your phone: no account, no server.",
         ],
         "points": [
             "Create, save, pin, delete and share a note",
@@ -139,6 +139,6 @@ TEXTES = {
             "Offline, no account, no server",
         ],
         "etapes": [],
-        "compat": "Android.",
+        "compat": "Android 8 or newer. Works offline.",
     },
 }
