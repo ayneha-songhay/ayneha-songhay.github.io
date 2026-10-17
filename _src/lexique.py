@@ -15,6 +15,7 @@ CATEGORIES = [
 ]
 
 MOTS = [
+    ('sɔŋɔy', 'songhay (la langue et le peuple)', 'Songhay (the language and the people)', 'autres', '', ''),
     ('yaada', 'zéro (0)', 'zero (0)', 'nombres', '', ''),
     ('affo', 'un (1)', 'one (1)', 'nombres', '', ''),
     ('ihĩka', 'deux (2)', 'two (2)', 'nombres', '', ''),
