@@ -109,14 +109,14 @@ TEXTES = {
     },
     "ayneha-numconvert": {
         "outil": "Try the converter online",
-        "resume": "A number in AYNEHA, N'Ko, Dogon NÈNÈ, Arabic and Western digits.",
+        "resume": "A number in AYNEHA, N'Ko, Adlam, Dogon NÈNÈ, Arabic and Western digits.",
         "intro": [
-            "AYNEHA NumConvert converts a number from one digit system to another, between five scripts: AYNEHA, N'Ko, Dogon NÈNÈ (script by Yahya Sékou Salah GUINDO), Arabic and Western. Handy for learning AYNEHA digits starting from the ones you already know.",
+            "AYNEHA NumConvert converts a number from one digit system to another, between six scripts: AYNEHA, N'Ko, Adlam (the script of Fula), Dogon NÈNÈ (script by Yahya Sékou Salah GUINDO), Arabic and Western. Handy for learning AYNEHA digits starting from the ones you already know.",
         ],
         "points": [
             "Conversion both ways, up to 17 digits, with thousands separators",
             "The number pad shows the digits of the starting system",
-            "All five results are shown at the same time",
+            "All six results are shown at the same time",
         ],
         "etapes": [
             "Choose the starting system.",

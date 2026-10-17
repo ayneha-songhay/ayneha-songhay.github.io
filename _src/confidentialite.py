@@ -77,7 +77,7 @@ ANDROID = [
     },
     {
         "id": "ayneha-numconvert", "nom": "AYNEHA NumConvert", "type": "Application Android",
-        "intro": "AYNEHA NumConvert convertit les chiffres entre cinq systèmes : AYNEHA, Dogon NÈNÈ, français, arabe (chiffres indo-arabes orientaux) et N'Ko.",
+        "intro": "AYNEHA NumConvert convertit les chiffres entre six systèmes : AYNEHA, N'Ko, adlam, Dogon NÈNÈ, arabe (chiffres indo-arabes orientaux) et français.",
         "sections": [
             ("Aucune donnée collectée", "Les nombres que vous saisissez ne sont ni enregistrés, ni envoyés, ni partagés. Ils disparaissent dès que vous quittez ou réinitialisez l'application."),
             ("Permissions", "Aucune permission particulière. Certaines polices (arabe et N'Ko) peuvent être téléchargées une seule fois par les services Google Play, indépendamment de l'application, puis restent en cache sur votre appareil."),

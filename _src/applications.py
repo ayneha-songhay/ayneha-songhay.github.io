@@ -151,14 +151,14 @@ APPS = [
         "id": "ayneha-numconvert",
         "nom": "AYNEHA NumConvert",
         "glyphe": "D4",
-        "resume": "Un nombre en chiffres AYNEHA, N'Ko, Dogon NÈNÈ, arabes et français.",
+        "resume": "Un nombre en chiffres AYNEHA, N'Ko, adlam, Dogon NÈNÈ, arabes et français.",
         "intro": [
-            "AYNEHA NumConvert passe un nombre d'un système de chiffres à l'autre, entre cinq écritures : AYNEHA, N'Ko, Dogon NÈNÈ (écriture de Yahya Sékou Salah GUINDO), arabe et français. Pratique pour apprendre les chiffres AYNEHA en partant de ceux que l'on connaît déjà.",
+            "AYNEHA NumConvert passe un nombre d'un système de chiffres à l'autre, entre six écritures : AYNEHA, N'Ko, adlam (l'écriture du peul), Dogon NÈNÈ (écriture de Yahya Sékou Salah GUINDO), arabe et français. Pratique pour apprendre les chiffres AYNEHA en partant de ceux que l'on connaît déjà.",
         ],
         "points": [
             "Conversion dans les deux sens, jusqu'à 17 chiffres, avec séparateurs de milliers",
             "Le pavé numérique affiche les chiffres du système de départ",
-            "Les cinq résultats s'affichent en même temps",
+            "Les six résultats s'affichent en même temps",
         ],
         "etapes": [
             "Choisissez le système de départ.",

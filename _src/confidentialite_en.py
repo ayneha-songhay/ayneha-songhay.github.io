@@ -77,7 +77,7 @@ ANDROID = [
     },
     {
         "id": "ayneha-numconvert", "nom": "AYNEHA NumConvert", "type": "Android app",
-        "intro": "AYNEHA NumConvert converts digits between five systems: AYNEHA, Dogon NÈNÈ, Western, Arabic (Eastern Arabic-Indic digits) and N'Ko.",
+        "intro": "AYNEHA NumConvert converts digits between six systems: AYNEHA, N'Ko, Adlam, Dogon NÈNÈ, Arabic (Eastern Arabic-Indic digits) and Western.",
         "sections": [
             ("No data collected", "The numbers you enter are neither recorded, sent nor shared. They disappear as soon as you leave or reset the app."),
             ("Permissions", "No special permissions. Some fonts (Arabic and N'Ko) may be downloaded once by Google Play services, independently of the app, and then stay cached on your device."),
