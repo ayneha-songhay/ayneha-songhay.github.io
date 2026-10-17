@@ -118,8 +118,19 @@ def app_en(a):
     return b
 
 
+def empreinte_img(nom):
+    """Empreinte courte du contenu d'une image d'application : quand l'image change,
+    son adresse change aussi, et le navigateur ne garde pas l'ancienne en cache."""
+    import hashlib
+    try:
+        with open(os.path.join(RACINE, "assets", "img", "apps", nom), "rb") as fh:
+            return hashlib.md5(fh.read()).hexdigest()[:8]
+    except OSError:
+        return "0"
+
+
 def logo_app(a, taille=""):
-    return f'<img class="app-logo{taille}" src="assets/img/apps/{a["id"]}-logo.png" width="256" height="256" alt="">'
+    return f'<img class="app-logo{taille}" src="assets/img/apps/{a["id"]}-logo.png?v={empreinte_img(a["id"] + "-logo.png")}" width="256" height="256" alt="">'
 
 
 def etiquette(a, en=False):
@@ -191,7 +202,7 @@ def page_app(a, en=False):
     return f"""<section class="app-tete">
   <div class="wrap">
     {apps_nav(a['id'], en)}
-    <img class="couverture" src="assets/img/apps/{a['id']}-couverture.jpg" width="1200" height="675" alt="{T('Couverture de l&#39;application', 'Cover of the app')} {E(a['nom'])}">
+    <img class="couverture" src="assets/img/apps/{a['id']}-couverture.jpg?v={empreinte_img(a['id'] + '-couverture.jpg')}" width="1200" height="675" alt="{T('Couverture de l&#39;application', 'Cover of the app')} {E(a['nom'])}">
     <div class="app-identite">
       {logo_app(a, " app-logo-grand")}
       <div>
