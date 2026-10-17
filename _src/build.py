@@ -691,9 +691,11 @@ def main():
     with open(os.path.join(RACINE, "assets", "js", "ayneha.js"), "w", encoding="utf-8") as fh:
         fh.write(js_data())
     with open(os.path.join(RACINE, "assets", "js", "lexique-data.js"), "w", encoding="utf-8") as fh:
-        mots = [{"latin": m[0], "fr": m[1], "en": m[2], "cat": m[3]} for m in LEXIQUE.MOTS]
+        mots = [{"latin": m[0], "fr": m[1], "en": m[2], "cat": m[3], "note": m[4], "note_en": m[5]} for m in LEXIQUE.MOTS]
+        cats = [{"id": c[0], "fr": c[1], "en": c[2]} for c in LEXIQUE.CATEGORIES]
         fh.write("/* Généré par _src/build.py depuis _src/lexique.py - ne pas modifier à la main. */\n"
-                 "window.AYNEHA_LEXIQUE = " + json.dumps(mots, ensure_ascii=False) + ";\n")
+                 "window.AYNEHA_LEXIQUE = " + json.dumps(mots, ensure_ascii=False) + ";\n"
+                 "window.AYNEHA_LEXIQUE_CAT = " + json.dumps(cats, ensure_ascii=False) + ";\n")
     with open(os.path.join(RACINE, "assets", "js", "cartes-data.js"), "w", encoding="utf-8") as fh:
         fh.write("/* Généré par _src/build.py depuis _src/cartes.py - ne pas modifier à la main. */\n"
                  "window.AYNEHA_CARTES = " + json.dumps(CARTES.CARTES, ensure_ascii=False, indent=1) + ";\n")

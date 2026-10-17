@@ -6,7 +6,7 @@ scripts: assets/js/ayneha.js assets/js/lexique-data.js assets/js/lexique.js asse
 <section class="page-tete">
   <div class="wrap">
     <h1>Lexique songhay - AYNEHA</h1>
-    <p>Des mots songhay écrits en AYNEHA et en lettres latines, avec leur sens. Le lexique commence avec les mots déjà publiés par le créateur d'AYNEHA, et il grandit avec les mots que vous proposez.</p>
+    <p>Près de 400 mots songhay écrits en AYNEHA et en lettres latines, avec leur sens, rangés par thème : la famille, le corps, la maison, les animaux, les nombres... Le lexique vient du créateur d'AYNEHA, et il grandit avec les mots que vous proposez.</p>
   </div>
 </section>
 
@@ -16,12 +16,7 @@ scripts: assets/js/ayneha.js assets/js/lexique-data.js assets/js/lexique.js asse
       <input class="champ" id="lex-recherche" type="search" placeholder="Chercher un mot" aria-label="Chercher un mot" autocomplete="off" spellcheck="false">
       <span class="doux" id="lex-compte" role="status"></span>
     </div>
-    <div class="carte-choix" id="lex-filtres" role="group" aria-label="Catégorie" style="margin-bottom:20px">
-      <button type="button" data-v="tout" aria-pressed="true">Tout</button>
-      <button type="button" data-v="nombres" aria-pressed="false">Les nombres</button>
-      <button type="button" data-v="verbes" aria-pressed="false">Les verbes</button>
-      <button type="button" data-v="quotidien" aria-pressed="false">Le quotidien</button>
-    </div>
+    <div class="carte-choix" id="lex-filtres" role="group" aria-label="Catégorie" style="margin-bottom:20px"><button type="button" data-v="tout" aria-pressed="true">Tout</button></div>
     <ul class="lex-liste" id="lex-liste"></ul>
   </div>
 </section>

@@ -731,3 +731,5 @@ td .ay { font-size: 2rem; color: var(--sable); }
 .lex-mot { background: var(--nuit-2); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 16px; display: grid; gap: 4px; margin: 0; }
 .lex-mot[hidden] { display: none; }
 .lex-ay { font-size: 2.1rem; color: var(--sable); text-align: right; overflow-wrap: anywhere; margin-bottom: 6px; }
+.nb-lettres p { margin: 0; font-size: 1.15rem; line-height: 1.45; overflow-wrap: anywhere; }
+.nb-lettres .nb-lettres-ay { font-size: 1.9rem; text-align: right; margin-top: 8px; line-height: 1.5; }

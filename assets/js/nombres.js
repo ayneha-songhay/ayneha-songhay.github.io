@@ -40,6 +40,28 @@
   }
   function classe(sys) { return "nb-val nb-" + sys + (SYSTEMES[sys].rtl ? " nb-rtl" : ""); }
 
+  /* Le nombre en toutes lettres, en songhay (règles du document de l'auteur, oct. 2026). */
+  var U = ["yaada", "affo", "ihĩka", "ihĩza", "itaaci", "iggu", "iddu", "iyye", "yaaha", "yagga"];
+  var C = ["", "fo", "hĩka", "hĩza", "taaci", "gu", "iddu", "iyye", "yaaha", "yagga"];
+  var DZ = ["", "iwoy", "warãka", "warãza", "woytaaci", "woygu", "woydu", "woyye", "woyyaaha", "woyyagga"];
+  function deux(r) { if (r < 10) return U[r]; var t = Math.floor(r / 10), u = r % 10; return DZ[t] + (u ? " cĩdi " + C[u] : ""); }
+  function mult(r) { if (r < 10) return C[r]; var t = Math.floor(r / 10), u = r % 10; return (t === 1 ? "woy" : DZ[t]) + (u ? " cĩdi " + C[u] : ""); }
+  function cent(h) { return h === 1 ? "zãgu" : "zãgu " + C[h]; }
+  function enLettres(n) {
+    if (n === 0) return U[0];
+    if (n > 999999) return null;
+    var p = [], T = Math.floor(n / 1000), R = n % 1000;
+    if (T) {
+      var h = Math.floor(T / 100), r = T % 100;
+      if (h) { p.push("jẽber " + cent(h)); if (r) p.push("jẽber " + mult(r)); } else p.push("jẽber " + mult(r));
+    }
+    var h2 = Math.floor(R / 100), r2 = R % 100;
+    if (h2) p.push(cent(h2));
+    if (r2) p.push(deux(r2));
+    return p.join(" nda ");
+  }
+  window.AynehaNombresSonghay = enLettres;
+
   function dessinerResultats() {
     resultats.innerHTML = "";
     ORDRE.forEach(function (sys) {
@@ -52,6 +74,18 @@
       d.appendChild(h); d.appendChild(p);
       resultats.appendChild(d);
     });
+    var dl = document.createElement("div");
+    dl.className = "nb-plaque nb-lettres";
+    var hl = document.createElement("h3"); hl.textContent = T("En toutes lettres (songhay)", "In words (Songhay)");
+    var pl = document.createElement("p"); pl.lang = "khq";
+    var mots = valeur ? enLettres(parseInt(valeur, 10)) : "";
+    pl.textContent = valeur ? (mots || T("Jusqu'à 999 999 pour l'instant", "Up to 999,999 for now")) : "";
+    dl.appendChild(hl); dl.appendChild(pl);
+    if (mots && A.transcribe) {
+      var pa = document.createElement("p"); pa.className = "ay nb-lettres-ay"; pa.setAttribute("aria-hidden", "true");
+      pa.textContent = A.transcribe(mots).text; dl.appendChild(pa);
+    }
+    resultats.appendChild(dl);
     saisie.className = classe(source) + " nb-saisie";
     saisie.textContent = valeur ? versSysteme(valeur, source) : "";
     document.getElementById("nb-compte").textContent = valeur.length + " / " + MAX + T(" chiffres", " digits");
