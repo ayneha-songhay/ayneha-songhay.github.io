@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AYNEHA pour les développeurs - Keyboard SDK</title>
+<meta name="description" content="Le SDK libre AYNEHA Keyboard pour Android (Kotlin) : clavier intégré, translittération latin vers AYNEHA et clavier système, avec les 98 caractères AYNEHA.">
+<meta name="author" content="Mahamadou Issiaka MAIGA (MAIGUS)">
+<meta name="theme-color" content="#0E1A30">
+<link rel="canonical" href="https://ayneha.org/developpeurs.html">
+<link rel="alternate" hreflang="fr" href="https://ayneha.org/developpeurs.html">
+<link rel="alternate" hreflang="en" href="https://ayneha.org/en/developpeurs.html">
+<link rel="alternate" hreflang="x-default" href="https://ayneha.org/developpeurs.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AYNEHA">
+<meta property="og:title" content="AYNEHA pour les développeurs - Keyboard SDK">
+<meta property="og:description" content="Le SDK libre AYNEHA Keyboard pour Android (Kotlin) : clavier intégré, translittération latin vers AYNEHA et clavier système, avec les 98 caractères AYNEHA.">
+<meta property="og:url" content="https://ayneha.org/developpeurs.html">
+<meta property="og:image" content="https://ayneha.org/assets/img/apercu.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css?v=20261018085051">
+
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <div class="wrap">
+    <a class="marque" href="index.html" aria-label="AYNEHA, accueil"><span class="ay logo" aria-hidden="true">􏾚</span><span class="marque-texte">AYNEHA</span></a>
+    <div class="entete-droite">
+    <div class="langues" role="group" aria-label="Langue / Language"><span aria-current="true">FR</span><a href="en/developpeurs.html" hreflang="en" lang="en">EN</a></div>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="alphabet.html">L'alphabet</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="applications.html" aria-current="page">Applications</a></li>
+        <li><a href="outils.html">Outils en ligne</a></li>
+        <li><a href="education.html">Enseigner l'AYNEHA</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="lexique.html">Lexique</a></li>
+        <li><a href="ressources.html">Ressources</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="contenu">
+<section class="page-tete">
+  <div class="wrap">
+    <nav class="pages-ancres apps-nav" aria-label="Pages des applications"><a href="ayneha-school.html">AYNEHA School</a><a href="ayneha-home.html">AYNEHA Home</a><a href="ayneha-keyboard.html">AYNEHA Keyboard</a><a href="ayneha-calc.html">AYNEHA Calc</a><a href="ayneha-horloge.html">AYNEHA Horloge</a><a href="ayneha-numconvert.html">AYNEHA NumConvert</a><a href="ayneha-carnet.html">AYNEHA Carnet</a><a href="installer-apk.html">Installer un APK</a><a href="developpeurs.html" aria-current="page">Développeurs</a></nav>
+    <h1 style="margin-top:28px">Pour les développeurs</h1>
+    <p>Ajoutez l'écriture AYNEHA à votre propre application Android avec le AYNEHA Keyboard SDK, une bibliothèque libre écrite en Kotlin.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap cote">
+    <div class="texte-long">
+      <h2>Trois façons de l'intégrer</h2>
+      <ol class="regles">
+        <li><strong>Le clavier dans votre écran</strong> : le clavier AYNEHA posé directement dans votre application, sans que l'utilisateur change de clavier système.</li>
+        <li><strong>La translittération</strong> : l'utilisateur tape en lettres latines sur son clavier habituel, le texte s'écrit en AYNEHA à la volée.</li>
+        <li><strong>Le clavier système</strong> : le clavier AYNEHA complet, comme clavier Android, à inclure dans votre projet.</li>
+      </ol>
+      <p>Les modes 1 et 3 partagent la même disposition de touches. Les 98 caractères AYNEHA et leurs points de code sont fournis.</p>
+      <h2>Installation</h2>
+      <p>Le SDK est fourni en code source, comme module Gradle <code>:ayneha-keyboard</code> à inclure dans votre projet. Il peut aussi être compilé en bibliothèque <code>.aar</code>. Le mode d'emploi complet se trouve dans le dépôt.</p>
+      <h2>Bon à savoir</h2>
+      <ul>
+        <li>Les caractères AYNEHA sont dans la zone d'usage privé Unicode, de U+10FF7C à U+10FFDD : chacun occupe deux unités UTF-16. Manipulez des points de code, jamais des caractères isolés.</li>
+        <li>Ces points de code sont « forts de gauche à droite » pour Android : pour un affichage de droite à gauche correct, il faut inverser l'ordre des caractères avant de les dessiner.</li>
+        <li>N'appliquez jamais de gras ni de souligné à l'AYNEHA : pour mettre en valeur, agrandissez le texte.</li>
+      </ul>
+    </div>
+    <aside>
+      <div class="encadre">
+        <h3>Le code source</h3>
+        <p class="doux">Logiciel libre : code sous licence GNU LGPL v3, police sous SIL OFL 1.1.</p>
+        <a class="btn" href="https://github.com/maigus223/ayneha-keyboard-sdk" rel="noopener">Ouvrir le dépôt GitHub</a>
+      </div>
+      <div class="encadre">
+        <h3>Une question ?</h3>
+        <p class="doux">Pour un projet qui intègre l'AYNEHA, écrivez à <a href="mailto:gwokmt2q@duck.com?subject=AYNEHA%20Keyboard%20SDK">gwokmt2q@duck.com</a>.</p>
+        <a class="btn btn-ligne btn-petit" href="ressources.html#police">Télécharger la police</a>
+      </div>
+    </aside>
+  </div>
+</section>
+</main>
+<footer class="pied">
+  <div class="frise" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="pied-grille">
+      <div class="pied-marque">
+        <span class="ay" role="img" aria-label="AYNEHA">􏾜􏿌􏾍􏾝􏾚􏾜</span>
+        <p>AYNEHA, l'écriture de la langue songhay. Conçue et créée par Mahamadou Issiaka MAIGA (MAIGUS).</p>
+      </div>
+      <div>
+        <h2>Découvrir</h2>
+        <ul>
+          <li><a href="apprendre.html">Commencer ici</a></li>
+          <li><a href="alphabet.html">L'alphabet</a></li>
+          <li><a href="alphabet.html#regles">Les 22 règles</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="galerie.html">Galerie des cartes</a></li>
+          <li><a href="applications.html">Applications</a></li>
+          <li><a href="lexique.html">Lexique</a></li>
+          <li><a href="ressources.html">Ressources</a></li>
+          <li><a href="education.html">Enseigner l'AYNEHA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Outils en ligne</h2>
+        <ul>
+          <li><a href="convertisseur.html">Transcripteur latin → AYNEHA</a></li>
+          <li><a href="clavier.html">Clavier</a></li>
+          <li><a href="calculatrice.html">Calculatrice</a></li>
+          <li><a href="nombres.html">Convertisseur de nombres</a></li>
+          <li><a href="horloge.html">Horloge</a></li>
+          <li><a href="carte.html">Ma carte AYNEHA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Le projet</h2>
+        <ul>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="faq.html">Questions fréquentes</a></li>
+          <li><a href="presse.html">Espace presse</a></li>
+          <li><a href="apropos.html#soutenir">Soutenir le projet</a></li>
+          <li><a href="avis.html?depuis=developpeurs.html">Donner mon avis</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Suivre AYNEHA</h2>
+        <ul>
+          <li><a href="https://aynehasonghay.blogspot.com" rel="noopener">Blog</a></li>
+          <li><a href="https://www.tiktok.com/@ayneha.songhay" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/ayneha.songhay/" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/ayneha_songhay" rel="noopener">X</a></li>
+          <li><a href="https://whatsapp.com/channel/0029Vb8zu22HgZWfGLpgAA2U" rel="noopener">Chaîne WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>© 2026 AYNEHA. Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS).</span>
+      <span>Contact : <a href="mailto:contact@ayneha.org">contact@ayneha.org</a></span>
+    </div>
+  </div>
+</footer>
+<button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>
+<script src="assets/js/site.js?v=20261018085051"></script>
+</body>
+</html>

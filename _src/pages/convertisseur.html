@@ -1,0 +1,77 @@
+title: Transcripteur latin vers AYNEHA
+description: Transcrivez un texte songhay écrit en lettres latines vers l'écriture AYNEHA, en direct, avec l'explication de chaque lettre. Copie et export en image.
+nav: outils
+scripts: assets/js/ayneha.js assets/js/transcripteur.js
+---
+<section class="outil-tete">
+  <div class="wrap">
+    <h1>Transcripteur latin → AYNEHA</h1>
+    <p>Écrivez en songhay avec les lettres latines, comme vous prononcez : le texte s'écrit en AYNEHA au fur et à mesure. Rien n'est envoyé sur internet, tout se passe dans votre navigateur.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap atelier">
+    <div>
+      <label for="tr-entree" style="display:block;font-weight:600;color:var(--sable);margin-bottom:8px">Texte en lettres latines</label>
+      <textarea class="champ" id="tr-entree" spellcheck="false" autocapitalize="off" placeholder="Par exemple : Maali ni cayɛno ga"></textarea>
+      <p class="doux petit" style="margin:10px 0 0">Lettres qui manquent sur votre clavier :</p>
+      <div class="touches-rapides" id="tr-touches">
+        <button type="button" data-c="ŋ">ŋ</button><button type="button" data-c="ɲ">ɲ</button><button type="button" data-c="š">š</button>
+        <button type="button" data-c="ɛ">ɛ</button><button type="button" data-c="ɔ">ɔ</button>
+        <button type="button" data-c="ã">ã</button><button type="button" data-c="ẽ">ẽ</button><button type="button" data-c="ĩ">ĩ</button><button type="button" data-c="õ">õ</button><button type="button" data-c="ũ">ũ</button>
+      </div>
+    </div>
+    <div>
+      <div class="tablette">
+        <p class="sortie ay" id="tr-sortie" aria-live="polite"></p>
+        <div class="barre-outils">
+          <button type="button" id="tr-copier">Copier le texte AYNEHA</button>
+          <button type="button" id="tr-image">Enregistrer en image</button>
+          <button type="button" id="tr-effacer">Tout effacer</button>
+        </div>
+        <p class="message-etat" id="tr-etat" role="status"></p>
+      </div>
+      <p class="doux petit" style="margin-top:12px">Le texte copié s'affiche en AYNEHA seulement chez les personnes qui ont la police Ayneha Pro. Pour l'envoyer sur WhatsApp ou ailleurs, l'image est plus sûre : elle se lit partout.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <details class="explication encadre" id="tr-explication">
+      <summary>Pourquoi ces lettres ? Le détail mot par mot</summary>
+      <div id="tr-detail"><p class="doux">Écrivez un mot pour voir comment chaque lettre est choisie.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="section" id="regles-transcription">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Comment écrire en lettres latines</h2>
+      <p class="doux">Le transcripteur suit la prononciation du songhay de Gao. Quelques repères suffisent.</p>
+      <p class="doux petit">Important : le transcripteur applique des règles automatiques. Il ne remplace pas une validation linguistique de chaque mot ; en cas de doute, faites vérifier le résultat.</p>
+    </div>
+    <div class="tableau-defile">
+      <table>
+        <thead><tr><th>Vous tapez</th><th>Vous obtenez</th></tr></thead>
+        <tbody>
+          <tr><td>une voyelle suivie d'un seul n (an, en, un...)</td><td>la voyelle nasalisée</td></tr>
+          <tr><td>une lettre doublée (aa, bb, tt...)</td><td>l'accent double</td></tr>
+          <tr><td>un n en fin de mot de plus de trois lettres</td><td>N muette (pas de nasalisation)</td></tr>
+          <tr><td>une consonne qui n'est pas suivie d'une voyelle</td><td>la consonne muette</td></tr>
+          <tr><td>sh ou š</td><td>Ʃ (ch de « chat »)</td></tr>
+          <tr><td>c ou tch</td><td>TƩ (tch)</td></tr>
+          <tr><td>dj, ou di suivi d'une voyelle</td><td>DJ</td></tr>
+          <tr><td>ny, ou ni suivi d'une voyelle, ou ɲ</td><td>Ɲ (gn de « agneau »)</td></tr>
+          <tr><td>ŋ</td><td>Ŋ</td></tr>
+          <tr><td>ng, gn</td><td>les deux lettres, la première muette</td></tr>
+          <tr><td>ɛ ou è, ɔ ou ô</td><td>E et O ouverts</td></tr>
+          <tr><td>v</td><td>W</td></tr>
+          <tr><td>chiffres, virgule, point-virgule</td><td>chiffres et ponctuation AYNEHA</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+title: Lexique songhay - AYNEHA : mots, nombres, verbes
+description: Un petit lexique songhay écrit en AYNEHA et en lettres latines, avec le sens en français : nombres, verbes et mots du quotidien. Proposez vos mots.
+nav: lexique
+scripts: assets/js/ayneha.js assets/js/lexique-data.js assets/js/lexique.js assets/js/message.js
+---
+<section class="page-tete">
+  <div class="wrap">
+    <h1>Lexique songhay - AYNEHA</h1>
+    <p>Plus de 430 mots songhay écrits en AYNEHA et en lettres latines, avec leur sens, rangés par thème : la famille, le corps, la maison, les animaux, les nombres, le calendrier, le téléphone et les applications... Le lexique vient du créateur d'AYNEHA, et il grandit avec les mots que vous proposez.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <div class="lex-outils">
+      <input class="champ" id="lex-recherche" type="search" placeholder="Chercher un mot" aria-label="Chercher un mot" autocomplete="off" spellcheck="false">
+      <span class="doux" id="lex-compte" role="status"></span>
+    </div>
+    <div class="carte-choix" id="lex-filtres" role="group" aria-label="Catégorie" style="margin-bottom:20px"><button type="button" data-v="tout" aria-pressed="true">Tout</button></div>
+    <ul class="lex-liste" id="lex-liste"></ul>
+  </div>
+</section>
+
+<section class="section section-claire" id="proposer">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Proposer un mot</h2>
+      <p>Un mot de tous les jours, une salutation, un mot d'aujourd'hui (téléphone, ordinateur, métier) ? Proposez-le avec son sens. Chaque mot est relu avant d'être ajouté au lexique.</p>
+      <p class="doux petit">Le formulaire prépare un message que vous envoyez vous-même, par WhatsApp ou par e-mail. Le site n'enregistre rien.</p>
+    </div>
+    <form class="form-message encadre" data-sujet="Un mot pour le lexique AYNEHA" data-intro="Bonjour AYNEHA,&#10;je propose un mot pour le lexique.&#10;" data-vide="Écrivez au moins le mot et son sens." data-envoye="Votre application s'ouvre : il ne reste qu'à envoyer le message. Merci !">
+      <div class="q"><label for="lx-mot">Le mot en songhay <span class="doux">(lettres latines)</span></label><input class="champ" id="lx-mot" type="text" maxlength="60" spellcheck="false" autocapitalize="off" data-label="Mot :"></div>
+      <div class="q"><label for="lx-sens">Son sens en français</label><input class="champ" id="lx-sens" type="text" maxlength="100" data-label="Sens :"></div>
+      <div class="q"><label for="lx-ex">Un exemple de phrase <span class="doux">(facultatif)</span></label><input class="champ" id="lx-ex" type="text" maxlength="160" data-label="Exemple :"></div>
+      <div class="q"><label for="lx-lieu">Où dit-on ce mot ? <span class="doux">(facultatif)</span></label><input class="champ" id="lx-lieu" type="text" maxlength="60" placeholder="Par exemple : Gao, Tombouctou, Niamey" data-label="Région :"></div>
+      <div class="q"><label for="lx-pseudo">Votre pseudo <span class="doux">(facultatif)</span></label><input class="champ" id="lx-pseudo" type="text" maxlength="30" autocomplete="off" data-label="Pseudo :" data-auto></div>
+      <div class="boutons">
+        <a class="btn" data-canal="wa" href="https://wa.me/22366778763" target="_blank" rel="noopener">Proposer par WhatsApp</a>
+        <a class="btn btn-ligne" data-canal="mail" href="mailto:{{contact}}">Proposer par e-mail</a>
+      </div>
+      <p class="message-etat" role="status"></p>
+    </form>
+  </div>
+</section>

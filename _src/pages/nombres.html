@@ -1,0 +1,48 @@
+title: Convertisseur de nombres AYNEHA
+description: Passez un nombre d'un système de chiffres à l'autre : AYNEHA, N'Ko, adlam, Dogon NÈNÈ, arabe et français, jusqu'à 17 chiffres, dans votre navigateur.
+nav: outils
+scripts: assets/js/ayneha.js assets/js/nombres.js
+---
+<section class="outil-tete">
+  <div class="wrap">
+    <h1>Convertisseur de nombres</h1>
+    <p>Tapez un nombre dans le système de votre choix : il s'affiche aussitôt en chiffres AYNEHA, N'Ko, adlam, Dogon NÈNÈ, arabes et français. Jusqu'à 17 chiffres.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap nb-atelier">
+    <div class="calculatrice">
+      <label for="nb-source" class="nb-label">Saisir en</label>
+      <select id="nb-source" class="champ nb-choix">
+        <option value="ayneha" selected>Chiffres AYNEHA</option>
+        <option value="nko">Chiffres N'Ko</option>
+        <option value="adlam">Chiffres adlam</option>
+        <option value="dogon">Chiffres Dogon NÈNÈ</option>
+        <option value="arabe">Chiffres arabes</option>
+        <option value="francais">Chiffres français</option>
+      </select>
+      <div class="tablette calc-ecran" style="margin-top:18px">
+        <p id="nb-saisie" class="nb-saisie" aria-live="polite"></p>
+        <p class="lecture petit" id="nb-compte" style="margin:0"></p>
+      </div>
+      <div class="calc-pave nb-pave" id="nb-pave"></div>
+    </div>
+    <div class="nb-resultats" id="nb-resultats" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Six façons d'écrire un nombre</h2>
+      <p class="doux">En AYNEHA, en N'Ko, en adlam (l'écriture du peul) et en Dogon NÈNÈ, un nombre se lit de droite à gauche : le premier chiffre est à droite. En arabe et en français, les chiffres d'un nombre se lisent de gauche à droite. La valeur est la même : seuls les chiffres changent.</p>
+      <p class="doux petit">L'écriture Dogon NÈNÈ a été créée par Yahya Sékou Salah GUINDO.</p>
+    </div>
+    <div class="encadre">
+      <h3>Sur votre téléphone</h3>
+      <p class="doux">L'application AYNEHA NumConvert fait la même conversion sur Android, sans connexion.</p>
+      <a class="btn" href="ayneha-numconvert.html">Voir AYNEHA NumConvert</a>
+    </div>
+  </div>
+</section>

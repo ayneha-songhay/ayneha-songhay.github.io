@@ -3,193 +3,189 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>À propos - AYNEHA</title>
-<meta name="description" content="L'histoire d'AYNEHA, son créateur Mahamadou Issiaka MAIGA (MAIGUS), ses objectifs et son état d'avancement - et comment le contacter.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=2">
-<style>
-  .about-layout{display:grid;grid-template-columns:3.5fr 1.5fr;gap:28px;align-items:start;}
-  @media (max-width:860px){.about-layout{grid-template-columns:1fr;}}
-  .about-col h2{font-size:1.25rem;margin-top:2em;}
-  .about-col h2:first-child{margin-top:0;}
-  .contact-card{
-    position:sticky;top:96px;background:var(--indigo-800);border:1px solid var(--line);
-    border-radius:var(--radius);padding:22px;
-  }
-  .contact-card h3{font-size:1rem;margin-bottom:6px;}
-  .contact-card p{font-size:0.85rem;margin-bottom:16px;}
-  .contact-btn{
-    display:flex;align-items:center;gap:10px;width:100%;padding:12px 14px;border-radius:8px;
-    font-size:0.86rem;font-weight:600;margin-bottom:10px;border:1px solid var(--line);
-    background:var(--indigo-950);color:var(--sand);
-  }
-  .contact-btn:hover{border-color:rgba(198,145,47,0.45);text-decoration:none;}
-  .contact-btn.whatsapp{color:#25D366;}
-  .contact-btn.email{color:var(--gold-bright);}
-  #email-mailto{display:none;} /* affiché uniquement sur mobile via le script */
-  .status-list{list-style:none;margin:0;padding:0;}
-  .status-list li{
-    display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:0.88rem;
-  }
-  .status-list li:last-child{border-bottom:none;}
-  .status-dot{
-    flex:none;width:8px;height:8px;border-radius:50%;margin-top:6px;
-  }
-  .status-dot.official{background:var(--gold-bright);}
-  .status-dot.pending{background:var(--rust);}
-  .status-label{font-size:0.7rem;color:var(--sand-dim);}
-</style>
+<title>À propos d&#x27;AYNEHA - histoire, créateur, contact</title>
+<meta name="description" content="D&#x27;où vient l&#x27;écriture AYNEHA, qui l&#x27;a conçue, où en est le projet, et comment contacter son créateur Mahamadou Issiaka MAIGA (MAIGUS) ou soutenir le projet.">
+<meta name="author" content="Mahamadou Issiaka MAIGA (MAIGUS)">
+<meta name="theme-color" content="#0E1A30">
+<link rel="canonical" href="https://ayneha.org/apropos.html">
+<link rel="alternate" hreflang="fr" href="https://ayneha.org/apropos.html">
+<link rel="alternate" hreflang="en" href="https://ayneha.org/en/apropos.html">
+<link rel="alternate" hreflang="x-default" href="https://ayneha.org/apropos.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AYNEHA">
+<meta property="og:title" content="À propos d&#x27;AYNEHA - histoire, créateur, contact">
+<meta property="og:description" content="D&#x27;où vient l&#x27;écriture AYNEHA, qui l&#x27;a conçue, où en est le projet, et comment contacter son créateur Mahamadou Issiaka MAIGA (MAIGUS) ou soutenir le projet.">
+<meta property="og:url" content="https://ayneha.org/apropos.html">
+<meta property="og:image" content="https://ayneha.org/assets/img/apercu.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css?v=20261018085051">
+
 </head>
 <body>
-
-<header class="site-header">
-  <nav class="nav">
-    <a class="brand" href="index.html">AYNEHA <small>Écriture Songhay</small></a>
-    <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="alphabet.html">Alphabet</a></li>
-      <li><a href="clavier.html">Teste clavier</a></li>
-      <li><a href="convertisseur.html">Convertisseur</a></li>
-      <li><a href="ressources.html">Ressources</a></li>
-      <li><a href="horloge.html">Horloge</a></li>
-      <li><a href="apropos.html" class="active">À propos</a></li>
-    </ul>
-  </nav>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <div class="wrap">
+    <a class="marque" href="index.html" aria-label="AYNEHA, accueil"><span class="ay logo" aria-hidden="true">􏾚</span><span class="marque-texte">AYNEHA</span></a>
+    <div class="entete-droite">
+    <div class="langues" role="group" aria-label="Langue / Language"><span aria-current="true">FR</span><a href="en/apropos.html" hreflang="en" lang="en">EN</a></div>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="alphabet.html">L'alphabet</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="applications.html">Applications</a></li>
+        <li><a href="outils.html">Outils en ligne</a></li>
+        <li><a href="education.html">Enseigner l'AYNEHA</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="lexique.html">Lexique</a></li>
+        <li><a href="ressources.html">Ressources</a></li>
+        <li><a href="apropos.html" aria-current="page">À propos</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
-
-<section class="hero" style="padding:56px 0 36px">
-  <div class="glyph-grid" aria-hidden="true"></div>
-  <div class="container hero-grid">
-    <div>
-      <span class="eyebrow mono">L'histoire du projet</span>
-      <h1 style="font-size:clamp(2rem,4.4vw,2.9rem)">À propos d'AYNEHA</h1>
-    </div>
-    <div class="hero-side">
-      <p class="lede">D'où vient AYNEHA, qui l'a conçu, où en est le projet aujourd'hui - et comment échanger directement avec son créateur.</p>
-    </div>
+<main id="contenu">
+<section class="page-tete">
+  <div class="wrap">
+    <h1>À propos d'AYNEHA</h1>
+    <p>D'où vient cette écriture, qui l'a conçue, où en est le projet, et comment échanger avec son créateur.</p>
   </div>
 </section>
 
-<section style="padding-top:24px">
-  <div class="container about-layout">
-
-    <div class="about-col">
-
+<section class="section-serree">
+  <div class="wrap cote">
+    <div class="texte-long">
       <h2>Un manque, et une réponse</h2>
-      <p>
-        Le songhay (dont le zarma et le dendi sont des variantes régionales) est parlé par
-        plusieurs millions de locuteurs entre le Mali, le Niger, le Burkina Faso, le Bénin et
-        leurs diasporas. Comme la plupart des langues ouest-africaines, il ne dispose pas d'un
-        système d'écriture qui lui soit propre : sa transcription s'appuie sur l'alphabet latin,
-        adapté selon les conventions établies en 1993 par la DNAFLA (Direction Nationale de
-        l'Alphabétisation Fonctionnelle et de la Linguistique Appliquée) au Mali.
-      </p>
-      <p>
-        Ce recours à un alphabet emprunté impose des compromis constants : plusieurs sons propres
-        au songhay ne trouvent pas de correspondance directe dans l'inventaire latin et nécessitent
-        des combinaisons de lettres ou des conventions ad hoc, source d'hésitations
-        orthographiques. C'est ce constat, et la volonté d'offrir à la communauté songhay un outil
-        d'écriture pérenne, qui ont motivé la conception d'AYNEHA : un système autonome, taillé sur
-        mesure pour les besoins phonétiques, structuraux et culturels de la langue.
-      </p>
+      <p>Le songhay, dont le zarma et le dendi sont des variantes régionales, est parlé par plusieurs millions de personnes au Mali, au Niger, au Burkina Faso, au Bénin et dans leurs diasporas. Il s'écrit aujourd'hui avec l'alphabet latin, adapté selon les conventions fixées au Mali en 1993, ou en caractères arabes (ajami).</p>
+      <p>AYNEHA est un système d'écriture original conçu pour le songhay. Il propose une nouvelle solution graphique, distincte des conventions latines et des pratiques d'écriture en caractères arabes utilisées pour cette langue.</p>
+      <p>Un alphabet emprunté impose des compromis : plusieurs sons du songhay n'ont pas de lettre latine et demandent des combinaisons ou des conventions particulières. C'est ce constat, et l'envie d'offrir à la communauté songhay un outil d'écriture durable, qui ont conduit à créer AYNEHA : une écriture taillée pour les sons, la structure et la culture du songhay.</p>
 
-      <h2>Une écriture pensée depuis les sons</h2>
-      <p>
-        Le principe directeur du système tient en une phrase : à chaque son du songhay correspond
-        un caractère propre et distinct, plutôt qu'une combinaison de lettres empruntées à un autre
-        alphabet. Cette correspondance stricte entre son et glyphe vise à éliminer les hésitations
-        orthographiques et à offrir une expérience d'écriture fluide.
-      </p>
-      <p>
-        Un choix structurant, pour les lettres comme pour les chiffres, est le sens de lecture et
-        d'écriture intégralement de droite à gauche (RTL). Ce n'est pas qu'un choix esthétique :
-        c'est une rupture assumée avec l'héritage visuel du latin, qui affirme l'autonomie
-        culturelle et graphique de la langue songhay plutôt que de s'y adapter.
-      </p>
-      <p>
-        AYNEHA ne se limite pas à un alphabet sur papier : c'est un écosystème numérique et
-        culturel complet - police vectorielle, clavier mobile, calculatrice, outil de conversion -
-        pensé pour que la langue songhay puisse être pratiquée au quotidien sur les supports
-        numériques modernes.
-      </p>
+      <h2>Un son, un caractère</h2>
+      <p>AYNEHA a été conçu à partir du songhay de Gao. Son principe est d'attribuer un caractère à chaque son retenu dans son système d'écriture, plutôt qu'une combinaison de lettres venues d'un autre alphabet. Cette correspondance évite les hésitations d'orthographe. Le projet pourra documenter les variantes régionales et les adaptations nécessaires.</p>
+      <p>AYNEHA s'écrit et se lit entièrement de droite à gauche, les lettres comme les chiffres. Ce n'est pas qu'un choix esthétique : c'est une rupture assumée avec l'héritage visuel du latin, qui affirme l'autonomie graphique de la langue.</p>
+
+      <h2 id="variete">Quelle variété de songhay AYNEHA utilise-t-il ?</h2>
+      <ul>
+        <li><strong>Le nom de la langue</strong> : en songhay, il se prononce et s'écrit <strong>sɔŋɔy</strong>.</li>
+        <li><strong>Référence actuelle</strong> : le songhay de Gao.</li>
+        <li><strong>Objectif</strong> : permettre à tous les locuteurs du songhay d'apprendre et d'écrire avec AYNEHA.</li>
+        <li><strong>Travail à poursuivre</strong> : documenter les différences de prononciation et de vocabulaire entre les variétés, comme le zarma ou le dendi, et les adaptations qu'elles demandent.</li>
+      </ul>
+
+      <h2>Des formes essayées à la main</h2>
+      <p>Avant toute police numérique, les caractères ont été écrits pendant des mois au crayon, au stylo à bille et au feutre, lentement puis vite. Des dizaines de formes ont été supprimées, modifiées ou remplacées jusqu'à obtenir des lettres faciles à tracer à la main, bien distinctes les unes des autres et agréables à l'écran. La police, le clavier et les applications sont venus ensuite, adaptés à ce qui fonctionnait déjà sur le papier.</p>
 
       <h2>Le créateur</h2>
-      <p>
-        AYNEHA a été conçu et développé par
-        <strong class="creator-name">Mahamadou Issiaka MAIGA (MAIGUS)</strong>, linguiste
-        indépendant et autodidacte basé à Gao, au Mali. Il en est le seul concepteur et créateur.
-      </p>
-      <p>
-        Le système a été formellement créé le <strong>2 août 2026</strong>, et la nouvelle version sous licence OFL de la police
-        numérique (<code>ayneha_type.ttf</code> v2.0) est deja en place.
-      </p>
+      <p>AYNEHA a été conçu et créé par <strong>Mahamadou Issiaka MAIGA</strong>, dit <strong>MAIGUS</strong>, linguiste indépendant et autodidacte originaire de Gao, au Mali. Il en est le seul concepteur. Le système a été officiellement créé le 2 août 2026.</p>
+      <p>Il développe aussi les outils numériques du projet. Ils ont été pensés pour qu'on puisse apprendre et pratiquer l'AYNEHA seul, à son rythme, et ne demander de l'aide qu'en cas de besoin.</p>
 
-      <h2>Une adoption qui démarre</h2>
-      <p>
-        AYNEHA connaît une adoption progressive au sein d'un premier cercle d'apprenants : un
-        groupe WhatsApp rassemble des apprenants songhay dispersés sur le territoire malien, et
-        des formations plus structurées doivent débuter courant <strong>septembre 2026</strong>,
-        en présentiel à Gao.
-      </p>
+      <h2>Reconnaissance</h2>
+      <p>AYNEHA est présenté sur <a href="https://www.omniglot.com/conscripts/ayneha.htm" rel="noopener">Omniglot</a>, l'encyclopédie en ligne de référence sur les systèmes d'écriture. À long terme, l'objectif est l'encodage officiel de l'AYNEHA dans le standard Unicode, comme l'a obtenu l'écriture adlam pour le peul.</p>
 
-      <h2>Reconnaissance externe</h2>
-      <p>
-        AYNEHA a été présenté et référencé sur <strong>Omniglot</strong>, le site de référence
-        mondial sur les systèmes d'écriture - une première reconnaissance externe vérifiable
-        par toute personne intéressée à en savoir plus sur le projet.
-      </p>
-    </ul>
-
-      <h2>Protection et reconnaissance à long terme</h2>
-      <p>
-        L'objectif à long terme du projet est de faire encoder AYNEHA officiellement dans le
-        standard Unicode, en s'inspirant du précédent constitué par l'écriture Adlam pour le peuple
-        peul (Fulani) de Guinée.
-      </p>
-
+      <h2>Logiciel libre</h2>
+      <p>Le code des applications et de ce site est un logiciel libre, sous licence GNU GPL v3 ou ultérieure. La police Ayneha Pro est sous licence SIL Open Font License 1.1, les logos, images et textes sous licence CC BY-SA 4.0. Le nom AYNEHA et son logo restent réservés aux applications officielles : une version modifiée doit porter un autre nom.</p>
+      <p class="doux">Les applications AYNEHA sont développées par MAIGUS avec l'aide d'outils d'intelligence artificielle (Claude, d'Anthropic).</p>
     </div>
 
-    <aside class="about-col">
-      <div class="contact-card">
-        <span class="tag mono" style="margin-bottom:14px">Contact</span>
-        <h3>Une question, une idée, envie d'apprendre ?</h3>
-        <p>Écrivez directement à <strong class="creator-name">Mahamadou Issiaka MAIGA (MAIGUS)</strong>, concepteur d'AYNEHA.</p>
-        <a class="contact-btn whatsapp" href="https://wa.me/22366778763" target="_blank" rel="noopener">
-          💬 Contacter par WhatsApp
-        </a>
-        <a class="contact-btn email" id="email-mailto" href="mailto:gwokmt2q@duck.com?subject=Contact%20depuis%20le%20site%20AYNEHA">
-          ✉️ Contacter par e-mail
-        </a>
-        <a class="contact-btn email" id="email-gmail" href="https://mail.google.com/mail/?view=cm&fs=1&to=gwokmt2q@duck.com&su=Contact%20depuis%20le%20site%20AYNEHA" target="_blank" rel="noopener">
-          ✉️ Contacter via Gmail
-        </a>
-        <a class="contact-btn email" id="email-outlook" href="https://outlook.live.com/mail/0/deeplink/compose?to=gwokmt2q@duck.com&subject=Contact%20depuis%20le%20site%20AYNEHA" target="_blank" rel="noopener">
-          📧 Contacter via Outlook.com
-        </a>
-        <p id="email-note" style="margin-bottom:0;font-size:0.78rem">
-          Ces boutons ouvrent un nouveau message déjà adressé, directement dans votre navigateur
-          ou votre application e-mail.
-        </p>
+    <aside>
+      <div class="encadre" id="contact">
+        <img class="portrait" src="assets/img/maigus.jpg" width="280" height="359" alt="Portrait de Mahamadou Issiaka MAIGA (MAIGUS)">
+        <h3>Contacter le créateur</h3>
+        <p class="doux">Une question, une idée, envie d'apprendre ou de faire connaître l'AYNEHA ? Écrivez directement.</p>
+        <ul class="contact-lignes">
+          <li>E-mail : <a href="mailto:contact@ayneha.org?subject=Contact%20depuis%20le%20site%20AYNEHA">contact@ayneha.org</a></li>
+          <li><a href="https://wa.me/22366778763" rel="noopener">Discuter sur WhatsApp</a></li>
+        </ul>
+        <h3 style="margin-top:20px;font-size:1.05rem">Suivre AYNEHA</h3>
+        <div class="reseaux">
+          <a href="https://aynehasonghay.blogspot.com" rel="noopener">Blog</a>
+          <a href="https://www.tiktok.com/@ayneha.songhay" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/ayneha.songhay/" rel="noopener">Facebook</a>
+          <a href="https://x.com/ayneha_songhay" rel="noopener">X</a>
+          <a href="https://whatsapp.com/channel/0029Vb8zu22HgZWfGLpgAA2U" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="encadre soutien" id="soutenir">
+        <h3>Soutenir le projet</h3>
+        <p class="doux">AYNEHA est gratuit et le restera. Votre soutien aide à financer les applications, les noms de domaine et les supports d'apprentissage.</p>
+        <p class="soutien-bientot"><strong>Soutenir le projet AYNEHA</strong> : non activé pour le moment.</p>
       </div>
     </aside>
-
   </div>
 </section>
-
-<footer>
-  <div class="container">
-    <span class="mono">© 2026 AYNEHA - <span class="creator-name">Mahamadou Issiaka MAIGA (MAIGUS)</span></span>
-    <span>
-      <a href="https://aynehasonghay.blogspot.com" target="_blank" rel="noopener">Blog officiel</a>
-      &nbsp;·&nbsp;
-      <a href="ressources.html">Ressources</a>
-    </span>
+</main>
+<footer class="pied">
+  <div class="frise" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="pied-grille">
+      <div class="pied-marque">
+        <span class="ay" role="img" aria-label="AYNEHA">􏾜􏿌􏾍􏾝􏾚􏾜</span>
+        <p>AYNEHA, l'écriture de la langue songhay. Conçue et créée par Mahamadou Issiaka MAIGA (MAIGUS).</p>
+      </div>
+      <div>
+        <h2>Découvrir</h2>
+        <ul>
+          <li><a href="apprendre.html">Commencer ici</a></li>
+          <li><a href="alphabet.html">L'alphabet</a></li>
+          <li><a href="alphabet.html#regles">Les 22 règles</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="galerie.html">Galerie des cartes</a></li>
+          <li><a href="applications.html">Applications</a></li>
+          <li><a href="lexique.html">Lexique</a></li>
+          <li><a href="ressources.html">Ressources</a></li>
+          <li><a href="education.html">Enseigner l'AYNEHA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Outils en ligne</h2>
+        <ul>
+          <li><a href="convertisseur.html">Transcripteur latin → AYNEHA</a></li>
+          <li><a href="clavier.html">Clavier</a></li>
+          <li><a href="calculatrice.html">Calculatrice</a></li>
+          <li><a href="nombres.html">Convertisseur de nombres</a></li>
+          <li><a href="horloge.html">Horloge</a></li>
+          <li><a href="carte.html">Ma carte AYNEHA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Le projet</h2>
+        <ul>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="faq.html">Questions fréquentes</a></li>
+          <li><a href="presse.html">Espace presse</a></li>
+          <li><a href="apropos.html#soutenir">Soutenir le projet</a></li>
+          <li><a href="avis.html?depuis=apropos.html">Donner mon avis</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Suivre AYNEHA</h2>
+        <ul>
+          <li><a href="https://aynehasonghay.blogspot.com" rel="noopener">Blog</a></li>
+          <li><a href="https://www.tiktok.com/@ayneha.songhay" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/ayneha.songhay/" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/ayneha_songhay" rel="noopener">X</a></li>
+          <li><a href="https://whatsapp.com/channel/0029Vb8zu22HgZWfGLpgAA2U" rel="noopener">Chaîne WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>© 2026 AYNEHA. Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS).</span>
+      <span>Contact : <a href="mailto:contact@ayneha.org">contact@ayneha.org</a></span>
+    </div>
   </div>
 </footer>
-
-<button id="back-to-top" aria-label="Retour en haut de page">&#8593;</button>
-<script src="assets/nav.js"></script>
+<button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>
+<script src="assets/js/site.js?v=20261018085051"></script>
+<script src="assets/js/apropos.js"></script>
 </body>
 </html>

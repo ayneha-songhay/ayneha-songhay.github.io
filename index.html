@@ -3,143 +3,310 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AYNEHA - L'alphabet Songhay</title>
-<meta name="description" content="AYNEHA, l'alphabet créé par Mahamadou Issiaka MAIGA (MAIGUS) pour écrire la langue songhay : découvrez ses lettres, testez le clavier, convertissez vos textes.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=3">
+<title>AYNEHA - l&#x27;écriture de la langue songhay</title>
+<meta name="description" content="AYNEHA, l&#x27;écriture de la langue songhay (ayneha, sɔŋɔy shɛnno hãtumo). AYNEHA est un alphabet original pour écrire le songhay, de droite à gauche, conçu par Mahamadou Issiaka MAIGA (MAIGUS). Découvrez les lettres, essayez-le en ligne et installez les applications gratuites.">
+<meta name="author" content="Mahamadou Issiaka MAIGA (MAIGUS)">
+<meta name="theme-color" content="#0E1A30">
+<link rel="canonical" href="https://ayneha.org/">
+<link rel="alternate" hreflang="fr" href="https://ayneha.org/">
+<link rel="alternate" hreflang="en" href="https://ayneha.org/en/">
+<link rel="alternate" hreflang="x-default" href="https://ayneha.org/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AYNEHA">
+<meta property="og:title" content="AYNEHA - l&#x27;écriture de la langue songhay">
+<meta property="og:description" content="AYNEHA, l&#x27;écriture de la langue songhay (ayneha, sɔŋɔy shɛnno hãtumo). AYNEHA est un alphabet original pour écrire le songhay, de droite à gauche, conçu par Mahamadou Issiaka MAIGA (MAIGUS). Découvrez les lettres, essayez-le en ligne et installez les applications gratuites.">
+<meta property="og:url" content="https://ayneha.org/">
+<meta property="og:image" content="https://ayneha.org/assets/img/apercu.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css?v=20261018085051">
+
 </head>
 <body>
-
-<header class="site-header">
-  <nav class="nav">
-    <a class="brand" href="index.html">AYNEHA <small>Écriture Songhay</small></a>
-    <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Accueil</a></li>
-      <li><a href="alphabet.html">Alphabet</a></li>
-      <li><a href="clavier.html">Teste clavier</a></li>
-      <li><a href="convertisseur.html">Convertisseur</a></li>
-      <li><a href="ressources.html">Ressources</a></li>
-      <li><a href="horloge.html">Horloge</a></li>
-      <li><a href="apropos.html">À propos</a></li>
-    </ul>
-  </nav>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <div class="wrap">
+    <a class="marque" href="index.html" aria-label="AYNEHA, accueil"><span class="ay logo" aria-hidden="true">􏾚</span><span class="marque-texte">AYNEHA</span></a>
+    <div class="entete-droite">
+    <div class="langues" role="group" aria-label="Langue / Language"><span aria-current="true">FR</span><a href="en/index.html" hreflang="en" lang="en">EN</a></div>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html" aria-current="page">Accueil</a></li>
+        <li><a href="alphabet.html">L'alphabet</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="applications.html">Applications</a></li>
+        <li><a href="outils.html">Outils en ligne</a></li>
+        <li><a href="education.html">Enseigner l'AYNEHA</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="lexique.html">Lexique</a></li>
+        <li><a href="ressources.html">Ressources</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
-
+<main id="contenu">
 <section class="hero">
-  <div class="glyph-grid" aria-hidden="true"></div>
-  <div class="container hero-grid">
+  <div class="wrap">
     <div>
-      <span class="eyebrow mono">Système d'écriture - v1.0 - 2026</span>
-      <h1>AYNEHA, l'écriture propre de la langue songhay</h1>
-    </div>
-    <div class="hero-side">
-      <a class="btn btn-gold" style="display:inline-block; margin-bottom:16px; font-size:0.85rem; padding:6px 14px;" href="https://www.omniglot.com/conscripts/ayneha.htm" target="_blank" rel="noopener">★ Présenté sur Omniglot →</a>
-      <p class="lede">
-        22 consonnes, 5 voyelles, 10 chiffres, 98 glyphes - un alphabet numérique dès sa conception,
-        encodé de U+E000 à U+E061, qui se lit et s'écrit de droite à gauche. Conçu par
-        <span class="creator-name">Mahamadou Issiaka MAIGA, dit MAIGUS</span>.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-gold" href="alphabet.html">Découvrir l'alphabet</a>
-        <a class="btn btn-outline" href="convertisseur.html">Essayer le convertisseur</a>
+      <h1>AYNEHA, l'écriture de la langue songhay</h1>
+      <p class="chapeau">Un alphabet né en 2026 pour le songhay, langue parlée le long du fleuve Niger, au Mali, au Niger, au Bénin et au Burkina Faso. Conçu à partir du songhay de Gao, il donne un caractère à chaque son retenu, et l'on écrit de droite à gauche.</p>
+      <p class="chapeau">Apprenez-le, écrivez-le sur votre téléphone, comptez avec ses chiffres : tout est gratuit.</p>
+      <div class="boutons">
+        <a class="btn" href="apprendre.html">Commencer à apprendre</a>
+        <a class="btn btn-ligne" href="convertisseur.html">Écrire mon premier mot</a>
       </div>
-      <div class="readout mono">glyphes_encodés: 98 / 98 &nbsp;·&nbsp; plage: U+E000-U+E061 &nbsp;·&nbsp; sens: RTL</div>
+    </div>
+
+    <div class="tablette" aria-labelledby="essai-titre">
+      <p class="ardoise-titre"><span class="ay" role="img" aria-label="ayneha">􏾜􏿌􏾍􏾝􏾚􏾜</span></p>
+      <div class="ardoise-lecture">
+        <span class="lecture">se lit « ayneha »</span>
+        <span class="sens-lecture" aria-hidden="true">de droite à gauche <b>←</b> début</span>
+      </div>
+      <div class="essai">
+        <label id="essai-titre" for="essai-champ">Écrivez votre prénom en AYNEHA</label>
+        <input class="champ" id="essai-champ" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="60" placeholder="Par exemple : mahamadu">
+        <p class="essai-sortie ay" id="essai-sortie" aria-live="polite"></p>
+        <p class="lecture petit">Écrivez le prénom comme il se prononce, pas comme il s'écrit en français : Issiaka s'écrit isiyaka, Maïga s'écrit mayga, « ou » s'écrit u, « ch » s'écrit sh. <a href="convertisseur.html">Transcrire un texte entier</a></p>
+      </div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="container">
-    <div class="section-head">
-      <span class="tag mono">01 - le site en un coup d'œil</span>
-      <h2>Quatre outils, une seule écriture</h2>
+<div class="frise" aria-hidden="true"></div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="intro">
+      <h2>27 lettres, lues de droite à gauche</h2>
+      <p>Cinq voyelles, puis vingt-deux consonnes : c'est l'ordre alphabétique de l'AYNEHA. Des accents ajoutent la nasalisation, l'ouverture, le doublement ou la consonne muette. La première lettre, A, est tout à droite : on lit la rangée de droite à gauche. Touchez une lettre pour voir sa fiche.</p>
     </div>
-    <div class="grid grid-4">
-      <a class="card" href="alphabet.html">
-        <span class="card-tag mono">01_ALPHABET</span>
-        <h3>Alphabet</h3>
-        <p>Les 22 consonnes, les 5 voyelles et leurs 7 variantes, les 4 diacritiques et les 10 chiffres AYNEHA.</p>
-        <span class="go">Voir les lettres →</span>
-      </a>
-      <a class="card" href="clavier.html">
-        <span class="card-tag mono">02_CLAVIER</span>
-        <h3>Teste clavier</h3>
-        <p>Tapez un mot et regardez-le prendre vie en AYNEHA - un aperçu de l'expérience du clavier Android.</p>
-        <span class="go">Tester →</span>
-      </a>
-      <a class="card" href="convertisseur.html">
-        <span class="card-tag mono">03_CONVERT</span>
-        <h3>Convertisseur</h3>
-        <p>Transcrivez un texte du latin vers l'AYNEHA en un clic, grâce au transcripteur officiel.</p>
-        <span class="go">Convertir →</span>
-      </a>
-      <a class="card" href="ressources.html">
-        <span class="card-tag mono">04_RESSOURCES</span>
-        <h3>Ressources</h3>
-        <p>Police, documents transcrits, applications Android et outils web : tout l'écosystème AYNEHA.</p>
-        <span class="go">Télécharger →</span>
-      </a>
+    <div class="tablette bande">
+      <div class="bande-lettres">
+        <a class="bande-lettre" href="alphabet.html#lettre-A"><span class="ay" role="img" aria-label="a">􏾜</span><small>a</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-E"><span class="ay" role="img" aria-label="e">􏾝</span><small>e</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-I"><span class="ay" role="img" aria-label="i">􏾞</span><small>i</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-O"><span class="ay" role="img" aria-label="o">􏾟</span><small>o</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-U"><span class="ay" role="img" aria-label="u">􏾠</span><small>u</small></a>
+        <span class="bande-sep" aria-hidden="true"></span>
+        <a class="bande-lettre" href="alphabet.html#lettre-B"><span class="ay" role="img" aria-label="b">􏾆</span><small>b</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-P"><span class="ay" role="img" aria-label="p">􏾇</span><small>p</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-M"><span class="ay" role="img" aria-label="m">􏾈</span><small>m</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-F"><span class="ay" role="img" aria-label="f">􏾉</span><small>f</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-W"><span class="ay" role="img" aria-label="w">􏾊</span><small>w</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-D"><span class="ay" role="img" aria-label="d">􏾋</span><small>d</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-T"><span class="ay" role="img" aria-label="t">􏾌</span><small>t</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-N"><span class="ay" role="img" aria-label="n">􏾍</span><small>n</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-L"><span class="ay" role="img" aria-label="l">􏾎</span><small>l</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-R"><span class="ay" role="img" aria-label="r">􏾏</span><small>r</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-S"><span class="ay" role="img" aria-label="s">􏾐</span><small>s</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-Z"><span class="ay" role="img" aria-label="z">􏾑</span><small>z</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-SH"><span class="ay" role="img" aria-label="sh">􏾒</span><small>sh</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-TS"><span class="ay" role="img" aria-label="tch">􏾓</span><small>tch</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-J"><span class="ay" role="img" aria-label="j">􏾔</span><small>j</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-DJ"><span class="ay" role="img" aria-label="dj">􏾕</span><small>dj</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-GN"><span class="ay" role="img" aria-label="ɲ">􏾖</span><small>ɲ</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-Y"><span class="ay" role="img" aria-label="y">􏾗</span><small>y</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-G"><span class="ay" role="img" aria-label="g">􏾘</span><small>g</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-K"><span class="ay" role="img" aria-label="k">􏾙</span><small>k</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-H"><span class="ay" role="img" aria-label="h">􏾚</span><small>h</small></a>
+        <a class="bande-lettre" href="alphabet.html#lettre-NG"><span class="ay" role="img" aria-label="ŋ">􏾛</span><small>ŋ</small></a>
+      </div>
+    </div>
+    <div class="boutons" style="margin-top:26px">
+      <a class="btn btn-ligne" href="alphabet.html">Voir l'alphabet complet, les accents et les chiffres</a>
     </div>
   </div>
 </section>
 
-<hr class="divider">
+<section class="section-serree">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Essayez tout de suite</h2>
+      <p>Sept outils gratuits, directement dans votre navigateur.</p>
+    </div>
+    <div class="outils-rangee">
+      <a href="convertisseur.html"><span class="ay rond" aria-hidden="true">􏾓</span>Transcripteur latin → AYNEHA</a>
+      <a href="clavier.html"><span class="ay rond" aria-hidden="true">􏾙</span>Clavier</a>
+      <a href="calculatrice.html"><span class="ay rond" aria-hidden="true">􏾃</span>Calculatrice</a>
+      <a href="nombres.html"><span class="ay rond" aria-hidden="true">􏾀</span>Convertisseur de nombres</a>
+      <a href="horloge.html"><span class="ay rond" aria-hidden="true">􏾞</span>Horloge et calendrier</a>
+      <a href="carte.html"><span class="ay rond" aria-hidden="true">􏾈</span>Ma carte AYNEHA</a>
+      <a href="lexique.html"><span class="ay rond" aria-hidden="true">􏾎</span>Lexique (plus de 430 mots)</a>
+    </div>
+  </div>
+</section>
 
-<section>
-  <div class="container grid grid-2" style="align-items:start;">
+<section class="section">
+  <div class="wrap accueil-carte">
     <div>
-      <span class="tag mono">02 - le projet</span>
-      <h2>Une identité graphique pour le songhay</h2>
-      <p>
-        Parlé par plusieurs millions de personnes le long de la boucle du fleuve Niger - au Mali,
-        au Niger, au Bénin et au Burkina Faso - le songhay porte une tradition orale immense, mais
-        n'avait jusqu'ici pas d'alphabet qui lui soit propre : il s'écrivait en transcription latine
-        ou en caractères arabes (ajami).
-      </p>
-      <p>
-        AYNEHA change cela. Chaque lettre occupe un point de code dans la Zone d'Usage Privé Unicode
-        (U+E000 à U+E061), ce qui lui permet de vivre dans une police numérique, un clavier ou un
-        logiciel comme n'importe quel alphabet standard.
-      </p>
-      <a class="btn btn-outline" href="apropos.html">Lire l'histoire complète du projet</a>
+      <h2>À vous de faire vivre l'AYNEHA</h2>
+      <p>Écrivez un vœu de fête, une salutation ou un proverbe en songhay : il s'écrit en AYNEHA sur une carte à envoyer à vos proches.</p>
+      <p class="doux">Proposez ensuite votre carte : relue, elle rejoindra la galerie de la communauté, avec votre pseudo. Chaque carte partagée, c'est une personne de plus qui découvre l'écriture du songhay.</p>
+      <div class="boutons">
+        <a class="btn" href="carte.html">Créer ma carte</a>
+        <a class="btn btn-ligne" href="galerie.html">Voir la galerie</a>
+      </div>
     </div>
-    <div class="card" style="cursor:default">
-      <span class="card-tag mono">CRÉATEUR</span>
-      <img src="assets/img/maigus-photo.png" alt="Mahamadou Issiaka MAIGA (MAIGUS)" style="width:140px; aspect-ratio:3.5/4.5; object-fit:cover; border-radius:8px; margin:12px 0;">
-      <h3 class="creator-name">Mahamadou Issiaka MAIGA</h3>
-      <p>
-        Connu sous le nom de <strong class="creator-name">MAIGUS</strong>, linguiste indépendant et autodidacte originaire de Gao, au Mali,
-        seul concepteur de l'alphabet AYNEHA.
-      </p>
-      <p>
-        Le système a été formellement créé le 2 août 2026, à partir d'une police numérique dont la v2.0 sous licence OFL est deja disponible.
-        (<code>ayneha_type.ttf</code>).
-      </p>
-      <p style="margin-bottom:0">
-        Le projet se poursuit sur un blog pédagogique, des réseaux sociaux et une suite d'outils
-        gratuits pensés pour que chacun puisse apprendre et écrire en AYNEHA sans barrière technique.
-      </p>
+    <canvas id="accueil-carte" width="840" height="840" role="img" aria-label="Exemple de carte : AYNEHA, l'écriture du songhay"></canvas>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap trio">
+    <div class="encadre">
+      <h3>Enseigner l'AYNEHA</h3>
+      <p class="doux">Écoles, associations, alphabétisation : du matériel gratuit et un formulaire pour demander de l'aide ou devenir partenaire.</p>
+      <a class="btn btn-ligne btn-petit" href="education.html">Espace éducation</a>
+    </div>
+    <div class="encadre">
+      <h3>Apprendre sur papier</h3>
+      <p class="doux">Une affiche A4 de l'alphabet et un cahier de tracé de 4 pages, à imprimer et partager librement.</p>
+      <div class="boutons"><a class="btn btn-ligne btn-petit" href="assets/telechargements/ayneha-affiche-alphabet.pdf" download>L'affiche</a><a class="btn btn-ligne btn-petit" href="assets/telechargements/ayneha-cahier-trace.pdf" download>Le cahier</a></div>
+    </div>
+    <div class="encadre">
+      <h3>Votre avis compte</h3>
+      <p class="doux">Ce qui vous plaît, ce qui vous gêne, ce que vous voulez voir bientôt : dites-le, chaque avis est lu.</p>
+      <a class="btn btn-ligne btn-petit" href="avis.html?depuis=index.html">Donner mon avis</a>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <span class="mono">
-      © 2026 AYNEHA - <span class="creator-name">Mahamadou Issiaka MAIGA (MAIGUS)</span><br>
-      <a href="https://www.omniglot.com/conscripts/ayneha.htm" target="_blank" rel="noopener" style="opacity:0.8;">Présenté sur Omniglot</a>
-    </span>
-    <span>
-      <a href="https://aynehasonghay.blogspot.com" target="_blank" rel="noopener">Blog officiel</a>
-      &nbsp;·&nbsp;
-      <a href="ressources.html">Ressources</a>
-    </span>
+<section class="section section-claire">
+  <div class="wrap vitrine">
+    <div class="app-une">
+      <img class="app-logo app-logo-grand" src="assets/img/apps/ayneha-school-logo.png" width="256" height="256" alt="">
+      <h3 style="margin-top:18px">AYNEHA School <span class="etiquette">Nouveau</span></h3>
+      <p>L'application pour apprendre à lire et à écrire l'AYNEHA, seul, à son rythme et sans connexion : l'alphabet lettre par lettre, les accents, le syllabaire, les chiffres, le tracé au doigt, des quiz et un atelier de transcription.</p>
+      <div class="boutons">
+        <a class="btn" href="ayneha-school.html">Voir AYNEHA School</a>
+      </div>
+    </div>
+    <div>
+      <h2>Écrire l'AYNEHA au quotidien</h2>
+      <p class="doux">Des applications Android gratuites, sans publicité et sans collecte de données, à télécharger directement sur ce site.</p>
+      <ul class="liste-apps"><li><img class="app-logo app-logo-petit" src="assets/img/apps/ayneha-home-logo.png?v=5f42ee19" width="256" height="256" alt=""><a href="ayneha-home.html"><h4>AYNEHA Home </h4><p>Tout le site AYNEHA dans votre téléphone, même hors connexion.</p></a></li><li><img class="app-logo app-logo-petit" src="assets/img/apps/ayneha-keyboard-logo.png?v=2834c5bb" width="256" height="256" alt=""><a href="ayneha-keyboard.html"><h4>AYNEHA Keyboard </h4><p>Le clavier pour écrire en AYNEHA sur votre téléphone et partager vos textes en image.</p></a></li><li><img class="app-logo app-logo-petit" src="assets/img/apps/ayneha-calc-logo.png?v=99b7cd01" width="256" height="256" alt=""><a href="ayneha-calc.html"><h4>AYNEHA Calc </h4><p>Une calculatrice entièrement en chiffres AYNEHA.</p></a></li><li><img class="app-logo app-logo-petit" src="assets/img/apps/ayneha-horloge-logo.png?v=c3454aac" width="256" height="256" alt=""><a href="ayneha-horloge.html"><h4>AYNEHA Horloge </h4><p>L&#x27;heure, le jour, le mois et l&#x27;année songhay en AYNEHA, avec un calendrier.</p></a></li><li><img class="app-logo app-logo-petit" src="assets/img/apps/ayneha-numconvert-logo.png?v=a6b42678" width="256" height="256" alt=""><a href="ayneha-numconvert.html"><h4>AYNEHA NumConvert </h4><p>Un nombre en chiffres AYNEHA, N&#x27;Ko, adlam, Dogon NÈNÈ, arabes et français.</p></a></li><li><img class="app-logo app-logo-petit" src="assets/img/apps/ayneha-carnet-logo.png?v=5ae5c10f" width="256" height="256" alt=""><a href="ayneha-carnet.html"><h4>AYNEHA Carnet </h4><p>Un carnet de notes entièrement en AYNEHA.</p></a></li></ul>
+      <p class="doux petit" style="margin-top:14px">Vous développez une application ? Le <a href="developpeurs.html">AYNEHA Keyboard SDK</a>, libre, ajoute l'écriture AYNEHA à votre projet Android.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap duo">
+    <div>
+      <h2>L'heure en AYNEHA</h2>
+      <p>Cette horloge affiche l'heure de votre appareil, le jour, le mois et l'année songhay, entièrement en AYNEHA. L'année songhay se calcule en ajoutant 2001 à l'année grégorienne.</p>
+      <p class="doux">Exemple : en 2026, l'année songhay est 2026 + 2001 = 4027. Elle s'écrit <span class="ay ay-inline" role="img" aria-label="4027">􏾀􏽼􏽾􏾃</span> : comme les lettres, les chiffres se lisent de droite à gauche, donc le 4 des milliers est à droite.</p>
+      <div class="boutons"><a class="btn btn-ligne" href="horloge.html">Ouvrir l'horloge et le calendrier</a></div>
+    </div>
+    <div class="tablette horloge" aria-label="Horloge en AYNEHA">
+      <p class="ay horloge-heure" data-horloge="heure"></p>
+      <div class="horloge-ligne">
+        <div><span class="ay" data-horloge="jour"></span><small>jour</small></div>
+        <div><span class="ay" data-horloge="mois"></span><small>mois</small></div>
+        <div><span class="ay" data-horloge="annee"></span><small>année songhay</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-claire">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Pourquoi une écriture propre au songhay ?</h2>
+      <p>Le songhay s'écrit aujourd'hui avec l'alphabet latin ou en caractères arabes (ajami). Ces alphabets empruntés obligent à combiner des lettres pour noter des sons qui leur sont étrangers.</p>
+      <p>AYNEHA a été conçu à partir du songhay de Gao : un caractère pour chaque son retenu dans son système d'écriture. Ses formes ont été longuement essayées à la main, au crayon et au stylo, avant de devenir une police numérique, un clavier et des applications.</p>
+      <p><a href="apropos.html">Lire l'histoire du projet</a></p>
+    </div>
+    <div>
+      <div class="encadre">
+        <h3>Présenté sur Omniglot</h3>
+        <p class="doux">AYNEHA figure dans la section des écritures construites d'Omniglot, l'encyclopédie en ligne des systèmes d'écriture et des langues.</p>
+        <a class="btn btn-ligne btn-petit" href="https://www.omniglot.com/conscripts/ayneha.htm" rel="noopener">Voir la page Omniglot</a>
+      </div>
+      <div class="anglais" lang="en" style="margin-top:30px">
+        <h2>AYNEHA in English</h2>
+        <p>AYNEHA is an original right-to-left alphabet for the Songhay language, created in 2026 by Mahamadou Issiaka MAIGA (MAIGUS), from Gao, Mali. It has 5 vowels, 22 consonants, 4 diacritics and its own 10 digits. The font, a keyboard and learning apps are free.</p>
+        <p><a href="en/index.html" hreflang="en">Read the website in English</a> · <a href="presse.html#english">Press kit</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="pied">
+  <div class="frise" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="pied-grille">
+      <div class="pied-marque">
+        <span class="ay" role="img" aria-label="AYNEHA">􏾜􏿌􏾍􏾝􏾚􏾜</span>
+        <p>AYNEHA, l'écriture de la langue songhay. Conçue et créée par Mahamadou Issiaka MAIGA (MAIGUS).</p>
+      </div>
+      <div>
+        <h2>Découvrir</h2>
+        <ul>
+          <li><a href="apprendre.html">Commencer ici</a></li>
+          <li><a href="alphabet.html">L'alphabet</a></li>
+          <li><a href="alphabet.html#regles">Les 22 règles</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="galerie.html">Galerie des cartes</a></li>
+          <li><a href="applications.html">Applications</a></li>
+          <li><a href="lexique.html">Lexique</a></li>
+          <li><a href="ressources.html">Ressources</a></li>
+          <li><a href="education.html">Enseigner l'AYNEHA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Outils en ligne</h2>
+        <ul>
+          <li><a href="convertisseur.html">Transcripteur latin → AYNEHA</a></li>
+          <li><a href="clavier.html">Clavier</a></li>
+          <li><a href="calculatrice.html">Calculatrice</a></li>
+          <li><a href="nombres.html">Convertisseur de nombres</a></li>
+          <li><a href="horloge.html">Horloge</a></li>
+          <li><a href="carte.html">Ma carte AYNEHA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Le projet</h2>
+        <ul>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="faq.html">Questions fréquentes</a></li>
+          <li><a href="presse.html">Espace presse</a></li>
+          <li><a href="apropos.html#soutenir">Soutenir le projet</a></li>
+          <li><a href="avis.html?depuis=index.html">Donner mon avis</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Suivre AYNEHA</h2>
+        <ul>
+          <li><a href="https://aynehasonghay.blogspot.com" rel="noopener">Blog</a></li>
+          <li><a href="https://www.tiktok.com/@ayneha.songhay" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/ayneha.songhay/" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/ayneha_songhay" rel="noopener">X</a></li>
+          <li><a href="https://whatsapp.com/channel/0029Vb8zu22HgZWfGLpgAA2U" rel="noopener">Chaîne WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>© 2026 AYNEHA. Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS).</span>
+      <span>Contact : <a href="mailto:contact@ayneha.org">contact@ayneha.org</a></span>
+    </div>
   </div>
 </footer>
-
-<button id="back-to-top" aria-label="Retour en haut de page">&#8593;</button>
-<script src="assets/nav.js"></script>
+<button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>
+<script src="assets/js/site.js?v=20261018085051"></script>
+<script src="assets/js/ayneha.js"></script>
+<script src="assets/js/accueil.js"></script>
+<script src="assets/js/horloge.js"></script>
+<script src="assets/js/carte.js"></script>
 </body>
 </html>

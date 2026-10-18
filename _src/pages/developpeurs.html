@@ -1,0 +1,45 @@
+title: AYNEHA pour les développeurs - Keyboard SDK
+description: Le SDK libre AYNEHA Keyboard pour Android (Kotlin) : clavier intégré, translittération latin vers AYNEHA et clavier système, avec les 98 caractères AYNEHA.
+nav: applications
+---
+<section class="page-tete">
+  <div class="wrap">
+    {{apps-nav:developpeurs}}
+    <h1 style="margin-top:28px">Pour les développeurs</h1>
+    <p>Ajoutez l'écriture AYNEHA à votre propre application Android avec le AYNEHA Keyboard SDK, une bibliothèque libre écrite en Kotlin.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap cote">
+    <div class="texte-long">
+      <h2>Trois façons de l'intégrer</h2>
+      <ol class="regles">
+        <li><strong>Le clavier dans votre écran</strong> : le clavier AYNEHA posé directement dans votre application, sans que l'utilisateur change de clavier système.</li>
+        <li><strong>La translittération</strong> : l'utilisateur tape en lettres latines sur son clavier habituel, le texte s'écrit en AYNEHA à la volée.</li>
+        <li><strong>Le clavier système</strong> : le clavier AYNEHA complet, comme clavier Android, à inclure dans votre projet.</li>
+      </ol>
+      <p>Les modes 1 et 3 partagent la même disposition de touches. Les 98 caractères AYNEHA et leurs points de code sont fournis.</p>
+      <h2>Installation</h2>
+      <p>Le SDK est fourni en code source, comme module Gradle <code>:ayneha-keyboard</code> à inclure dans votre projet. Il peut aussi être compilé en bibliothèque <code>.aar</code>. Le mode d'emploi complet se trouve dans le dépôt.</p>
+      <h2>Bon à savoir</h2>
+      <ul>
+        <li>Les caractères AYNEHA sont dans la zone d'usage privé Unicode, de U+10FF7C à U+10FFDD : chacun occupe deux unités UTF-16. Manipulez des points de code, jamais des caractères isolés.</li>
+        <li>Ces points de code sont « forts de gauche à droite » pour Android : pour un affichage de droite à gauche correct, il faut inverser l'ordre des caractères avant de les dessiner.</li>
+        <li>N'appliquez jamais de gras ni de souligné à l'AYNEHA : pour mettre en valeur, agrandissez le texte.</li>
+      </ul>
+    </div>
+    <aside>
+      <div class="encadre">
+        <h3>Le code source</h3>
+        <p class="doux">Logiciel libre : code sous licence GNU LGPL v3, police sous SIL OFL 1.1.</p>
+        <a class="btn" href="https://github.com/maigus223/ayneha-keyboard-sdk" rel="noopener">Ouvrir le dépôt GitHub</a>
+      </div>
+      <div class="encadre">
+        <h3>Une question ?</h3>
+        <p class="doux">Pour un projet qui intègre l'AYNEHA, écrivez à <a href="mailto:{{contact-dev}}?subject=AYNEHA%20Keyboard%20SDK">{{contact-dev}}</a>.</p>
+        <a class="btn btn-ligne btn-petit" href="ressources.html#police">Télécharger la police</a>
+      </div>
+    </aside>
+  </div>
+</section>

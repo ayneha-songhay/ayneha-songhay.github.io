@@ -1,0 +1,220 @@
+# Fiches des applications Android AYNEHA (une page par application).
+# Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS)
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Pour mettre à jour une application :
+#   - "apk" : lien du fichier APK (par ex. "assets/telechargements/ayneha-school.apk"
+#     ou ".../releases/latest/download/xxx.apk") ; "" = bouton « bientôt » ;
+#   - "code" : dépôt du code source ; "" = pas de lien ;
+#   - logo et couverture : remplacer assets/img/apps/<id>-logo.png et <id>-couverture.jpg
+#     par les vrais fichiers (mêmes noms), puis relancer  python3 _src/build.py
+
+CONFIDENTIALITE = "Aucun compte, aucun serveur, aucune publicité, aucun outil d'analyse. Rien de ce que vous tapez n'est enregistré ni envoyé."
+
+APPS = [
+    {
+        "id": "ayneha-school",
+        "nom": "AYNEHA School",
+        "outil": ("quiz.html", "Faire les quiz en ligne"),
+        "statut": "nouveau",
+        "glyphe": "H",
+        "orange": True,
+        "resume": "Apprendre à lire et à écrire l'AYNEHA, seul et à son rythme.",
+        "intro": [
+            "AYNEHA School accompagne l'apprenant de la première lettre jusqu'à la lecture de vrais mots songhay. Tout se fait dans l'application, sans connexion : on peut apprendre au village comme en ville.",
+        ],
+        "points": [
+            "L'alphabet lettre par lettre : les 5 voyelles et les 22 consonnes, avec pour chacune sa prononciation, son épellation, toutes ses formes et des exemples de mots",
+            'Les 4 accents (nasalisation, ouverture, double, muet) expliqués un par un, avec le tableau des 50 combinaisons et leurs règles',
+            'Le syllabaire : chaque consonne avec les cinq voyelles, en forme simple, nasalisée ou double',
+            'Les chiffres : les 10 chiffres AYNEHA, un convertisseur, un tableau de 0 à 9999, les nombres ordinaux et la virgule décimale',
+            "Le nom de chaque nombre en songhay, en lettres latines et en AYNEHA, jusqu'à 999 999",
+            'Le tracé au doigt des lettres, de leurs variantes et des chiffres, noté de 0 à 3 étoiles',
+            "Six jeux de quiz de 10 questions (reconnaître, retrouver, quel accent, lire la syllabe, chiffres, remettre dans l'ordre), avec le meilleur score gardé",
+            "Un atelier de transcription : on tape en lettres latines, le texte s'écrit en AYNEHA avec l'explication de chaque lettre ; on peut copier le texte ou le partager en image",
+            "Un mode « S'exercer » : un mot est proposé, on l'écrit avec un clavier de lettres AYNEHA et l'application corrige",
+            "La lecture de vrais textes : syllabes, mots, la capitale et les 19 régions du Mali, les patronymes songhay, les jours, les mois, de petites phrases et l'hymne national, tous vérifiés par l'auteur",
+            "Un lexique de près de 400 mots rangés par thème, avec recherche en songhay ou en français et un bouton pour s'entraîner",
+        ],
+        "etapes": [
+            "Ouvrez l'application et commencez par « L'alphabet ».",
+            "Touchez une lettre pour voir sa fiche, puis « Tracer » pour l'écrire au doigt.",
+            "Passez aux accents, au syllabaire et aux chiffres.",
+            "Testez-vous avec les quiz : votre meilleur score est gardé.",
+            "Lisez de vrais mots dans « Lecture », puis écrivez les vôtres dans l'Atelier.",
+        ],
+        "compat": "Android 8 ou plus récent. Fonctionne sans connexion et ne demande aucune autorisation.",
+        "reglages": "Thème automatique, clair ou sombre ; taille du texte AYNEHA ; pseudo et horodatage pour les images partagées.",
+        "apk": "assets/telechargements/AYNEHA-School-1.3.0.apk",
+        "version": "1.3.0",
+        "code": "",
+    },
+    {
+        "id": "ayneha-home",
+        "nom": "AYNEHA Home",
+        "glyphe": "H",
+        "resume": "Tout le site AYNEHA dans votre téléphone, même hors connexion.",
+        "intro": [
+            "AYNEHA Home est l'application officielle du site : l'alphabet, les règles, les outils en ligne et les ressources, toujours à portée de main. Elle reste utilisable en mode avion et se met à jour toute seule dès que la connexion revient.",
+        ],
+        "points": [
+            "Tout le site dans l'application : l'alphabet, les règles d'écriture, les quiz, le lexique, la galerie, les ressources et les pages Enseigner l'AYNEHA",
+            "Les outils en ligne aussi : le transcripteur, le clavier, la calculatrice, le convertisseur de nombres, l'horloge et la carte à partager",
+            'En français et en anglais, avec le bouton FR | EN du site',
+            "Fonctionne en mode avion dès l'installation : le site est déjà copié dans l'application",
+            "Mise à jour automatique et sûre : dès que le réseau revient, l'application télécharge la nouvelle version du site ; si le téléchargement est coupé, l'ancienne version reste intacte",
+            "Les images créées sur le site (carte, texte en AYNEHA) s'enregistrent dans vos images ou se partagent directement",
+            "Les liens WhatsApp et e-mail s'ouvrent dans vos applications ; les fichiers à télécharger (PDF, police, applications) s'ouvrent dans votre navigateur",
+            'Tirer vers le bas pour actualiser, bouton retour qui suit votre navigation',
+        ],
+        "etapes": [
+            "Installez l'application, puis ouvrez-la : elle démarre sur la page d'accueil.",
+            "Naviguez comme sur le site.",
+            "Quand vous avez du réseau, l'application vérifie seule s'il existe du nouveau contenu.",
+        ],
+        "compat": "Android 7 ou plus récent. Utilise internet seulement pour mettre à jour le contenu.",
+        "apk": "assets/telechargements/AYNEHA-Home-2.0.0.apk",
+        "version": "2.0.0",
+        "code": "",
+    },
+    {
+        "id": "ayneha-keyboard",
+        "nom": "AYNEHA Keyboard",
+        "glyphe": "K",
+        "resume": "Le clavier pour écrire en AYNEHA sur votre téléphone et partager vos textes en image.",
+        "intro": [
+            "AYNEHA Keyboard s'installe comme un clavier Android. Comme l'AYNEHA se trouve dans la zone d'usage privé d'Unicode, il n'est pas encore affiché par les téléphones ni par les applications comme WhatsApp ou Facebook : un texte AYNEHA tapé directement s'y afficherait en carrés. Écrivez donc votre texte dans la zone de test du clavier, puis touchez Partager : il devient une image, lisible par tous, même sans la police AYNEHA.",
+        ],
+        "points": [
+            'Toutes les lettres AYNEHA : les 22 consonnes et les 5 voyelles, sur une disposition en trois rangées (10, 10 et 7 touches)',
+            'Disposition de droite à gauche : la première touche de chaque rangée est à droite',
+            'Appui long sur une lettre pour ses autres formes : nasalisée, ouverte, double ou muette',
+            'Quatre pages : lettres, symboles et ponctuation, pavé numérique en chiffres AYNEHA avec les opérations, émojis',
+            'Zone de test intégrée, sur fond blanc et en écriture noire, pour écrire et relire votre texte',
+            "Bouton Partager : le texte devient une image avec l'en-tête AYNEHA, votre pseudo et l'heure si vous le souhaitez, envoyée à l'application de votre choix",
+            'Vibration au toucher réglable',
+        ],
+        "etapes": [
+            "Ouvrez AYNEHA Keyboard et touchez « Activer le clavier AYNEHA ».",
+            "Dans la liste des claviers d'Android, activez AYNEHA Keyboard.",
+            "Revenez dans l'application et touchez « Tester le clavier ».",
+            "Écrivez votre texte, puis touchez Partager : il part en image, par WhatsApp ou ailleurs, et chacun peut le lire.",
+        ],
+        "compat": "Android 7 ou plus récent.",
+        "reglages": "Vibration au toucher ; horodatage sur les images partagées ; pseudo affiché sur les images (20 caractères au plus).",
+        "apk": "assets/telechargements/AYNEHA-Keyboard-2.5.0.apk",
+        "version": "2.5.0",
+        "code": "",
+    },
+    {
+        "id": "ayneha-calc",
+        "nom": "AYNEHA Calc",
+        "glyphe": "D7",
+        "resume": "Une calculatrice entièrement en chiffres AYNEHA.",
+        "intro": [
+            "AYNEHA Calc sert aux calculs de tous les jours, au marché, à la boutique ou au grin, entièrement en chiffres AYNEHA et de droite à gauche.",
+        ],
+        "points": [
+            'Addition, soustraction, multiplication, division et pourcentage',
+            'Les 10 chiffres AYNEHA sur toutes les touches, sans aucun chiffre latin',
+            'Résultats décimaux avec la virgule AYNEHA',
+            "Lecture de droite à gauche, comme toute l'écriture AYNEHA",
+            "Le calcul précédent s'affiche au-dessus du résultat",
+            "Effacement d'un chiffre ou de tout le calcul (AC)",
+            'Grandes touches très lisibles',
+        ],
+        "etapes": [
+            "Tapez les chiffres et l'opération comme sur une calculatrice ordinaire.",
+            "Touchez « = » pour le résultat, « AC » pour tout effacer.",
+        ],
+        "compat": "Android 7 ou plus récent. Fonctionne sans connexion.",
+        "apk": "assets/telechargements/AYNEHA-Calc-1.3.0.apk",
+        "version": "1.3.0",
+        "code": "",
+        "outil": ("calculatrice.html", "Essayer la calculatrice en ligne"),
+    },
+    {
+        "id": "ayneha-horloge",
+        "nom": "AYNEHA Horloge",
+        "glyphe": "I",
+        "resume": "L'heure, le jour, le mois et l'année songhay en AYNEHA, avec un calendrier.",
+        "intro": [
+            "AYNEHA Horloge affiche le temps entièrement en AYNEHA, sans aucun caractère latin : l'heure avec les secondes, le jour, le mois et l'année songhay (année grégorienne + 2001).",
+        ],
+        "points": [
+            "L'heure en direct, secondes comprises, entièrement en chiffres AYNEHA",
+            "Le jour de la semaine, le mois et l'année songhay, avec les noms songhay des 7 jours et des 12 mois écrits en AYNEHA",
+            'Lecture de droite à gauche',
+            "Un calendrier navigable : mois précédent, mois suivant, et le jour d'aujourd'hui mis en valeur",
+            "Deux widgets pour l'écran d'accueil : horloge et calendrier",
+            'Tout est calculé sur le téléphone : aucune connexion nécessaire',
+        ],
+        "reserve": "Les deux widgets sont encore en cours d'amélioration et ne se mettent pas toujours à jour au quotidien. L'application elle-même fonctionne normalement. Une version en calendrier lunaire songhay est prévue.",
+        "etapes": [
+            "Ouvrez l'application pour voir l'heure et le calendrier.",
+            "Pour un widget : appui long sur l'écran d'accueil, « Widgets », puis « AYNEHA Horloge ».",
+        ],
+        "compat": "Android 7 ou plus récent.",
+        "apk": "assets/telechargements/AYNEHA-Horloge-1.1.0.apk",
+        "version": "1.1.0",
+        "code": "",
+        "outil": ("horloge.html", "Voir l'horloge en ligne"),
+    },
+    {
+        "id": "ayneha-numconvert",
+        "nom": "AYNEHA NumConvert",
+        "glyphe": "D4",
+        "resume": "Un nombre en chiffres AYNEHA, N'Ko, adlam, Dogon NÈNÈ, arabes et français.",
+        "intro": [
+            "AYNEHA NumConvert passe un nombre d'un système de chiffres à l'autre, entre six écritures : AYNEHA, N'Ko, adlam (l'écriture du peul), Dogon NÈNÈ (écriture de Yahya Sékou Salah GUINDO), arabe et français. Son nom en songhay est barmey-ko (le convertisseur). Pratique pour apprendre les chiffres AYNEHA en partant de ceux que l'on connaît déjà.",
+        ],
+        "points": [
+            "Six systèmes de chiffres : AYNEHA, N'Ko, adlam, Dogon NÈNÈ, arabe et français",
+            "Conversion dans tous les sens, jusqu'à 10 chiffres, avec séparateurs de milliers",
+            "Le pavé numérique affiche les chiffres du système de départ, de droite à gauche pour l'AYNEHA, le N'Ko, l'adlam et le Dogon NÈNÈ",
+            "Les six résultats s'affichent en même temps, à mesure que vous tapez",
+            "Les polices AYNEHA et adlam sont intégrées à l'application",
+        ],
+        "etapes": [
+            "Choisissez le système de départ.",
+            "Tapez le nombre : les autres versions s'affichent aussitôt.",
+        ],
+        "compat": "Android 7 ou plus récent. Fonctionne sans connexion.",
+        "apk": "assets/telechargements/AYNEHA-NumConvert-1.3.0.apk",
+        "version": "1.3.0",
+        "code": "https://github.com/maigus223/ayneha-numconvert",
+        "outil": ("nombres.html", "Essayer le convertisseur en ligne"),
+    },
+    {
+        "id": "ayneha-carnet",
+        "nom": "AYNEHA Carnet",
+        "glyphe": "W",
+        "resume": "Un carnet de notes entièrement en AYNEHA.",
+        "intro": [
+            "AYNEHA Carnet est un carnet de notes dont toute l'interface est écrite en AYNEHA, sans aucun caractère latin. Son nom en songhay est hãtumtiira. Vos notes restent sur votre téléphone : aucun compte, aucun serveur.",
+        ],
+        "points": [
+            'Une interface 100 % en AYNEHA : chaque bouton et chaque message est écrit en songhay',
+            "Créer une note, avec un titre facultatif (hima), puis l'enregistrer (gaabu) ou annuler (naŋ)",
+            'Épingler une note (kãdji) ou la désépingler (zumãdi)',
+            "Partager une note (fey-fey) avec l'application de votre choix",
+            'Rechercher dans vos notes (ceeci)',
+            'Supprimer une note (tuusu), avec une confirmation ; une corbeille (yɛ̃gey) et un bouton pour restaurer (yeeti)',
+            "Listes, sens d'écriture et chiffres AYNEHA",
+            "Dates en songhay : aujourd'hui (hũkuna), hier (bi) et les noms songhay des 12 mois",
+            'Réglages (goykasiney) : taille du texte, sauvegarde de vos notes avec export et import',
+            'Tout reste sur votre téléphone : sans connexion, sans compte, sans serveur',
+        ],
+        "etapes": [
+            "Ouvrez l'application et touchez ＋ pour écrire votre première note.",
+            "Écrivez votre texte avec le clavier AYNEHA, ajoutez un titre (hima) si vous le souhaitez, puis touchez gaabu (enregistrer).",
+            "Retrouvez une note avec ceeci (rechercher).",
+            "Épinglez (kãdji), partagez (fey-fey) ou supprimez (tuusu) une note avec ses boutons.",
+            "Dans les réglages (goykasiney), exportez vos notes (fattãdi) pour les garder à l'abri, et importez-les (daŋãdi) sur un autre téléphone.",
+        ],
+        "compat": "Android 8 ou plus récent. Fonctionne sans connexion.",
+        "apk": "assets/telechargements/AYNEHA-Carnet-1.1.0.apk",
+        "version": "1.1.0",
+        "code": "",
+    },
+]

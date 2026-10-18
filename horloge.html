@@ -3,343 +3,172 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Horloge &amp; calendrier - AYNEHA</title>
-<meta name="description" content="Horloge et calendrier AYNEHA en direct : heure, jour, mois et année affichés dans l'écriture songhay, avec navigation par mois.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=3">
-<style>
-  @font-face{
-    font-family:"AYNEHA";
-    src:url("assets/fonts/ayneha_regular.ttf") format("truetype");
-    font-display:swap;
-  }
+<title>Horloge et calendrier AYNEHA</title>
+<meta name="description" content="L&#x27;heure, le jour, le mois et l&#x27;année songhay affichés en direct en écriture AYNEHA, avec un calendrier à parcourir mois par mois.">
+<meta name="author" content="Mahamadou Issiaka MAIGA (MAIGUS)">
+<meta name="theme-color" content="#0E1A30">
+<link rel="canonical" href="https://ayneha.org/horloge.html">
+<link rel="alternate" hreflang="fr" href="https://ayneha.org/horloge.html">
+<link rel="alternate" hreflang="en" href="https://ayneha.org/en/horloge.html">
+<link rel="alternate" hreflang="x-default" href="https://ayneha.org/horloge.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AYNEHA">
+<meta property="og:title" content="Horloge et calendrier AYNEHA">
+<meta property="og:description" content="L&#x27;heure, le jour, le mois et l&#x27;année songhay affichés en direct en écriture AYNEHA, avec un calendrier à parcourir mois par mois.">
+<meta property="og:url" content="https://ayneha.org/horloge.html">
+<meta property="og:image" content="https://ayneha.org/assets/img/apercu.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css?v=20261018085051">
 
-  .hc-widget{
-    font-family:"AYNEHA","Space Grotesk",sans-serif;
-    direction:rtl;
-    display:flex;
-    flex-direction:row;
-    gap:2rem;
-    align-items:flex-start;
-  }
-  .hc-right{
-    flex:1 1 50%;width:50%;min-width:0;overflow:hidden;padding-left:0.8rem;box-sizing:border-box;
-  }
-  .hc-left{
-    flex:1 1 50%;width:50%;min-width:0;overflow:hidden;
-    border-right:1px solid var(--line);padding-right:1.4rem;box-sizing:border-box;
-  }
-  @media (orientation:portrait){
-    .hc-widget{flex-direction:column;}
-    .hc-right,.hc-left{flex:none;width:100%;max-width:none;}
-    .hc-left{border-right:none;padding-right:0;border-bottom:1px solid var(--line);padding-bottom:1.2rem;margin-bottom:0.5rem;}
-  }
-
-  .hc-label{
-    font-size:1.425rem;color:var(--sand-dim);letter-spacing:0.06em;margin-bottom:0.35rem;
-    direction:rtl;unicode-bidi:bidi-override;text-align:center;
-  }
-  .hc-right .hc-label{font-size:1.71rem;}
-
-  .hc-time{
-    font-size:clamp(2.4rem,8vw,3.2rem);letter-spacing:0.1em;color:var(--gold-bright);
-    line-height:1.15;margin-bottom:1.4rem;direction:ltr;unicode-bidi:isolate;text-align:center;
-  }
-
-  .hc-divider{height:1px;background:var(--line);margin:0 0 1.3rem;}
-
-  .hc-info-row{display:flex;flex-direction:column;gap:1rem;margin-bottom:0.8rem;text-align:center;}
-  .hc-info-top{display:flex;justify-content:space-between;gap:0.6rem;}
-  .hc-info-top .hc-block{flex:1;min-width:0;}
-  .hc-info-top .hc-info-divider{width:1px;align-self:stretch;background:var(--line);flex-shrink:0;}
-  .hc-block{flex:none;width:100%;}
-  .hc-year-block{margin-top:0.3rem;}
-  .hc-year-divider{height:1px;background:var(--line);margin-bottom:0.8rem;}
-
-  .hc-value{
-    font-size:clamp(1.1rem,3.5vw,1.45rem);letter-spacing:0.04em;margin-top:0.25rem;
-    direction:rtl;unicode-bidi:bidi-override;color:var(--sand);
-  }
-  .hc-right .hc-value{font-size:clamp(2.2rem,7vw,2.9rem);}
-  .hc-value.accent{color:var(--gold-bright);}
-  #hcYearName{direction:ltr;unicode-bidi:isolate;}
-
-  .hc-cal-header{text-align:center;margin-bottom:0.7rem;}
-  .hc-cal-month{
-    font-size:clamp(2.025rem,6.3vw,2.55rem);color:var(--gold-bright);letter-spacing:0.05em;
-    direction:rtl;unicode-bidi:bidi-override;
-  }
-  .hc-cal-nav{
-    display:flex;justify-content:space-between;align-items:center;margin-bottom:0.7rem;
-    font-size:2.25rem;color:var(--sand-dim);user-select:none;
-  }
-  .hc-cal-nav span{cursor:pointer;padding:0.15rem 0.7rem;border-radius:8px;transition:background .15s,color .15s;}
-  .hc-cal-nav span:hover{background:rgba(198,145,47,0.18);color:var(--gold-bright);}
-
-  .hc-weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:0.35rem;text-align:center;}
-  .hc-weekday{
-    font-size:1.49rem;color:var(--sand-dim);padding:0.35rem 0;letter-spacing:0.02em;
-    direction:rtl;unicode-bidi:bidi-override;overflow:hidden;white-space:nowrap;
-  }
-  .hc-days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;}
-  .hc-day{
-    aspect-ratio:5/3;display:flex;align-items:center;justify-content:center;font-size:1.425rem;
-    border-radius:8px;direction:rtl;unicode-bidi:bidi-override;color:var(--sand);min-height:0;
-  }
-  .hc-day.empty{visibility:hidden;}
-  .hc-day.today{background:rgba(198,145,47,0.22);color:var(--gold-bright);box-shadow:inset 0 0 0 1.5px var(--gold-bright);}
-</style>
 </head>
 <body>
-
-<header class="site-header">
-  <nav class="nav">
-    <a class="brand" href="index.html">AYNEHA <small>Écriture Songhay</small></a>
-    <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="alphabet.html">Alphabet</a></li>
-      <li><a href="clavier.html">Teste clavier</a></li>
-      <li><a href="convertisseur.html">Convertisseur</a></li>
-      <li><a href="ressources.html">Ressources</a></li>
-      <li><a href="horloge.html" class="active">Horloge</a></li>
-      <li><a href="apropos.html">À propos</a></li>
-    </ul>
-  </nav>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <div class="wrap">
+    <a class="marque" href="index.html" aria-label="AYNEHA, accueil"><span class="ay logo" aria-hidden="true">􏾚</span><span class="marque-texte">AYNEHA</span></a>
+    <div class="entete-droite">
+    <div class="langues" role="group" aria-label="Langue / Language"><span aria-current="true">FR</span><a href="en/horloge.html" hreflang="en" lang="en">EN</a></div>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="alphabet.html">L'alphabet</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="applications.html">Applications</a></li>
+        <li><a href="outils.html" aria-current="page">Outils en ligne</a></li>
+        <li><a href="education.html">Enseigner l'AYNEHA</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="lexique.html">Lexique</a></li>
+        <li><a href="ressources.html">Ressources</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
-
-<section class="hero" style="padding:56px 0 40px">
-  <div class="glyph-grid" aria-hidden="true"></div>
-  <div class="container hero-grid">
-    <div>
-      <span class="eyebrow mono">Le temps en AYNEHA</span>
-      <h1 style="font-size:clamp(2.1rem,4.6vw,3rem)">Horloge &amp; calendrier</h1>
-    </div>
-    <div class="hero-side">
-      <p class="lede">
-        L'heure, le jour, le mois et l'année affichés en direct, entièrement dans les glyphes
-        AYNEHA - aucun caractère latin. Naviguez dans le calendrier avec les flèches.
-      </p>
-    </div>
+<main id="contenu">
+<section class="outil-tete">
+  <div class="wrap">
+    <h1>Horloge et calendrier</h1>
+    <p>L'heure de votre appareil, le jour, le mois et l'année songhay, entièrement en AYNEHA, sans aucun caractère latin. Les chiffres se lisent de droite à gauche.</p>
   </div>
 </section>
 
-<section style="padding-top:0">
-  <div class="container">
-    <div class="panel" style="padding:16px 20px 20px;">
-      <div class="hc-widget">
-
-        <div class="hc-right">
-          <div class="hc-label" id="hcLabelGuuru"></div>
-          <div class="hc-time" id="hcClock"></div>
-
-          <div class="hc-divider"></div>
-
-          <div class="hc-info-row">
-            <div class="hc-info-top">
-              <div class="hc-block">
-                <div class="hc-label" id="hcLabelHan"></div>
-                <div class="hc-value" id="hcDayName"></div>
-              </div>
-              <div class="hc-info-divider"></div>
-              <div class="hc-block">
-                <div class="hc-label" id="hcLabelHadu"></div>
-                <div class="hc-value" id="hcMonthName"></div>
-              </div>
-            </div>
-            <div class="hc-year-divider"></div>
-            <div class="hc-block hc-year-block">
-              <div class="hc-label" id="hcLabelAnnee"></div>
-              <div class="hc-value accent" id="hcYearName"></div>
-            </div>
-          </div>
+<section class="section-serree">
+  <div class="wrap">
+    <div class="tablette horloge" style="max-width:720px;margin:0 auto">
+      <p class="ay petit-libelle" data-libelle="heure" style="font-size:1.6rem;margin:0"></p>
+      <p class="ay horloge-heure" data-horloge="heure" aria-live="off"></p>
+      <div class="horloge-ligne">
+        <div><span class="ay" data-libelle="jour" style="font-size:1.3rem"></span><span class="ay" data-horloge="jour"></span></div>
+        <div><span class="ay" data-libelle="mois" style="font-size:1.3rem"></span><span class="ay" data-horloge="mois"></span></div>
+        <div><span class="ay" data-horloge="annee"></span></div>
+      </div>
+      <div class="cal" data-calendrier>
+        <div class="cal-tete">
+          <button type="button" data-cal-suiv aria-label="Mois suivant">&#8249;</button>
+          <p class="ay" data-cal-titre style="margin:0"></p>
+          <button type="button" data-cal-prec aria-label="Mois précédent">&#8250;</button>
         </div>
-
-        <div class="hc-left">
-          <div class="hc-cal-header">
-            <div class="hc-cal-month" id="hcCalMonth"></div>
-          </div>
-          <div class="hc-cal-nav">
-            <span id="hcPrevMonth">&#x2039;</span>
-            <span id="hcNextMonth">&#x203A;</span>
-          </div>
-          <div class="hc-weekdays" id="hcWeekdays"></div>
-          <div class="hc-days" id="hcDays"></div>
-        </div>
-
+        <div class="cal-grille" data-cal-grille></div>
       </div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="container grid grid-2" style="align-items:center;">
+<section class="section">
+  <div class="wrap duo duo-haut">
     <div>
-      <span class="tag">Sur smartphone</span>
-      <h2>Horloge AYNEHA pour Android &amp; iOS</h2>
-      <p>
-        Installez l'horloge et le calendrier AYNEHA comme une application, directement sur
-        l'écran d'accueil de votre téléphone - fonctionne aussi hors connexion.
-      </p>
-      <a class="btn btn-gold" href="https://store.naabiga.com/produit/horloge-ayneha" target="_blank" rel="noopener">Essayer Horloge sur smartphone</a>
+      <h2>Lire l'horloge</h2>
+      <ul>
+        <li>En haut, l'heure : heures, minutes et secondes, de droite à gauche.</li>
+        <li>Dessous, le nom du jour, le nom du mois et l'année songhay.</li>
+        <li>L'année songhay s'obtient en ajoutant 2001 à l'année grégorienne : 2026 + 2001 = 4027, qui s'écrit <span class="ay ay-inline" role="img" aria-label="4027">􏾀􏽼􏽾􏾃</span>.</li>
+        <li>Le calendrier commence par le dimanche, à droite. Le jour d'aujourd'hui est en orange.</li>
+      </ul>
+      <p class="doux">Cette horloge suit le calendrier grégorien. Une version en calendrier lunaire songhay est prévue.</p>
     </div>
-    <div class="card">
-      <h3>Installation en un geste</h3>
-      <p>
-        Ouvrez le lien sur votre téléphone, puis choisissez « Ajouter à l'écran d'accueil »
-        (ou « Installer l'application ») pour utiliser Horloge AYNEHA comme une vraie appli,
-        même hors connexion.
-      </p>
+    <div class="encadre">
+      <h3>Sur votre téléphone</h3>
+      <p class="doux">L'application AYNEHA Horloge affiche cette horloge sur Android, avec des widgets pour l'écran d'accueil.</p>
+      <div class="boutons">
+        <a class="btn" href="ayneha-horloge.html">Voir AYNEHA Horloge</a>
+      </div>
     </div>
   </div>
 </section>
-
-<footer>
-  <div class="container">
-    <span class="mono">© 2026 AYNEHA - <span class="creator-name">Mahamadou Issiaka MAIGA (MAIGUS)</span></span>
-    <span>
-      <a href="https://aynehasonghay.blogspot.com" target="_blank" rel="noopener">Blog officiel</a>
-      &nbsp;·&nbsp;
-      <a href="ressources.html">Ressources</a>
-    </span>
+<div class="wrap petit doux" style="padding-bottom:20px"><a href="confidentialite-horloge.html">Confidentialité de cet outil</a> : rien de ce que vous saisissez ne quitte votre appareil.</div>
+</main>
+<footer class="pied">
+  <div class="frise" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="pied-grille">
+      <div class="pied-marque">
+        <span class="ay" role="img" aria-label="AYNEHA">􏾜􏿌􏾍􏾝􏾚􏾜</span>
+        <p>AYNEHA, l'écriture de la langue songhay. Conçue et créée par Mahamadou Issiaka MAIGA (MAIGUS).</p>
+      </div>
+      <div>
+        <h2>Découvrir</h2>
+        <ul>
+          <li><a href="apprendre.html">Commencer ici</a></li>
+          <li><a href="alphabet.html">L'alphabet</a></li>
+          <li><a href="alphabet.html#regles">Les 22 règles</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="galerie.html">Galerie des cartes</a></li>
+          <li><a href="applications.html">Applications</a></li>
+          <li><a href="lexique.html">Lexique</a></li>
+          <li><a href="ressources.html">Ressources</a></li>
+          <li><a href="education.html">Enseigner l'AYNEHA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Outils en ligne</h2>
+        <ul>
+          <li><a href="convertisseur.html">Transcripteur latin → AYNEHA</a></li>
+          <li><a href="clavier.html">Clavier</a></li>
+          <li><a href="calculatrice.html">Calculatrice</a></li>
+          <li><a href="nombres.html">Convertisseur de nombres</a></li>
+          <li><a href="horloge.html">Horloge</a></li>
+          <li><a href="carte.html">Ma carte AYNEHA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Le projet</h2>
+        <ul>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="faq.html">Questions fréquentes</a></li>
+          <li><a href="presse.html">Espace presse</a></li>
+          <li><a href="apropos.html#soutenir">Soutenir le projet</a></li>
+          <li><a href="avis.html?depuis=horloge.html">Donner mon avis</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Suivre AYNEHA</h2>
+        <ul>
+          <li><a href="https://aynehasonghay.blogspot.com" rel="noopener">Blog</a></li>
+          <li><a href="https://www.tiktok.com/@ayneha.songhay" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/ayneha.songhay/" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/ayneha_songhay" rel="noopener">X</a></li>
+          <li><a href="https://whatsapp.com/channel/0029Vb8zu22HgZWfGLpgAA2U" rel="noopener">Chaîne WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>© 2026 AYNEHA. Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS).</span>
+      <span>Contact : <a href="mailto:contact@ayneha.org">contact@ayneha.org</a></span>
+    </div>
   </div>
 </footer>
-
-<button id="back-to-top" aria-label="Retour en haut de page">&#8593;</button>
-<script src="assets/nav.js"></script>
-<script>
-  const HC_DIG = ['\uE000','\uE001','\uE002','\uE003','\uE004','\uE005','\uE006','\uE007','\uE008','\uE009'];
-
-  const HC_LBL = {
-    guuru: '\uE01C\uE02F\uE013\uE024',
-    han:   '\uE01E\uE020\uE040',
-    hadu:  '\uE01E\uE026\uE00F\uE024'
-  };
-
-  const HC_DAYS_FULL = [
-    '\uE00D\uE020\uE01E\uE026\uE010\uE021\uE019\uE022',
-    '\uE00C\uE020\uE01E\uE026\uE010\uE021\uE019\uE022',
-    '\uE00A\uE023\uE01E\uE026\uE010\uE021\uE019\uE022',
-    '\uE00E\uE023\uE050\uE01E\uE026\uE010\uE021\uE019\uE022',
-    '\uE010\uE023\uE01E\uE026\uE010\uE021\uE019\uE022',
-    '\uE015\uE02B\uE00A\uE024\uE015\uE020',
-    '\uE00F\uE024\uE01E\uE026\uE010\uE021\uE019\uE022'
-  ];
-
-  const HC_DAYS_SHORT = [
-    '\uE00D\uE020\uE01E',
-    '\uE00C\uE020\uE01E',
-    '\uE00A\uE023\uE01E',
-    '\uE00E\uE023\uE050',
-    '\uE010\uE023\uE01E',
-    '\uE015\uE02B\uE00A',
-    '\uE00F\uE024\uE01E'
-  ];
-
-  const HC_MONTHS = [
-    '\uE00F\uE020\uE00F\uE020\uE03A\uE00A\uE027\uE013\uE022',
-    '\uE00F\uE020\uE00F\uE020\uE03A\uE01D\uE020\uE050\uE011\uE020',
-    '\uE01C\uE025\uE011\uE022',
-    '\uE01C\uE025\uE011\uE022\uE00A\uE026\uE00F\uE020',
-    '\uE00A\uE02B\uE01D\uE024\uE011\uE020',
-    '\uE00A\uE02B\uE00A\uE022\uE011\uE020',
-    '\uE00E\uE023\uE050\uE015\uE021\uE011\uE020',
-    '\uE017\uE021\uE01D\uE02E\uE03F\uE020',
-    '\uE00C\uE027\uE01E\uE020\uE03A',
-    '\uE00C\uE027\uE00D\uE027\uE013\uE022',
-    '\uE01E\uE024\uE011\uE026\uE015\uE020\uE036',
-    '\uE017\uE022\uE032\uE014\uE022'
-  ];
-
-  function hcToAy(n) {
-    return String(n).split('').map(c => HC_DIG[+c]).join('');
-  }
-  function hcToAy2Rev(n) {
-    const s = String(n).padStart(2,'0');
-    return hcToAy(s[1] + s[0]);
-  }
-
-  let hcViewYear, hcViewMonth;
-
-  function hcUpdateClock() {
-    const now = new Date();
-    document.getElementById('hcClock').textContent =
-      hcToAy2Rev(now.getSeconds()) + ':' +
-      hcToAy2Rev(now.getMinutes()) + ':' +
-      hcToAy2Rev(now.getHours());
-
-    document.getElementById('hcDayName').textContent  = HC_DAYS_FULL[now.getDay()];
-    document.getElementById('hcMonthName').textContent = HC_MONTHS[now.getMonth()];
-
-    const songhayYear = now.getFullYear() + 2001;
-    const yearRev = String(songhayYear).split('').reverse().join('');
-    document.getElementById('hcYearName').textContent = hcToAy(yearRev);
-  }
-
-  function hcRenderCalendar() {
-    const now = new Date();
-    document.getElementById('hcCalMonth').textContent = HC_MONTHS[hcViewMonth];
-
-    const wd = document.getElementById('hcWeekdays');
-    wd.innerHTML = '';
-    HC_DAYS_SHORT.forEach(d => {
-      const el = document.createElement('div');
-      el.className = 'hc-weekday';
-      el.textContent = d;
-      wd.appendChild(el);
-    });
-
-    const first = new Date(hcViewYear, hcViewMonth, 1);
-    const last  = new Date(hcViewYear, hcViewMonth + 1, 0);
-    const startDow = first.getDay();
-    const total = last.getDate();
-
-    const daysEl = document.getElementById('hcDays');
-    daysEl.innerHTML = '';
-
-    for (let i = 0; i < startDow; i++) {
-      const e = document.createElement('div');
-      e.className = 'hc-day empty';
-      daysEl.appendChild(e);
-    }
-
-    for (let d = 1; d <= total; d++) {
-      const cell = document.createElement('div');
-      cell.className = 'hc-day';
-      cell.textContent = hcToAy(d);
-      if (hcViewYear === now.getFullYear() &&
-          hcViewMonth === now.getMonth() &&
-          d === now.getDate()) {
-        cell.classList.add('today');
-      }
-      daysEl.appendChild(cell);
-    }
-  }
-
-  document.getElementById('hcPrevMonth').addEventListener('click', () => {
-    hcViewMonth--;
-    if (hcViewMonth < 0) { hcViewMonth = 11; hcViewYear--; }
-    hcRenderCalendar();
-  });
-  document.getElementById('hcNextMonth').addEventListener('click', () => {
-    hcViewMonth++;
-    if (hcViewMonth > 11) { hcViewMonth = 0; hcViewYear++; }
-    hcRenderCalendar();
-  });
-
-  document.getElementById('hcLabelGuuru').textContent = HC_LBL.guuru;
-  document.getElementById('hcLabelHan').textContent   = HC_LBL.han;
-  document.getElementById('hcLabelHadu').textContent  = HC_LBL.hadu;
-  document.getElementById('hcLabelAnnee').textContent = '';
-
-  const hcNow = new Date();
-  hcViewYear  = hcNow.getFullYear();
-  hcViewMonth = hcNow.getMonth();
-
-  hcUpdateClock();
-  hcRenderCalendar();
-  setInterval(hcUpdateClock, 1000);
-</script>
+<button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>
+<script src="assets/js/site.js?v=20261018085051"></script>
+<script src="assets/js/ayneha.js"></script>
+<script src="assets/js/horloge.js"></script>
 </body>
 </html>

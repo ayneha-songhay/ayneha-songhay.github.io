@@ -1,0 +1,54 @@
+title: Votre avis sur le site AYNEHA
+description: Dites ce que vous pensez du site AYNEHA et ce que vous voulez y voir bientôt. Chaque avis est lu.
+nav:
+scripts: assets/js/message.js
+---
+<section class="page-tete">
+  <div class="wrap">
+    <h1>Votre avis</h1>
+    <p>Ce site se construit avec ceux qui l'utilisent. Dites ce qui vous plaît, ce qui vous gêne et ce que vous voulez y voir bientôt : chaque avis est lu.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap duo duo-haut">
+    <form class="form-message encadre" data-sujet="Mon avis sur le site AYNEHA" data-intro="Bonjour AYNEHA,&#10;voici mon avis sur le site.&#10;" data-vide="Écrivez au moins quelques mots dans une des cases." data-envoye="Votre application s'ouvre : il ne reste qu'à envoyer le message. Merci !">
+      <fieldset data-label="Impression générale :">
+        <legend>Votre impression générale</legend>
+        <div class="cases">
+          <label><input type="radio" name="note" value="très bien"> Très bien</label>
+          <label><input type="radio" name="note" value="bien"> Bien</label>
+          <label><input type="radio" name="note" value="moyen"> Moyen</label>
+          <label><input type="radio" name="note" value="à améliorer"> À améliorer</label>
+        </div>
+      </fieldset>
+      <div class="q"><label for="av-aime">Ce que vous aimez</label><textarea class="champ" id="av-aime" maxlength="600" data-label="Ce que j'aime :"></textarea></div>
+      <div class="q"><label for="av-veut">Ce que vous voulez voir bientôt</label><textarea class="champ" id="av-veut" maxlength="600" placeholder="Une page, un outil, une explication, une langue..." data-label="Ce que je veux voir bientôt :"></textarea></div>
+      <div class="q"><label for="av-pb">Un problème rencontré <span class="doux">(facultatif)</span></label><textarea class="champ" id="av-pb" maxlength="600" placeholder="Ce qui ne marche pas, sur quel téléphone ou ordinateur" data-label="Problème :"></textarea></div>
+      <div class="q"><label for="av-page">Page concernée <span class="doux">(facultatif)</span></label><input class="champ" id="av-page" name="depuis" type="text" maxlength="80" data-label="Page :" data-auto></div>
+      <div class="q"><label for="av-pseudo">Votre pseudo <span class="doux">(facultatif)</span></label><input class="champ" id="av-pseudo" type="text" maxlength="30" autocomplete="off" data-label="Pseudo :" data-auto></div>
+      <div class="boutons">
+        <a class="btn" data-canal="wa" href="https://wa.me/22366778763" target="_blank" rel="noopener">Envoyer par WhatsApp</a>
+        <a class="btn btn-ligne" data-canal="mail" href="mailto:{{contact}}">Envoyer par e-mail</a>
+      </div>
+      <p class="message-etat" role="status"></p>
+      <p class="doux petit">Le formulaire prépare un message que vous envoyez vous-même. Le site n'enregistre rien et ne publie aucun avis sans accord.</p>
+    </form>
+    <div>
+      <h2>Déjà fait grâce à vos retours</h2>
+      <ul class="liste-faite">
+        <li>Une version anglaise de tout le site</li>
+        <li>Le parcours <a href="apprendre.html">Commencer ici</a>, pour faire le premier pas</li>
+        <li>Une page de <a href="quiz.html">quiz</a> et une <a href="galerie.html">galerie des cartes</a></li>
+        <li>Les <a href="faq.html">questions fréquentes</a></li>
+        <li>Une <a href="education.html">affiche et un cahier de tracé</a> à imprimer</li>
+        <li>Un <a href="lexique.html">lexique songhay - AYNEHA</a>, ouvert à vos propositions</li>
+        <li>Les chiffres adlam dans le <a href="nombres.html">convertisseur de nombres</a></li>
+      </ul>
+      <h2 style="margin-top:32px">Bientôt</h2>
+      <ul>
+        <li>La prononciation de chaque lettre à écouter</li>
+      </ul>
+    </div>
+  </div>
+</section>

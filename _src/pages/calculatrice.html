@@ -1,0 +1,42 @@
+title: Calculatrice AYNEHA en ligne
+description: Une calculatrice en chiffres AYNEHA, lue de droite à gauche, dans votre navigateur : addition, soustraction, multiplication, division, nombres décimaux.
+nav: outils
+scripts: assets/js/ayneha.js assets/js/calculatrice.js
+---
+<section class="outil-tete">
+  <div class="wrap">
+    <h1>Calculatrice</h1>
+    <p>Comptez en chiffres AYNEHA. Le résultat se lit de droite à gauche. Sur ordinateur, le clavier fonctionne aussi.</p>
+  </div>
+</section>
+
+<section class="section-serree">
+  <div class="wrap">
+    <div class="calculatrice">
+      <div class="tablette calc-ecran">
+        <p class="ay calc-expr" id="calc-expr" aria-hidden="true"></p>
+        <p class="ay calc-resultat" id="calc-resultat" aria-live="polite"></p>
+      </div>
+      <div class="calc-pave" id="calc-pave"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap duo duo-haut">
+    <div>
+      <h2>Lire les nombres</h2>
+      <ul>
+        <li>Le premier chiffre d'un nombre est à droite : on lit de droite à gauche.</li>
+        <li>La virgule décimale est la virgule AYNEHA, placée en bas.</li>
+        <li>Les grands nombres sont séparés en groupes de trois chiffres.</li>
+        <li>Les signes de calcul (+, −, ×, ÷, =) sont les signes internationaux.</li>
+      </ul>
+    </div>
+    <div class="encadre">
+      <h3>Sur votre téléphone</h3>
+      <p class="doux">L'application AYNEHA Calc fonctionne sans connexion, avec le pourcentage en plus.</p>
+      <a class="btn" href="ayneha-calc.html">Voir AYNEHA Calc</a>
+    </div>
+  </div>
+</section>
