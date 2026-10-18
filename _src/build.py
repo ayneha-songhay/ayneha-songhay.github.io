@@ -25,7 +25,7 @@ import confidentialite_en as CONF_EN  # noqa: E402
 import cartes as CARTES  # noqa: E402
 import lexique as LEXIQUE  # noqa: E402
 
-SITE_URL = "https://ayneha-songhay.github.io"
+SITE_URL = "https://ayneha.org"
 CONTACT = "contact@ayneha.org"
 # Questions techniques sur les applications : alias du développeur
 # (à remplacer par dev@ayneha.org quand l'offre e-mail OVH le permettra).
@@ -566,7 +566,7 @@ def page(meta, corps, lang="fr"):
 <link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css?v={VERSION}">
-<script src="assets/js/essai.js?v={VERSION}"></script>{extra_head}
+{extra_head}
 </head>
 <body>
 {entete(meta.get("nav", ""), nom, lang)}
@@ -722,6 +722,20 @@ def main():
     with open(os.path.join(RACINE, "assets", "js", "alphabet-data.js"), "w", encoding="utf-8") as fh:
         fh.write("/* Généré par _src/build.py - ne pas modifier à la main. */\n" + alphabet_data())
 
+    # robots.txt et sitemap.xml : aident les moteurs de recherche à trouver toutes les pages.
+    pages_site = sorted(
+        os.path.relpath(os.path.join(d, n), RACINE).replace(os.sep, "/")
+        for d, _, ns in os.walk(RACINE) for n in ns
+        if n.endswith(".html") and n != "404.html" and not os.path.relpath(d, RACINE).startswith((".git", "_src")))
+    with open(os.path.join(RACINE, "sitemap.xml"), "w", encoding="utf-8") as fh:
+        fh.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+        for pg in pages_site:
+            adr = SITE_URL + "/" + ("" if pg == "index.html" else pg.replace("/index.html", "/"))
+            fh.write(f"  <url><loc>{adr}</loc></url>\n")
+        fh.write("</urlset>\n")
+    with open(os.path.join(RACINE, "robots.txt"), "w", encoding="utf-8") as fh:
+        fh.write(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
+
     # manifest.json et version.txt : utilisés par l'application Android « AYNEHA »
     # (wrapper hors connexion) pour savoir quand télécharger la nouvelle version du site.
     fichiers = []
@@ -733,7 +747,7 @@ def main():
             chemin = os.path.normpath(os.path.join(rel, n)).replace(os.sep, "/")
             if chemin.startswith("./"):
                 chemin = chemin[2:]
-            if chemin in ("manifest.json", "version.txt", "README.md", "LICENSE", ".gitignore", "_headers", "netlify.toml") or n.startswith("."):
+            if chemin in ("manifest.json", "version.txt", "sitemap.xml", "robots.txt", "README.md", "LICENSE", ".gitignore", "_headers", "netlify.toml") or n.startswith("."):
                 continue
             if chemin.startswith("assets/telechargements/"):
                 continue  # fichiers à télécharger : pas besoin de les embarquer dans l'appli

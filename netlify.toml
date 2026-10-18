@@ -1,4 +1,0 @@
-# Site de test Netlify : le site est déjà construit, rien à compiler.
-[build]
-  publish = "."
-  command = ""

@@ -224,7 +224,7 @@
       });
       ctx.fillStyle = "#7A8296";
       ctx.font = '24px Jost, sans-serif';
-      ctx.fillText(window.AynehaApp ? "ayneha-songhay.github.io" : (location.hostname || "ayneha-songhay.github.io"), marge, c.height - 36);
+      ctx.fillText("ayneha.org", marge, c.height - 36);
       /* Dans l'application AYNEHA Home (WebView), le téléchargement d'un blob est
          impossible : l'application enregistre l'image elle-même dans Pictures/AYNEHA. */
       if (window.AynehaApp && window.AynehaApp.enregistrerImage) {

@@ -4,7 +4,7 @@ Site officiel d'**AYNEHA**, une écriture originale pour la langue songhay (Mali
 
 *Official website of AYNEHA, an original right-to-left writing system for the Songhay language.*
 
-**Site en ligne / Live site : https://ayneha-songhay.github.io/**
+**Site en ligne / Live site : https://ayneha.org/**
 
 ## L'écriture
 - Alphabet monocaméral (ni majuscules ni minuscules), écrit de **droite à gauche**
