@@ -2,3 +2,11 @@
 [build]
   publish = "."
   command = ""
+
+# Le site est publié sur ayneha.org depuis le 18 octobre 2026 :
+# toute page du site de test renvoie vers la même page sur ayneha.org.
+[[redirects]]
+  from = "/*"
+  to = "https://ayneha.org/:splat"
+  status = 301
+  force = true
