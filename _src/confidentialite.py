@@ -153,7 +153,7 @@ WEB = [
             ("Tout reste dans votre navigateur", "La carte est dessinée par votre navigateur. Votre message, votre traduction et votre pseudo ne sont envoyés nulle part tant que vous ne décidez pas de partager ou de proposer la carte."),
             ("Mémoire du pseudo", "Pour vous éviter de le retaper, votre pseudo est gardé dans le stockage de votre navigateur, sur votre appareil seulement. Effacez le champ pour le supprimer."),
             ("Partage", "Le bouton Partager transmet l'image seulement à l'application que vous choisissez (WhatsApp, par exemple). « Enregistrer l'image » la met dans vos téléchargements."),
-            ("Proposer une carte", "Les boutons « Proposer » ouvrent votre application WhatsApp ou votre messagerie avec un message déjà rempli : modèle, texte, traduction et pseudo. Rien ne part sans que vous l'envoyiez vous-même. Le message est reçu par AYNEHA, qui ne s'en sert que pour relire la carte et la publier dans la galerie. Votre numéro ou votre adresse e-mail ne sont jamais publiés."),
+            ("Proposer une carte", "Le bouton « Proposer par e-mail » ouvre votre messagerie avec un e-mail déjà rempli : modèle, texte, traduction et pseudo. Rien ne part sans que vous l'envoyiez vous-même. Le message est reçu par AYNEHA, qui ne s'en sert que pour relire la carte et la publier dans la galerie. Votre adresse e-mail n'est jamais publiée."),
             ("Ce qui est publié", "Une carte validée est publiée dans la galerie avec son message, sa traduction et le pseudo tel qu'il a été écrit. Pour retirer une carte de la galerie, il suffit de le demander à contact@ayneha.org."),
             MODIFS,
         ],

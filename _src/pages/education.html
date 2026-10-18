@@ -73,7 +73,7 @@ scripts: assets/js/message.js
     <div>
       <h2>Demander du matériel ou devenir partenaire</h2>
       <p>Une école, une association ou un centre d'alphabétisation veut enseigner l'AYNEHA ? Dites-nous qui vous êtes et ce dont vous avez besoin : une présentation, de l'aide pour démarrer, ou une place parmi les partenaires sur ce site.</p>
-      <p class="doux petit">Le formulaire prépare un message que vous envoyez vous-même, par WhatsApp ou par e-mail. Le site n'enregistre rien. Une structure n'est présentée comme partenaire qu'avec son accord.</p>
+      <p class="doux petit">Le formulaire prépare un message que vous envoyez vous-même, par e-mail. Le site n'enregistre rien. Une structure n'est présentée comme partenaire qu'avec son accord.</p>
     </div>
     <form class="form-message encadre" data-sujet="Demande d'une école ou d'une association" data-intro="Bonjour AYNEHA,&#10;nous souhaitons enseigner l'AYNEHA.&#10;" data-vide="Indiquez au moins le nom de votre structure ou votre demande." data-envoye="Votre application s'ouvre : il ne reste qu'à envoyer le message.">
       <fieldset data-label="Type de structure :">
@@ -100,8 +100,7 @@ scripts: assets/js/message.js
       </fieldset>
       <div class="q"><label for="ed-msg">Message <span class="doux">(facultatif)</span></label><textarea class="champ" id="ed-msg" maxlength="800" data-label="Message :"></textarea></div>
       <div class="boutons">
-        <a class="btn" data-canal="wa" href="https://wa.me/22366778763" target="_blank" rel="noopener">Envoyer par WhatsApp</a>
-        <a class="btn btn-ligne" data-canal="mail" href="mailto:{{contact}}">Envoyer par e-mail</a>
+        <a class="btn" data-canal="mail" href="mailto:{{contact}}">Envoyer par e-mail</a>
       </div>
       <p class="message-etat" role="status"></p>
     </form>

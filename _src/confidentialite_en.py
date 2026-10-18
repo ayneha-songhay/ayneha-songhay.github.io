@@ -153,7 +153,7 @@ WEB = [
             ("Everything stays in your browser", "The card is drawn by your browser. Your message, translation and nickname are not sent anywhere unless you decide to share or submit the card."),
             ("Memory of your nickname", "To save you typing it again, your nickname is kept in your browser's storage, on your device only. Clear the field to delete it."),
             ("Sharing", "The Share button passes the image only to the app you choose (WhatsApp, for example). “Save the image” puts it in your downloads."),
-            ("Submitting a card", "The “Submit” buttons open your WhatsApp app or your email app with a message already filled in: template, text, translation and nickname. Nothing is sent unless you send it yourself. The message is received by AYNEHA, which uses it only to review the card and publish it in the gallery. Your phone number or email address are never published."),
+            ("Submitting a card", "The “Submit by e-mail” button opens your email app with a message already filled in: template, text, translation and nickname. Nothing is sent unless you send it yourself. The message is received by AYNEHA, which uses it only to review the card and publish it in the gallery. Your email address is never published."),
             ("What is published", "An approved card is published in the gallery with its message, its translation and the nickname exactly as it was typed. To have a card removed from the gallery, simply ask at contact@ayneha.org."),
             CHANGES,
         ],

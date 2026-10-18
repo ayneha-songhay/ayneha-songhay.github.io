@@ -20,7 +20,6 @@
   function T(fr, en) { return EN ? en : fr; }
   var SITE = "ayneha.org";  // adresse affichée sur les cartes et dans le message de partage
   var CONTACT = "contact@ayneha.org";
-  var WHATSAPP = "22366778763";
 
   /* ------------------------------------------------------------ modèles */
   var MODELES = {
@@ -434,12 +433,10 @@
     /* Les boutons « Proposer » sont de vrais liens, mis à jour à chaque changement :
        les navigateurs les ouvrent même là où les fenêtres automatiques sont bloquées. */
     var lienMail = document.getElementById("carte-proposer-mail");
-    var lienWa = document.getElementById("carte-proposer-wa");
     function majLiens() {
       lienMail.href = "mailto:" + CONTACT + "?subject=" + encodeURIComponent(T("Ma carte AYNEHA - ", "My AYNEHA card - ") + MODELES[d.modele].nom) + "&body=" + encodeURIComponent(texteProposition());
-      lienWa.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texteProposition());
     }
-    [lienMail, lienWa].forEach(function (l) {
+    [lienMail].forEach(function (l) {
       l.addEventListener("click", function (e) { if (!pret()) { e.preventDefault(); champ.scrollIntoView({ behavior: "smooth", block: "center" }); } });
     });
 

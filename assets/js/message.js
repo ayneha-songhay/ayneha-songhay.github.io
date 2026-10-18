@@ -1,11 +1,10 @@
 /* Formulaires « message préparé » (Votre avis, Éducation et associations).
-   Rien n'est envoyé par le site : le formulaire prépare un message WhatsApp ou un e-mail,
+   Rien n'est envoyé par le site : le formulaire prépare un e-mail,
    que la personne envoie elle-même depuis son application. Aucun serveur, aucun traceur.
    Concepteur et créateur : Mahamadou Issiaka MAIGA (MAIGUS)
    SPDX-License-Identifier: GPL-3.0-or-later */
 (function () {
   "use strict";
-  var WA = "22366778763";
   var MAIL = "contact@ayneha.org";
 
   function valeur(champ) {
@@ -31,7 +30,6 @@
   }
 
   function relier(form) {
-    var wa = form.querySelector("[data-canal=wa]");
     var mail = form.querySelector("[data-canal=mail]");
     var etat = form.querySelector(".message-etat");
     var sujet = form.getAttribute("data-sujet") || "AYNEHA";
@@ -47,14 +45,13 @@
 
     function maj() {
       var m = composer(form);
-      if (wa) wa.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(m.texte);
       if (mail) mail.href = "mailto:" + MAIL + "?subject=" + encodeURIComponent(sujet) + "&body=" + encodeURIComponent(m.texte);
       return m;
     }
     form.addEventListener("input", maj);
     form.addEventListener("change", maj);
     form.addEventListener("submit", function (e) { e.preventDefault(); });
-    [wa, mail].forEach(function (lien) {
+    [mail].forEach(function (lien) {
       if (!lien) return;
       lien.addEventListener("click", function (e) {
         var m = maj();
