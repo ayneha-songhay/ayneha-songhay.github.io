@@ -528,7 +528,7 @@ def lien_conf(nom, lang="fr"):
     return ""
 
 
-def page(meta, corps, lang="fr"):
+def _page_brut(meta, corps, lang="fr"):
     titre = meta["title"]
     desc = meta["description"]
     nom = meta["_file"]
@@ -629,6 +629,32 @@ def alphabet_data():
 
 # ---------------------------------------------------------------- construction
 VERSION = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d%H%M%S")
+
+
+_LIEN_A = re.compile(r'<a\b[^>]*>', re.I)
+
+
+def liens_externes(html):
+    """Les liens vers un autre site s'ouvrent dans un nouvel onglet : la page AYNEHA reste ouverte."""
+    def fix(m):
+        tag = m.group(0)
+        h = re.search(r'href="(https?://[^"]+)"', tag)
+        if not h or re.match(r'https?://(www\.)?ayneha\.org(/|$)', h.group(1)):
+            return tag
+        if 'target=' not in tag:
+            tag = tag[:-1] + ' target="_blank">'
+        r = re.search(r'rel="([^"]*)"', tag)
+        if r is None:
+            tag = tag[:-1] + ' rel="noopener">'
+        elif 'noopener' not in r.group(1).split():
+            tag = tag.replace(r.group(0), f'rel="{(r.group(1) + " noopener").strip()}"')
+        return tag
+    return _LIEN_A.sub(fix, html)
+
+
+def page(meta, corps, lang="fr"):
+    return liens_externes(_page_brut(meta, corps, lang))
+
 
 
 def relier_en(src):
