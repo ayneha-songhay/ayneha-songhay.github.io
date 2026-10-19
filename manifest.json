@@ -1,5 +1,5 @@
 {
-  "version": "20261018193539",
+  "version": "20261019154925",
   "files": [
     "404.html",
     "CNAME",
@@ -84,6 +84,7 @@
     "confidentialite.html",
     "convertisseur.html",
     "developpeurs.html",
+    "ecritures-afrique.html",
     "education.html",
     "en/alphabet.html",
     "en/applications.html",
@@ -118,6 +119,7 @@
     "en/confidentialite.html",
     "en/convertisseur.html",
     "en/developpeurs.html",
+    "en/ecritures-afrique.html",
     "en/education.html",
     "en/faq.html",
     "en/galerie.html",

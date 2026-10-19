@@ -405,6 +405,7 @@ PIED_EN = """<footer class="pied">
           <li><a href="applications.html">Apps</a></li>
           <li><a href="lexique.html">Glossary</a></li>
           <li><a href="ressources.html">Resources</a></li>
+          <li><a href="ecritures-afrique.html">West African scripts</a></li>
           <li><a href="education.html">Teaching AYNEHA</a></li>
         </ul>
       </div>
@@ -472,6 +473,7 @@ def pied(lang="fr", nom="index.html"):
           <li><a href="applications.html">Applications</a></li>
           <li><a href="lexique.html">Lexique</a></li>
           <li><a href="ressources.html">Ressources</a></li>
+          <li><a href="ecritures-afrique.html">Les écritures d'Afrique de l'Ouest</a></li>
           <li><a href="education.html">Enseigner l'AYNEHA</a></li>
         </ul>
       </div>
