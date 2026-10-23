@@ -5,7 +5,7 @@
 # Chaque entrée produit une page  confidentialite-<id>.html  dont l'adresse peut être
 # donnée aux boutiques d'applications (AppGallery...).
 
-MAJ = "17 octobre 2026"
+MAJ = "23 octobre 2026"
 
 ENFANTS = ("Utilisation par des enfants",
            "Comme aucune donnée personnelle n'est collectée, l'application peut être utilisée sans risque particulier par un public jeune, par exemple dans un cadre scolaire.")
@@ -104,8 +104,9 @@ WEB = [
         "id": "site", "nom": "Le site AYNEHA", "type": "Site web",
         "intro": "Ce site présente l'écriture AYNEHA et ses outils.",
         "sections": [
-            ("Aucune donnée collectée", "Aucun cookie, aucun traceur, aucune mesure d'audience, aucune publicité."),
-            ("Aucun service tiers", "Les polices et les scripts sont hébergés sur le site lui-même : en affichant les pages, votre navigateur ne contacte aucun autre service."),
+            ("Aucune donnée personnelle collectée", "Aucun compte, aucun cookie, aucune publicité. Aucun nom ni aucune adresse e-mail n'est demandé."),
+            ("Compteur de visiteurs anonyme", "Une ligne en haut des pages indique le nombre de visiteurs actifs et le total du jour. Pour cela, votre navigateur garde un identifiant aléatoire (sans nom, sans adresse IP, sans cookie) et l'envoie toutes les 30 secondes au serveur windila.org, autre site du même éditeur. Ces identifiants sont effacés chaque jour. Aucun outil d'analyse d'audience tiers, aucun traceur publicitaire."),
+            ("Services extérieurs", "Les polices et les scripts sont hébergés sur le site lui-même. Seul le compteur de visiteurs contacte un autre serveur : windila.org."),
             ("Hébergement", "Le site est hébergé par GitHub Pages, qui peut enregistrer des informations techniques de connexion (comme l'adresse IP) pour assurer le service et sa sécurité."),
             ("Liens externes", "Les liens vers d'autres sites (Omniglot, réseaux sociaux, Google Drive) mènent à des services qui ont leurs propres règles."),
             MODIFS,

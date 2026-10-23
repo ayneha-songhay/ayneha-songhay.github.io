@@ -15,7 +15,7 @@ Site officiel d'**AYNEHA**, une écriture originale pour la langue songhay (Mali
 Accueil, L'alphabet, Applications, Outils en ligne (transcripteur, clavier, horloge), Ressources, À propos, Espace presse, Confidentialité.
 
 ## Structure
-Site statique (HTML, CSS, JavaScript), hébergé sur GitHub Pages. Aucun serveur, aucun cookie, aucun traceur, aucune police ni script chargé depuis un autre site.
+Site statique (HTML, CSS, JavaScript), hébergé sur GitHub Pages. Aucun serveur, aucun cookie, aucune police ni script chargé depuis un autre site. Seul un compteur anonyme de visiteurs (`assets/js/compteur.js`) contacte `windila.org/compteur/visiteurs.php?site=ayneha` : identifiant aléatoire, sans nom ni adresse IP, effacé chaque jour.
 
 - `_src/pages/` : le contenu de chaque page
 - `_src/glyphs.py` : la matrice des 98 caractères AYNEHA

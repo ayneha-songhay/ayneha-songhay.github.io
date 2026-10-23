@@ -306,7 +306,7 @@ def page_confidentialite_index_en():
     return f"""<section class="page-tete">
   <div class="wrap">
     <h1>Privacy</h1>
-    <p>In short: neither the website nor the AYNEHA apps collect data about you. No account, no tracker, no advertising. Each app and each tool has its own page, with its detailed rules.</p>
+    <p>In short: neither the website nor the AYNEHA apps collect personal data about you. No account, no advertising. The website only counts its visitors, anonymously. Each app and each tool has its own page, with its detailed rules.</p>
   </div>
 </section>
 <section class="section-serree">
@@ -335,7 +335,7 @@ def page_confidentialite_index():
     return f"""<section class="page-tete">
   <div class="wrap">
     <h1>Confidentialité</h1>
-    <p>En bref : ni le site ni les applications AYNEHA ne collectent de données sur vous. Pas de compte, pas de traceur, pas de publicité. Chaque application et chaque outil a sa propre page, avec ses règles détaillées.</p>
+    <p>En bref : ni le site ni les applications AYNEHA ne collectent de données personnelles sur vous. Pas de compte, pas de publicité. Le site compte seulement ses visiteurs, de façon anonyme. Chaque application et chaque outil a sa propre page, avec ses règles détaillées.</p>
   </div>
 </section>
 <section class="section-serree">
@@ -576,7 +576,8 @@ def _page_brut(meta, corps, lang="fr"):
 {corps.strip()}{lien_conf(nom, lang)}
 </main>
 {pied(lang, nom)}
-<script src="assets/js/site.js?v={VERSION}"></script>{scripts}
+<script src="assets/js/site.js?v={VERSION}"></script>
+<script src="assets/js/compteur.js?v={VERSION}" defer></script>{scripts}
 </body>
 </html>
 """
@@ -701,7 +702,7 @@ def main():
             fh.write(out)
         produits.append("en/" + f)
 
-    meta = {"title": "Privacy - AYNEHA", "description": "The privacy policies of the AYNEHA website and of each app and tool: no data collected, no account, no tracker, no advertising.", "nav": "", "_file": "confidentialite.html"}
+    meta = {"title": "Privacy - AYNEHA", "description": "The privacy policies of the AYNEHA website and of each app and tool: no personal data collected, no account, no advertising, a simple anonymous visitor counter.", "nav": "", "_file": "confidentialite.html"}
     with open(os.path.join(RACINE, "en", "confidentialite.html"), "w", encoding="utf-8") as fh:
         fh.write(relier_en(page(meta, page_confidentialite_index_en(), "en")))
     produits.append("en/confidentialite.html")
@@ -725,7 +726,7 @@ def main():
             fh.write(relier_en(page(meta, macros(page_app(a, True), "en"), "en")))
         produits.append("en/" + a["id"] + ".html")
 
-    meta = {"title": "Confidentialité - AYNEHA", "description": "Les règles de confidentialité du site et de chaque application et outil AYNEHA : aucune donnée collectée, pas de compte, pas de traceur, pas de publicité.", "nav": "", "_file": "confidentialite.html"}
+    meta = {"title": "Confidentialité - AYNEHA", "description": "Les règles de confidentialité du site et de chaque application et outil AYNEHA : aucune donnée personnelle collectée, pas de compte, pas de publicité, un simple compteur anonyme de visiteurs.", "nav": "", "_file": "confidentialite.html"}
     with open(os.path.join(RACINE, "confidentialite.html"), "w", encoding="utf-8") as fh:
         fh.write(page(meta, page_confidentialite_index()))
     for c in CONF.ANDROID + CONF.WEB:

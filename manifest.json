@@ -1,5 +1,5 @@
 {
-  "version": "20261020115156",
+  "version": "20261023172356",
   "files": [
     "404.html",
     "CNAME",
@@ -47,6 +47,7 @@
     "assets/js/cartes-data.js",
     "assets/js/clavier-page.js",
     "assets/js/clavier.js",
+    "assets/js/compteur.js",
     "assets/js/horloge.js",
     "assets/js/lexique-data.js",
     "assets/js/lexique.js",
@@ -134,6 +135,7 @@
     "en/ressources.html",
     "faq.html",
     "galerie.html",
+    "googleb399a0d051fb7554.html",
     "horloge.html",
     "index.html",
     "installer-apk.html",
