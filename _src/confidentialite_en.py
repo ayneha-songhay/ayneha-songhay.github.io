@@ -5,7 +5,7 @@
 #
 # Each entry produces  en/confidentialite-<id>.html
 
-MAJ = "23 October 2026"
+MAJ = "17 October 2026"
 
 CHILDREN = ("Use by children",
             "Since no personal data is collected, the app can be used without particular risk by young people, for example at school.")
@@ -104,9 +104,8 @@ WEB = [
         "id": "site", "nom": "The AYNEHA website", "type": "Website",
         "intro": "This website presents the AYNEHA writing system and its tools.",
         "sections": [
-            ("No personal data collected", "No account, no cookies, no advertising. No name or e-mail address is asked for."),
-            ("Anonymous visitor counter", "A line at the top of the pages shows the number of active visitors and the total for the day. To do this, your browser keeps a random identifier (no name, no IP address, no cookie) and sends it every 30 seconds to the windila.org server, another website of the same publisher. These identifiers are erased every day. No third-party audience analytics, no advertising tracker."),
-            ("External services", "Fonts and scripts are hosted on the website itself. Only the visitor counter contacts another server: windila.org."),
+            ("No data collected", "No cookies, no trackers, no audience measurement, no advertising."),
+            ("No third-party services", "Fonts and scripts are hosted on the website itself: when displaying the pages, your browser does not contact any other service."),
             ("Hosting", "The website is hosted by GitHub Pages, which may record technical connection information (such as the IP address) to provide the service and keep it secure."),
             ("External links", "Links to other websites (Omniglot, social networks, Google Drive) lead to services that have their own rules."),
             CHANGES,
