@@ -1,5 +1,5 @@
 {
-  "version": "20261020115156",
+  "version": "20261023175128",
   "files": [
     "404.html",
     "CNAME",
@@ -127,6 +127,7 @@
     "en/index.html",
     "en/installer-apk.html",
     "en/lexique.html",
+    "en/mentions-legales.html",
     "en/nombres.html",
     "en/outils.html",
     "en/presse.html",
@@ -134,10 +135,12 @@
     "en/ressources.html",
     "faq.html",
     "galerie.html",
+    "googleb399a0d051fb7554.html",
     "horloge.html",
     "index.html",
     "installer-apk.html",
     "lexique.html",
+    "mentions-legales.html",
     "nombres.html",
     "outils.html",
     "presse.html",

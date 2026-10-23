@@ -429,6 +429,7 @@ PIED_EN = """<footer class="pied">
           <li><a href="apropos.html#soutenir">Support the AYNEHA Project</a></li>
           <li><a href="avis.html?depuis={DEPUIS}">Give my feedback</a></li>
           <li><a href="confidentialite.html">Privacy</a></li>
+          <li><a href="mentions-legales.html">Legal notice</a></li>
         </ul>
       </div>
       <div>
@@ -497,6 +498,7 @@ def pied(lang="fr", nom="index.html"):
           <li><a href="apropos.html#soutenir">Soutenir le projet</a></li>
           <li><a href="avis.html?depuis={nom}">Donner mon avis</a></li>
           <li><a href="confidentialite.html">Confidentialité</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
       </div>
       <div>
