@@ -733,3 +733,20 @@ td .ay { font-size: 2rem; color: var(--sable); }
 .lex-ay { font-size: 2.1rem; color: var(--sable); text-align: right; overflow-wrap: anywhere; margin-bottom: 6px; }
 .nb-lettres p { margin: 0; font-size: 1.15rem; line-height: 1.45; overflow-wrap: anywhere; }
 .nb-lettres .nb-lettres-ay { font-size: 1.9rem; text-align: right; margin-top: 8px; line-height: 1.5; }
+
+/* ---------- Horloge de l'accueil : thème de l'Horloge 2.0 (bleu nuit et orange) ---------- */
+.tablette.horloge-nuit {
+  background: #13213A;
+  color: #F3ECE0;
+  border: 1px solid rgba(243, 236, 224, .13);
+  box-shadow: 0 14px 48px rgba(0, 0, 0, .45);
+}
+.tablette.horloge-nuit::before {
+  background: #13213A;
+  box-shadow: inset 0 0 0 1px rgba(243, 236, 224, .13);
+  border-bottom: none;
+}
+.tablette.horloge-nuit .horloge-heure { color: #FF8A3D; }
+.tablette.horloge-nuit .horloge-ligne .ay { color: #F3ECE0; }
+.tablette.horloge-nuit .horloge-ligne > div:nth-child(2) .ay { color: #FF8A3D; }
+.tablette.horloge-nuit .horloge-ligne small { color: #B9C0CF; }
