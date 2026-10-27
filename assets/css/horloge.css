@@ -1,0 +1,138 @@
+/* AYNEHA Horloge 2.0 - styles limités au bloc #hz. SPDX-License-Identifier: GPL-3.0-or-later */
+#hz{
+    --night-950:#08101e;
+    --night-900:#0b1526;
+    --night-800:#13213a;
+    --night-700:#1c2d4c;
+    --ink:#f3ece0;
+    --ink-dim:#b9c0cf;
+    --orange:#ff6a13;
+    --orange-soft:#ff8a3d;
+    --orange-glow:rgba(255,106,19,0.18);
+    --line:rgba(243,236,224,0.13);
+    --moon-lit:#f6e7c8;
+    --moon-dark:#22324f;
+  }
+
+    
+  #hz{
+    color:var(--ink);
+    font-family:"Ayneha Pro",system-ui,sans-serif;
+    direction:rtl;
+    display:flex;flex-direction:column;align-items:center;
+    -webkit-tap-highlight-color:transparent;
+  }
+  #hz *{box-sizing:border-box;margin:0;padding:0;}
+  /* Dans l'application, laisse la place au bouton Confidentialité (coin haut-gauche). */
+  
+
+  /* ---------- Moteur RTL : chaque glyphe est une case placée de droite à gauche ---------- */
+  #hz .hz-ay{display:inline-flex;flex-direction:row;direction:rtl;unicode-bidi:isolate;align-items:baseline;white-space:nowrap;}
+  #hz .hz-ay > span{display:inline-block;}
+  #hz .hz-ay .hz-sep{padding:0 0.12em;}
+
+  /* ---------- Barre d'outils (icônes uniquement) ---------- */
+  #hz .hz-bar{
+    width:100%;max-width:980px;display:flex;flex-direction:row;gap:0.35rem;
+    justify-content:flex-start;align-items:center;margin:0 auto 0.6rem;min-height:2.6rem;
+  }
+  #hz .hz-ico{
+    width:2.6rem;height:2.6rem;border-radius:12px;border:1px solid var(--line);
+    background:var(--night-800);color:var(--ink-dim);display:inline-flex;
+    align-items:center;justify-content:center;cursor:pointer;flex:none;
+  }
+  #hz .hz-ico svg{width:1.35rem;height:1.35rem;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  #hz .hz-ico:active,#hz .hz-ico.hz-on{background:var(--orange-glow);color:var(--orange-soft);border-color:var(--orange);}
+  #hz .hz-ico.hz-idle{opacity:0.35;pointer-events:none;}
+  #hz .hz-ico.hz-warn{color:var(--orange);border-color:var(--orange);}
+  #hz .hz-bar .hz-grow{flex:1;}
+
+  /* ---------- Panneau principal ---------- */
+  #hz .hz-panel{
+    background:var(--night-800);border:1px solid var(--line);border-radius:18px;
+    padding:1.3rem 1.1rem 1.4rem;width:100%;max-width:980px;margin:0 auto;
+    box-shadow:0 14px 48px rgba(0,0,0,0.45);
+    display:flex;flex-direction:row;gap:1.6rem;align-items:stretch;
+  }
+  #hz .hz-info,#hz .hz-cal{flex:1 1 50%;min-width:0;}
+  #hz .hz-info{display:flex;flex-direction:column;align-items:center;text-align:center;}
+  #hz .hz-cal{border-right:1px solid var(--line);padding-right:1.4rem;}
+  @media (orientation:portrait), (max-width:700px){
+    #hz .hz-panel{flex-direction:column;gap:1rem;}
+    #hz .hz-cal{border-right:none;padding-right:0;border-top:1px solid var(--line);padding-top:1rem;}
+  }
+
+  #hz .hz-lbl{font-size:1.25rem;color:var(--ink-dim);margin-bottom:0.25rem;}
+  #hz .hz-hr{height:1px;background:var(--line);width:100%;margin:0.9rem 0;}
+
+  /* Horloge numérique */
+  #hz .hz-clock{font-size:clamp(2.5rem,11vw,3.6rem);color:var(--orange-soft);line-height:1.2;cursor:pointer;}
+  #hz .hz-clock .hz-ay{gap:0.06em;}
+  /* Cadran à aiguilles */
+  #hz .hz-dial{width:min(62vw,15rem);height:min(62vw,15rem);cursor:pointer;display:none;}
+  #hz.hz-dial-mode .hz-clock{display:none;}
+  #hz.hz-dial-mode .hz-dial{display:block;}
+  #hz .hz-dial text{font-family:"Ayneha Pro";fill:var(--ink);}
+
+  #hz .hz-row2{display:flex;flex-direction:row;width:100%;align-items:stretch;}
+  #hz .hz-row2 > div{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  #hz .hz-row2 .hz-vline{flex:none;width:1px;background:var(--line);}
+  #hz .hz-val{font-size:clamp(1.6rem,6.5vw,2.2rem);color:var(--ink);}
+  #hz .hz-moon{width:3.4rem;height:3.4rem;}
+
+  #hz .hz-lunar{font-size:clamp(1.9rem,8vw,2.6rem);color:var(--orange-soft);display:flex;flex-direction:row;gap:0.45em;justify-content:center;align-items:baseline;flex-wrap:wrap;}
+  #hz .hz-year{font-size:clamp(1.7rem,7vw,2.3rem);color:var(--ink);}
+  #hz .hz-greg{font-size:1.35rem;color:var(--ink-dim);margin-top:0.55rem;}
+
+  /* ---------- Calendrier ---------- */
+  #hz .hz-cal-head{display:flex;flex-direction:row;align-items:center;gap:0.3rem;margin-bottom:0.6rem;}
+  #hz .hz-cal-titles{flex:1;min-width:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:0.2rem;}
+  #hz .hz-cal-greg{font-size:clamp(1.7rem,7vw,2.2rem);color:var(--ink);display:flex;flex-direction:row;gap:0.4em;align-items:baseline;justify-content:center;flex-wrap:wrap;}
+  #hz .hz-cal-lunar{font-size:1.25rem;color:var(--orange-soft);display:flex;flex-direction:row;gap:0.5em;flex-wrap:wrap;justify-content:center;}
+  #hz .hz-cal-lunar .hz-dot{color:var(--ink-dim);}
+  #hz .hz-nav{width:2.8rem;height:2.8rem;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink-dim);flex:none;}
+  #hz .hz-nav svg{width:1.6rem;height:1.6rem;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+  #hz .hz-nav:active{background:var(--orange-glow);color:var(--orange-soft);}
+
+  #hz .hz-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;direction:rtl;}
+  #hz .hz-wd{font-size:clamp(0.95rem,3.9vw,1.25rem);color:var(--ink-dim);text-align:center;padding:0.2rem 0 0.35rem;overflow:hidden;}
+  #hz .hz-day{
+    position:relative;border-radius:10px;padding:0.3rem 0 0.25rem;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:0.05rem;cursor:pointer;min-height:3.1rem;
+  }
+  #hz .hz-day.hz-empty{visibility:hidden;}
+  #hz .hz-wd.hz-off{color:var(--orange-soft);}
+  #hz .hz-day.hz-off{background:rgba(255,106,19,0.06);}
+  #hz .hz-day .hz-big{font-size:clamp(1.15rem,4.6vw,1.45rem);color:var(--ink);line-height:1.1;}
+  #hz .hz-day .hz-small{font-size:clamp(0.75rem,3vw,0.9rem);color:var(--orange-soft);opacity:0.85;line-height:1;}
+  #hz .hz-day.hz-mstart{box-shadow:inset 0 2px 0 var(--orange);}
+  #hz .hz-day.hz-mstart .hz-small{opacity:1;}
+  #hz .hz-day .hz-fete{position:absolute;top:4px;left:5px;width:6px;height:6px;border-radius:50%;background:var(--orange);}
+  #hz .hz-day.hz-today{background:var(--orange-glow);box-shadow:inset 0 0 0 1.5px var(--orange);}
+  #hz .hz-day.hz-today .hz-big{color:var(--orange-soft);}
+  #hz .hz-day.hz-sel{background:rgba(243,236,224,0.08);}
+
+  #hz .hz-foot{display:none;font-family:system-ui,sans-serif;direction:ltr;font-size:0.7rem;letter-spacing:0.08em;color:var(--ink-dim);opacity:0.5;margin-top:0.8rem;}
+
+  /* ---------- Fiches (détail du jour, réglage) ---------- */
+  #hz .hz-sheet-bg{position:fixed;inset:0;background:rgba(4,8,16,0.6);display:none;align-items:flex-end;justify-content:center;z-index:1000;}
+  #hz .hz-sheet-bg.hz-open{display:flex;}
+  #hz .hz-sheet{
+    width:100%;max-width:560px;background:var(--night-800);border:1px solid var(--line);border-bottom:none;
+    border-radius:20px 20px 0 0;padding:1.2rem 1.2rem calc(1.4rem + env(safe-area-inset-bottom));
+    display:flex;flex-direction:column;align-items:center;gap:0.55rem;text-align:center;
+  }
+  #hz .hz-sheet .hz-big{font-size:clamp(2rem,9vw,2.8rem);color:var(--orange-soft);}
+  #hz .hz-sheet .hz-mid{font-size:1.6rem;color:var(--ink);}
+  #hz .hz-sheet .hz-small{font-size:1.25rem;color:var(--ink-dim);}
+  #hz .hz-sheet .hz-moon{width:4rem;height:4rem;}
+  #hz .hz-adj{display:flex;flex-direction:row;align-items:center;gap:1rem;}
+  #hz .hz-adj .hz-ico{width:3rem;height:3rem;}
+  #hz .hz-adj .hz-num{font-size:1.9rem;min-width:3.5rem;}
+
+  /* ---------- Mode veille de nuit ---------- */
+  #hz .hz-night{position:fixed;inset:0;background:#000;z-index:1001;display:none;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;cursor:pointer;z-index:1001;}
+  #hz .hz-night.hz-open{display:flex;}
+  #hz .hz-night .hz-n-time{font-size:min(22vw,38vh);color:#c4541c;line-height:1;}
+  #hz .hz-night .hz-n-date{font-size:min(6vw,8vh);color:#7a3a18;display:flex;flex-direction:row;gap:0.6em;align-items:center;}
+  #hz .hz-night .hz-moon{width:1.6em;height:1.6em;opacity:0.6;}

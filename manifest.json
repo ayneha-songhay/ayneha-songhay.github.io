@@ -1,5 +1,5 @@
 {
-  "version": "20261026082908",
+  "version": "20261027115503",
   "files": [
     "404.html",
     "CNAME",
@@ -7,6 +7,7 @@
     "applications.html",
     "apprendre.html",
     "apropos.html",
+    "assets/css/horloge.css",
     "assets/css/site.css",
     "assets/fonts/OFL-Jost.txt",
     "assets/fonts/OFL-NotoSansAdlam.txt",
@@ -47,6 +48,7 @@
     "assets/js/cartes-data.js",
     "assets/js/clavier-page.js",
     "assets/js/clavier.js",
+    "assets/js/horloge-page.js",
     "assets/js/horloge.js",
     "assets/js/lexique-data.js",
     "assets/js/lexique.js",

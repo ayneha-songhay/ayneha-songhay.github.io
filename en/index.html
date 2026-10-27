@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/site.css?v=20261026082908">
+<link rel="stylesheet" href="../assets/css/site.css?v=20261027115503">
 
 </head>
 <body>
@@ -192,16 +192,16 @@
   <div class="wrap duo">
     <div>
       <h2>The time in AYNEHA</h2>
-      <p>This clock shows your device's time, the day, the month and the Songhay year, entirely in AYNEHA. The Songhay year is the Gregorian year plus 2001.</p>
-      <p class="doux">Example: in 2026, the Songhay year is 2026 + 2001 = 4027. It is written <span class="ay ay-inline" role="img" aria-label="4027">􏾀􏽼􏽾􏾃</span>: like letters, digits are read from right to left, so the 4 of the thousands is on the right.</p>
+      <p>This clock shows your device's time, the day and the Songhay lunar calendar date, entirely in AYNEHA.</p>
+      <p class="doux">Like letters, digits are read from right to left: the lunar year 4025 is written <span class="ay ay-inline" role="img" aria-label="4025">􏾀􏽼􏽾􏾁</span>, with the 4 of the thousands on the right.</p>
       <div class="boutons"><a class="btn btn-ligne" href="horloge.html">Open the clock and calendar</a></div>
     </div>
     <div class="tablette horloge" aria-label="Clock in AYNEHA">
       <p class="ay horloge-heure" data-horloge="heure"></p>
-      <div class="horloge-ligne">
+      <div class="horloge-ligne" style="direction:rtl">
         <div><span class="ay" data-horloge="jour"></span><small>day</small></div>
-        <div><span class="ay" data-horloge="mois"></span><small>month</small></div>
-        <div><span class="ay" data-horloge="annee"></span><small>Songhay year</small></div>
+        <div><span class="ay" data-horloge="mois"></span><small>lunar month</small></div>
+        <div><span class="ay" data-horloge="annee"></span><small>lunar year</small></div>
       </div>
     </div>
   </div>
@@ -294,7 +294,7 @@
   </div>
 </footer>
 <button class="haut-page" type="button" aria-label="Back to top">&#8593;</button>
-<script src="../assets/js/site.js?v=20261026082908"></script>
+<script src="../assets/js/site.js?v=20261027115503"></script>
 <script src="../assets/js/ayneha.js"></script>
 <script src="../assets/js/accueil.js"></script>
 <script src="../assets/js/horloge.js"></script>

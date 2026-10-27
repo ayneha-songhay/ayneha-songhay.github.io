@@ -1,33 +1,102 @@
 title: AYNEHA clock and calendar
-description: The time, day, month and Songhay year shown live in AYNEHA script, with a calendar to browse month by month.
+description: The time, the day and the Songhay lunar calendar date shown live in AYNEHA script, with the Gregorian calendar, today's moon and a night clock.
 nav: outils
-scripts: assets/js/ayneha.js assets/js/horloge.js
+scripts: assets/js/ayneha.js assets/js/horloge-page.js
 ---
 <section class="outil-tete">
   <div class="wrap">
     <h1>Clock and calendar</h1>
-    <p>Your device's time, the day, the month and the Songhay year, entirely in AYNEHA, without a single Latin character. Digits are read from right to left.</p>
+    <p>Your device's time, the day, the moon and the Songhay lunar calendar date, together with the Gregorian calendar, entirely in AYNEHA. Everything reads from right to left.</p>
   </div>
 </section>
 
 <section class="section-serree">
   <div class="wrap">
-    <div class="tablette horloge" style="max-width:720px;margin:0 auto">
-      <p class="ay petit-libelle" data-libelle="heure" style="font-size:1.6rem;margin:0"></p>
-      <p class="ay horloge-heure" data-horloge="heure" aria-live="off"></p>
-      <div class="horloge-ligne">
-        <div><span class="ay" data-libelle="jour" style="font-size:1.3rem"></span><span class="ay" data-horloge="jour"></span></div>
-        <div><span class="ay" data-libelle="mois" style="font-size:1.3rem"></span><span class="ay" data-horloge="mois"></span></div>
-        <div><span class="ay" data-horloge="annee"></span></div>
-      </div>
-      <div class="cal" data-calendrier>
-        <div class="cal-tete">
-          <button type="button" data-cal-suiv aria-label="Next month">&#8249;</button>
-          <p class="ay" data-cal-titre style="margin:0"></p>
-          <button type="button" data-cal-prec aria-label="Previous month">&#8250;</button>
+    <div id="hz">
+    <div class="hz-bar" id="bar">
+      <span class="hz-ico" id="btnToday" role="button" aria-label="Back to today" title="Back to today"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="12" cy="15" r="2" fill="currentColor"/></svg></span>
+      <span class="hz-ico" id="btnDial" role="button" aria-label="Analogue dial" title="Analogue dial"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+      <span class="hz-ico" id="btnNight" role="button" aria-label="Full-screen night clock" title="Full-screen night clock"><svg viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="1.8"/></svg></span>
+      <span class="hz-ico" id="btnShare" role="button" aria-label="Share as an image" title="Share as an image"><svg viewBox="0 0 24 24"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></svg></span>
+      <span class="hz-ico" id="btnAdjust" role="button" aria-label="Adjust the start of the lunar month" title="Adjust the start of the lunar month"><svg viewBox="0 0 24 24"><path d="M15.5 4.5A8 8 0 1 0 15.5 19.5A6.5 6.5 0 0 1 15.5 4.5z"/><path d="M19 9v6M16 12h6"/></svg></span>
+      <span class="hz-ico hz-warn" id="btnBattery" role="button" aria-label="Battery" title="Battery" style="display:none"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 10.5v3M7 10l3 4M10 10l-3 4"/></svg></span>
+      <span class="hz-grow"></span>
+    </div>
+
+    <main class="hz-panel" id="panel">
+      <section class="hz-info" id="info">
+        <div class="hz-lbl" id="lblGuuru"></div>
+        <div class="hz-clock" id="clock"></div>
+        <svg class="hz-dial" id="dial" viewBox="0 0 200 200" aria-hidden="true"></svg>
+
+        <div class="hz-hr"></div>
+
+        <div class="hz-row2">
+          <div>
+            <div class="hz-lbl" id="lblHan"></div>
+            <div class="hz-val" id="dayName"></div>
+          </div>
+          <div class="hz-vline"></div>
+          <div>
+            <div class="hz-lbl" id="lblHado"></div>
+            <svg class="hz-moon" id="moonToday" viewBox="0 0 100 100" aria-hidden="true"></svg>
+          </div>
         </div>
-        <div class="cal-grille" data-cal-grille></div>
+
+        <div class="hz-hr"></div>
+
+        <div class="hz-lbl" id="lblHadu"></div>
+        <div class="hz-lunar" id="lunarDate"></div>
+        <div class="hz-lbl" id="lblJiiri" style="margin-top:0.7rem"></div>
+        <div class="hz-year" id="lunarYear"></div>
+        <div class="hz-greg" id="gregDate"></div>
+      </section>
+
+      <section class="hz-cal" id="cal">
+        <div class="hz-cal-head">
+          <span class="hz-nav" id="prevMonth" role="button" aria-label="Previous month" title="Previous month"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+          <div class="hz-cal-titles">
+            <div class="hz-cal-greg" id="calGreg"></div>
+            <div class="hz-cal-lunar" id="calLunar"></div>
+          </div>
+          <span class="hz-nav" id="nextMonth" role="button" aria-label="Next month" title="Next month"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></span>
+        </div>
+        <div class="hz-grid" id="weekdays"></div>
+        <div class="hz-grid" id="days"></div>
+      </section>
+    </main>
+
+
+
+    <!-- Détail d'un jour -->
+    <div class="hz-sheet-bg" id="daySheetBg">
+      <div class="hz-sheet" id="daySheet">
+        <div class="hz-mid" id="dsDayName"></div>
+        <div class="hz-big" id="dsLunar"></div>
+        <div class="hz-mid" id="dsYear"></div>
+        <svg class="hz-moon" id="dsMoon" viewBox="0 0 100 100" aria-hidden="true"></svg>
+        <div class="hz-small" id="dsGreg"></div>
       </div>
+    </div>
+
+    <!-- Réglage du début de mois lunaire (+/- jours) -->
+    <div class="hz-sheet-bg" id="adjSheetBg">
+      <div class="hz-sheet">
+        <div class="hz-lbl" id="adjLbl"></div>
+        <div class="hz-big" id="adjPreview"></div>
+        <div class="hz-adj">
+          <span class="hz-ico" id="adjPlus" role="button" aria-label="One day more" title="One day more"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+          <span class="hz-num" id="adjNum"></span>
+          <span class="hz-ico" id="adjMinus" role="button" aria-label="One day less" title="One day less"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode veille de nuit -->
+    <div class="hz-night" id="night">
+      <div class="hz-n-time" id="nTime"></div>
+      <div class="hz-n-date"><span id="nDay"></span><svg class="hz-moon" id="nMoon" viewBox="0 0 100 100" aria-hidden="true"></svg><span id="nLunar"></span></div>
+    </div>
     </div>
   </div>
 </section>
@@ -38,15 +107,23 @@ scripts: assets/js/ayneha.js assets/js/horloge.js
       <h2>Reading the clock</h2>
       <ul>
         <li>At the top, the time: hours, minutes and seconds, from right to left.</li>
-        <li>Below, the name of the day, the name of the month and the Songhay year.</li>
-        <li>The Songhay year is the Gregorian year plus 2001: 2026 + 2001 = 4027, written {{ay:D4 D0 D2 D7|ay-inline|4027}}.</li>
-        <li>The calendar starts on Sunday, on the right. Today is shown in orange.</li>
+        <li>Below, the day of the week and today's moon, then the Songhay lunar date: the month, the day and the lunar year.</li>
+        <li>The last line gives the Gregorian date in Songhay order: month, then day, then year.</li>
+        <li>The calendar follows the Songhay lunar month: the lunar day in large type, the Gregorian day small, in orange. Under the month name, the Gregorian months it overlaps.</li>
+        <li>The week starts on Saturday, on the right, and ends on Friday: these two days off are shaded. The lunar day changes at sunset, computed for Gao.</li>
+        <li>Tap a day in the calendar to see its full date and its moon.</li>
       </ul>
-      <p class="doux">This clock follows the Gregorian calendar. A version with the Songhay lunar calendar is planned.</p>
     </div>
     <div class="encadre">
-      <h3>On your phone</h3>
-      <p class="doux">The AYNEHA Horloge app shows this clock on Android, with home-screen widgets.</p>
+      <h3>The buttons</h3>
+      <ul class="doux">
+        <li><strong>Today</strong> (calendar): back to the current month.</li>
+        <li><strong>Dial</strong> (clock): switch between digits and an analogue dial.</li>
+        <li><strong>Night clock</strong> (bed): the time in full screen for the night; tap the screen to leave.</li>
+        <li><strong>Share</strong>: create an image of today's date.</li>
+        <li><strong>Adjust</strong> (moon): move the start of the lunar month one or two days forward or back, if the moon is sighted on another day.</li>
+      </ul>
+      <p class="doux">The AYNEHA Horloge app also shows this clock on Android, with home-screen widgets.</p>
       <div class="boutons">
         <a class="btn" href="ayneha-horloge.html">See AYNEHA Horloge</a>
       </div>
