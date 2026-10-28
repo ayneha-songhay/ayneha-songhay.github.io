@@ -25,4 +25,14 @@ CAPTURES = {
         ("ayneha-horloge-03", "Le calendrier du mois, aujourd'hui encadré", "The month's calendar, with today framed"),
         ("ayneha-horloge-04", "Le widget Horloge sur l'écran d'accueil", "The clock widget on the home screen"),
     ],
+    "ayneha-school": [
+        ("ayneha-school-01", "L'accueil et ses 8 parcours", "The home screen and its 8 sections"),
+        ("ayneha-school-02", "L'alphabet : 5 voyelles et 22 consonnes", "The alphabet: 5 vowels and 22 consonants"),
+        ("ayneha-school-03", "La fiche d'une lettre : formes, règle et exemples", "A letter card: forms, rule and examples"),
+        ("ayneha-school-04", "Le syllabaire, ici les syllabes nasalisées", "The syllabary, here the nasal syllables"),
+        ("ayneha-school-05", "Les chiffres et l'écriture des nombres", "The digits and writing numbers"),
+        ("ayneha-school-06", "Un quiz sur les chiffres", "A quiz on the digits"),
+        ("ayneha-school-07", "L'atelier de transcription, lettre par lettre", "The transcription workshop, letter by letter"),
+        ("ayneha-school-08", "Lecture : les 7 jours de la semaine", "Reading: the 7 days of the week"),
+    ],
 }
