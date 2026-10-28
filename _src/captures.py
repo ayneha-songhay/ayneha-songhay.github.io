@@ -44,4 +44,13 @@ CAPTURES = {
         ("ayneha-home-06", "Les 7 applications Android", "The 7 Android apps"),
         ("ayneha-home-07", "En français et en anglais", "In French and English"),
     ],
+    "ayneha-carnet": [
+        ("ayneha-carnet-01", "L'accueil : tout est écrit en AYNEHA", "The home screen: everything is written in AYNEHA"),
+        ("ayneha-carnet-02", "Le menu de l'application", "The app menu"),
+        ("ayneha-carnet-03", "La fenêtre d'information (bouton i)", "The information window (i button)"),
+        ("ayneha-carnet-04", "Une nouvelle note : titre et texte", "A new note: title and text"),
+        ("ayneha-carnet-05", "Réglages : taille du texte et sauvegarde", "Settings: text size and backup"),
+        ("ayneha-carnet-06", "Activer le clavier AYNEHA Carnet dans Android", "Turn on the AYNEHA Carnet keyboard in Android"),
+        ("ayneha-carnet-07", "Confidentialité : aucune donnée collectée", "Privacy: no data collected"),
+    ],
 }
