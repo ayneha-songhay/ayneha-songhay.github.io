@@ -35,4 +35,13 @@ CAPTURES = {
         ("ayneha-school-07", "L'atelier de transcription, lettre par lettre", "The transcription workshop, letter by letter"),
         ("ayneha-school-08", "Lecture : les 7 jours de la semaine", "Reading: the 7 days of the week"),
     ],
+    "ayneha-home": [
+        ("ayneha-home-01", "L'accueil du site, dans l'application", "The website home, inside the app"),
+        ("ayneha-home-02", "L'alphabet : les 27 lettres et leurs formes", "The alphabet: the 27 letters and their forms"),
+        ("ayneha-home-03", "Le lexique : plus de 430 mots songhay", "The glossary: over 430 Songhay words"),
+        ("ayneha-home-04", "Les outils pour écrire en AYNEHA", "The tools to write in AYNEHA"),
+        ("ayneha-home-05", "Enseigner l'AYNEHA : affiche et cahier à imprimer", "Teaching AYNEHA: printable poster and workbook"),
+        ("ayneha-home-06", "Les 7 applications Android", "The 7 Android apps"),
+        ("ayneha-home-07", "En français et en anglais", "In French and English"),
+    ],
 }
