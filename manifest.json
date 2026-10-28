@@ -1,5 +1,5 @@
 {
-  "version": "20261027122021",
+  "version": "20261028082024",
   "files": [
     "404.html",
     "CNAME",
@@ -34,6 +34,13 @@
     "assets/img/apps/ayneha-numconvert-logo.png",
     "assets/img/apps/ayneha-school-couverture.jpg",
     "assets/img/apps/ayneha-school-logo.png",
+    "assets/img/apps/captures/ayneha-keyboard-01.webp",
+    "assets/img/apps/captures/ayneha-keyboard-02.webp",
+    "assets/img/apps/captures/ayneha-keyboard-03.webp",
+    "assets/img/apps/captures/ayneha-keyboard-04.webp",
+    "assets/img/apps/captures/ayneha-keyboard-05.webp",
+    "assets/img/apps/captures/ayneha-keyboard-06.webp",
+    "assets/img/apps/captures/ayneha-keyboard-07.webp",
     "assets/img/favicon-32.png",
     "assets/img/favicon.svg",
     "assets/img/icone-512.png",
@@ -44,6 +51,7 @@
     "assets/js/apropos.js",
     "assets/js/ayneha.js",
     "assets/js/calculatrice.js",
+    "assets/js/captures.js",
     "assets/js/carte.js",
     "assets/js/cartes-data.js",
     "assets/js/clavier-page.js",

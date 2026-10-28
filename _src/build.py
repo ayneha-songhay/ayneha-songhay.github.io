@@ -24,6 +24,7 @@ import confidentialite as CONF  # noqa: E402
 import confidentialite_en as CONF_EN  # noqa: E402
 import cartes as CARTES  # noqa: E402
 import lexique as LEXIQUE  # noqa: E402
+import captures as CAPTURES  # noqa: E402
 
 SITE_URL = "https://ayneha.org"
 CONTACT = "contact@ayneha.org"
@@ -193,7 +194,36 @@ def boutons_app(a, en=False):
     return "".join(out)
 
 
+def rendu_captures(app_id, en=False):
+    """Section « Captures d'écran » d'une fiche : vignettes, agrandies au toucher (assets/js/captures.js)."""
+    liste = CAPTURES.CAPTURES.get(app_id)
+    if not liste:
+        return ""
+    T = (lambda f, e: e) if en else (lambda f, e: f)
+    vignettes = "".join(
+        f'<figure class="capture"><a href="assets/img/apps/captures/{f}.webp" data-capture>'
+        f'<img src="assets/img/apps/captures/{f}.webp" width="540" height="1180" loading="lazy" alt="{E(le if en else lf)}"></a>'
+        f'<figcaption>{E(le if en else lf)}</figcaption></figure>'
+        for f, lf, le in liste)
+    return f"""
+<section class="section-serree captures-section">
+  <div class="wrap">
+    <h2>{T("Captures d'écran", "Screenshots")}</h2>
+    <p class="doux">{T("Touchez une capture pour l'agrandir.", "Tap a screenshot to enlarge it.")}</p>
+    <div class="captures">{vignettes}</div>
+  </div>
+  <div class="capture-vue" id="capture-vue" hidden role="dialog" aria-modal="true" aria-label="{T("Capture d'écran", "Screenshot")}">
+    <button type="button" class="capture-fermer" aria-label="{T("Fermer", "Close")}">&#215;</button>
+    <button type="button" class="capture-prec" aria-label="{T("Capture précédente", "Previous screenshot")}">&#8249;</button>
+    <figure><img alt=""><figcaption></figcaption></figure>
+    <button type="button" class="capture-suiv" aria-label="{T("Capture suivante", "Next screenshot")}">&#8250;</button>
+  </div>
+  <script src="assets/js/captures.js"></script>
+</section>"""
+
+
 def page_app(a, en=False):
+    captures = rendu_captures(a["id"], en)
     if en:
         a = app_en(a)
     T = (lambda f, e: e) if en else (lambda f, e: f)
@@ -247,7 +277,7 @@ def page_app(a, en=False):
       {outil}
     </aside>
   </div>
-</section>"""
+</section>{captures}"""
 
 
 def page_confidentialite(c, lang="fr"):
