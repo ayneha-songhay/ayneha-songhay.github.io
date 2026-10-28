@@ -44,6 +44,14 @@ CAPTURES = {
         ("ayneha-home-06", "Les 7 applications Android", "The 7 Android apps"),
         ("ayneha-home-07", "En français et en anglais", "In French and English"),
     ],
+    "ayneha-numconvert": [
+        ("ayneha-numconvert-01", "L'accueil : choisir le clavier et saisir un nombre", "The home screen: choose the keyboard and type a number"),
+        ("ayneha-numconvert-02", "1960 converti dans les six systèmes de chiffres", "1960 converted into the six numeral systems"),
+        ("ayneha-numconvert-03", "Les grands nombres, groupés par milliers", "Large numbers, grouped by thousands"),
+        ("ayneha-numconvert-04", "Saisie directe avec le clavier en chiffres AYNEHA", "Direct input with the AYNEHA digit keyboard"),
+        ("ayneha-numconvert-05", "Confidentialité : aucune donnée collectée", "Privacy: no data collected"),
+        ("ayneha-numconvert-06", "Logiciel libre (GPL v3) et contact du développeur", "Free software (GPL v3) and developer contact"),
+    ],
     "ayneha-carnet": [
         ("ayneha-carnet-01", "L'accueil : tout est écrit en AYNEHA", "The home screen: everything is written in AYNEHA"),
         ("ayneha-carnet-02", "Le menu de l'application", "The app menu"),
