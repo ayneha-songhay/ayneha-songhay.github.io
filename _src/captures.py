@@ -19,4 +19,10 @@ CAPTURES = {
         ("ayneha-calc-03", "Une multiplication, lue de droite à gauche", "A multiplication, read from right to left"),
         ("ayneha-calc-04", "Une division avec virgule décimale", "A division with a decimal comma"),
     ],
+    "ayneha-horloge": [
+        ("ayneha-horloge-01", "L'horloge et le calendrier, entièrement en AYNEHA", "The clock and calendar, entirely in AYNEHA"),
+        ("ayneha-horloge-02", "L'heure, le jour, le mois et l'année", "The time, day, month and year"),
+        ("ayneha-horloge-03", "Le calendrier du mois, aujourd'hui encadré", "The month's calendar, with today framed"),
+        ("ayneha-horloge-04", "Le widget Horloge sur l'écran d'accueil", "The clock widget on the home screen"),
+    ],
 }
