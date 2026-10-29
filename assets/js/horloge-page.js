@@ -348,8 +348,8 @@ put($('lblJiiri'), LBL.jiiri);
 /* Mention : comment se lit une date en songhay (mois/jour/année). */
 for (const id of ['ordreMain', 'ordreSheet']) {
   const e = $(id);
-  const t = document.createElement('span'); t.className = 'hz-trad'; t.textContent = (document.documentElement.lang || '').startsWith('en') ? 'month / day / year' : 'mois / jour / année';
-  e.replaceChildren(ay(LBL.hadu + '/' + LBL.han + '/' + LBL.jiiri), t);
+  const t = document.createElement('span'); t.className = 'hz-trad'; t.textContent = (document.documentElement.lang || '').startsWith('en') ? 'day / month / year' : 'jour / mois / année';
+  e.replaceChildren(ay(LBL.han + '/' + LBL.hadu + '/' + LBL.jiiri), t);
 }
 put($('adjLbl'), LBL.hadu);
 
@@ -358,9 +358,11 @@ function timeText(now, withSeconds){
   if (withSeconds) t += ':' + num2(now.getSeconds());
   return t;
 }
-// Ordre songhay : mois, puis jour, puis année (le mois se lit en premier, à droite).
+// Ordre songhay pour la date lunaire : le mois, puis le jour (le mois se lit en premier, à droite).
 function lunarText(l){ return LUNAR_MONTHS[l.m-1] + ' ' + num(l.d); }
-function gregText(y,m,d){ return num2(m) + '/' + num2(d) + '/' + num(y + GREG_YEAR_OFFSET); }
+// Dates grégoriennes au format européen (jour/mois/année), en chiffres AYNEHA.
+// Les dates lunaires restent au format songhay (mois, puis jour).
+function gregText(y,m,d){ return num2(d) + '/' + num2(m) + '/' + num(y + GREG_YEAR_OFFSET); }
 // « Mardi 15 » : nom du jour, puis numéro du jour.
 function dayNumText(dow, d){ return DAYS_FULL[dow] + ' ' + num(d); }
 
@@ -652,7 +654,7 @@ function renderConv(){
     const big = document.createElement('div'); big.className = 'hz-conv-big';
     big.append(ay(gregText(g.y, g.m, g.d)));
     const o = document.createElement('div'); o.className = 'hz-ordre';
-    o.append(ay(LBL.hadu + '/' + LBL.han + '/' + LBL.jiiri));
+    o.append(ay(LBL.han + '/' + LBL.hadu + '/' + LBL.jiiri));
     res.replaceChildren(ay(DAYS_FULL[jourSemaine(g.y, g.m, g.d)]), big, o);
   }
 }
