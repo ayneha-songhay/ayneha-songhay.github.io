@@ -19,6 +19,7 @@ scripts: assets/js/ayneha.js assets/js/horloge-page.js
       <span class="hz-ico" id="btnNight" role="button" aria-label="Veilleuse plein écran" title="Veilleuse plein écran"><svg viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="1.8"/></svg></span>
       <span class="hz-ico" id="btnShare" role="button" aria-label="Partager en image" title="Partager en image"><svg viewBox="0 0 24 24"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></svg></span>
       <span class="hz-ico" id="btnPlace" role="button" aria-label="Localisation : coucher du soleil à ma position" title="Localisation : coucher du soleil à ma position"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span>
+      <span class="hz-ico" id="btnConv" role="button" aria-label="Convertir une date" title="Convertir une date"><svg viewBox="0 0 24 24"><path d="M4 8h13M13 4l4 4-4 4M20 16H7M11 12l-4 4 4 4"/></svg></span>
       <span class="hz-ico" id="btnAdjust" role="button" aria-label="Régler le début du mois lunaire" title="Régler le début du mois lunaire"><svg viewBox="0 0 24 24"><path d="M15.5 4.5A8 8 0 1 0 15.5 19.5A6.5 6.5 0 0 1 15.5 4.5z"/><path d="M19 9v6M16 12h6"/></svg></span>
       <span class="hz-ico hz-warn" id="btnBattery" role="button" aria-label="Batterie" title="Batterie" style="display:none"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 10.5v3M7 10l3 4M10 10l-3 4"/></svg></span>
       <span class="hz-grow"></span>
@@ -52,6 +53,8 @@ scripts: assets/js/ayneha.js assets/js/horloge-page.js
         <div class="hz-year" id="lunarYear"></div>
         <div class="hz-greg" id="gregDate"></div>
         <div class="hz-ordre" id="ordreMain"></div>
+        <div class="hz-ram-box" id="ramBox"></div>
+        <div class="hz-prochaines" id="nextBox"></div>
       </section>
 
       <section class="hz-cal" id="cal">
@@ -80,6 +83,20 @@ scripts: assets/js/ayneha.js assets/js/horloge-page.js
         <div class="hz-small" id="dsGreg"></div>
         <div class="hz-ordre" id="ordreSheet"></div>
         <div class="hz-fetes" id="dsFetes"></div>
+      </div>
+    </div>
+
+    <!-- Convertisseur de dates -->
+    <div class="hz-sheet-bg" id="convSheetBg">
+      <div class="hz-sheet hz-conv">
+        <div class="hz-conv-tabs"><span class="hz-conv-tab hz-on" id="convTabG" role="button"></span><span class="hz-conv-tab" id="convTabL" role="button"></span></div>
+        <div class="hz-conv-g" id="convG"><input type="date" id="convDate" min="1900-01-01" max="2200-12-31"></div>
+        <div class="hz-conv-l" id="convL" style="display:none">
+          <div class="hz-conv-pas" data-champ="d"><span class="hz-ico" data-pas="-1" role="button">-</span><span class="hz-conv-val" id="convLD"></span><span class="hz-ico" data-pas="1" role="button">+</span></div>
+          <div class="hz-conv-pas" data-champ="m"><span class="hz-ico" data-pas="-1" role="button">-</span><span class="hz-conv-val" id="convLM"></span><span class="hz-ico" data-pas="1" role="button">+</span></div>
+          <div class="hz-conv-pas" data-champ="y"><span class="hz-ico" data-pas="-10" role="button">-10</span><span class="hz-ico" data-pas="-1" role="button">-</span><span class="hz-conv-val" id="convLY"></span><span class="hz-ico" data-pas="1" role="button">+</span><span class="hz-ico" data-pas="10" role="button">+10</span></div>
+        </div>
+        <div class="hz-conv-res" id="convRes"></div>
       </div>
     </div>
 
@@ -116,6 +133,8 @@ scripts: assets/js/ayneha.js assets/js/horloge-page.js
         <li>Le calendrier suit le mois lunaire songhay : le jour lunaire en grand, le jour grégorien en petit, en orange. Sous le nom du mois, les mois grégoriens qui le chevauchent.</li>
         <li>La semaine commence le samedi, à droite, et finit le vendredi : ces deux jours chômés sont teintés. Le jour lunaire change au coucher du soleil, là où vous êtes : par défaut pour la grande ville de votre fuseau horaire, ou à votre position exacte avec le bouton Localisation.</li>
         <li>Les pastilles des jours de fête : orange pour les fêtes d'indépendance des pays où vivent des communautés songhay (drapeau et nom du pays en AYNEHA), blanche pour les fêtes officielles du Mali, verte pour les fêtes religieuses, violette pour chaque jour du Ramadan (elle devient plus claire au coucher du soleil, à la rupture du jeûne).</li>
+        <li>Pendant le Ramadan, sous la date : l'heure de fin du sahur (aube) et l'heure de rupture du jeûne (coucher du soleil), calculées là où vous êtes.</li>
+        <li>En bas de la carte : les trois prochaines fêtes, avec le nombre de jours qui restent.</li>
         <li>Touchez un jour du calendrier pour afficher sa date complète et sa lune.</li>
       </ul>
     </div>
@@ -126,6 +145,7 @@ scripts: assets/js/ayneha.js assets/js/horloge-page.js
         <li><strong>Cadran</strong> (horloge) : passer des chiffres au cadran à aiguilles.</li>
         <li><strong>Veilleuse</strong> (lit) : l'heure en plein écran pour la nuit ; touchez l'écran pour en sortir.</li>
         <li><strong>Partager</strong> : créer une image de la date du jour.</li>
+        <li><strong>Convertir</strong> (flèches) : trouver la date songhay d'une date grégorienne (naissance, mariage...), ou l'inverse.</li>
         <li><strong>Localisation</strong> (épingle) : calculer le coucher du soleil à votre position. Votre navigateur vous demande l'autorisation ; la position est arrondie, gardée sur votre appareil et jamais envoyée. Le bouton devient orange quand elle est utilisée.</li>
         <li><strong>Réglage</strong> (lune) : avancer ou reculer de un ou deux jours le début du mois lunaire, si la lune est vue un autre jour.</li>
       </ul>

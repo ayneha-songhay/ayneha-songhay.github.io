@@ -19,6 +19,7 @@ scripts: assets/js/ayneha.js assets/js/horloge-page.js
       <span class="hz-ico" id="btnNight" role="button" aria-label="Full-screen night clock" title="Full-screen night clock"><svg viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="1.8"/></svg></span>
       <span class="hz-ico" id="btnShare" role="button" aria-label="Share as an image" title="Share as an image"><svg viewBox="0 0 24 24"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></svg></span>
       <span class="hz-ico" id="btnPlace" role="button" aria-label="Location: sunset at my location" title="Location: sunset at my location"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span>
+      <span class="hz-ico" id="btnConv" role="button" aria-label="Convert a date" title="Convert a date"><svg viewBox="0 0 24 24"><path d="M4 8h13M13 4l4 4-4 4M20 16H7M11 12l-4 4 4 4"/></svg></span>
       <span class="hz-ico" id="btnAdjust" role="button" aria-label="Adjust the start of the lunar month" title="Adjust the start of the lunar month"><svg viewBox="0 0 24 24"><path d="M15.5 4.5A8 8 0 1 0 15.5 19.5A6.5 6.5 0 0 1 15.5 4.5z"/><path d="M19 9v6M16 12h6"/></svg></span>
       <span class="hz-ico hz-warn" id="btnBattery" role="button" aria-label="Battery" title="Battery" style="display:none"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 10.5v3M7 10l3 4M10 10l-3 4"/></svg></span>
       <span class="hz-grow"></span>
@@ -52,6 +53,8 @@ scripts: assets/js/ayneha.js assets/js/horloge-page.js
         <div class="hz-year" id="lunarYear"></div>
         <div class="hz-greg" id="gregDate"></div>
         <div class="hz-ordre" id="ordreMain"></div>
+        <div class="hz-ram-box" id="ramBox"></div>
+        <div class="hz-prochaines" id="nextBox"></div>
       </section>
 
       <section class="hz-cal" id="cal">
@@ -80,6 +83,20 @@ scripts: assets/js/ayneha.js assets/js/horloge-page.js
         <div class="hz-small" id="dsGreg"></div>
         <div class="hz-ordre" id="ordreSheet"></div>
         <div class="hz-fetes" id="dsFetes"></div>
+      </div>
+    </div>
+
+    <!-- Convertisseur de dates -->
+    <div class="hz-sheet-bg" id="convSheetBg">
+      <div class="hz-sheet hz-conv">
+        <div class="hz-conv-tabs"><span class="hz-conv-tab hz-on" id="convTabG" role="button"></span><span class="hz-conv-tab" id="convTabL" role="button"></span></div>
+        <div class="hz-conv-g" id="convG"><input type="date" id="convDate" min="1900-01-01" max="2200-12-31"></div>
+        <div class="hz-conv-l" id="convL" style="display:none">
+          <div class="hz-conv-pas" data-champ="d"><span class="hz-ico" data-pas="-1" role="button">-</span><span class="hz-conv-val" id="convLD"></span><span class="hz-ico" data-pas="1" role="button">+</span></div>
+          <div class="hz-conv-pas" data-champ="m"><span class="hz-ico" data-pas="-1" role="button">-</span><span class="hz-conv-val" id="convLM"></span><span class="hz-ico" data-pas="1" role="button">+</span></div>
+          <div class="hz-conv-pas" data-champ="y"><span class="hz-ico" data-pas="-10" role="button">-10</span><span class="hz-ico" data-pas="-1" role="button">-</span><span class="hz-conv-val" id="convLY"></span><span class="hz-ico" data-pas="1" role="button">+</span><span class="hz-ico" data-pas="10" role="button">+10</span></div>
+        </div>
+        <div class="hz-conv-res" id="convRes"></div>
       </div>
     </div>
 
@@ -116,6 +133,8 @@ scripts: assets/js/ayneha.js assets/js/horloge-page.js
         <li>The calendar follows the Songhay lunar month: the lunar day in large type, the Gregorian day small, in orange. Under the month name, the Gregorian months it overlaps.</li>
         <li>The week starts on Saturday, on the right, and ends on Friday: these two days off are shaded. The lunar day changes at sunset, where you are: by default for the main city of your time zone, or at your exact location with the Location button.</li>
         <li>Holiday dots: orange for the independence days of countries with Songhay communities (flag and country name in AYNEHA), white for Mali's official holidays, green for religious holidays, purple for each day of Ramadan (it turns lighter at sunset, when the fast is broken).</li>
+        <li>During Ramadan, under the date: the time suhoor ends (dawn) and the time the fast is broken (sunset), calculated where you are.</li>
+        <li>At the bottom of the card: the next three holidays, with the number of days left.</li>
         <li>Tap a day in the calendar to see its full date and its moon.</li>
       </ul>
     </div>
@@ -126,6 +145,7 @@ scripts: assets/js/ayneha.js assets/js/horloge-page.js
         <li><strong>Dial</strong> (clock): switch between digits and an analogue dial.</li>
         <li><strong>Night clock</strong> (bed): the time in full screen for the night; tap the screen to leave.</li>
         <li><strong>Share</strong>: create an image of today's date.</li>
+        <li><strong>Convert</strong> (arrows): find the Songhay date of a Gregorian date (birth, wedding...), or the other way round.</li>
         <li><strong>Location</strong> (pin): calculate sunset at your location. Your browser asks for permission; the location is rounded, kept on your device and never sent. The button turns orange when it is in use.</li>
         <li><strong>Adjust</strong> (moon): move the start of the lunar month one or two days forward or back, if the moon is sighted on another day.</li>
       </ul>

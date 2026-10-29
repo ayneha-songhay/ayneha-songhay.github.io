@@ -429,6 +429,8 @@ function renderToday(now, lun){
   $('lunarDate').replaceChildren(ay(LUNAR_MONTHS[lun.m-1]), ay(num(lun.d)));
   put($('lunarYear'), num(lun.y));
   put($('gregDate'), gregText(now.getFullYear(), now.getMonth()+1, now.getDate()));
+  renderRamadan(now);
+  renderProchaines(now);
 }
 
 /* --- Calendrier (mois lunaire songhay ; jours grégoriens en petit) --- */
@@ -579,6 +581,123 @@ $('btnPlace').addEventListener('click', () => {
     renderPlace(); lastLunarKey = ''; tick();
   }, () => {}, {enableHighAccuracy: false, timeout: 20000, maximumAge: 3600000});
 });
+/* =====================================================================
+   HEURES DU JEÛNE, CONVERTISSEUR, PROCHAINES FÊTES
+   ===================================================================== */
+const EN_ = (document.documentElement.lang || '').startsWith('en');
+const T_ = EN_ ? {sahur:'End of suhoor (dawn)', iftar:'Breaking the fast (sunset)', today:'today',
+                   g2l:'Gregorian → Songhay', l2g:'Songhay → Gregorian', ram:'Start of Ramadan', mali:'Mali Independence Day'}
+               : {sahur:'Fin du sahur (aube)', iftar:'Rupture du jeûne (coucher du soleil)', today:"aujourd'hui",
+                   g2l:'Grégorien → songhay', l2g:'Songhay → grégorien', ram:'Début du Ramadan', mali:"Fête de l'indépendance du Mali"};
+/* Lever ou coucher du soleil à une hauteur donnée (aube : soleil à 18° sous l'horizon). */
+function soleilMs(y, m, d, haut, lever){
+  const rad = Math.PI/180;
+  const n = Math.round(gregToJd(y,m,d) + 0.5 - 2451545.0);
+  const [LAT, LON] = lieu();
+  const Js = n - LON/360;
+  const M = (357.5291 + 0.98560028*Js) % 360;
+  const C = 1.9148*Math.sin(M*rad) + 0.02*Math.sin(2*M*rad) + 0.0003*Math.sin(3*M*rad);
+  const L = (M + C + 180 + 102.9372) % 360;
+  const Jt = 2451545.0 + Js + 0.0053*Math.sin(M*rad) - 0.0069*Math.sin(2*L*rad);
+  const dec = Math.asin(Math.sin(L*rad)*Math.sin(23.4397*rad));
+  const cw = (Math.sin(haut*rad) - Math.sin(LAT*rad)*Math.sin(dec)) / (Math.cos(LAT*rad)*Math.cos(dec));
+  const w = Math.acos(Math.max(-1, Math.min(1, cw))) / rad;
+  return (Jt + (lever ? -w : w)/360 - 2440587.5) * 86400000;
+}
+const aubeMs = (y,m,d) => soleilMs(y, m, d, -18, true);
+const heureTxt = ms => { const t = new Date(ms); return num2(t.getHours()) + ':' + num2(t.getMinutes()); };
+
+/* 1. Heures du jeûne : affichées pendant le Ramadan (le jour de jeûne en cours ou le suivant). */
+function renderRamadan(now){
+  const box = $('ramBox');
+  let t = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  if (now.getTime() >= sunsetMs(t.getFullYear(), t.getMonth()+1, t.getDate())) t = new Date(t.getFullYear(), t.getMonth(), t.getDate()+1);
+  const y = t.getFullYear(), m = t.getMonth()+1, d = t.getDate();
+  if (lunarOf(y, m, d).m !== 9) { box.replaceChildren(); return; }
+  const ligneH = (txt, ms) => { const e = document.createElement('div'); e.className = 'hz-ram-l';
+    const p = document.createElement('i'); p.className = 'hz-fete-ram';
+    e.append(p, document.createTextNode(txt), ay(heureTxt(ms))); return e; };
+  box.replaceChildren(ligneH(T_.sahur, aubeMs(y,m,d)), ligneH(T_.iftar, sunsetMs(y,m,d)));
+}
+
+/* 3. Compte à rebours des prochaines fêtes (Ramadan, fêtes religieuses, fêtes du Mali). */
+function prochainesFetes(now, n){
+  const out = [];
+  for (let k = 0; k < 400 && out.length < n; k++) {
+    const t = new Date(now.getFullYear(), now.getMonth(), now.getDate() + k);
+    const y = t.getFullYear(), m = t.getMonth()+1, d = t.getDate();
+    const l = lunarOf(y, m, d), fe = fetesDu(y, m, d, l);
+    if (l.m === 9 && l.d === 1) out.push({k, cls:'hz-fete-ram', nom: T_.ram});
+    fe.rel.forEach(f => out.push({k, cls:'hz-fete-rel', nom: EN_ ? f[3] : f[2]}));
+    fe.indep.filter(f => f[2] === 'ML').forEach(() => out.push({k, cls:'hz-fete', nom: T_.mali}));
+    fe.mali.forEach(f => out.push({k, cls:'hz-fete-mali', nom: EN_ ? f[3] : f[2]}));
+  }
+  return out.slice(0, n);
+}
+function renderProchaines(now){
+  $('nextBox').replaceChildren(...prochainesFetes(now, 3).map(f => {
+    const e = document.createElement('div'); e.className = 'hz-proch-l';
+    const p = document.createElement('i'); p.className = f.cls;
+    const quand = f.k === 0 ? document.createTextNode('- ' + T_.today) : ay(num(f.k) + ' ' + LBL.han);
+    e.append(p, document.createTextNode(f.nom), quand); return e;
+  }));
+}
+
+/* 2. Convertisseur de dates (grégorien <-> songhay). */
+let convMode = 'g', convL = null;
+function jourSemaine(y, m, d){ return new Date(y, m-1, d, 12).getDay(); }
+function renderConv(){
+  const res = $('convRes');
+  $('convTabG').classList.toggle('hz-on', convMode === 'g');
+  $('convTabL').classList.toggle('hz-on', convMode === 'l');
+  $('convG').style.display = convMode === 'g' ? '' : 'none';
+  $('convL').style.display = convMode === 'l' ? '' : 'none';
+  if (convMode === 'g') {
+    const v = $('convDate').value.split('-').map(Number);
+    if (v.length !== 3 || !v[0]) { res.replaceChildren(); return; }
+    const l = lunarOf(v[0], v[1], v[2]);
+    const big = document.createElement('div'); big.className = 'hz-conv-big';
+    big.append(ay(LUNAR_MONTHS[l.m-1]), ay(' ' + num(l.d)));
+    res.replaceChildren(ay(DAYS_FULL[jourSemaine(v[0], v[1], v[2])]), big, ay(num(l.y)));
+  } else {
+    const len = lunarMonthSpan(convL.y, convL.m).len;
+    if (convL.d > len) convL.d = len;
+    put($('convLD'), num(convL.d));
+    put($('convLM'), LUNAR_MONTHS[convL.m-1]);
+    put($('convLY'), num(convL.y + LUNAR_YEAR_OFFSET));
+    const g = jdToGreg(islToJd(convL.y, convL.m, convL.d) + adjust());
+    const big = document.createElement('div'); big.className = 'hz-conv-big';
+    big.append(ay(gregText(g.y, g.m, g.d)));
+    const o = document.createElement('div'); o.className = 'hz-ordre';
+    o.append(ay(LBL.hadu + '/' + LBL.han + '/' + LBL.jiiri));
+    res.replaceChildren(ay(DAYS_FULL[jourSemaine(g.y, g.m, g.d)]), big, o);
+  }
+}
+$('convTabG').textContent = T_.g2l;
+$('convTabL').textContent = T_.l2g;
+$('convTabG').addEventListener('click', () => { convMode = 'g'; renderConv(); });
+$('convTabL').addEventListener('click', () => { convMode = 'l'; renderConv(); });
+$('convDate').addEventListener('input', renderConv);
+document.querySelectorAll('#convL [data-champ]').forEach(row => {
+  row.addEventListener('click', e => {
+    const b = e.target.closest('[data-pas]'); if (!b) return;
+    const pas = +b.dataset.pas, ch = row.dataset.champ;
+    if (ch === 'd') { const len = lunarMonthSpan(convL.y, convL.m).len; convL.d = ((convL.d - 1 + pas + len) % len) + 1; }
+    if (ch === 'm') { convL.m += pas; if (convL.m < 1) { convL.m = 12; convL.y--; } if (convL.m > 12) { convL.m = 1; convL.y++; } }
+    if (ch === 'y') convL.y = Math.max(1300, Math.min(1650, convL.y + pas));
+    renderConv();
+  });
+});
+$('btnConv').addEventListener('click', () => {
+  const n = new Date();
+  $('convDate').value = n.getFullYear() + '-' + String(n.getMonth()+1).padStart(2,'0') + '-' + String(n.getDate()).padStart(2,'0');
+  const r = jdToIsl(gregToJd(n.getFullYear(), n.getMonth()+1, n.getDate()) - adjust());
+  convL = {y: r.y, m: r.m, d: r.d};
+  renderConv();
+  $('convSheetBg').classList.add('hz-open');
+});
+$('convSheetBg').addEventListener('click', e => { if (e.target === $('convSheetBg')) $('convSheetBg').classList.remove('hz-open'); });
+
 $('btnAdjust').addEventListener('click', () => { renderAdj(); $('adjSheetBg').classList.add('hz-open'); });
 $('adjSheetBg').addEventListener('click', e => { if (e.target === $('adjSheetBg')) $('adjSheetBg').classList.remove('hz-open'); });
 $('adjPlus').addEventListener('click', () => { setAdjust(adjust() + 1); setViewToToday(); renderAdj(); tick(); renderCalendar(); });
