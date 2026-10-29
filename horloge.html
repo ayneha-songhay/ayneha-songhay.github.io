@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=20261029113754">
+<link rel="stylesheet" href="assets/css/site.css?v=20261029115339">
 
 </head>
 <body>
@@ -68,7 +68,7 @@
       <span class="hz-ico" id="btnDial" role="button" aria-label="Cadran à aiguilles" title="Cadran à aiguilles"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
       <span class="hz-ico" id="btnNight" role="button" aria-label="Veilleuse plein écran" title="Veilleuse plein écran"><svg viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="1.8"/></svg></span>
       <span class="hz-ico" id="btnShare" role="button" aria-label="Partager en image" title="Partager en image"><svg viewBox="0 0 24 24"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></svg></span>
-      <span class="hz-ico" id="btnPlace" role="button" aria-label="Coucher du soleil à ma position" title="Coucher du soleil à ma position"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span>
+      <span class="hz-ico" id="btnPlace" role="button" aria-label="Localisation : coucher du soleil à ma position" title="Localisation : coucher du soleil à ma position"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span>
       <span class="hz-ico" id="btnAdjust" role="button" aria-label="Régler le début du mois lunaire" title="Régler le début du mois lunaire"><svg viewBox="0 0 24 24"><path d="M15.5 4.5A8 8 0 1 0 15.5 19.5A6.5 6.5 0 0 1 15.5 4.5z"/><path d="M19 9v6M16 12h6"/></svg></span>
       <span class="hz-ico hz-warn" id="btnBattery" role="button" aria-label="Batterie" title="Batterie" style="display:none"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 10.5v3M7 10l3 4M10 10l-3 4"/></svg></span>
       <span class="hz-grow"></span>
@@ -162,9 +162,10 @@
       <ul>
         <li>En haut, l'heure : heures, minutes et secondes, de droite à gauche.</li>
         <li>Dessous, le jour de la semaine et la lune du jour, puis la date lunaire songhay : le mois, le jour et l'année lunaire.</li>
-        <li>La dernière ligne donne la date grégorienne dans l'ordre songhay : le mois, puis le jour, puis l'année.</li>
+        <li>La dernière ligne donne la date grégorienne dans l'ordre songhay : le mois, puis le jour, puis l'année. Juste dessous, un rappel indique cet ordre de lecture (mois / jour / année).</li>
         <li>Le calendrier suit le mois lunaire songhay : le jour lunaire en grand, le jour grégorien en petit, en orange. Sous le nom du mois, les mois grégoriens qui le chevauchent.</li>
-        <li>La semaine commence le samedi, à droite, et finit le vendredi : ces deux jours chômés sont teintés. Le jour lunaire change au coucher du soleil, calculé pour Gao.</li>
+        <li>La semaine commence le samedi, à droite, et finit le vendredi : ces deux jours chômés sont teintés. Le jour lunaire change au coucher du soleil, là où vous êtes : par défaut pour la grande ville de votre fuseau horaire, ou à votre position exacte avec le bouton Localisation.</li>
+        <li>Les pastilles des jours de fête : orange pour les fêtes d'indépendance des pays où vivent des communautés songhay (drapeau et nom du pays en AYNEHA), blanche pour les fêtes officielles du Mali, verte pour les fêtes religieuses.</li>
         <li>Touchez un jour du calendrier pour afficher sa date complète et sa lune.</li>
       </ul>
     </div>
@@ -175,6 +176,7 @@
         <li><strong>Cadran</strong> (horloge) : passer des chiffres au cadran à aiguilles.</li>
         <li><strong>Veilleuse</strong> (lit) : l'heure en plein écran pour la nuit ; touchez l'écran pour en sortir.</li>
         <li><strong>Partager</strong> : créer une image de la date du jour.</li>
+        <li><strong>Localisation</strong> (épingle) : calculer le coucher du soleil à votre position. Votre navigateur vous demande l'autorisation ; la position est arrondie, gardée sur votre appareil et jamais envoyée. Le bouton devient orange quand elle est utilisée.</li>
         <li><strong>Réglage</strong> (lune) : avancer ou reculer de un ou deux jours le début du mois lunaire, si la lune est vue un autre jour.</li>
       </ul>
       <p class="doux">L'application AYNEHA Horloge affiche aussi cette horloge sur Android, avec des widgets pour l'écran d'accueil.</p>
@@ -250,7 +252,7 @@
   </div>
 </footer>
 <button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>
-<script src="assets/js/site.js?v=20261029113754"></script>
+<script src="assets/js/site.js?v=20261029115339"></script>
 <script src="assets/js/ayneha.js"></script>
 <script src="assets/js/horloge-page.js"></script>
 </body>
