@@ -122,7 +122,8 @@ const INDEP = [
 
 // Jours fériés officiels du Mali (dates grégoriennes) : [mois, jour, nom FR, nom EN].
 const FETES_MALI = [
-  [1,1,"Jour de l'an","New Year's Day"], [1,20,"Fête de l'Armée",'Armed Forces Day'],
+  [1,1,"Jour de l'an","New Year's Day"], [1,14,'Journée de la souveraineté retrouvée','Day of Regained Sovereignty'],
+  [1,20,"Fête de l'Armée",'Armed Forces Day'],
   [3,26,'Journée des Martyrs',"Martyrs' Day"], [5,1,'Fête du Travail',"Workers' Day"],
   [5,25,"Journée de l'Afrique",'Africa Day']
 ];
