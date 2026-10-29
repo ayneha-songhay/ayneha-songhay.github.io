@@ -69,11 +69,13 @@ ANDROID = [
         ],
     },
     {
-        "id": "ayneha-horloge", "nom": "AYNEHA Horloge", "type": "Application Android",
+        "id": "ayneha-horloge", "nom": "AYNEHA Horloge", "type": "Application Android", "maj": "29 octobre 2026",
         "intro": "AYNEHA Horloge affiche l'heure et le calendrier en AYNEHA, avec deux widgets pour l'écran d'accueil.",
         "sections": [
-            ("Aucune donnée collectée", "L'application lit seulement l'heure et la date de votre téléphone. Rien n'est enregistré ni envoyé."),
-            ("Permissions", "Alarmes exactes, pour mettre à jour le widget horloge à chaque minute ; démarrage du téléphone, pour que les widgets reprennent après un redémarrage. Aucun accès à internet, aux contacts ou à la position."),
+            ("Aucune donnée collectée", "L'application lit l'heure, la date et le fuseau horaire de votre téléphone. Tout est calculé sur le téléphone. Seuls vos réglages (début du mois lunaire, position si vous l'avez donnée) sont gardés sur le téléphone."),
+            ("Position (facultative)", "Le jour lunaire change au coucher du soleil. Par défaut, il est calculé pour la grande ville de votre fuseau horaire. Si vous touchez le bouton position, l'application demande votre position approximative : elle est arrondie, gardée uniquement sur le téléphone et jamais envoyée."),
+            ("Mise à jour depuis ayneha.org", "Seulement quand vous tirez l'écran vers le bas, l'application lit sur ayneha.org un petit fichier qui indique la dernière version. Si une version plus récente existe, elle peut la télécharger depuis ayneha.org ; son empreinte est vérifiée et c'est vous qui confirmez l'installation. Aucune donnée personnelle n'est envoyée."),
+            ("Permissions", "Alarmes exactes, pour mettre à jour le widget horloge à chaque minute ; démarrage du téléphone, pour que les widgets reprennent après un redémarrage ; position approximative, seulement si vous touchez le bouton position ; internet et installation d'applications, seulement pour la mise à jour depuis ayneha.org. Aucun accès aux contacts, aux photos ou aux fichiers."),
             PAS_DE_SUIVI, ENFANTS, MODIFS,
         ],
     },

@@ -69,11 +69,13 @@ ANDROID = [
         ],
     },
     {
-        "id": "ayneha-horloge", "nom": "AYNEHA Horloge", "type": "Android app",
+        "id": "ayneha-horloge", "nom": "AYNEHA Horloge", "type": "Android app", "maj": "29 October 2026",
         "intro": "AYNEHA Horloge shows the time and the calendar in AYNEHA, with two home-screen widgets.",
         "sections": [
-            ("No data collected", "The app only reads your phone's time and date. Nothing is recorded or sent."),
-            ("Permissions", "Exact alarms, to update the clock widget every minute; phone start-up, so that the widgets resume after a restart. No access to the internet, contacts or location."),
+            ("No data collected", "The app reads your phone's time, date and time zone. Everything is calculated on the phone. Only your settings (start of the lunar month, location if you gave it) are kept on the phone."),
+            ("Location (optional)", "The lunar day changes at sunset. By default, sunset is calculated for the main city of your time zone. If you tap the location button, the app asks for your approximate location: it is rounded, kept only on the phone and never sent."),
+            ("Updates from ayneha.org", "Only when you pull the screen down, the app reads a small file on ayneha.org that gives the latest version. If a newer version exists, it can download it from ayneha.org; its fingerprint is checked and you confirm the installation yourself. No personal data is sent."),
+            ("Permissions", "Exact alarms, to update the clock widget every minute; phone start-up, so that the widgets resume after a restart; approximate location, only if you tap the location button; internet and app installation, only for updates from ayneha.org. No access to contacts, photos or files."),
             NO_TRACKING, CHILDREN, CHANGES,
         ],
     },
