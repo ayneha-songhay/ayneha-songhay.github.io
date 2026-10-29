@@ -83,6 +83,8 @@
   #hz .hz-lunar{font-size:clamp(1.9rem,8vw,2.6rem);color:var(--orange-soft);display:flex;flex-direction:row;gap:0.45em;justify-content:center;align-items:baseline;flex-wrap:wrap;}
   #hz .hz-year{font-size:clamp(1.7rem,7vw,2.3rem);color:var(--ink);}
   #hz .hz-greg{font-size:1.35rem;color:var(--ink-dim);margin-top:0.55rem;}
+  #hz .hz-ordre{display:flex;flex-direction:column;align-items:center;gap:.1rem;font-size:.95rem;color:var(--ink-dim);opacity:.8;margin-top:.25rem;}
+  #hz .hz-ordre .hz-trad{font:500 .72rem/1.2 system-ui,sans-serif;letter-spacing:.02em;}
 
   /* ---------- Calendrier ---------- */
   #hz .hz-cal-head{display:flex;flex-direction:row;align-items:center;gap:0.3rem;margin-bottom:0.6rem;}

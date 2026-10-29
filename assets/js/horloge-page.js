@@ -333,6 +333,13 @@ put($('lblHan'), LBL.han);
 put($('lblHado'), LBL.hado);
 put($('lblHadu'), LBL.hadu);
 put($('lblJiiri'), LBL.jiiri);
+
+/* Mention : comment se lit une date en songhay (mois/jour/année). */
+for (const id of ['ordreMain', 'ordreSheet']) {
+  const e = $(id);
+  const t = document.createElement('span'); t.className = 'hz-trad'; t.textContent = (document.documentElement.lang || '').startsWith('en') ? 'month / day / year' : 'mois / jour / année';
+  e.replaceChildren(ay(LBL.hadu + '/' + LBL.han + '/' + LBL.jiiri), t);
+}
 put($('adjLbl'), LBL.hadu);
 
 function timeText(now, withSeconds){
