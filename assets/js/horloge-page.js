@@ -266,6 +266,16 @@ function lundiPaques(y){
   const t = new Date(y, mo-1, da+1);
   return [t.getMonth()+1, t.getDate()];
 }
+/* Ramadan (9e mois lunaire, meehaw) : chaque jour a sa pastille.
+   'jeune' = jour de jeûne pas encore rompu ; 'rompu' = le soleil s'est couché
+   ce jour-là (rupture du jeûne) : la pastille devient plus claire. */
+function etatRamadan(y, m, d, lun, now){
+  if (lun.m !== 9) return '';
+  const jour = Date.UTC(y, m-1, d), auj = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+  if (jour < auj) return 'rompu';
+  if (jour > auj) return 'jeune';
+  return now.getTime() >= sunsetMs(y, m, d) ? 'rompu' : 'jeune';
+}
 /* Toutes les fêtes d'un jour : indépendances, fêtes officielles du Mali, fêtes religieuses. */
 function fetesDu(y,m,d,lun){
   const rel = FETES_REL_GREG.filter(f => f[0]===m && f[1]===d)
@@ -488,8 +498,10 @@ function renderCalendar(){
     const small = document.createElement('span'); small.className = 'hz-small'; small.appendChild(ay(num(g.d)));
     cell.append(big, small);
     const fe = fetesDu(g.y, g.m, g.d, lun);
-    if (fe.indep.length || fe.mali.length || fe.rel.length) {
+    const ram = etatRamadan(g.y, g.m, g.d, lun, now);
+    if (fe.indep.length || fe.mali.length || fe.rel.length || ram) {
       const pt = document.createElement('span'); pt.className = 'hz-pastilles';
+      if (ram) { const e = document.createElement('i'); e.className = 'hz-fete-ram' + (ram === 'rompu' ? ' hz-rompu' : ''); pt.appendChild(e); }
       if (fe.indep.length) { const e = document.createElement('i'); e.className = 'hz-fete'; pt.appendChild(e); }
       if (fe.mali.length) { const e = document.createElement('i'); e.className = 'hz-fete-mali'; pt.appendChild(e); }
       if (fe.rel.length) { const e = document.createElement('i'); e.className = 'hz-fete-rel'; pt.appendChild(e); }
@@ -537,7 +549,9 @@ function openDay(y, m, d){
     const p = document.createElement('i'); p.className = cls; e.append(p, document.createTextNode((EN ? f[1] : f[0]))); return e; };
   const pays = fe.indep.map(f => { const e = document.createElement('span'); e.className = 'hz-fete-pays'; e.title = f[4];
     e.innerHTML = drapeau(f[2]); const n = document.createElement('span'); n.className = 'hz-pays'; n.appendChild(ay(g(f[3]))); e.appendChild(n); return e; });
-  $('dsFetes').replaceChildren(...pays, ...fe.mali.map(f => ligne('hz-fete-mali', f.slice(2))), ...fe.rel.map(f => ligne('hz-fete-rel', f.slice(2))));
+  const ramD = etatRamadan(y, m+1, d, lun, new Date());
+  const ramL = ramD ? [ligne('hz-fete-ram' + (ramD === 'rompu' ? ' hz-rompu' : ''), [(EN ? 'Ramadan (fasting)' : 'Ramadan (jeûne)'), (EN ? 'Ramadan (fasting)' : 'Ramadan (jeûne)')])] : [];
+  $('dsFetes').replaceChildren(...ramL, ...pays, ...fe.mali.map(f => ligne('hz-fete-mali', f.slice(2))), ...fe.rel.map(f => ligne('hz-fete-rel', f.slice(2))));
   $('daySheetBg').classList.add('hz-open');
 }
 $('daySheetBg').addEventListener('click', () => $('daySheetBg').classList.remove('hz-open'));
