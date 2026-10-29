@@ -585,6 +585,7 @@ $('btnPlace').addEventListener('click', () => {
    HEURES DU JEÛNE, CONVERTISSEUR, PROCHAINES FÊTES
    ===================================================================== */
 const EN_ = (document.documentElement.lang || '').startsWith('en');
+const CIDI_ZAARI = g('93 A7 8B 9E') + ' ' + g('91 A1 8F 9E');   // cĩdi zaari (jours restants)
 const T_ = EN_ ? {sahur:'End of suhoor (dawn)', iftar:'Breaking the fast (sunset)', today:'today',
                    g2l:'Gregorian → Songhay', l2g:'Songhay → Gregorian', ram:'Start of Ramadan', mali:'Mali Independence Day'}
                : {sahur:'Fin du sahur (aube)', iftar:'Rupture du jeûne (coucher du soleil)', today:"aujourd'hui",
@@ -627,7 +628,7 @@ function prochainesFetes(now, n){
     const t = new Date(now.getFullYear(), now.getMonth(), now.getDate() + k);
     const y = t.getFullYear(), m = t.getMonth()+1, d = t.getDate();
     const l = lunarOf(y, m, d), fe = fetesDu(y, m, d, l);
-    if (l.m === 9 && l.d === 1) out.push({k, cls:'hz-fete-ram', nom: T_.ram});
+    if (l.m === 9 && l.d === 1) out.push({k, cls:'hz-fete-ram', nom: T_.ram, ay: LUNAR_MONTHS[8]});
     fe.rel.forEach(f => out.push({k, cls:'hz-fete-rel', nom: EN_ ? f[3] : f[2]}));
     fe.indep.filter(f => f[2] === 'ML').forEach(() => out.push({k, cls:'hz-fete', nom: T_.mali}));
     fe.mali.forEach(f => out.push({k, cls:'hz-fete-mali', nom: EN_ ? f[3] : f[2]}));
@@ -638,8 +639,11 @@ function renderProchaines(now){
   $('nextBox').replaceChildren(...prochainesFetes(now, 3).map(f => {
     const e = document.createElement('div'); e.className = 'hz-proch-l';
     const p = document.createElement('i'); p.className = f.cls;
-    const quand = f.k === 0 ? document.createTextNode('- ' + T_.today) : ay(num(f.k) + ' ' + LBL.han);
-    e.append(p, document.createTextNode(f.nom), quand); return e;
+    // Avant la fête : « nom : cĩdi zaari N » (N jours restants), expression fournie par Maïgus.
+    const nom = f.ay ? ay(f.ay) : document.createTextNode(f.nom);
+    const deux = document.createElement('span'); deux.textContent = ':';
+    if (f.k === 0) { e.append(p, nom, deux, document.createTextNode(T_.today)); return e; }
+    e.append(p, nom, deux, ay(CIDI_ZAARI + ' ' + num(f.k))); return e;
   }));
 }
 
