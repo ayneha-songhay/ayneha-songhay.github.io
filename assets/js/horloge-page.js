@@ -154,6 +154,12 @@ function ay(text){
   return box;
 }
 function put(el, text){ el.replaceChildren(ay(text)); }
+// Petit soleil (date grégorienne) ou petite lune (date lunaire songhay) devant une date.
+const DICO = {
+  sol: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12h2.5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>',
+  lune: '<svg viewBox="0 0 24 24"><path d="M16 4.5A8 8 0 1 0 16 19.5A6.5 6.5 0 0 1 16 4.5z"/></svg>'
+};
+function dico(k){ const e = document.createElement('span'); e.className = 'hz-dico hz-dico-' + k; e.innerHTML = DICO[k]; e.setAttribute('aria-hidden', 'true'); return e; }
 const num = n => String(n).split('').map(c => DIG[+c]).join('');
 const num2 = n => num(String(n).padStart(2,'0'));
 
@@ -428,9 +434,9 @@ function tick(){
 function renderToday(now, lun){
   put($('dayName'), DAYS_FULL[now.getDay()]);
   drawMoon($('moonToday'), now);
-  $('lunarDate').replaceChildren(ay(LUNAR_MONTHS[lun.m-1]), ay(num(lun.d)));
+  $('lunarDate').replaceChildren(dico('lune'), ay(LUNAR_MONTHS[lun.m-1]), ay(num(lun.d)));
   put($('lunarYear'), num(lun.y));
-  put($('gregDate'), gregText(now.getFullYear(), now.getMonth()+1, now.getDate()));
+  $('gregDate').replaceChildren(dico('sol'), ay(gregText(now.getFullYear(), now.getMonth()+1, now.getDate())));
   renderRamadan(now);
 }
 
@@ -458,7 +464,7 @@ function renderCalendar(){
   $('btnToday').classList.toggle('hz-idle', t.y === viewY && t.m === viewM && !selectedKey);
 
   // Titre : le mois lunaire songhay et son jiiri.
-  $('calGreg').replaceChildren(ay(LUNAR_MONTHS[viewM-1]), ay(' ' + num(viewY + LUNAR_YEAR_OFFSET)));
+  $('calGreg').replaceChildren(dico('lune'), ay(LUNAR_MONTHS[viewM-1]), ay(' ' + num(viewY + LUNAR_YEAR_OFFSET)));
 
   // Sous-titre : les mois grégoriens qui chevauchent ce mois lunaire.
   const g0 = jdToGreg(span.start), g1 = jdToGreg(span.start + span.len - 1);
@@ -472,6 +478,7 @@ function renderCalendar(){
     gm++; if (gm > 12) { gm = 1; gy++; }
     if (cl.childNodes.length > 6) break;
   }
+  cl.prepend(dico('sol'));
 
   const wd = $('weekdays');
   wd.replaceChildren();
@@ -544,10 +551,10 @@ function openDay(y, m, d){
   const date = new Date(y, m, d, 12);
   const lun = lunarOf(y, m+1, d);
   put($('dsDayName'), dayNumText(date.getDay(), lun.d));
-  put($('dsLunar'), LUNAR_MONTHS[lun.m-1]);
+  $('dsLunar').replaceChildren(dico('lune'), ay(LUNAR_MONTHS[lun.m-1]));
   put($('dsYear'), num(lun.y));
   drawMoon($('dsMoon'), date);
-  put($('dsGreg'), gregText(y, m+1, d));
+  $('dsGreg').replaceChildren(dico('sol'), ay(gregText(y, m+1, d)));
   const fe = fetesDu(y, m+1, d, lun);
   const ligne = (cls, f) => { const e = document.createElement('div'); e.className = 'hz-fete-ligne';
     const p = document.createElement('i'); p.className = cls; e.append(p, document.createTextNode((EN ? f[1] : f[0]))); return e; };
@@ -642,7 +649,7 @@ function renderConv(){
     if (v.length !== 3 || !v[0]) { res.replaceChildren(); return; }
     const l = lunarOf(v[0], v[1], v[2]);
     const big = document.createElement('div'); big.className = 'hz-conv-big';
-    big.append(ay(LUNAR_MONTHS[l.m-1]), ay(' ' + num(l.d)));
+    big.append(dico('lune'), ay(LUNAR_MONTHS[l.m-1]), ay(' ' + num(l.d)));
     res.replaceChildren(ay(DAYS_FULL[jourSemaine(v[0], v[1], v[2])]), big, ay(num(l.y)));
   } else {
     const len = lunarMonthSpan(convL.y, convL.m).len;
@@ -652,7 +659,7 @@ function renderConv(){
     put($('convLY'), num(convL.y + LUNAR_YEAR_OFFSET));
     const g = jdToGreg(islToJd(convL.y, convL.m, convL.d) + adjust());
     const big = document.createElement('div'); big.className = 'hz-conv-big';
-    big.append(ay(gregText(g.y, g.m, g.d)));
+    big.append(dico('sol'), ay(gregText(g.y, g.m, g.d)));
     const o = document.createElement('div'); o.className = 'hz-ordre';
     o.append(ay(LBL.han + '/' + LBL.hadu + '/' + LBL.jiiri));
     res.replaceChildren(ay(DAYS_FULL[jourSemaine(g.y, g.m, g.d)]), big, o);

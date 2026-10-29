@@ -124,6 +124,9 @@
   #hz .hz-ram-ico svg,  #hz .hz-conv-tab svg{width:1.5rem;height:1.5rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;}
   #hz .hz-ram-ico{color:var(--orange-soft);display:inline-flex;}
   #hz .hz-conv-tab{display:inline-flex;align-items:center;gap:.15rem;}
+  #hz .hz-dico{display:inline-flex;align-items:center;align-self:center;width:.75em;height:.75em;margin:0 .15em;opacity:.85;}
+  #hz .hz-dico svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  #hz .hz-dico-lune svg{fill:currentColor;stroke:none;}
   #hz .hz-conv-tabs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;}
   #hz .hz-conv-tab{font:600 .85rem/1 system-ui,sans-serif;padding:.55rem .8rem;border-radius:999px;border:1px solid rgba(243,236,224,0.25);color:var(--ink-dim);cursor:pointer;}
   #hz .hz-conv-tab.hz-on{background:var(--orange);border-color:var(--orange);color:#fff;}
