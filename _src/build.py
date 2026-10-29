@@ -308,7 +308,7 @@ def page_confidentialite(c, lang="fr"):
     {corps}
     <h2>Contact</h2>
     <p>For any question about this policy: <a href="mailto:{adresse}">{adresse}</a>. Developed by MAIGUS.</p>
-    <p class="doux petit">Last updated: {M.MAJ}.</p>
+    <p class="doux petit">Last updated: {c.get('maj', M.MAJ)}.</p>
     <div class="boutons">{lien}<a class="btn btn-ligne btn-petit" href="confidentialite.html">All policies</a></div>
   </div></div>
 </section>"""
@@ -324,7 +324,7 @@ def page_confidentialite(c, lang="fr"):
     {corps}
     <h2>Contact</h2>
     <p>Pour toute question sur cette politique : <a href="mailto:{adresse}">{adresse}</a>. Développé par MAIGUS.</p>
-    <p class="doux petit">Dernière mise à jour : {CONF.MAJ}.</p>
+    <p class="doux petit">Dernière mise à jour : {c.get('maj', CONF.MAJ)}.</p>
     <div class="boutons">{lien}<a class="btn btn-ligne btn-petit" href="confidentialite.html">Toutes les politiques</a></div>
   </div></div>
 </section>"""

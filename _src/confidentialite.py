@@ -168,7 +168,7 @@ WEB = [
         ],
     },
     {
-        "id": "horloge", "nom": "Horloge et calendrier", "type": "Outil web", "page": "horloge.html",
+        "id": "horloge", "nom": "Horloge et calendrier", "type": "Outil web", "page": "horloge.html", "maj": "29 octobre 2026",
         "intro": "L'horloge affiche l'heure et le calendrier en AYNEHA.",
         "sections": [
             ("Tout reste dans votre navigateur", "L'horloge lit l'heure, la date et le fuseau horaire de votre appareil. Rien n'est envoyé."),
