@@ -1,0 +1,41 @@
+# Reconstruit le site quand on modifie _src/ ou qu'on dépose un APK
+# (par exemple depuis l'interface web de GitHub), puis enregistre le résultat :
+# pages, manifest.json, version.txt et mises-a-jour.json (version + empreinte des APK).
+name: Construire le site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "_src/**"
+      - "assets/telechargements/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: construire
+  cancel-in-progress: false
+
+jobs:
+  construire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Construire
+        run: python3 _src/build.py
+      - name: Enregistrer le résultat
+        run: |
+          git config user.name "MAIGUS"
+          git config user.email "gwokmt2q@duck.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Rien à enregistrer."
+          else
+            git commit -m "Construction automatique du site"
+            git push
+          fi
