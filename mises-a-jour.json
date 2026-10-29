@@ -1,0 +1,53 @@
+{
+  "applications": [
+    {
+      "id": "ayneha-school",
+      "version": "1.3.0",
+      "apk": "https://ayneha.org/assets/telechargements/AYNEHA-School-1.3.0.apk",
+      "sha256": "7418f544732e9a4db204065cae11c922ec86e0a5bc6ac1475fc0c6304ed050b6",
+      "taille": 6073192
+    },
+    {
+      "id": "ayneha-home",
+      "version": "2.0.0",
+      "apk": "https://ayneha.org/assets/telechargements/AYNEHA-Home-2.0.0.apk",
+      "sha256": "773c7b9787e7301f2062fc8db7a38d52b5a7b6acd482ae7411e9b43ef18ba233",
+      "taille": 6111834
+    },
+    {
+      "id": "ayneha-keyboard",
+      "version": "2.5.0",
+      "apk": "https://ayneha.org/assets/telechargements/AYNEHA-Keyboard-2.5.0.apk",
+      "sha256": "0a245e4db3e10c75fd3c32bc8d0bfb36a1cd6df3576f37e2ea1b3b6259980e39",
+      "taille": 2570897
+    },
+    {
+      "id": "ayneha-calc",
+      "version": "1.3.0",
+      "apk": "https://ayneha.org/assets/telechargements/AYNEHA-Calc-1.3.0.apk",
+      "sha256": "b066ec6bb9a0c1184b673556ac1c3577af5225ff6a0b57040e78fa0b01fade4f",
+      "taille": 4700624
+    },
+    {
+      "id": "ayneha-horloge",
+      "version": "1.1.0",
+      "apk": "https://ayneha.org/assets/telechargements/AYNEHA-Horloge-1.1.0.apk",
+      "sha256": "ff592a6a6b1917e5fcc1111bdc3c6cae53e2759b0d4a1c5290c04e643b10b678",
+      "taille": 2926458
+    },
+    {
+      "id": "ayneha-numconvert",
+      "version": "1.3.0",
+      "apk": "https://ayneha.org/assets/telechargements/AYNEHA-NumConvert-1.3.0.apk",
+      "sha256": "e9d558b5da8b3388064d6d920193d1821528afdf315723157b82966731756829",
+      "taille": 10545561
+    },
+    {
+      "id": "ayneha-carnet",
+      "version": "1.1.0",
+      "apk": "https://ayneha.org/assets/telechargements/AYNEHA-Carnet-1.1.0.apk",
+      "sha256": "786e0f28d691afa5cf4c311a174f662323ed8e98335d8f24337b841577f54695",
+      "taille": 12094307
+    }
+  ]
+}

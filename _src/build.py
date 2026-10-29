@@ -796,6 +796,30 @@ def main():
     with open(os.path.join(RACINE, "robots.txt"), "w", encoding="utf-8") as fh:
         fh.write(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
 
+    # mises-a-jour.json : lu par les applications Android quand on tire l'écran
+    # vers le bas, pour savoir si une nouvelle version existe sur ayneha.org.
+    # Version, lien de l'APK et empreinte SHA-256 (vérifiée avant l'installation).
+    import hashlib
+    majs = []
+    for app in APPS.APPS:
+        apk = app.get("apk") or ""
+        if not apk:
+            continue
+        item = {"id": app["id"], "version": app.get("version", ""),
+                "apk": apk if apk.startswith("http") else SITE_URL + "/" + apk}
+        local = os.path.join(RACINE, apk)
+        if not apk.startswith("http") and os.path.isfile(local):
+            h = hashlib.sha256()
+            with open(local, "rb") as fa:
+                for bloc in iter(lambda: fa.read(1 << 20), b""):
+                    h.update(bloc)
+            item["sha256"] = h.hexdigest()
+            item["taille"] = os.path.getsize(local)
+        majs.append(item)
+    with open(os.path.join(RACINE, "mises-a-jour.json"), "w", encoding="utf-8") as fh:
+        json.dump({"applications": majs}, fh, indent=2, ensure_ascii=False)
+        fh.write("\n")
+
     # manifest.json et version.txt : utilisés par l'application Android « AYNEHA »
     # (wrapper hors connexion) pour savoir quand télécharger la nouvelle version du site.
     fichiers = []
@@ -807,7 +831,7 @@ def main():
             chemin = os.path.normpath(os.path.join(rel, n)).replace(os.sep, "/")
             if chemin.startswith("./"):
                 chemin = chemin[2:]
-            if chemin in ("manifest.json", "version.txt", "sitemap.xml", "robots.txt", "README.md", "LICENSE", ".gitignore", "_headers", "netlify.toml") or n.startswith("."):
+            if chemin in ("manifest.json", "version.txt", "mises-a-jour.json", "sitemap.xml", "robots.txt", "README.md", "LICENSE", ".gitignore", "_headers", "netlify.toml") or n.startswith("."):
                 continue
             if chemin.startswith("assets/telechargements/"):
                 continue  # fichiers à télécharger : pas besoin de les embarquer dans l'appli
