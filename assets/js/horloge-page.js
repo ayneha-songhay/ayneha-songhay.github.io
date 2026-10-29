@@ -72,9 +72,36 @@ const LUNAR_MONTHS = [
 // Fêtes d'indépendance des pays où vit une communauté songhay établie
 // depuis des siècles (dates grégoriennes) : [mois, jour, code, nom].
 const INDEP = [
-  [1,1,'SD','Soudan'], [3,6,'GH','Ghana'], [4,27,'TG','Togo'], [7,5,'DZ','Algérie'],
-  [8,1,'BJ','Bénin'], [8,3,'NE','Niger'], [8,5,'BF','Burkina Faso'], [8,7,'CI',"Côte d'Ivoire"],
-  [8,11,'TD','Tchad'], [9,22,'ML','Mali'], [10,1,'NG','Nigeria'], [11,18,'MA','Maroc']
+  [1,1,'SD','90 A0 8B A2','Soudan'],                         // sudã
+  [3,6,'GH','98 A1 8D 9C','Ghana'],                          // gaana
+  [4,27,'TG','8C 9F 98 9F','Togo'],                          // togo
+  [7,5,'DZ','9C BE 94 9D 8F 9E','Algérie'],                  // aljeri
+  [8,1,'BJ','86 9D 8D A5','Bénin'],                          // benɛ
+  [8,3,'NE','8D 9E 94 A5 C0','Niger'],                       // nijɛr
+  [8,5,'BF','86 A0 C0 99 9E 8D 9C 89 9C 90 9F','Burkina Faso'], // burkina-faso
+  [8,7,'CI','93 AA 8D AA 8A 9C 8F 9E',"Côte d'Ivoire"],      // cɔnɔwari
+  [8,11,'TD','93 9C B8','Tchad'],                            // cad
+  [9,22,'ML','88 A1 8E 9E','Mali'],                          // maali
+  [10,1,'NG','8D 9C 95 9E 8F 9E 97 9C','Nigeria'],           // nadjiriya
+  [11,18,'MA','88 9C 8F 9F 93','Maroc']                      // maroc
+];
+// Noms des pays en AYNEHA : transcriptions phonétiques fournies par Maïgus
+// (la façon dont les anciens appellent ces pays).
+
+// Jours fériés officiels du Mali (dates grégoriennes) : [mois, jour, nom FR, nom EN].
+const FETES_MALI = [
+  [1,1,"Jour de l'an","New Year's Day"], [1,20,"Fête de l'Armée",'Armed Forces Day'],
+  [3,26,'Journée des Martyrs',"Martyrs' Day"], [5,1,'Fête du Travail',"Workers' Day"],
+  [5,25,"Journée de l'Afrique",'Africa Day']
+];
+// Fêtes religieuses chômées au Mali.
+// Grégoriennes : [mois, jour, nom FR, nom EN] (+ lundi de Pâques, calculé).
+const FETES_REL_GREG = [[12,25,'Noël','Christmas']];
+// Lunaires : [mois lunaire, jour lunaire, nom FR, nom EN].
+const FETES_REL_LUNE = [
+  [1,10,'Achoura','Ashura'], [3,12,'Maouloud','Mawlid'],
+  [3,19,'Baptême du Prophète','Baptism of the Prophet'], [9,27,'Laylat al-Qadr','Laylat al-Qadr'],
+  [10,1,'Korité (Aïd el-Fitr)','Eid al-Fitr'], [12,10,'Tabaski (Aïd el-Kébir)','Eid al-Adha']
 ];
 
 /* =====================================================================
@@ -98,16 +125,18 @@ const num = n => String(n).split('').map(c => DIG[+c]).join('');
 const num2 = n => num(String(n).padStart(2,'0'));
 
 /* =====================================================================
-   CALENDRIER LUNAIRE, CALÉ SUR LA VRAIE LUNE
-   Chaque mois commence le soir où le premier croissant de lune est
-   visible à l'oeil nu depuis Gao (critère astronomique d'Odeh, 2004).
-   Ce soir-là, au coucher du soleil, commence le 1er jour du mois.
-   Les débuts de mois de 1979 à 2106 sont précalculés (éphémérides) et
+   CALENDRIER LUNAIRE, CALÉ SUR LA VRAIE LUNE (même calendrier partout)
+   Chaque mois commence le lendemain du premier soir où le croissant de
+   lune est visible à l'oeil nu quelque part sur Terre, au coucher du
+   soleil avant minuit UTC (critère astronomique d'Odeh, 2004). Ainsi le
+   calendrier est le même pour tous : Sahel, Afrique et diaspora.
+   Les débuts de mois de 1899 à 2201 sont précalculés (éphémérides) et
    rangés dans MOIS_LUNE : 1 bit par mois, 1 = mois de 30 jours,
    0 = mois de 29 jours. En dehors de cette période : cycle arithmétique.
+   Le bouton de réglage (+/- 2 jours) permet de suivre l'annonce locale.
    ===================================================================== */
-const MOIS_LUNE = {jd0: 2444198.5, y0: 1400, n: 1572,
-  hex: 'cab64b725752ba95b4ab5956caae536c9ad4b6a96d4aea56d2ad555aa5b52ba93b49ba55aaab5556a9754b6a5ad2aea56d26e936c96d52d695b4aba4bb25b92baa5ad2aea575276956caae52ec96e4aea56d2ad655b25b92ba95b4aba55acab653749764b725754b6a56d2ae956aa6d52ba95d49da4dd2ab5556a9754baa5b52b695752b6936ca76536a96b4aba4bd25d92da95b52b6957527a93b49b6536a9b64b6a5754b5a56d2ad92dc95d4ada55aaab653749764bb25b52baa5ad2ae9574ab5935c95'};
+const MOIS_LUNE = {jd0: 2414785.5, y0: 1317, n: 3732,
+  hex: 'b5556a9754b725752ba9572ab5555aa5d52da95d49ea4ed26d555aa5b52b6a5751ba8bb49b54d6a5ad4b5a55d49ea2dd15e52ea96d4ada95b4aba93b45ba2baa5b52b6956b2ad94ed26e8aec56d2aea56b2ad555b29b94bb15b4aba55b4ab5556a96d4aea96d46e9574a75555aaad52da95b51ba8dd45b94daa6b54b6a56d2aea2f516e8b6a96d4b5a95b4aba53d45da2dd15d52da95b4ab6956c9764af45752b6956d2ad555b25b92bc95d4ada55d2ad5556aab54b6a5752769374ab6556aaad52da95d4ada4dd26d935aa6b5556a5752b693749764b725b54b6a56d4ada4dd25e92ec96d4ada96b4ab695749764bb25b52b695b4ab5955d26d92dc95e4aea56d2ad555aaab54bb25792ba95b4ab655aaaad54ea96d4aea56d26e936caad555aa5b52ba95b49ba4bb25b54d6a9ad4aea56d26e92f49754b6a56d52da95b49ba4bb25d92da95b4ab5956d2ae92ec96e4aea5752b5956aaaba4bb25d92bc95d4ada55b2ab5556c96d4aea5752b6936caad555aa6b52ba95d49da4dd26d555aa9b54b6a57527693749764b6a5ad52da95d4ada4dd25d92da96d4ada95ad2b693749764b725752b6956caada55d25d92ec95d4aea56b2ab5556c9b64b725752ba95b4ab5556aa6d52dc95d4aea4ed2ad555aaab5'};
 const ISL_EPOCH = 1948439.5;
 function gregToJd(y,m,d){ return Date.UTC(y,m-1,d)/86400000 + 2440587.5; }
 function islToJdA(y,m,d){
@@ -194,12 +223,28 @@ function drawMoon(svg, date){
     `<path d="${lit}" fill="var(--moon-lit)"/>`;
 }
 
-// Noms des pays en anglais (page EN du site).
-const PAYS_EN = {SD:'Sudan', DZ:'Algeria', BJ:'Benin', TD:'Chad', MA:'Morocco'};
 const EN = (document.documentElement.lang || '').startsWith('en');
-/* Fêtes d'indépendance du jour (liste vide s'il n'y en a pas). */
-function fetesDu(m,d){ return INDEP.filter(f => f[0]===m && f[1]===d); }
-function isFete(y,m,d){ return fetesDu(m,d).length > 0; }
+/* Lundi de Pâques (calcul de Meeus). */
+function lundiPaques(y){
+  const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),
+        g2=Math.floor((b-f+1)/3),h=(19*a+b-d-g2+15)%30,i=Math.floor(c/4),k=c%4,
+        l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),
+        mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1;
+  const t = new Date(y, mo-1, da+1);
+  return [t.getMonth()+1, t.getDate()];
+}
+/* Toutes les fêtes d'un jour : indépendances, fêtes officielles du Mali, fêtes religieuses. */
+function fetesDu(y,m,d,lun){
+  const rel = FETES_REL_GREG.filter(f => f[0]===m && f[1]===d)
+    .concat(FETES_REL_LUNE.filter(f => f[0]===lun.m && f[1]===lun.d));
+  const pq = lundiPaques(y);
+  if (pq[0]===m && pq[1]===d) rel.push([m,d,'Lundi de Pâques','Easter Monday']);
+  return {
+    indep: INDEP.filter(f => f[0]===m && f[1]===d),
+    mali: FETES_MALI.filter(f => f[0]===m && f[1]===d),
+    rel
+  };
+}
 
 /* Drapeaux dessinés (SVG 30 x 20), lisibles sans aucun texte. */
 function etoile(cx, cy, r, fill){
@@ -402,7 +447,14 @@ function renderCalendar(){
     const big = document.createElement('span'); big.className = 'hz-big'; big.appendChild(ay(num(lun.d)));
     const small = document.createElement('span'); small.className = 'hz-small'; small.appendChild(ay(num(g.d)));
     cell.append(big, small);
-    if (isFete(g.y, g.m, g.d)) { const f = document.createElement('span'); f.className = 'hz-fete'; cell.appendChild(f); }
+    const fe = fetesDu(g.y, g.m, g.d, lun);
+    if (fe.indep.length || fe.mali.length || fe.rel.length) {
+      const pt = document.createElement('span'); pt.className = 'hz-pastilles';
+      if (fe.indep.length) { const e = document.createElement('i'); e.className = 'hz-fete'; pt.appendChild(e); }
+      if (fe.mali.length) { const e = document.createElement('i'); e.className = 'hz-fete-mali'; pt.appendChild(e); }
+      if (fe.rel.length) { const e = document.createElement('i'); e.className = 'hz-fete-rel'; pt.appendChild(e); }
+      cell.appendChild(pt);
+    }
     cell.addEventListener('click', () => openDay(g.y, g.m-1, g.d));
     days.appendChild(cell);
   }
@@ -440,7 +492,12 @@ function openDay(y, m, d){
   put($('dsYear'), num(lun.y));
   drawMoon($('dsMoon'), date);
   put($('dsGreg'), gregText(y, m+1, d));
-  $('dsFetes').innerHTML = fetesDu(m+1, d).map(f => `<span class="hz-fete-pays">${drapeau(f[2])}<span class="hz-pays">${EN && PAYS_EN[f[2]] || f[3]}</span></span>`).join('');
+  const fe = fetesDu(y, m+1, d, lun);
+  const ligne = (cls, f) => { const e = document.createElement('div'); e.className = 'hz-fete-ligne';
+    const p = document.createElement('i'); p.className = cls; e.append(p, document.createTextNode((EN ? f[1] : f[0]))); return e; };
+  const pays = fe.indep.map(f => { const e = document.createElement('span'); e.className = 'hz-fete-pays'; e.title = f[4];
+    e.innerHTML = drapeau(f[2]); const n = document.createElement('span'); n.className = 'hz-pays'; n.appendChild(ay(g(f[3]))); e.appendChild(n); return e; });
+  $('dsFetes').replaceChildren(...pays, ...fe.mali.map(f => ligne('hz-fete-mali', f.slice(2))), ...fe.rel.map(f => ligne('hz-fete-rel', f.slice(2))));
   $('daySheetBg').classList.add('hz-open');
 }
 $('daySheetBg').addEventListener('click', () => $('daySheetBg').classList.remove('hz-open'));

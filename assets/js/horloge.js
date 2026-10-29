@@ -26,9 +26,10 @@
 
   var DECALAGE_ANNEE = 2577, EPOQUE = 1948439.5, LAT = 16.2666, LON = -0.0447;
   function versJd(y, m, d) { return Date.UTC(y, m - 1, d) / 86400000 + 2440587.5; }
-  // Débuts de mois calés sur la vraie lune (premier croissant visible à
-  // l'oeil nu depuis Gao, critère d'Odeh), même tableau que la page Horloge.
-  var TAB = { jd0: 2444198.5, y0: 1400, n: 1572, hex: "cab64b725752ba95b4ab5956caae536c9ad4b6a96d4aea56d2ad555aa5b52ba93b49ba55aaab5556a9754b6a5ad2aea56d26e936c96d52d695b4aba4bb25b92baa5ad2aea575276956caae52ec96e4aea56d2ad655b25b92ba95b4aba55acab653749764b725754b6a56d2ae956aa6d52ba95d49da4dd2ab5556a9754baa5b52b695752b6936ca76536a96b4aba4bd25d92da95b52b6957527a93b49b6536a9b64b6a5754b5a56d2ad92dc95d4ada55aaab653749764bb25b52baa5ad2ae9574ab5935c95" };
+  // Débuts de mois calés sur la vraie lune (premier croissant visible à l'oeil
+  // nu quelque part sur Terre avant minuit UTC, critère d'Odeh), 1899-2201,
+  // même tableau que la page Horloge.
+  var TAB = { jd0: 2414785.5, y0: 1317, n: 3732, hex: "b5556a9754b725752ba9572ab5555aa5d52da95d49ea4ed26d555aa5b52b6a5751ba8bb49b54d6a5ad4b5a55d49ea2dd15e52ea96d4ada95b4aba93b45ba2baa5b52b6956b2ad94ed26e8aec56d2aea56b2ad555b29b94bb15b4aba55b4ab5556a96d4aea96d46e9574a75555aaad52da95b51ba8dd45b94daa6b54b6a56d2aea2f516e8b6a96d4b5a95b4aba53d45da2dd15d52da95b4ab6956c9764af45752b6956d2ad555b25b92bc95d4ada55d2ad5556aab54b6a5752769374ab6556aaad52da95d4ada4dd26d935aa6b5556a5752b693749764b725b54b6a56d4ada4dd25e92ec96d4ada96b4ab695749764bb25b52b695b4ab5955d26d92dc95e4aea56d2ad555aaab54bb25792ba95b4ab655aaaad54ea96d4aea56d26e936caad555aa5b52ba95b49ba4bb25b54d6a9ad4aea56d26e92f49754b6a56d52da95b49ba4bb25d92da95b4ab5956d2ae92ec96e4aea5752b5956aaaba4bb25d92bc95d4ada55b2ab5556c96d4aea5752b6936caad555aa6b52ba95d49da4dd26d555aa9b54b6a57527693749764b6a5ad52da95d4ada4dd25d92da96d4ada95ad2b693749764b725752b6956caada55d25d92ec95d4aea56b2ab5556c9b64b725752ba95b4ab5556aa6d52dc95d4aea4ed2ad555aaab5" };
   var DEBUT = [TAB.jd0];
   for (var i = 0; i < TAB.n; i++) DEBUT.push(DEBUT[i] + (((parseInt(TAB.hex[i >> 2], 16) >> (3 - (i & 3))) & 1) ? 30 : 29));
   function lunJd(y, m, d) { return d + Math.ceil(29.5 * (m - 1)) + (y - 1) * 354 + Math.floor((3 + 11 * y) / 30) + EPOQUE - 1; }
