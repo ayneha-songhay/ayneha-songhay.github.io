@@ -430,7 +430,6 @@ function renderToday(now, lun){
   put($('lunarYear'), num(lun.y));
   put($('gregDate'), gregText(now.getFullYear(), now.getMonth()+1, now.getDate()));
   renderRamadan(now);
-  renderProchaines(now);
 }
 
 /* --- Calendrier (mois lunaire songhay ; jours grégoriens en petit) --- */
@@ -585,11 +584,10 @@ $('btnPlace').addEventListener('click', () => {
    HEURES DU JEÛNE, CONVERTISSEUR, PROCHAINES FÊTES
    ===================================================================== */
 const EN_ = (document.documentElement.lang || '').startsWith('en');
-const CIDI_ZAARI = g('93 A7 8B 9E') + ' ' + g('91 A1 8F 9E');   // cĩdi zaari (jours restants)
 const T_ = EN_ ? {sahur:'End of suhoor (dawn)', iftar:'Breaking the fast (sunset)', today:'today',
-                   g2l:'Gregorian → Songhay', l2g:'Songhay → Gregorian', ram:'Start of Ramadan', mali:'Mali Independence Day'}
+                   g2l:'Gregorian → Songhay', l2g:'Songhay → Gregorian',}
                : {sahur:'Fin du sahur (aube)', iftar:'Rupture du jeûne (coucher du soleil)', today:"aujourd'hui",
-                   g2l:'Grégorien → songhay', l2g:'Songhay → grégorien', ram:'Début du Ramadan', mali:"Fête de l'indépendance du Mali"};
+                   g2l:'Grégorien → songhay', l2g:'Songhay → grégorien',};
 /* Lever ou coucher du soleil à une hauteur donnée (aube : soleil à 18° sous l'horizon). */
 function soleilMs(y, m, d, haut, lever){
   const rad = Math.PI/180;
@@ -605,6 +603,11 @@ function soleilMs(y, m, d, haut, lever){
   const w = Math.acos(Math.max(-1, Math.min(1, cw))) / rad;
   return (Jt + (lever ? -w : w)/360 - 2440587.5) * 86400000;
 }
+const ICO_AUBE = '<svg viewBox="0 0 24 24"><path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 4v4M9.5 6.5L12 4l2.5 2.5M4.5 11.5l1.5 1M19.5 11.5l-1.5 1"/></svg>';
+const ICO_COUCHER = '<svg viewBox="0 0 24 24"><path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 4v4M9.5 5.5L12 8l2.5-2.5M4.5 11.5l1.5 1M19.5 11.5l-1.5 1"/></svg>';
+const ICO_SOLEIL = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>';
+const ICO_LUNE = '<svg viewBox="0 0 24 24"><path d="M16 4.5A8 8 0 1 0 16 19.5A6.5 6.5 0 0 1 16 4.5z"/></svg>';
+const ICO_FLECHE = '<svg viewBox="0 0 24 24"><path d="M19 12H5M9 8l-4 4 4 4"/></svg>';
 const aubeMs = (y,m,d) => soleilMs(y, m, d, -18, true);
 const heureTxt = ms => { const t = new Date(ms); return num2(t.getHours()) + ':' + num2(t.getMinutes()); };
 
@@ -615,36 +618,12 @@ function renderRamadan(now){
   if (now.getTime() >= sunsetMs(t.getFullYear(), t.getMonth()+1, t.getDate())) t = new Date(t.getFullYear(), t.getMonth(), t.getDate()+1);
   const y = t.getFullYear(), m = t.getMonth()+1, d = t.getDate();
   if (lunarOf(y, m, d).m !== 9) { box.replaceChildren(); return; }
-  const ligneH = (txt, ms) => { const e = document.createElement('div'); e.className = 'hz-ram-l';
+  // Icônes sans texte : soleil qui se lève (fin du sahur) et soleil qui se couche (rupture du jeûne).
+  const ligneH = (icone, txt, ms) => { const e = document.createElement('div'); e.className = 'hz-ram-l'; e.title = txt;
     const p = document.createElement('i'); p.className = 'hz-fete-ram';
-    e.append(p, document.createTextNode(txt), ay(heureTxt(ms))); return e; };
-  box.replaceChildren(ligneH(T_.sahur, aubeMs(y,m,d)), ligneH(T_.iftar, sunsetMs(y,m,d)));
-}
-
-/* 3. Compte à rebours des prochaines fêtes (Ramadan, fêtes religieuses, fêtes du Mali). */
-function prochainesFetes(now, n){
-  const out = [];
-  for (let k = 0; k < 400 && out.length < n; k++) {
-    const t = new Date(now.getFullYear(), now.getMonth(), now.getDate() + k);
-    const y = t.getFullYear(), m = t.getMonth()+1, d = t.getDate();
-    const l = lunarOf(y, m, d), fe = fetesDu(y, m, d, l);
-    if (l.m === 9 && l.d === 1) out.push({k, cls:'hz-fete-ram', nom: T_.ram, ay: LUNAR_MONTHS[8]});
-    fe.rel.forEach(f => out.push({k, cls:'hz-fete-rel', nom: EN_ ? f[3] : f[2]}));
-    fe.indep.filter(f => f[2] === 'ML').forEach(() => out.push({k, cls:'hz-fete', nom: T_.mali}));
-    fe.mali.forEach(f => out.push({k, cls:'hz-fete-mali', nom: EN_ ? f[3] : f[2]}));
-  }
-  return out.slice(0, n);
-}
-function renderProchaines(now){
-  $('nextBox').replaceChildren(...prochainesFetes(now, 3).map(f => {
-    const e = document.createElement('div'); e.className = 'hz-proch-l';
-    const p = document.createElement('i'); p.className = f.cls;
-    // Avant la fête : « nom : cĩdi zaari N » (N jours restants), expression fournie par Maïgus.
-    const nom = f.ay ? ay(f.ay) : document.createTextNode(f.nom);
-    const deux = document.createElement('span'); deux.textContent = ':';
-    if (f.k === 0) { e.append(p, nom, deux, document.createTextNode(T_.today)); return e; }
-    e.append(p, nom, deux, ay(CIDI_ZAARI + ' ' + num(f.k))); return e;
-  }));
+    const ic = document.createElement('span'); ic.className = 'hz-ram-ico'; ic.innerHTML = icone; ic.setAttribute('aria-label', txt);
+    e.append(p, ic, ay(heureTxt(ms))); return e; };
+  box.replaceChildren(ligneH(ICO_AUBE, T_.sahur, aubeMs(y,m,d)), ligneH(ICO_COUCHER, T_.iftar, sunsetMs(y,m,d)));
 }
 
 /* 2. Convertisseur de dates (grégorien <-> songhay). */
@@ -677,8 +656,10 @@ function renderConv(){
     res.replaceChildren(ay(DAYS_FULL[jourSemaine(g.y, g.m, g.d)]), big, o);
   }
 }
-$('convTabG').textContent = T_.g2l;
-$('convTabL').textContent = T_.l2g;
+$('convTabG').innerHTML = ICO_SOLEIL + ICO_FLECHE + ICO_LUNE;
+$('convTabL').innerHTML = ICO_LUNE + ICO_FLECHE + ICO_SOLEIL;
+$('convTabG').title = T_.g2l; $('convTabG').setAttribute('aria-label', T_.g2l);
+$('convTabL').title = T_.l2g; $('convTabL').setAttribute('aria-label', T_.l2g);
 $('convTabG').addEventListener('click', () => { convMode = 'g'; renderConv(); });
 $('convTabL').addEventListener('click', () => { convMode = 'l'; renderConv(); });
 $('convDate').addEventListener('input', renderConv);
