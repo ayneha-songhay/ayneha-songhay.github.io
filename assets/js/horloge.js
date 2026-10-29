@@ -4,7 +4,7 @@
    Noms des jours et des mois : écriture de l'auteur (reprise de l'horloge AYNEHA).
    Mêmes calculs que la page Horloge (assets/js/horloge-page.js) : calendrier lunaire
    calé sur la vraie lune, année lunaire = année de l'Hégire + 2577, jour lunaire qui change au
-   coucher du soleil (Gao). Tout est en ordre logique et s'affiche de droite à gauche
+   coucher du soleil, là où l'on se trouve. Tout est en ordre logique et s'affiche de droite à gauche
    grâce à la classe .ay. La page complète de l'horloge utilise horloge-page.js. */
 (function () {
   "use strict";
@@ -24,7 +24,34 @@
     "M E:d H A W:m", "M E:d F E:d R I", "H U N A:n Z A M:m", "TS I B:m S I"
   ].map(mot);
 
-  var DECALAGE_ANNEE = 2577, EPOQUE = 1948439.5, LAT = 16.2666, LON = -0.0447;
+  var DECALAGE_ANNEE = 2577, EPOQUE = 1948439.5;
+  // Coucher du soleil là où l'on se trouve : position choisie sur la page Horloge
+  // (gardée dans ce navigateur), sinon grande ville du fuseau horaire, sinon Gao.
+  var FUSEAUX = {
+  'Africa/Bamako':[16.27,-0.04], 'Africa/Niamey':[13.51,2.11], 'Africa/Ouagadougou':[12.37,-1.52],
+  'Africa/Porto-Novo':[6.50,2.60], 'Africa/Lome':[6.13,1.22], 'Africa/Accra':[5.60,-0.19],
+  'Africa/Lagos':[6.52,3.38], 'Africa/Casablanca':[33.57,-7.59], 'Africa/Algiers':[36.75,3.06],
+  'Africa/Abidjan':[5.36,-4.01], 'Africa/Khartoum':[15.50,32.56], 'Africa/Ndjamena':[12.13,15.06],
+  'Africa/Dakar':[14.69,-17.44], 'Africa/Nouakchott':[18.08,-15.98], 'Africa/Conakry':[9.64,-13.58],
+  'Africa/Freetown':[8.48,-13.23], 'Africa/Monrovia':[6.30,-10.80], 'Africa/Banjul':[13.45,-16.58],
+  'Africa/Bissau':[11.86,-15.60], 'Africa/Tripoli':[32.89,13.19], 'Africa/Tunis':[36.81,10.18],
+  'Africa/Cairo':[30.04,31.24], 'Africa/Douala':[4.05,9.70], 'Africa/Libreville':[0.39,9.45],
+  'Africa/Kinshasa':[-4.32,15.31], 'Africa/Nairobi':[-1.29,36.82], 'Africa/Johannesburg':[-26.20,28.05],
+  'Europe/Paris':[48.86,2.35], 'Europe/Brussels':[50.85,4.35], 'Europe/Madrid':[40.42,-3.70],
+  'Europe/Rome':[41.90,12.50], 'Europe/Berlin':[52.52,13.40], 'Europe/London':[51.51,-0.13],
+  'Europe/Lisbon':[38.72,-9.14], 'Europe/Amsterdam':[52.37,4.90], 'Europe/Zurich':[47.37,8.54],
+  'Europe/Istanbul':[41.01,28.98], 'Asia/Riyadh':[24.71,46.68], 'Asia/Dubai':[25.20,55.27],
+  'Asia/Qatar':[25.29,51.53], 'Asia/Shanghai':[31.23,121.47], 'Asia/Kolkata':[28.61,77.21],
+  'America/New_York':[40.71,-74.01], 'America/Toronto':[43.65,-79.38], 'America/Montreal':[45.50,-73.57],
+  'America/Chicago':[41.88,-87.63], 'America/Denver':[39.74,-104.99], 'America/Los_Angeles':[34.05,-118.24],
+  'America/Sao_Paulo':[-23.55,-46.63]
+};
+  function lieu() {
+    try { var v = JSON.parse(localStorage.getItem("lieu") || "null"); if (v && isFinite(v[0]) && isFinite(v[1])) return v; } catch (e) {}
+    try { var z = Intl.DateTimeFormat().resolvedOptions().timeZone; if (FUSEAUX[z]) return FUSEAUX[z]; } catch (e) {}
+    var h = -new Date().getTimezoneOffset() / 60;
+    return h === 0 ? [16.2666, -0.0447] : [15, h * 15];
+  }
   function versJd(y, m, d) { return Date.UTC(y, m - 1, d) / 86400000 + 2440587.5; }
   // Débuts de mois calés sur la vraie lune (premier croissant visible à l'oeil
   // nu quelque part sur Terre avant minuit UTC, critère d'Odeh), 1899-2201,
@@ -46,6 +73,7 @@
   }
   function reglage() { try { return parseInt(localStorage.getItem("lunarAdjust") || "0", 10) || 0; } catch (e) { return 0; } }
   function coucher(y, m, d) {
+    var pos = lieu(), LAT = pos[0], LON = pos[1];
     var r = Math.PI / 180, n = Math.round(versJd(y, m, d) + 0.5 - 2451545), js = n - LON / 360;
     var M = (357.5291 + 0.98560028 * js) % 360;
     var C = 1.9148 * Math.sin(M * r) + 0.02 * Math.sin(2 * M * r) + 0.0003 * Math.sin(3 * M * r);

@@ -115,7 +115,8 @@ WEB = [
         "id": "transcripteur", "nom": "Transcriber", "type": "Web tool", "page": "convertisseur.html",
         "intro": "The transcriber writes in AYNEHA a Songhay text typed in Latin letters.",
         "sections": [
-            ("Everything stays in your browser", "The transcription is done in your browser. Your text is not sent anywhere."),
+            ("Everything stays in your browser", "The clock reads the time, date and time zone of your device. Nothing is sent."),
+            ("Location (optional)", "The lunar day changes at sunset. By default, sunset is calculated for the main city of your time zone. If you tap the location button, your browser asks for your approximate location: it is rounded, kept only in your browser and never sent."),
             ("Memory of your last text", "So that you find it on your next visit, your last text is kept in your browser's storage, on your device only. “Clear all” deletes it."),
             ("Copy and image", "Copying goes through your device's clipboard; the image is created by your browser and saved in your downloads."),
             CHANGES,

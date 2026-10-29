@@ -171,7 +171,8 @@ WEB = [
         "id": "horloge", "nom": "Horloge et calendrier", "type": "Outil web", "page": "horloge.html",
         "intro": "L'horloge affiche l'heure et le calendrier en AYNEHA.",
         "sections": [
-            ("Tout reste dans votre navigateur", "L'horloge lit seulement l'heure et la date de votre appareil. Rien n'est enregistré ni envoyé."),
+            ("Tout reste dans votre navigateur", "L'horloge lit l'heure, la date et le fuseau horaire de votre appareil. Rien n'est envoyé."),
+            ("Position (facultative)", "Le jour lunaire change au coucher du soleil. Par défaut, il est calculé pour la grande ville de votre fuseau horaire. Si vous touchez le bouton position, votre navigateur vous demande votre position approximative : elle est arrondie, gardée uniquement dans votre navigateur et jamais envoyée."),
             MODIFS,
         ],
     },

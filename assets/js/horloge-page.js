@@ -30,8 +30,40 @@ const GREG_YEAR_OFFSET = 2001;
 const WEEK_START = 6;
 // Jours chômés : samedi et vendredi.
 const OFF_DAYS = [6, 5];
-// Gao : sert au calcul du coucher du soleil (le jour lunaire change au coucher).
-const GAO_LAT = 16.2666, GAO_LON = -0.0447;
+// Le jour lunaire change au coucher du soleil, LÀ OÙ L'ON SE TROUVE.
+// Lieu utilisé pour le coucher du soleil :
+//  1) la position donnée avec le bouton « position » (gardée sur l'appareil,
+//     jamais envoyée nulle part) ;
+//  2) sinon la grande ville du fuseau horaire de l'appareil ;
+//  3) sinon une estimation d'après le décalage horaire (Gao pour UTC+0).
+const GAO = [16.2666, -0.0447];
+const FUSEAUX = {
+  'Africa/Bamako':[16.27,-0.04], 'Africa/Niamey':[13.51,2.11], 'Africa/Ouagadougou':[12.37,-1.52],
+  'Africa/Porto-Novo':[6.50,2.60], 'Africa/Lome':[6.13,1.22], 'Africa/Accra':[5.60,-0.19],
+  'Africa/Lagos':[6.52,3.38], 'Africa/Casablanca':[33.57,-7.59], 'Africa/Algiers':[36.75,3.06],
+  'Africa/Abidjan':[5.36,-4.01], 'Africa/Khartoum':[15.50,32.56], 'Africa/Ndjamena':[12.13,15.06],
+  'Africa/Dakar':[14.69,-17.44], 'Africa/Nouakchott':[18.08,-15.98], 'Africa/Conakry':[9.64,-13.58],
+  'Africa/Freetown':[8.48,-13.23], 'Africa/Monrovia':[6.30,-10.80], 'Africa/Banjul':[13.45,-16.58],
+  'Africa/Bissau':[11.86,-15.60], 'Africa/Tripoli':[32.89,13.19], 'Africa/Tunis':[36.81,10.18],
+  'Africa/Cairo':[30.04,31.24], 'Africa/Douala':[4.05,9.70], 'Africa/Libreville':[0.39,9.45],
+  'Africa/Kinshasa':[-4.32,15.31], 'Africa/Nairobi':[-1.29,36.82], 'Africa/Johannesburg':[-26.20,28.05],
+  'Europe/Paris':[48.86,2.35], 'Europe/Brussels':[50.85,4.35], 'Europe/Madrid':[40.42,-3.70],
+  'Europe/Rome':[41.90,12.50], 'Europe/Berlin':[52.52,13.40], 'Europe/London':[51.51,-0.13],
+  'Europe/Lisbon':[38.72,-9.14], 'Europe/Amsterdam':[52.37,4.90], 'Europe/Zurich':[47.37,8.54],
+  'Europe/Istanbul':[41.01,28.98], 'Asia/Riyadh':[24.71,46.68], 'Asia/Dubai':[25.20,55.27],
+  'Asia/Qatar':[25.29,51.53], 'Asia/Shanghai':[31.23,121.47], 'Asia/Kolkata':[28.61,77.21],
+  'America/New_York':[40.71,-74.01], 'America/Toronto':[43.65,-79.38], 'America/Montreal':[45.50,-73.57],
+  'America/Chicago':[41.88,-87.63], 'America/Denver':[39.74,-104.99], 'America/Los_Angeles':[34.05,-118.24],
+  'America/Sao_Paulo':[-23.55,-46.63]
+};
+function lieuFuseau(){
+  try { const z = Intl.DateTimeFormat().resolvedOptions().timeZone; if (FUSEAUX[z]) return FUSEAUX[z]; } catch(e) {}
+  const h = -new Date().getTimezoneOffset() / 60;
+  return h === 0 ? GAO : [15, h * 15];
+}
+let LIEU = null;   // [latitude, longitude] donnée par le bouton « position »
+try { const v = JSON.parse(localStorage.getItem('lieu') || 'null'); if (v && isFinite(v[0]) && isFinite(v[1])) LIEU = v; } catch(e) {}
+function lieu(){ return LIEU || lieuFuseau(); }
 
 /* =====================================================================
    GLYPHES AYNEHA (Plan 16, police ayneha_pro.ttf)
@@ -83,7 +115,7 @@ const INDEP = [
   [8,11,'TD','93 9C B8','Tchad'],                            // cad
   [9,22,'ML','88 A1 8E 9E','Mali'],                          // maali
   [10,1,'NG','8D 9C 95 9E 8F 9E 97 9C','Nigeria'],           // nadjiriya
-  [11,18,'MA','88 9C 8F 9F 93','Maroc']                      // maroc
+  [11,18,'MA','88 9C 8F AA D0','Maroc']                      // marɔk
 ];
 // Noms des pays en AYNEHA : transcriptions phonétiques fournies par Maïgus
 // (la façon dont les anciens appellent ces pays).
@@ -176,18 +208,19 @@ function lunarOf(y,m,d){
   return {d:r.d, m:r.m, y:r.y + LUNAR_YEAR_OFFSET};
 }
 
-/* Coucher du soleil à Gao (équation du lever/coucher, précision ~1 min). */
+/* Coucher du soleil au lieu choisi (équation du lever/coucher, précision ~1 min). */
 function sunsetMs(y,m,d){
   const rad = Math.PI/180;
-  // n = nombre de jours depuis le 1er janvier 2000 à midi (jour local à Gao).
+  // n = nombre de jours depuis le 1er janvier 2000 à midi (jour local).
   const n = Math.round(gregToJd(y,m,d) + 0.5 - 2451545.0);
-  const Js = n - GAO_LON/360;
+  const [LAT, LON] = lieu();
+  const Js = n - LON/360;
   const M = (357.5291 + 0.98560028*Js) % 360;
   const C = 1.9148*Math.sin(M*rad) + 0.02*Math.sin(2*M*rad) + 0.0003*Math.sin(3*M*rad);
   const L = (M + C + 180 + 102.9372) % 360;
   const Jt = 2451545.0 + Js + 0.0053*Math.sin(M*rad) - 0.0069*Math.sin(2*L*rad);
   const dec = Math.asin(Math.sin(L*rad)*Math.sin(23.4397*rad));
-  const cw = (Math.sin(-0.833*rad) - Math.sin(GAO_LAT*rad)*Math.sin(dec)) / (Math.cos(GAO_LAT*rad)*Math.cos(dec));
+  const cw = (Math.sin(-0.833*rad) - Math.sin(LAT*rad)*Math.sin(dec)) / (Math.cos(LAT*rad)*Math.cos(dec));
   const w = Math.acos(Math.max(-1, Math.min(1, cw))) / rad;
   return (Jt + w/360 - 2440587.5) * 86400000;
 }
@@ -508,6 +541,22 @@ function renderAdj(){
   put($('adjPreview'), lunarText(lunarNow(n)));
   put($('adjNum'), (adjust() > 0 ? '+' : adjust() < 0 ? '-' : '') + num(Math.abs(adjust())));
 }
+/* --- Bouton « position » : coucher du soleil calculé là où l'on se trouve --- */
+if (App && App.getPlace && !LIEU) {
+  try { const v = String(App.getPlace() || '').split(','); if (v.length === 2 && isFinite(+v[0]) && isFinite(+v[1]) && v[0] !== '') LIEU = [+v[0], +v[1]]; } catch(e) {}
+}
+function renderPlace(){ $('btnPlace').classList.toggle('hz-on', !!LIEU); }
+renderPlace();
+$('btnPlace').addEventListener('click', () => {
+  if (!navigator.geolocation) return;
+  navigator.geolocation.getCurrentPosition(p => {
+    // Position arrondie (environ 1 km) : suffisant pour le coucher du soleil.
+    LIEU = [Math.round(p.coords.latitude*100)/100, Math.round(p.coords.longitude*100)/100];
+    try { localStorage.setItem('lieu', JSON.stringify(LIEU)); } catch(e) {}
+    if (App && App.setPlace) { try { App.setPlace(LIEU[0], LIEU[1]); } catch(e) {} }
+    renderPlace(); lastLunarKey = ''; tick();
+  }, () => {}, {enableHighAccuracy: false, timeout: 20000, maximumAge: 3600000});
+});
 $('btnAdjust').addEventListener('click', () => { renderAdj(); $('adjSheetBg').classList.add('hz-open'); });
 $('adjSheetBg').addEventListener('click', e => { if (e.target === $('adjSheetBg')) $('adjSheetBg').classList.remove('hz-open'); });
 $('adjPlus').addEventListener('click', () => { setAdjust(adjust() + 1); setViewToToday(); renderAdj(); tick(); renderCalendar(); });
