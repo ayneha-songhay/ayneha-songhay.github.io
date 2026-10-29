@@ -69,8 +69,13 @@ const LUNAR_MONTHS = [
 
 // Jours fériés (liste PROVISOIRE à valider par Maïgus ; noms songhay à fournir).
 // Grégoriens : [mois, jour]. Lunaires : [mois lunaire, jour lunaire].
-const FETES_GREG  = [[1,1],[1,20],[3,26],[5,1],[5,25],[9,22],[12,25]];
-const FETES_LUNAR = [[3,12],[10,1],[12,10]];
+// Fêtes d'indépendance des pays où vit une communauté songhay établie
+// depuis des siècles (dates grégoriennes) : [mois, jour, code, nom].
+const INDEP = [
+  [1,1,'SD','Soudan'], [3,6,'GH','Ghana'], [4,27,'TG','Togo'], [7,5,'DZ','Algérie'],
+  [8,1,'BJ','Bénin'], [8,3,'NE','Niger'], [8,5,'BF','Burkina Faso'], [8,7,'CI',"Côte d'Ivoire"],
+  [8,11,'TD','Tchad'], [9,22,'ML','Mali'], [10,1,'NG','Nigeria'], [11,18,'MA','Maroc']
+];
 
 /* =====================================================================
    MOTEUR D'AFFICHAGE RTL
@@ -93,20 +98,48 @@ const num = n => String(n).split('').map(c => DIG[+c]).join('');
 const num2 = n => num(String(n).padStart(2,'0'));
 
 /* =====================================================================
-   CALENDRIER LUNAIRE (arithmétique, cycle de 30 ans)
-   Vérifié sur les 5 dates de référence fournies par Maïgus.
+   CALENDRIER LUNAIRE, CALÉ SUR LA VRAIE LUNE
+   Chaque mois commence le soir où le premier croissant de lune est
+   visible à l'oeil nu depuis Gao (critère astronomique d'Odeh, 2004).
+   Ce soir-là, au coucher du soleil, commence le 1er jour du mois.
+   Les débuts de mois de 1979 à 2106 sont précalculés (éphémérides) et
+   rangés dans MOIS_LUNE : 1 bit par mois, 1 = mois de 30 jours,
+   0 = mois de 29 jours. En dehors de cette période : cycle arithmétique.
    ===================================================================== */
+const MOIS_LUNE = {jd0: 2444198.5, y0: 1400, n: 1572,
+  hex: 'cab64b725752ba95b4ab5956caae536c9ad4b6a96d4aea56d2ad555aa5b52ba93b49ba55aaab5556a9754b6a5ad2aea56d26e936c96d52d695b4aba4bb25b92baa5ad2aea575276956caae52ec96e4aea56d2ad655b25b92ba95b4aba55acab653749764b725754b6a56d2ae956aa6d52ba95d49da4dd2ab5556a9754baa5b52b695752b6936ca76536a96b4aba4bd25d92da95b52b6957527a93b49b6536a9b64b6a5754b5a56d2ad92dc95d4ada55aaab653749764bb25b52baa5ad2ae9574ab5935c95'};
 const ISL_EPOCH = 1948439.5;
 function gregToJd(y,m,d){ return Date.UTC(y,m-1,d)/86400000 + 2440587.5; }
-function islToJd(y,m,d){
+function islToJdA(y,m,d){
   return d + Math.ceil(29.5*(m-1)) + (y-1)*354 + Math.floor((3+11*y)/30) + ISL_EPOCH - 1;
+}
+function jdToIslA(jd){
+  jd = Math.floor(jd) + 0.5;
+  const y = Math.floor((30*(jd - ISL_EPOCH) + 10646) / 10631);
+  const m = Math.min(12, Math.ceil((jd - (29 + islToJdA(y,1,1))) / 29.5) + 1);
+  const d = jd - islToJdA(y,m,1) + 1;
+  return {y, m, d};
+}
+// MOIS_DEBUT[i] = jour julien du 1er jour du i-ème mois du tableau.
+const MOIS_DEBUT = (function(){
+  const t = [MOIS_LUNE.jd0];
+  for (let i = 0; i < MOIS_LUNE.n; i++) {
+    const bit = (parseInt(MOIS_LUNE.hex[i >> 2], 16) >> (3 - (i & 3))) & 1;
+    t.push(t[i] + (bit ? 30 : 29));
+  }
+  return t;
+})();
+function islToJd(y,m,d){
+  const i = (y - MOIS_LUNE.y0)*12 + (m - 1);
+  if (i >= 0 && i <= MOIS_LUNE.n) return MOIS_DEBUT[i] + d - 1;
+  return islToJdA(y,m,d);
 }
 function jdToIsl(jd){
   jd = Math.floor(jd) + 0.5;
-  const y = Math.floor((30*(jd - ISL_EPOCH) + 10646) / 10631);
-  const m = Math.min(12, Math.ceil((jd - (29 + islToJd(y,1,1))) / 29.5) + 1);
-  const d = jd - islToJd(y,m,1) + 1;
-  return {y, m, d};
+  if (jd < MOIS_DEBUT[0] || jd >= MOIS_DEBUT[MOIS_LUNE.n]) return jdToIslA(jd);
+  let lo = 0, hi = MOIS_LUNE.n - 1;
+  while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (MOIS_DEBUT[mid] <= jd) lo = mid; else hi = mid - 1; }
+  return {y: MOIS_LUNE.y0 + Math.floor(lo/12), m: lo % 12 + 1, d: jd - MOIS_DEBUT[lo] + 1};
 }
 // Date lunaire du jour (de jour) correspondant à une date grégorienne.
 function lunarOf(y,m,d){
@@ -161,20 +194,41 @@ function drawMoon(svg, date){
     `<path d="${lit}" fill="var(--moon-lit)"/>`;
 }
 
-/* Lundi de Pâques (jour férié au Mali), calcul de Meeus. */
-function easterMonday(y){
-  const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),
-        g2=Math.floor((b-f+1)/3),h=(19*a+b-d-g2+15)%30,i=Math.floor(c/4),k=c%4,
-        l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),
-        mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1;
-  const t = new Date(y, mo-1, da+1);
-  return [t.getMonth()+1, t.getDate()];
+// Noms des pays en anglais (page EN du site).
+const PAYS_EN = {SD:'Sudan', DZ:'Algeria', BJ:'Benin', TD:'Chad', MA:'Morocco'};
+const EN = (document.documentElement.lang || '').startsWith('en');
+/* Fêtes d'indépendance du jour (liste vide s'il n'y en a pas). */
+function fetesDu(m,d){ return INDEP.filter(f => f[0]===m && f[1]===d); }
+function isFete(y,m,d){ return fetesDu(m,d).length > 0; }
+
+/* Drapeaux dessinés (SVG 30 x 20), lisibles sans aucun texte. */
+function etoile(cx, cy, r, fill){
+  let p = '';
+  for (let i = 0; i < 10; i++) {
+    const a = -Math.PI/2 + i*Math.PI/5, rr = i % 2 ? r*0.382 : r;
+    p += (i ? 'L' : 'M') + (cx + rr*Math.cos(a)).toFixed(2) + ' ' + (cy + rr*Math.sin(a)).toFixed(2);
+  }
+  return `<path d="${p}Z" fill="${fill}"/>`;
 }
-function isFete(y,m,d,lun){
-  if (FETES_GREG.some(f => f[0]===m && f[1]===d)) return true;
-  const em = easterMonday(y);
-  if (em[0]===m && em[1]===d) return true;
-  return FETES_LUNAR.some(f => f[0]===lun.m && f[1]===lun.d);
+const R = (x,y,w,h,c) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${c}"/>`;
+const V3 = (a,b,c) => R(0,0,10,20,a) + R(10,0,10,20,b) + R(20,0,10,20,c);
+const H3 = (a,b,c) => R(0,0,30,6.67,a) + R(0,6.67,30,6.67,b) + R(0,13.33,30,6.67,c);
+const DRAPEAUX = {
+  ML: V3('#14B53A','#FCD116','#CE1126'),
+  CI: V3('#F77F00','#FFFFFF','#009E60'),
+  TD: V3('#002664','#FECB00','#C60C30'),
+  NG: V3('#008751','#FFFFFF','#008751'),
+  NE: H3('#E05206','#FFFFFF','#0DB02B') + '<circle cx="15" cy="10" r="2.6" fill="#E05206"/>',
+  GH: H3('#CE1126','#FCD116','#006B3F') + etoile(15, 10.4, 3.2, '#000000'),
+  BF: R(0,0,30,10,'#EF2B2D') + R(0,10,30,10,'#009E49') + etoile(15, 10.4, 3.4, '#FCD116'),
+  BJ: R(0,0,12,20,'#008751') + R(12,0,18,10,'#FCD116') + R(12,10,18,10,'#E8112D'),
+  TG: R(0,0,30,20,'#006A4E') + R(0,4,30,4,'#FFCE00') + R(0,12,30,4,'#FFCE00') + R(0,0,12,12,'#D21034') + etoile(6, 6.4, 3.4, '#FFFFFF'),
+  SD: H3('#D21034','#FFFFFF','#000000') + '<path d="M0 0L11 10L0 20Z" fill="#007229"/>',
+  DZ: R(0,0,15,20,'#006633') + R(15,0,15,20,'#FFFFFF') + '<path d="M19.11 7.15A5 5 0 1 0 19.11 12.85A4 4 0 1 1 19.11 7.15Z" fill="#D21034"/>' + etoile(17.6, 10, 2.1, '#D21034'),
+  MA: R(0,0,30,20,'#C1272D') + '<path d="M15 5.6L17.6 13.6L10.8 8.6H19.2L12.4 13.6Z" fill="none" stroke="#006233" stroke-width="0.9" stroke-linejoin="round"/>'
+};
+function drapeau(code){
+  return `<svg class="hz-flag" viewBox="0 0 30 20" aria-hidden="true">${DRAPEAUX[code]}</svg>`;
 }
 
 /* =====================================================================
@@ -348,7 +402,7 @@ function renderCalendar(){
     const big = document.createElement('span'); big.className = 'hz-big'; big.appendChild(ay(num(lun.d)));
     const small = document.createElement('span'); small.className = 'hz-small'; small.appendChild(ay(num(g.d)));
     cell.append(big, small);
-    if (isFete(g.y, g.m, g.d, lun)) { const f = document.createElement('span'); f.className = 'hz-fete'; cell.appendChild(f); }
+    if (isFete(g.y, g.m, g.d)) { const f = document.createElement('span'); f.className = 'hz-fete'; cell.appendChild(f); }
     cell.addEventListener('click', () => openDay(g.y, g.m-1, g.d));
     days.appendChild(cell);
   }
@@ -386,6 +440,7 @@ function openDay(y, m, d){
   put($('dsYear'), num(lun.y));
   drawMoon($('dsMoon'), date);
   put($('dsGreg'), gregText(y, m+1, d));
+  $('dsFetes').innerHTML = fetesDu(m+1, d).map(f => `<span class="hz-fete-pays">${drapeau(f[2])}<span class="hz-pays">${EN && PAYS_EN[f[2]] || f[3]}</span></span>`).join('');
   $('daySheetBg').classList.add('hz-open');
 }
 $('daySheetBg').addEventListener('click', () => $('daySheetBg').classList.remove('hz-open'));

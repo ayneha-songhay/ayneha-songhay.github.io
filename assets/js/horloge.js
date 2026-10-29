@@ -3,7 +3,7 @@
    SPDX-License-Identifier: GPL-3.0-or-later
    Noms des jours et des mois : écriture de l'auteur (reprise de l'horloge AYNEHA).
    Mêmes calculs que la page Horloge (assets/js/horloge-page.js) : calendrier lunaire
-   arithmétique, année lunaire = année de l'Hégire + 2577, jour lunaire qui change au
+   calé sur la vraie lune, année lunaire = année de l'Hégire + 2577, jour lunaire qui change au
    coucher du soleil (Gao). Tout est en ordre logique et s'affiche de droite à gauche
    grâce à la classe .ay. La page complète de l'horloge utilise horloge-page.js. */
 (function () {
@@ -26,9 +26,19 @@
 
   var DECALAGE_ANNEE = 2577, EPOQUE = 1948439.5, LAT = 16.2666, LON = -0.0447;
   function versJd(y, m, d) { return Date.UTC(y, m - 1, d) / 86400000 + 2440587.5; }
+  // Débuts de mois calés sur la vraie lune (premier croissant visible à
+  // l'oeil nu depuis Gao, critère d'Odeh), même tableau que la page Horloge.
+  var TAB = { jd0: 2444198.5, y0: 1400, n: 1572, hex: "cab64b725752ba95b4ab5956caae536c9ad4b6a96d4aea56d2ad555aa5b52ba93b49ba55aaab5556a9754b6a5ad2aea56d26e936c96d52d695b4aba4bb25b92baa5ad2aea575276956caae52ec96e4aea56d2ad655b25b92ba95b4aba55acab653749764b725754b6a56d2ae956aa6d52ba95d49da4dd2ab5556a9754baa5b52b695752b6936ca76536a96b4aba4bd25d92da95b52b6957527a93b49b6536a9b64b6a5754b5a56d2ad92dc95d4ada55aaab653749764bb25b52baa5ad2ae9574ab5935c95" };
+  var DEBUT = [TAB.jd0];
+  for (var i = 0; i < TAB.n; i++) DEBUT.push(DEBUT[i] + (((parseInt(TAB.hex[i >> 2], 16) >> (3 - (i & 3))) & 1) ? 30 : 29));
   function lunJd(y, m, d) { return d + Math.ceil(29.5 * (m - 1)) + (y - 1) * 354 + Math.floor((3 + 11 * y) / 30) + EPOQUE - 1; }
   function versLun(jd) {
     jd = Math.floor(jd) + 0.5;
+    if (jd >= DEBUT[0] && jd < DEBUT[TAB.n]) {
+      var lo = 0, hi = TAB.n - 1;
+      while (lo < hi) { var mid = (lo + hi + 1) >> 1; if (DEBUT[mid] <= jd) lo = mid; else hi = mid - 1; }
+      return { y: TAB.y0 + Math.floor(lo / 12), m: lo % 12 + 1, d: jd - DEBUT[lo] + 1 };
+    }
     var y = Math.floor((30 * (jd - EPOQUE) + 10646) / 10631);
     var m = Math.min(12, Math.ceil((jd - (29 + lunJd(y, 1, 1))) / 29.5) + 1);
     return { y: y, m: m, d: jd - lunJd(y, m, 1) + 1 };
