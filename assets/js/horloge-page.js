@@ -22,9 +22,9 @@ if (!ROOT) return;
 // Année songhay lunaire = année de l'Hégire + 2577 (calée sur les dates de
 // référence : 15 juillet 2025 = 19e jour du 1er mois 4024).
 const LUNAR_YEAR_OFFSET = 2577;
-// Année affichée sur la ligne grégorienne = année grégorienne + 2001
-// (convention de la version 1.1, en attente de confirmation).
-const GREG_YEAR_OFFSET = 2001;
+// Partie grégorienne : vraie année, vrai mois et vrai jour grégoriens,
+// simplement écrits en chiffres AYNEHA (aucun décalage).
+const GREG_YEAR_OFFSET = 0;
 // Premier jour de la semaine : samedi (duhãtedji) ; dernier : vendredi (zĩbuza).
 // (0 = dimanche ... 6 = samedi)
 const WEEK_START = 6;
