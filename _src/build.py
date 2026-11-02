@@ -139,6 +139,8 @@ def etiquette(a, en=False):
     st = a.get("statut")
     if st == "nouveau":
         return f'<span class="etiquette">{"New" if en else "Nouveau"}</span>'
+    if st == "test":
+        return f'<span class="etiquette">{"Test version" if en else "Version de test"}</span>'
     if st == "preparation":
         return f'<span class="etiquette etiquette-calme">{"In preparation" if en else "En préparation"}</span>'
     return ""
@@ -272,7 +274,7 @@ def page_app(a, en=False):
         <p class="doux">{E(a['compat'])}</p>
         {reglages}
         <h3>{T("Confidentialité", "Privacy")}</h3>
-        <p class="doux">{E(APPS_EN.CONFIDENTIALITE if en else APPS.CONFIDENTIALITE)}</p>
+        <p class="doux">{E(a.get("confidentialite") or (APPS_EN.CONFIDENTIALITE if en else APPS.CONFIDENTIALITE))}</p>
         {code}
         <p class="petit"><a href="confidentialite-{a['id']}.html">{T("Politique de confidentialité complète", "Full privacy policy")}</a></p>
         <p class="petit"><a href="installer-apk.html">{T("Installer un fichier APK", "Installing an APK file")}</a></p>
@@ -808,8 +810,8 @@ def main():
     majs = []
     for app in APPS.APPS:
         apk = app.get("apk") or ""
-        if not apk:
-            continue
+        if not apk or app.get("mise_a_jour") is False:
+            continue  # pas d'APK, ou application sans mise à jour depuis ayneha.org (ex. Margey, sans Internet)
         item = {"id": app["id"], "version": app.get("version", ""),
                 "apk": apk if apk.startswith("http") else SITE_URL + "/" + apk}
         local = os.path.join(RACINE, apk)

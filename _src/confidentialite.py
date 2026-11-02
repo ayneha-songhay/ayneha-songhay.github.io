@@ -105,6 +105,24 @@ ANDROID = [
             PAS_DE_SUIVI, MODIFS,
         ],
     },
+    {
+        "id": "ayneha-margey", "maj": "2 novembre 2026", "nom": "AYNEHA Margey", "type": "Application Android",
+        "intro": "AYNEHA Margey (affichée « Margey ») est une messagerie qui fonctionne sans Internet : les téléphones proches se parlent en Bluetooth et relaient les messages des autres.",
+        "sections": [
+            ("Aucune donnée collectée", "Pas de compte, pas de numéro de téléphone, pas de serveur, pas de publicité, pas de traceur. L'application n'a même pas l'autorisation d'accéder à Internet : tout reste sur les téléphones."),
+            ("Votre identité", "Au premier lancement, votre téléphone crée lui-même votre code unique, sans connexion. Seuls votre pseudo et ce code sont visibles par les personnes à qui vous les montrez (code QR). Vous pouvez changer votre pseudo à tout moment."),
+            ("Vos messages", "Les messages sont enregistrés uniquement sur votre téléphone et sur celui de votre correspondant. Les messages privés sont chiffrés de bout en bout : seul le destinataire peut les lire."),
+            ("Le relais (réseau maillé)", "Chaque téléphone qui a Margey relaie automatiquement les messages des autres pour faire vivre le réseau. Un message privé relayé reste chiffré : votre téléphone le transporte sans pouvoir le lire. Si vous désactivez le Bluetooth, vous devenez indisponible jusqu'à sa réactivation."),
+            ("Les salons", "Les messages d'un salon sont publics : tous les téléphones à portée du salon peuvent les lire. Ils sont effacés après la durée choisie, de 3 jours au minimum à 90 jours au maximum. Un salon accueille 500 personnes au maximum."),
+            ("Les groupes privés", "On entre dans un groupe uniquement en scannant son code QR d'invitation : ne le montrez qu'aux personnes invitées. Les messages du groupe sont chiffrés : seuls les membres peuvent les lire, les autres téléphones les relaient sans pouvoir les lire. Un groupe accueille 100 personnes au maximum. Ses messages ne s'effacent jamais d'eux-mêmes ; seul l'effacement d'urgence ou la sortie du groupe les supprime de votre téléphone."),
+            ("Permissions", "Bluetooth et appareils à proximité : trouver les téléphones proches, envoyer et relayer les messages. Wi-Fi (sans Internet) : liaison directe entre téléphones compatibles. Localisation : exigée par Android sur certains téléphones pour la recherche Bluetooth ; Margey n'enregistre ni n'envoie jamais votre position. Caméra : scanner un code QR, uniquement quand vous le demandez. Micro : messages vocaux, uniquement pendant l'enregistrement. Notifications : vous avertir d'un nouveau message. Aucune autorisation Internet."),
+            ("Partage en image", "L'image d'un message est créée sur votre téléphone, seulement pour l'application que vous choisissez. Margey ne la conserve pas et ne l'envoie nulle part ailleurs."),
+            ("Effacer vos données", "Vous pouvez tout effacer d'un coup avec l'effacement d'urgence, dans les Réglages. Vous pouvez aussi choisir l'effacement automatique des discussions privées. Désinstaller l'application supprime tout ce qu'elle contient."),
+            ("Mises à jour", "Margey n'ayant pas accès à Internet, elle ne cherche pas de nouvelle version elle-même : les nouvelles versions se téléchargent sur ayneha.org."),
+            MODIFS,
+            ("Logiciel libre", "AYNEHA Margey est un logiciel libre développé par MAIGUS avec l'aide d'outils d'intelligence artificielle (Claude, Anthropic), à partir du projet libre bitchat (GPL v3). Code sous licence GNU GPL v3 ou ultérieure, police AYNEHA sous SIL Open Font License 1.1, logos, images et textes sous CC BY-SA 4.0. Code source : https://github.com/maigus223/ayneha-margey"),
+        ],
+    },
 ]
 
 WEB = [
