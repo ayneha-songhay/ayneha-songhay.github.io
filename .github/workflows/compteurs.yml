@@ -1,11 +1,11 @@
-# Met à jour chaque jour le nombre de téléchargements des applications AYNEHA,
+# Met à jour toutes les 6 heures le nombre de téléchargements des applications AYNEHA,
 # lu dans les « Releases » publiques des dépôts maigus223 (chiffres comptés par GitHub).
 # Peut aussi être lancé à la main : onglet Actions > « Compteurs de téléchargements » > Run workflow.
 name: Compteurs de téléchargements
 
 on:
   schedule:
-    - cron: "17 5 * * *"   # chaque jour vers 5 h 17 (heure de Gao, UTC)
+    - cron: "17 */6 * * *"   # toutes les 6 heures (5 h 17, 11 h 17, 17 h 17, 23 h 17, heure de Gao)
   workflow_dispatch:
 
 permissions:
