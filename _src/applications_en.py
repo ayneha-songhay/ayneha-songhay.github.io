@@ -182,17 +182,19 @@ TEXTES = {
         "compat": "Android 8 or newer. Works offline.",
     },
     "ayneha-margey": {
-        "resume": "Messaging without Internet: phones talk over Bluetooth and relay messages.",
+        "titre": "Margey - messaging without Internet, in AYNEHA, French or English",
+        "resume": "Messaging without Internet for everyone, in AYNEHA, French or English: phones talk over Bluetooth and relay messages.",
         "confidentialite": "No account, no phone number, no server, no advertising. The app has no Internet access: your messages stay on the phones.",
         "intro": [
-            "AYNEHA Margey (shown as \"Margey\") is a messaging app that works without Internet, without an account and without a server. Nearby phones talk over Bluetooth and form a mesh network: each phone relays the messages of the others, from one phone to the next.",
-            "It is designed for villages, markets, gatherings and every place where the connection is missing. The interface exists in three languages: AYNEHA, French and English.",
+            "Margey is a messaging app that works without Internet, without an account and without a server. Nearby phones talk over Bluetooth and form a mesh network: each phone relays the messages of the others, from one phone to the next.",
+            "Margey is not only for people who write AYNEHA: it is made for everyone. It can be used in AYNEHA, French or English, and you can switch language at any time. Those who wish can discover AYNEHA by seeing the same labels in their own language.",
+            "It is designed for villages, markets, gatherings and every place where the connection is missing, in Mali and elsewhere.",
         ],
         "reserve": "Test version. The mesh network works better when many nearby phones have Margey. A few labels not yet translated are shown in French for now. Your feedback helps improve the app.",
         "points": [
             "No Internet, no account, no phone number and no server: the app does not even have permission to access the Internet",
             "Mesh network: phones talk over Bluetooth (and Wi-Fi Aware when it is on) and each phone relays the messages of the others, up to 20 hops",
-            "Three languages: AYNEHA, French and English. Chosen at first launch, then at any time with the globe icon at the top of each screen; in AYNEHA, the whole interface reads from right to left",
+            "For everyone, in three languages: AYNEHA, French and English. Chosen at first launch, then at any time with the globe icon at the top of each screen; in AYNEHA, the whole interface reads from right to left",
             "Built-in AYNEHA keyboard, or the phone's usual keyboard, as you prefer",
             "Private messages encrypted end to end: only the recipient can read them",
             "Couriers: a message for someone who is away is sealed with their key and carried by other phones for 7 days, without them being able to read it",

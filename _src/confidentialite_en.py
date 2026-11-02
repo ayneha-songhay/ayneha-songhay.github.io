@@ -106,8 +106,8 @@ ANDROID = [
         ],
     },
     {
-        "id": "ayneha-margey", "maj": "2 November 2026", "nom": "AYNEHA Margey", "type": "Android app",
-        "intro": "AYNEHA Margey (shown as \"Margey\") is a messaging app that works without Internet: nearby phones talk over Bluetooth and relay each other's messages.",
+        "id": "ayneha-margey", "maj": "2 November 2026", "nom": "Margey", "type": "Android app",
+        "intro": "Margey is a messaging app, usable by everyone in AYNEHA, French or English, that works without Internet: nearby phones talk over Bluetooth and relay each other's messages.",
         "sections": [
             ("No data collected", "No account, no phone number, no server, no advertising, no tracker. The app does not even have permission to access the Internet: everything stays on the phones."),
             ("Your identity", "At first launch, your phone creates your unique code by itself, offline. Only your nickname and this code are visible to the people you show them to (QR code). You can change your nickname at any time."),
@@ -120,7 +120,7 @@ ANDROID = [
             ("Deleting your data", "You can erase everything at once with the emergency wipe, in the Settings. You can also choose automatic deletion of private chats. Uninstalling the app removes everything it contains."),
             ("Updates", "As Margey has no Internet access, it does not look for new versions by itself: new versions are downloaded from ayneha.org."),
             CHANGES,
-            ("Free software", "AYNEHA Margey is free software developed by MAIGUS with the help of artificial intelligence tools (Claude, Anthropic), based on the free project bitchat (GPL v3). Code under the GNU GPL v3 or later, AYNEHA font under the SIL Open Font License 1.1, logos, images and texts under CC BY-SA 4.0. Source code: https://github.com/maigus223/ayneha-margey"),
+            ("Free software", "Margey is free software developed by MAIGUS with the help of artificial intelligence tools (Claude, Anthropic), based on the free project bitchat (GPL v3). Code under the GNU GPL v3 or later, AYNEHA font under the SIL Open Font License 1.1, logos, images and texts under CC BY-SA 4.0. Source code: https://github.com/maigus223/ayneha-margey"),
         ],
     },
 ]

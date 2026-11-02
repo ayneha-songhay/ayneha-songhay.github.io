@@ -106,8 +106,8 @@ ANDROID = [
         ],
     },
     {
-        "id": "ayneha-margey", "maj": "2 novembre 2026", "nom": "AYNEHA Margey", "type": "Application Android",
-        "intro": "AYNEHA Margey (affichée « Margey ») est une messagerie qui fonctionne sans Internet : les téléphones proches se parlent en Bluetooth et relaient les messages des autres.",
+        "id": "ayneha-margey", "maj": "2 novembre 2026", "nom": "Margey", "type": "Application Android",
+        "intro": "Margey est une messagerie, utilisable par tout le monde en AYNEHA, en français ou en anglais, qui fonctionne sans Internet : les téléphones proches se parlent en Bluetooth et relaient les messages des autres.",
         "sections": [
             ("Aucune donnée collectée", "Pas de compte, pas de numéro de téléphone, pas de serveur, pas de publicité, pas de traceur. L'application n'a même pas l'autorisation d'accéder à Internet : tout reste sur les téléphones."),
             ("Votre identité", "Au premier lancement, votre téléphone crée lui-même votre code unique, sans connexion. Seuls votre pseudo et ce code sont visibles par les personnes à qui vous les montrez (code QR). Vous pouvez changer votre pseudo à tout moment."),
@@ -120,7 +120,7 @@ ANDROID = [
             ("Effacer vos données", "Vous pouvez tout effacer d'un coup avec l'effacement d'urgence, dans les Réglages. Vous pouvez aussi choisir l'effacement automatique des discussions privées. Désinstaller l'application supprime tout ce qu'elle contient."),
             ("Mises à jour", "Margey n'ayant pas accès à Internet, elle ne cherche pas de nouvelle version elle-même : les nouvelles versions se téléchargent sur ayneha.org."),
             MODIFS,
-            ("Logiciel libre", "AYNEHA Margey est un logiciel libre développé par MAIGUS avec l'aide d'outils d'intelligence artificielle (Claude, Anthropic), à partir du projet libre bitchat (GPL v3). Code sous licence GNU GPL v3 ou ultérieure, police AYNEHA sous SIL Open Font License 1.1, logos, images et textes sous CC BY-SA 4.0. Code source : https://github.com/maigus223/ayneha-margey"),
+            ("Logiciel libre", "Margey est un logiciel libre développé par MAIGUS avec l'aide d'outils d'intelligence artificielle (Claude, Anthropic), à partir du projet libre bitchat (GPL v3). Code sous licence GNU GPL v3 ou ultérieure, police AYNEHA sous SIL Open Font License 1.1, logos, images et textes sous CC BY-SA 4.0. Code source : https://github.com/maigus223/ayneha-margey"),
         ],
     },
 ]

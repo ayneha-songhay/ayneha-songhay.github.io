@@ -752,13 +752,13 @@ def main():
         produits.append("en/" + nom)
 
     for a in APPS.APPS:
-        meta = {"title": f"{a['nom']} - application Android AYNEHA", "description": a["resume"] + " " + a["intro"][0][:110],
+        meta = {"title": a.get("titre") or f"{a['nom']} - application Android AYNEHA", "description": a["resume"] + " " + a["intro"][0][:110],
                 "nav": "applications", "_file": a["id"] + ".html", "image": f"assets/img/apps/{a['id']}-couverture.jpg"}
         with open(os.path.join(RACINE, a["id"] + ".html"), "w", encoding="utf-8") as fh:
             fh.write(page(meta, macros(page_app(a))))
         produits.append(a["id"] + ".html")
         b = app_en(a)
-        meta = {"title": f"{a['nom']} - AYNEHA Android app", "description": b["resume"] + " " + b["intro"][0][:110],
+        meta = {"title": b.get("titre") or f"{a['nom']} - AYNEHA Android app", "description": b["resume"] + " " + b["intro"][0][:110],
                 "nav": "applications", "_file": a["id"] + ".html", "image": f"assets/img/apps/{a['id']}-couverture.jpg"}
         with open(os.path.join(RACINE, "en", a["id"] + ".html"), "w", encoding="utf-8") as fh:
             fh.write(relier_en(page(meta, macros(page_app(a, True), "en"), "en")))
