@@ -1,0 +1,48 @@
+{
+  "maj": "2026-11-02",
+  "total": 2,
+  "applications": {
+    "ayneha-school": {
+      "total": 0,
+      "depuis": "2026-10-19",
+      "version": "1.3.0",
+      "lien": "https://github.com/maigus223/ayneha-school/releases/download/v1.3.0/AYNEHA-School-v1-3-0-.apk"
+    },
+    "ayneha-home": {
+      "total": 0,
+      "depuis": "2026-10-19",
+      "version": "2.0.0",
+      "lien": "https://github.com/maigus223/ayneha-home/releases/download/v2.0.0/AYNEHA-Home-v-2-0-0-.apk"
+    },
+    "ayneha-keyboard": {
+      "total": 0,
+      "depuis": "2026-10-19",
+      "version": "2.5.0",
+      "lien": "https://github.com/maigus223/ayneha-keyboard/releases/download/v2.5.0/AYNEHA-Keybord-v-2-5-0-.apk"
+    },
+    "ayneha-calc": {
+      "total": 0,
+      "depuis": "2026-10-19",
+      "version": "1.3.0",
+      "lien": "https://github.com/maigus223/ayneha-calculator/releases/download/v1.3.0/AYNEHA-Calc-v-1-3-0-.apk"
+    },
+    "ayneha-horloge": {
+      "total": 2,
+      "depuis": "2026-10-19",
+      "version": "2.2.2",
+      "lien": "https://github.com/maigus223/ayneha-horloge/releases/download/v2.2.2/AYNEHA-Horloge-2.2.2.apk"
+    },
+    "ayneha-numconvert": {
+      "total": 0,
+      "depuis": "2026-10-19",
+      "version": "1.3.0",
+      "lien": "https://github.com/maigus223/ayneha-numconvert/releases/download/v1.3.0/AYNEHA-NumCconvert-v-1-3-0-.apk"
+    },
+    "ayneha-carnet": {
+      "total": 0,
+      "depuis": "2026-10-19",
+      "version": "1.1.0",
+      "lien": "https://github.com/maigus223/ayneha-carnet/releases/download/v1.1.0/AYNEHA-Carnet-v1-1-0-.apk"
+    }
+  }
+}
