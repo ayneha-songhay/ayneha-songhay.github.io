@@ -161,6 +161,7 @@ def rendu_apps_grille():
   {logo_app(a)}
   <span><strong>{E(a['nom'])}</strong> {etiquette(a)}</span>
   <span class="doux">{E(a['resume'])}</span>
+  <span class="petit doux compteur" data-compteur="{a['id']}" hidden></span>
 </a>""")
     return '<div class="grille-apps">' + "\n".join(cartes) + "</div>"
 
@@ -186,9 +187,12 @@ def boutons_app(a, en=False):
         except OSError:
             pass
         lib = "Download the app" if en else "Télécharger l&#39;application"
-        out.append(f'<a class="btn" href="{a["apk"]}" download>{lib}{f" ({taille})" if taille else ""}</a>')
+        # data-app : site.js remplace le lien par l'APK de la release GitHub de même version
+        # (téléchargement compté par GitHub) ; sans cela, le fichier du site reste utilisé.
+        out.append(f'<a class="btn" href="{a["apk"]}" data-app="{a["id"]}" data-version="{a.get("version", "")}" download>{lib}{f" ({taille})" if taille else ""}</a>')
         if a.get("version"):
             out.append(f'<p class="petit doux" style="margin:8px 0 0">{"Version" if en else "Version"} {a["version"]} - {"APK file for Android" if en else "fichier APK pour Android"}</p>')
+        out.append(f'<p class="petit doux compteur" data-compteur="{a["id"]}" style="margin:4px 0 0" hidden></p>')
     else:
         out.append(f'<span class="btn" aria-disabled="true">{"Download coming soon" if en else "Téléchargement bientôt disponible"}</span>')
     return "".join(out)
@@ -831,7 +835,7 @@ def main():
             chemin = os.path.normpath(os.path.join(rel, n)).replace(os.sep, "/")
             if chemin.startswith("./"):
                 chemin = chemin[2:]
-            if chemin in ("manifest.json", "version.txt", "mises-a-jour.json", "sitemap.xml", "robots.txt", "README.md", "LICENSE", ".gitignore", "_headers", "netlify.toml") or n.startswith("."):
+            if chemin in ("manifest.json", "version.txt", "mises-a-jour.json", "assets/data/telechargements.json", "sitemap.xml", "robots.txt", "README.md", "LICENSE", ".gitignore", "_headers", "netlify.toml") or n.startswith("."):
                 continue
             if chemin.startswith("assets/telechargements/"):
                 continue  # fichiers à télécharger : pas besoin de les embarquer dans l'appli

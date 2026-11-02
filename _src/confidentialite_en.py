@@ -115,6 +115,7 @@ WEB = [
             ("No data collected", "No cookies, no trackers, no audience measurement, no advertising."),
             ("No third-party services", "Fonts and scripts are hosted on the website itself: when displaying the pages, your browser does not contact any other service."),
             ("Hosting", "The website is hosted by GitHub Pages, which may record technical connection information (such as the IP address) to provide the service and keep it secure."),
+            ("App downloads", "The app files are stored on GitHub (in the source code repositories). When you tap the Download button, the file comes from GitHub, which counts the total number of downloads (like any host, GitHub may also record technical connection information). This total is shown on the website; no tracker or analytics tool is used."),
             ("External links", "Links to other websites (Omniglot, social networks, Google Drive) lead to services that have their own rules."),
             CHANGES,
         ],

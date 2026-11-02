@@ -6,6 +6,8 @@
 #   - "apk" : lien du fichier APK (par ex. "assets/telechargements/ayneha-school.apk"
 #     ou ".../releases/latest/download/xxx.apk") ; "" = bouton « bientôt » ;
 #   - "code" : dépôt du code source ; "" = pas de lien ;
+#   - "depot" : dépôt GitHub dont les « Releases » servent à compter les téléchargements
+#     (lu chaque jour par .github/workflows/compteurs.yml) ;
 #   - logo et couverture : remplacer assets/img/apps/<id>-logo.png et <id>-couverture.jpg
 #     par les vrais fichiers (mêmes noms), puis relancer  python3 _src/build.py
 
@@ -49,7 +51,8 @@ APPS = [
         "reglages": "Thème automatique, clair ou sombre ; taille du texte AYNEHA ; pseudo et horodatage pour les images partagées.",
         "apk": "assets/telechargements/AYNEHA-School-1.3.0.apk",
         "version": "1.3.0",
-        "code": "",
+        "code": "https://github.com/maigus223/ayneha-school",
+        "depot": "maigus223/ayneha-school",
     },
     {
         "id": "ayneha-home",
@@ -79,7 +82,8 @@ APPS = [
         "compat": "Android 7 ou plus récent. Utilise internet seulement pour mettre à jour le contenu.",
         "apk": "assets/telechargements/AYNEHA-Home-2.0.0.apk",
         "version": "2.0.0",
-        "code": "",
+        "code": "https://github.com/maigus223/ayneha-home",
+        "depot": "maigus223/ayneha-home",
     },
     {
         "id": "ayneha-keyboard",
@@ -110,7 +114,8 @@ APPS = [
         "reglages": "Vibration au toucher ; horodatage sur les images partagées ; pseudo affiché sur les images (20 caractères au plus).",
         "apk": "assets/telechargements/AYNEHA-Keyboard-2.5.0.apk",
         "version": "2.5.0",
-        "code": "",
+        "code": "https://github.com/maigus223/ayneha-keyboard",
+        "depot": "maigus223/ayneha-keyboard",
     },
     {
         "id": "ayneha-calc",
@@ -138,7 +143,8 @@ APPS = [
         "compat": "Android 7 ou plus récent. Fonctionne sans connexion.",
         "apk": "assets/telechargements/AYNEHA-Calc-1.3.0.apk",
         "version": "1.3.0",
-        "code": "",
+        "code": "https://github.com/maigus223/ayneha-calculator",
+        "depot": "maigus223/ayneha-calculator",
         "outil": ("calculatrice.html", "Essayer la calculatrice en ligne"),
     },
     {
@@ -167,7 +173,8 @@ APPS = [
         "compat": "Android 7 ou plus récent.",
         "apk": "assets/telechargements/AYNEHA-Horloge-2.2.2.apk",
         "version": "2.2.2",
-        "code": "",
+        "code": "https://github.com/maigus223/ayneha-horloge",
+        "depot": "maigus223/ayneha-horloge",
         "outil": ("horloge.html", "Voir l'horloge en ligne"),
     },
     {
@@ -195,6 +202,7 @@ APPS = [
         "apk": "assets/telechargements/AYNEHA-NumConvert-1.3.0.apk",
         "version": "1.3.0",
         "code": "https://github.com/maigus223/ayneha-numconvert",
+        "depot": "maigus223/ayneha-numconvert",
         "outil": ("nombres.html", "Essayer le convertisseur en ligne"),
     },
     {
@@ -229,6 +237,7 @@ APPS = [
         "compat": "Android 8 ou plus récent. Fonctionne sans connexion.",
         "apk": "assets/telechargements/AYNEHA-Carnet-1.1.0.apk",
         "version": "1.1.0",
-        "code": "",
+        "code": "https://github.com/maigus223/ayneha-carnet",
+        "depot": "maigus223/ayneha-carnet",
     },
 ]

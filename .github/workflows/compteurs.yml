@@ -1,0 +1,40 @@
+# Met à jour chaque jour le nombre de téléchargements des applications AYNEHA,
+# lu dans les « Releases » publiques des dépôts maigus223 (chiffres comptés par GitHub).
+# Peut aussi être lancé à la main : onglet Actions > « Compteurs de téléchargements » > Run workflow.
+name: Compteurs de téléchargements
+
+on:
+  schedule:
+    - cron: "17 5 * * *"   # chaque jour vers 5 h 17 (heure de Gao, UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: construire
+  cancel-in-progress: false
+
+jobs:
+  compter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compter
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 _src/compteurs.py
+      - name: Enregistrer le résultat
+        run: |
+          git config user.name "MAIGUS"
+          git config user.email "gwokmt2q@duck.com"
+          git add assets/data/telechargements.json
+          if git diff --cached --quiet; then
+            echo "Rien à enregistrer."
+          else
+            git commit -m "Compteurs de téléchargements"
+            git push
+          fi

@@ -29,6 +29,49 @@
     maj();
   }
 
+  /* Compteurs de téléchargements : lus dans assets/data/telechargements.json
+     (fichier du site, mis à jour chaque jour à partir des chiffres de GitHub).
+     Aucun service tiers n'est contacté à l'affichage de la page. */
+  var cibles = document.querySelectorAll("[data-compteur], [data-app], [data-total-telechargements]");
+  if (cibles.length && window.fetch) {
+    var en = (document.documentElement.lang || "fr").indexOf("en") === 0;
+    var nombre = function (n) { return n.toLocaleString(en ? "en" : "fr-FR"); };
+    var src = (document.currentScript && document.currentScript.src) || "";
+    var base = src.indexOf("assets/js/site.js") > -1 ? src.split("assets/js/site.js")[0] : "";
+    fetch(base + "assets/data/telechargements.json", { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d || !d.applications) { return; }
+        Array.prototype.forEach.call(document.querySelectorAll("[data-app]"), function (b) {
+          var a = d.applications[b.getAttribute("data-app")];
+          if (a && a.lien && a.version === b.getAttribute("data-version")) {
+            b.href = a.lien;
+            b.removeAttribute("download");
+          }
+        });
+        Array.prototype.forEach.call(document.querySelectorAll("[data-compteur]"), function (el) {
+          var a = d.applications[el.getAttribute("data-compteur")];
+          if (!a || !a.total) { return; }
+          el.textContent = en
+            ? "Downloaded " + nombre(a.total) + (a.total > 1 ? " times" : " time")
+            : "Téléchargée " + nombre(a.total) + " fois";
+          el.hidden = false;
+        });
+        Array.prototype.forEach.call(document.querySelectorAll("[data-total-telechargements]"), function (el) {
+          if (!d.total) { return; }
+          var n = el.querySelector("[data-total]");
+          if (n) { n.textContent = nombre(d.total); }
+          var m = el.querySelector("[data-maj]");
+          if (m && d.maj) {
+            var p = d.maj.split("-");
+            m.textContent = en ? d.maj : p[2] + "/" + p[1] + "/" + p[0];
+          }
+          el.hidden = false;
+        });
+      })
+      .catch(function () {});
+  }
+
   /* Copie dans le presse-papiers avec repli pour les anciens navigateurs. */
   window.aynehaCopier = function (texte) {
     function repli() { return new Promise(function (ok, ko) {

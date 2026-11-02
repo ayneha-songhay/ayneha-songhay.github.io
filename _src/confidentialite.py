@@ -115,6 +115,7 @@ WEB = [
             ("Aucune donnée collectée", "Aucun cookie, aucun traceur, aucune mesure d'audience, aucune publicité."),
             ("Aucun service tiers", "Les polices et les scripts sont hébergés sur le site lui-même : en affichant les pages, votre navigateur ne contacte aucun autre service."),
             ("Hébergement", "Le site est hébergé par GitHub Pages, qui peut enregistrer des informations techniques de connexion (comme l'adresse IP) pour assurer le service et sa sécurité."),
+            ("Téléchargements des applications", "Les fichiers des applications sont déposés sur GitHub (dépôts du code source). Quand vous touchez « Télécharger l'application », le fichier vient de GitHub, qui compte le nombre total de téléchargements (comme tout hébergeur, GitHub peut aussi enregistrer des informations techniques de connexion). Ce total est affiché sur le site ; aucun traceur ni outil d'analyse n'est utilisé."),
             ("Liens externes", "Les liens vers d'autres sites (Omniglot, réseaux sociaux, Google Drive) mènent à des services qui ont leurs propres règles."),
             MODIFS,
         ],
