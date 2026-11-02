@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/ayneha-pro.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=20261101111438">
+<link rel="stylesheet" href="assets/css/site.css?v=20261102135327">
 
 </head>
 <body>
@@ -57,6 +57,7 @@
   <div class="wrap">
     <h1>Les applications AYNEHA</h1>
     <p>Des applications Android gratuites, sans publicité, sans compte et sans collecte de données. Elles se téléchargent directement sur ce site.</p>
+    <p class="petit" data-total-telechargements hidden>Téléchargements comptés depuis la mise en ligne des fichiers : <strong data-total></strong> au total (chiffres comptés par GitHub, où sont déposés les fichiers, et mis à jour chaque jour ; dernière mise à jour le <span data-maj></span>).</p>
     <p class="note-plateforme">Pour l'instant, les applications existent seulement pour Android. Il n'y a pas encore de version pour iPhone (iOS) : sur iPhone, utilisez les <a href="outils.html">outils en ligne</a>, qui marchent dans le navigateur.</p>
     <nav class="pages-ancres apps-nav" aria-label="Pages des applications"><a href="ayneha-school.html">AYNEHA School</a><a href="ayneha-home.html">AYNEHA Home</a><a href="ayneha-keyboard.html">AYNEHA Keyboard</a><a href="ayneha-calc.html">AYNEHA Calc</a><a href="ayneha-horloge.html">AYNEHA Horloge</a><a href="ayneha-numconvert.html">AYNEHA NumConvert</a><a href="ayneha-carnet.html">AYNEHA Carnet</a><a href="installer-apk.html">Installer un APK</a><a href="developpeurs.html">Développeurs</a></nav>
   </div>
@@ -68,36 +69,43 @@
   <img class="app-logo" src="assets/img/apps/ayneha-school-logo.png?v=00ac5ac8" width="256" height="256" alt="">
   <span><strong>AYNEHA School</strong> <span class="etiquette">Nouveau</span></span>
   <span class="doux">Apprendre à lire et à écrire l&#x27;AYNEHA, seul et à son rythme.</span>
+  <span class="petit doux compteur" data-compteur="ayneha-school" hidden></span>
 </a>
 <a class="carte-app" href="ayneha-home.html">
   <img class="app-logo" src="assets/img/apps/ayneha-home-logo.png?v=5f42ee19" width="256" height="256" alt="">
   <span><strong>AYNEHA Home</strong> </span>
   <span class="doux">Tout le site AYNEHA dans votre téléphone, même hors connexion.</span>
+  <span class="petit doux compteur" data-compteur="ayneha-home" hidden></span>
 </a>
 <a class="carte-app" href="ayneha-keyboard.html">
   <img class="app-logo" src="assets/img/apps/ayneha-keyboard-logo.png?v=2834c5bb" width="256" height="256" alt="">
   <span><strong>AYNEHA Keyboard</strong> </span>
   <span class="doux">Le clavier pour écrire en AYNEHA sur votre téléphone et partager vos textes en image.</span>
+  <span class="petit doux compteur" data-compteur="ayneha-keyboard" hidden></span>
 </a>
 <a class="carte-app" href="ayneha-calc.html">
   <img class="app-logo" src="assets/img/apps/ayneha-calc-logo.png?v=99b7cd01" width="256" height="256" alt="">
   <span><strong>AYNEHA Calc</strong> </span>
   <span class="doux">Une calculatrice entièrement en chiffres AYNEHA.</span>
+  <span class="petit doux compteur" data-compteur="ayneha-calc" hidden></span>
 </a>
 <a class="carte-app" href="ayneha-horloge.html">
   <img class="app-logo" src="assets/img/apps/ayneha-horloge-logo.png?v=7f47f4f5" width="256" height="256" alt="">
   <span><strong>AYNEHA Horloge</strong> </span>
   <span class="doux">L&#x27;heure, le jour, le mois et l&#x27;année songhay en AYNEHA, avec un calendrier.</span>
+  <span class="petit doux compteur" data-compteur="ayneha-horloge" hidden></span>
 </a>
 <a class="carte-app" href="ayneha-numconvert.html">
   <img class="app-logo" src="assets/img/apps/ayneha-numconvert-logo.png?v=a6b42678" width="256" height="256" alt="">
   <span><strong>AYNEHA NumConvert</strong> </span>
   <span class="doux">Un nombre en chiffres AYNEHA, N&#x27;Ko, adlam, Dogon NÈNÈ, arabes et français.</span>
+  <span class="petit doux compteur" data-compteur="ayneha-numconvert" hidden></span>
 </a>
 <a class="carte-app" href="ayneha-carnet.html">
   <img class="app-logo" src="assets/img/apps/ayneha-carnet-logo.png?v=5ae5c10f" width="256" height="256" alt="">
   <span><strong>AYNEHA Carnet</strong> </span>
   <span class="doux">Un carnet de notes entièrement en AYNEHA.</span>
+  <span class="petit doux compteur" data-compteur="ayneha-carnet" hidden></span>
 </a></div>
   </div>
 </section>
@@ -181,6 +189,6 @@
   </div>
 </footer>
 <button class="haut-page" type="button" aria-label="Revenir en haut de la page">&#8593;</button>
-<script src="assets/js/site.js?v=20261101111438"></script>
+<script src="assets/js/site.js?v=20261102135327"></script>
 </body>
 </html>
