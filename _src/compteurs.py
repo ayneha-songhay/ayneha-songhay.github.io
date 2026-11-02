@@ -64,6 +64,7 @@ def main():
 
         total = 0
         lien = ""
+        empreinte = ""
         depuis = ""
         version_site = app.get("version", "")
         for rel in releases:
@@ -80,7 +81,8 @@ def main():
                 # Lien du bouton : l'APK de la release qui a la même version que le site
                 if tag == version_site and not lien:
                     lien = f.get("browser_download_url", "")
-        apps[app["id"]] = {"total": total, "depuis": depuis, "version": version_site, "lien": lien}
+                    empreinte = (f.get("digest") or "").split(":")[-1].lower()
+        apps[app["id"]] = {"total": total, "depuis": depuis, "version": version_site, "lien": lien, "sha256": empreinte}
         print(f"{app['id']} : {total} téléchargements depuis {depuis or '?'} ; lien {'trouvé' if lien else 'ABSENT (bouton vers le site)'}")
 
     donnees = {
@@ -92,11 +94,38 @@ def main():
     # On ne réécrit pas le fichier si seuls les chiffres de la date changent
     if ancien == apps and os.path.isfile(SORTIE):
         print("Aucun changement.")
+    else:
+        with open(SORTIE, "w", encoding="utf-8") as fh:
+            json.dump(donnees, fh, indent=2, ensure_ascii=False)
+            fh.write("\n")
+        print("Total :", donnees["total"])
+    liens_mises_a_jour()
+
+
+def liens_mises_a_jour():
+    """mises-a-jour.json : lien de la release si c'est exactement le même APK, sinon le site."""
+    import releases as RELEASES
+    chemin = os.path.join(RACINE, "mises-a-jour.json")
+    if not os.path.isfile(chemin):
         return
-    with open(SORTIE, "w", encoding="utf-8") as fh:
-        json.dump(donnees, fh, indent=2, ensure_ascii=False)
-        fh.write("\n")
-    print("Total :", donnees["total"])
+    with open(chemin, encoding="utf-8") as fh:
+        majs = json.load(fh)
+    par_id = {a["id"]: a for a in APPS.APPS}
+    change = False
+    for item in majs.get("applications", []):
+        app = par_id.get(item.get("id"))
+        if not app or not app.get("apk") or app["apk"].startswith("http"):
+            continue
+        voulu = RELEASES.lien_release(app["id"], item.get("version", ""), item.get("sha256", "")) \
+            or "https://ayneha.org/" + app["apk"]
+        print(f"{app['id']} : mises à jour depuis {'la release GitHub' if 'github.com' in voulu else 'le site'}")
+        if item.get("apk") != voulu:
+            item["apk"] = voulu
+            change = True
+    if change:
+        with open(chemin, "w", encoding="utf-8") as fh:
+            json.dump(majs, fh, indent=2, ensure_ascii=False)
+            fh.write("\n")
 
 
 if __name__ == "__main__":

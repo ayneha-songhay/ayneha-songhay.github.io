@@ -20,6 +20,7 @@ sys.path.insert(0, ICI)
 import glyphs as G  # noqa: E402
 import applications as APPS  # noqa: E402
 import applications_en as APPS_EN  # noqa: E402
+import releases as RELEASES  # noqa: E402
 import confidentialite as CONF  # noqa: E402
 import confidentialite_en as CONF_EN  # noqa: E402
 import cartes as CARTES  # noqa: E402
@@ -819,6 +820,10 @@ def main():
                     h.update(bloc)
             item["sha256"] = h.hexdigest()
             item["taille"] = os.path.getsize(local)
+            # Même fichier déposé dans la release GitHub : on télécharge depuis la release (compté)
+            lien = RELEASES.lien_release(app["id"], item["version"], item["sha256"])
+            if lien:
+                item["apk"] = lien
         majs.append(item)
     with open(os.path.join(RACINE, "mises-a-jour.json"), "w", encoding="utf-8") as fh:
         json.dump({"applications": majs}, fh, indent=2, ensure_ascii=False)
