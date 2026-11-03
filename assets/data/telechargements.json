@@ -54,9 +54,15 @@
     "ayneha-margey": {
       "total": 4,
       "depuis": "2026-11-02",
-      "version": "1.0.0",
-      "lien": "https://github.com/maigus223/ayneha-margey/releases/download/v1.0.0/AYNEHA-Margey-1.0.0.apk",
-      "sha256": "bc7d7f563331e11c3005cbbeb26f7bf96bf3f64025698a43a964da7564f027d5"
+      "version": "1.2.0",
+      "lien": "https://github.com/maigus223/ayneha-margey/releases/download/v1.2.0/AYNEHA-Margey-1.2.0.apk",
+      "sha256": "fba64df87c7fe9052eb19969231252a500d87b96a9d99c4deeab9b1b6d1a7198",
+      "derniere": {
+        "version": "1.2.0",
+        "lien": "https://github.com/maigus223/ayneha-margey/releases/download/v1.2.0/AYNEHA-Margey-1.2.0.apk",
+        "sha256": "fba64df87c7fe9052eb19969231252a500d87b96a9d99c4deeab9b1b6d1a7198",
+        "taille": 51406120
+      }
     }
   }
 }

@@ -245,17 +245,21 @@ APPS = [
         "nom": "Margey",
         "titre": "Margey - messagerie sans Internet, en AYNEHA, en français ou en anglais",
         "statut": "test",
-        "mise_a_jour": False,
+        # "source": "release" : il suffit de publier la release v<version> (avec l'APK) dans le dépôt
+        # maigus223/ayneha-margey. Version, lien, taille et empreinte sont relevés tout seuls par
+        # compteurs.py (toutes les 6 heures, ou Actions > Compteurs de téléchargements > Run workflow).
+        # "apk" et "version" ci-dessous ne servent qu'en secours.
+        "source": "release",
         "resume": "Une messagerie sans Internet pour tout le monde, en AYNEHA, en français ou en anglais : les téléphones se parlent en Bluetooth et relaient les messages.",
-        "confidentialite": "Aucun compte, aucun numéro de téléphone, aucun serveur, aucune publicité. L'application n'a pas accès à Internet : vos messages restent sur les téléphones.",
+        "confidentialite": "Aucun compte, aucun numéro de téléphone, aucun serveur, aucune publicité. Les messages ne passent jamais par Internet : ils restent sur les téléphones. Internet sert uniquement à chercher une nouvelle version, quand vous le demandez.",
         "intro": [
             "Margey est une messagerie qui fonctionne sans Internet, sans compte et sans serveur. Les téléphones proches se parlent en Bluetooth et forment un réseau maillé : chaque téléphone relaie les messages des autres, de proche en proche.",
             "Margey n'est pas réservée aux personnes qui écrivent l'AYNEHA : elle est faite pour tout le monde. Elle s'utilise au choix en AYNEHA, en français ou en anglais, et on change de langue à tout moment. Celles et ceux qui le souhaitent peuvent ainsi découvrir l'AYNEHA en voyant les mêmes mentions dans leur langue.",
             "Elle est pensée pour les villages, les marchés, les rassemblements et toutes les zones où la connexion manque, au Mali comme ailleurs.",
         ],
-        "reserve": "Version de test. Le réseau maillé fonctionne d'autant mieux que beaucoup de téléphones proches ont Margey. Quelques mentions pas encore traduites s'affichent pour l'instant en français. Vos retours aident à améliorer l'application.",
+        "reserve": "Version de test. Le réseau maillé fonctionne d'autant mieux que beaucoup de téléphones proches ont Margey. Vos retours aident à améliorer l'application.",
         "points": [
-            "Sans Internet, sans compte, sans numéro de téléphone et sans serveur : l'application n'a même pas l'autorisation d'accéder à Internet",
+            "Sans Internet, sans compte, sans numéro de téléphone et sans serveur : les messages ne passent jamais par Internet",
             "Réseau maillé : les téléphones se parlent en Bluetooth (et en Wi-Fi Aware quand il est activé) et chaque téléphone relaie les messages des autres, jusqu'à 20 sauts",
             "Pour tout le monde, en trois langues : AYNEHA, français et anglais. Choix au premier lancement, puis à tout moment avec l'icône globe en haut de chaque écran ; en AYNEHA, toute l'interface s'affiche de droite à gauche",
             "Clavier AYNEHA intégré, ou le clavier habituel du téléphone, au choix",
@@ -268,6 +272,7 @@ APPS = [
             "Alertes d'urgence écrites ou vocales, horodatées et signées",
             "Ajout d'un contact par code QR, partage d'un message en image",
             "Partage de l'application de téléphone à téléphone, sans Internet",
+            "Mises à jour depuis ayneha.org : tirez la liste des discussions vers le bas pour chercher une nouvelle version (seule utilisation d'Internet)",
         ],
         "etapes": [
             "Installez l'application, ouvrez-la et choisissez votre langue : AYNEHA, français ou anglais.",
@@ -275,11 +280,12 @@ APPS = [
             "Ajoutez un contact en scannant son code QR, ou montrez-lui le vôtre.",
             "Pour un salon de proximité, entrez son nom et son code à 4 chiffres, ou touchez un salon de la liste.",
             "Gardez le Bluetooth activé : votre téléphone relaie les messages des autres et fait vivre le réseau.",
+            "Pour la mise à jour : en haut de la liste des discussions, tirez vers le bas, puis touchez le bouton orange si une nouvelle version est proposée.",
         ],
-        "compat": "Android 8 ou plus récent. Fonctionne sans connexion Internet ; le Bluetooth doit être activé.",
+        "compat": "Android 8 ou plus récent. Fonctionne sans connexion Internet ; le Bluetooth doit être activé. Internet sert uniquement à chercher une mise à jour.",
         "reglages": "Langue ; verrou par code à 4 chiffres ; effacement automatique des discussions privées ; effacement d'urgence ; thème clair, sombre ou automatique ; taille du texte.",
-        "apk": "https://github.com/maigus223/ayneha-margey/releases/download/v1.0.0/AYNEHA-Margey-1.0.0.apk",
-        "version": "1.0.0",
+        "apk": "https://github.com/maigus223/ayneha-margey/releases/download/v1.2.0/AYNEHA-Margey-1.2.0.apk",
+        "version": "1.2.0",
         "code": "https://github.com/maigus223/ayneha-margey",
         "depot": "maigus223/ayneha-margey",
     },

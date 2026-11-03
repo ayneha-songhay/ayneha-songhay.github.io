@@ -67,6 +67,8 @@ def main():
         empreinte = ""
         depuis = ""
         version_site = app.get("version", "")
+        derniere = {}   # dernière release publiée avec un APK (applications "source": "release")
+        quand = ""
         for rel in releases:
             if rel.get("draft"):
                 continue
@@ -78,11 +80,21 @@ def main():
                 if not f.get("name", "").lower().endswith(".apk"):
                     continue
                 total += int(f.get("download_count") or 0)
+                publie = rel.get("published_at") or rel.get("created_at") or ""
+                if publie > quand:
+                    quand = publie
+                    derniere = {"version": tag, "lien": f.get("browser_download_url", ""),
+                                "sha256": (f.get("digest") or "").split(":")[-1].lower(),
+                                "taille": int(f.get("size") or 0)}
                 # Lien du bouton : l'APK de la release qui a la même version que le site
                 if tag == version_site and not lien:
                     lien = f.get("browser_download_url", "")
                     empreinte = (f.get("digest") or "").split(":")[-1].lower()
+        if app.get("source") == "release" and derniere.get("lien"):
+            version_site, lien, empreinte = derniere["version"], derniere["lien"], derniere["sha256"]
         apps[app["id"]] = {"total": total, "depuis": depuis, "version": version_site, "lien": lien, "sha256": empreinte}
+        if app.get("source") == "release" and derniere:
+            apps[app["id"]]["derniere"] = derniere
         print(f"{app['id']} : {total} téléchargements depuis {depuis or '?'} ; lien {'trouvé' if lien else 'ABSENT (bouton vers le site)'}")
 
     donnees = {
@@ -99,6 +111,14 @@ def main():
             json.dump(donnees, fh, indent=2, ensure_ascii=False)
             fh.write("\n")
         print("Total :", donnees["total"])
+    # Nouvelle release d'une application "source": "release" : on reconstruit le site
+    # (fiche, bouton, mises-a-jour.json) sans que personne n'ait à toucher au site.
+    nouvelles = [a["id"] for a in APPS.APPS if a.get("source") == "release"
+                 and (apps.get(a["id"]) or {}).get("derniere") != (ancien.get(a["id"]) or {}).get("derniere")]
+    if nouvelles:
+        print("Nouvelle version publiée :", ", ".join(nouvelles), "- reconstruction du site")
+        import subprocess
+        subprocess.run([sys.executable, os.path.join(ICI, "build.py")], check=True)
     liens_mises_a_jour()
 
 

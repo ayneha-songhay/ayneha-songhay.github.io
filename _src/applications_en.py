@@ -184,15 +184,15 @@ TEXTES = {
     "ayneha-margey": {
         "titre": "Margey - messaging without Internet, in AYNEHA, French or English",
         "resume": "Messaging without Internet for everyone, in AYNEHA, French or English: phones talk over Bluetooth and relay messages.",
-        "confidentialite": "No account, no phone number, no server, no advertising. The app has no Internet access: your messages stay on the phones.",
+        "confidentialite": "No account, no phone number, no server, no advertising. Messages never go through the Internet: they stay on the phones. The Internet is only used to check for a new version, when you ask.",
         "intro": [
             "Margey is a messaging app that works without Internet, without an account and without a server. Nearby phones talk over Bluetooth and form a mesh network: each phone relays the messages of the others, from one phone to the next.",
             "Margey is not only for people who write AYNEHA: it is made for everyone. It can be used in AYNEHA, French or English, and you can switch language at any time. Those who wish can discover AYNEHA by seeing the same labels in their own language.",
             "It is designed for villages, markets, gatherings and every place where the connection is missing, in Mali and elsewhere.",
         ],
-        "reserve": "Test version. The mesh network works better when many nearby phones have Margey. A few labels not yet translated are shown in French for now. Your feedback helps improve the app.",
+        "reserve": "Test version. The mesh network works better when many nearby phones have Margey. Your feedback helps improve the app.",
         "points": [
-            "No Internet, no account, no phone number and no server: the app does not even have permission to access the Internet",
+            "No Internet, no account, no phone number and no server: messages never go through the Internet",
             "Mesh network: phones talk over Bluetooth (and Wi-Fi Aware when it is on) and each phone relays the messages of the others, up to 20 hops",
             "For everyone, in three languages: AYNEHA, French and English. Chosen at first launch, then at any time with the globe icon at the top of each screen; in AYNEHA, the whole interface reads from right to left",
             "Built-in AYNEHA keyboard, or the phone's usual keyboard, as you prefer",
@@ -205,6 +205,7 @@ TEXTES = {
             "Emergency alerts, written or spoken, time-stamped and signed",
             "Add a contact with a QR code, share a message as an image",
             "Share the app from phone to phone, without Internet",
+            "Updates from ayneha.org: pull the chat list down to check for a new version (the only use of the Internet)",
         ],
         "etapes": [
             "Install the app, open it and choose your language: AYNEHA, French or English.",
@@ -212,8 +213,9 @@ TEXTES = {
             "Add a contact by scanning their QR code, or show them yours.",
             "For a nearby room, enter its name and its 4-digit code, or tap a room in the list.",
             "Keep Bluetooth on: your phone relays the messages of others and keeps the network alive.",
+            "To update: at the top of the chat list, pull down, then tap the orange button if a new version is offered.",
         ],
-        "compat": "Android 8 or newer. Works without Internet; Bluetooth must be on.",
+        "compat": "Android 8 or newer. Works without Internet; Bluetooth must be on. The Internet is only used to check for an update.",
         "reglages": "Language; 4-digit lock code; automatic deletion of private chats; emergency wipe; light, dark or automatic theme; text size.",
     },
 }

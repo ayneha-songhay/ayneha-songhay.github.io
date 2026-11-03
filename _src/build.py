@@ -178,6 +178,27 @@ def rendu_apps_accueil():
     return '<ul class="liste-apps">' + "".join(items) + "</ul>"
 
 
+def appliquer_releases():
+    """Applications "source": "release" : il suffit de publier la release GitHub (avec l'APK).
+    Version, lien, taille et empreinte viennent de la dernière release, relevée par compteurs.py
+    dans assets/data/telechargements.json ("derniere"). Sans ce relevé, "apk" et "version" servent."""
+    chemin = os.path.join(RACINE, "assets", "data", "telechargements.json")
+    try:
+        with open(chemin, encoding="utf-8") as fh:
+            tele = json.load(fh).get("applications", {})
+    except (OSError, ValueError):
+        return
+    for a in APPS.APPS:
+        if a.get("source") != "release":
+            continue
+        d = (tele.get(a["id"]) or {}).get("derniere") or {}
+        if d.get("lien") and d.get("version"):
+            a["version"] = d["version"]
+            a["apk"] = d["lien"]
+            a["sha256"] = d.get("sha256", "")
+            a["taille"] = d.get("taille") or 0
+
+
 def boutons_app(a, en=False):
     out = []
     if a.get("statut") == "preparation":
@@ -185,7 +206,8 @@ def boutons_app(a, en=False):
     if a["apk"]:
         taille = ""
         try:
-            mo = os.path.getsize(os.path.join(RACINE, a["apk"])) / 1_000_000
+            octets = a.get("taille") or os.path.getsize(os.path.join(RACINE, a["apk"]))
+            mo = octets / 1_000_000
             taille = f"{mo:.1f} MB" if en else f"{mo:.1f} Mo".replace(".", ",")
         except OSError:
             pass
@@ -713,6 +735,7 @@ def relier_en(src):
 
 
 def main():
+    appliquer_releases()
     pages_dir = os.path.join(ICI, "pages")
     pages_en_dir = os.path.join(ICI, "pages-en")
     produits = []
@@ -815,6 +838,11 @@ def main():
         item = {"id": app["id"], "version": app.get("version", ""),
                 "apk": apk if apk.startswith("http") else SITE_URL + "/" + apk}
         local = os.path.join(RACINE, apk)
+        if apk.startswith("http") and app.get("sha256"):
+            # Application "source": "release" : empreinte et taille données par GitHub
+            item["sha256"] = app["sha256"]
+            if app.get("taille"):
+                item["taille"] = app["taille"]
         if not apk.startswith("http") and os.path.isfile(local):
             h = hashlib.sha256()
             with open(local, "rb") as fa:
