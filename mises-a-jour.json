@@ -48,6 +48,13 @@
       "apk": "https://github.com/maigus223/ayneha-carnet/releases/download/v1.1.0/AYNEHA-Carnet-1.1.0.apk",
       "sha256": "bb61d1b34ae7b7ab72ff06ec5184cfad14d880037a225313cf81545f4f322454",
       "taille": 12116557
+    },
+    {
+      "id": "ayneha-margey",
+      "version": "1.2.0",
+      "apk": "https://github.com/maigus223/ayneha-margey/releases/download/v1.2.0/AYNEHA-Margey-1.2.0.apk",
+      "sha256": "fba64df87c7fe9052eb19969231252a500d87b96a9d99c4deeab9b1b6d1a7198",
+      "taille": 51406120
     }
   ]
 }
