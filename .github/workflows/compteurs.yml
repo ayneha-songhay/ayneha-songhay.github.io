@@ -31,7 +31,7 @@ jobs:
         run: |
           git config user.name "MAIGUS"
           git config user.email "gwokmt2q@duck.com"
-          git add assets/data/telechargements.json mises-a-jour.json
+          git add -A
           if git diff --cached --quiet; then
             echo "Rien à enregistrer."
           else
