@@ -7,7 +7,10 @@
 #     ou ".../releases/latest/download/xxx.apk") ; "" = bouton « bientôt » ;
 #   - "code" : dépôt du code source ; "" = pas de lien ;
 #   - "depot" : dépôt GitHub dont les « Releases » servent à compter les téléchargements
-#     (lu chaque jour par .github/workflows/compteurs.yml) ;
+#     (lu toutes les 6 heures par .github/workflows/compteurs.yml) ;
+#   - "source": "release" : il suffit de publier la release vX.Y.Z (avec l'APK) dans le dépôt :
+#     version, lien, taille et empreinte du site et de mises-a-jour.json suivent tout seuls ;
+#     "apk" et "version" ne servent qu'en secours ;
 #   - logo et couverture : remplacer assets/img/apps/<id>-logo.png et <id>-couverture.jpg
 #     par les vrais fichiers (mêmes noms), puis relancer  python3 _src/build.py
 
@@ -53,6 +56,7 @@ APPS = [
         "version": "1.3.0",
         "code": "https://github.com/maigus223/ayneha-school",
         "depot": "maigus223/ayneha-school",
+        "source": "release",
     },
     {
         "id": "ayneha-home",
@@ -84,6 +88,7 @@ APPS = [
         "version": "2.0.0",
         "code": "https://github.com/maigus223/ayneha-home",
         "depot": "maigus223/ayneha-home",
+        "source": "release",
     },
     {
         "id": "ayneha-keyboard",
@@ -116,6 +121,7 @@ APPS = [
         "version": "2.5.0",
         "code": "https://github.com/maigus223/ayneha-keyboard",
         "depot": "maigus223/ayneha-keyboard",
+        "source": "release",
     },
     {
         "id": "ayneha-calc",
@@ -145,6 +151,7 @@ APPS = [
         "version": "1.3.0",
         "code": "https://github.com/maigus223/ayneha-calculator",
         "depot": "maigus223/ayneha-calculator",
+        "source": "release",
         "outil": ("calculatrice.html", "Essayer la calculatrice en ligne"),
     },
     {
@@ -175,6 +182,7 @@ APPS = [
         "version": "2.2.2",
         "code": "https://github.com/maigus223/ayneha-horloge",
         "depot": "maigus223/ayneha-horloge",
+        "source": "release",
         "outil": ("horloge.html", "Voir l'horloge en ligne"),
     },
     {
@@ -203,6 +211,7 @@ APPS = [
         "version": "1.3.0",
         "code": "https://github.com/maigus223/ayneha-numconvert",
         "depot": "maigus223/ayneha-numconvert",
+        "source": "release",
         "outil": ("nombres.html", "Essayer le convertisseur en ligne"),
     },
     {
@@ -239,6 +248,7 @@ APPS = [
         "version": "1.1.0",
         "code": "https://github.com/maigus223/ayneha-carnet",
         "depot": "maigus223/ayneha-carnet",
+        "source": "release",
     },
     {
         "id": "ayneha-margey",
