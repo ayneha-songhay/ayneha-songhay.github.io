@@ -1,6 +1,6 @@
 {
   "maj": "2026-11-03",
-  "total": 15,
+  "total": 27,
   "applications": {
     "ayneha-school": {
       "total": 2,
@@ -17,7 +17,7 @@
       "sha256": "d0647d99f7639042dc61021985dc473fa0dca1d0e14fd044aaa640dc4648c1f6"
     },
     "ayneha-keyboard": {
-      "total": 1,
+      "total": 2,
       "depuis": "2026-10-19",
       "version": "2.5.0",
       "lien": "https://github.com/maigus223/ayneha-keyboard/releases/download/v2.5.0/AYNEHA-Keyboard-2.5.0.apk",
@@ -31,7 +31,7 @@
       "sha256": "f116642ad2bfb0ba2a083327a4e438868cf7246e94b62403b66c87bc64ef7fa8"
     },
     "ayneha-horloge": {
-      "total": 4,
+      "total": 6,
       "depuis": "2026-10-19",
       "version": "2.2.2",
       "lien": "https://github.com/maigus223/ayneha-horloge/releases/download/v2.2.2/AYNEHA-Horloge-2.2.2.apk",
@@ -45,14 +45,14 @@
       "sha256": "2ee57e6cd56eac759a8cc5b4ace5b06f234ee6a8aa5fdaaf355e72dd5aedd712"
     },
     "ayneha-carnet": {
-      "total": 1,
+      "total": 2,
       "depuis": "2026-10-19",
       "version": "1.1.0",
       "lien": "https://github.com/maigus223/ayneha-carnet/releases/download/v1.1.0/AYNEHA-Carnet-1.1.0.apk",
       "sha256": "bb61d1b34ae7b7ab72ff06ec5184cfad14d880037a225313cf81545f4f322454"
     },
     "ayneha-margey": {
-      "total": 4,
+      "total": 12,
       "depuis": "2026-11-02",
       "version": "1.2.0",
       "lien": "https://github.com/maigus223/ayneha-margey/releases/download/v1.2.0/AYNEHA-Margey-1.2.0.apk",
