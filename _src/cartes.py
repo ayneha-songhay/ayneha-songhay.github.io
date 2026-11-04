@@ -34,4 +34,7 @@ CARTES = [
     {"modele": "fierte", "format": "statut", "texte": "mo kãga ni bey no ma ni hẽ",
      "traduction": "C’est l’œil qui te connaît qui te pleure", "traduction_en": "It is the eye that knows you that weeps for you",
      "pseudo": "Albachar", "montrerLatin": True, "date": "14 octobre 2026"},
+    {"modele": "mariage", "format": "carre", "texte": "irkoy ma te hidjey bõcana",
+     "traduction": "Heureux ménage", "traduction_en": "Happy marriage",
+     "pseudo": "Prince", "montrerLatin": True, "date": "2 novembre 2026"},
 ]
