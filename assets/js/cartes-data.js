@@ -29,5 +29,15 @@ window.AYNEHA_CARTES = [
   "pseudo": "Albachar",
   "montrerLatin": true,
   "date": "14 octobre 2026"
+ },
+ {
+  "modele": "mariage",
+  "format": "carre",
+  "texte": "irkoy ma te hidjey bõcana",
+  "traduction": "Heureux ménage",
+  "traduction_en": "Happy marriage",
+  "pseudo": "Prince",
+  "montrerLatin": true,
+  "date": "2 novembre 2026"
  }
 ];
