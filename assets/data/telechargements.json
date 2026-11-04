@@ -1,9 +1,9 @@
 {
-  "maj": "2026-11-03",
-  "total": 35,
+  "maj": "2026-11-04",
+  "total": 37,
   "applications": {
     "ayneha-school": {
-      "total": 3,
+      "total": 5,
       "depuis": "2026-10-19",
       "version": "1.3.0",
       "lien": "https://github.com/maigus223/ayneha-school/releases/download/v1.3.0/AYNEHA-School-1.3.0.apk",
