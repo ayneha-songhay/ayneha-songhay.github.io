@@ -1,6 +1,6 @@
 {
-  "maj": "2026-11-04",
-  "total": 45,
+  "maj": "2026-11-05",
+  "total": 46,
   "applications": {
     "ayneha-school": {
       "total": 6,
@@ -42,7 +42,7 @@
       }
     },
     "ayneha-calc": {
-      "total": 2,
+      "total": 3,
       "depuis": "2026-10-19",
       "version": "1.3.0",
       "lien": "https://github.com/maigus223/ayneha-calculator/releases/download/v1.3.0/AYNEHA-Calc-1.3.0.apk",
