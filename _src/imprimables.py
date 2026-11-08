@@ -115,11 +115,23 @@ h2 {{ font-size: 13pt; margin: 4mm 0 2mm; color: #0E1A30; font-weight: 600; }}
 .acc span {{ font-size: 8.5pt; text-align: center; line-height: 1.35; }}
 .total {{ text-align: center; font-size: 9.5pt; color: #3a4660; margin: 3mm 0 0; }}
 h2.centre {{ text-align: center; }}
+.api {{ font-family: "DejaVu Sans", sans-serif; font-style: normal; font-weight: 400; font-size: 8pt; color: #0E1A30; line-height: 1.2; }}
+.tuile .api {{ font-size: 7.5pt; }}
 """
 
 
 def g(name):
     return G.text(name)
+
+
+# Notation phonétique internationale (API) de chaque lettre, comme dans le livret d'apprentissage
+API = {"A": "a", "E": "e", "I": "i", "O": "o", "U": "u", "B": "b", "P": "p", "M": "m", "F": "f", "W": "w", "D": "d", "T": "t",
+       "N": "n", "L": "l", "R": "r", "S": "s", "Z": "z", "SH": "ʃ", "TS": "tʃ", "J": "ʒ", "DJ": "dʒ", "GN": "ɲ", "Y": "j",
+       "G": "ɡ", "K": "k", "H": "h", "NG": "ŋ"}
+
+
+def api(l):
+    return f'<em class="api">[{API[l]}]</em>' if l in API else ""
 
 
 def nom_latin(l):
@@ -138,7 +150,7 @@ def ligne(name, label, sous=""):
     cases += [f'<div class="case gris ay">{g(name)}</div>' for _ in range(4)]
     cases += ['<div class="case"></div>' for _ in range(3)]
     sous_html = f"<small>{sous}</small>" if sous else ""
-    return f'<div class="ligne"><div class="etiq">{label}{sous_html}</div>{"".join(cases)}</div>'
+    return f'<div class="ligne"><div class="etiq">{label}{sous_html}{api(name)}</div>{"".join(cases)}</div>'
 
 
 def cahier(lang):
@@ -182,7 +194,7 @@ def cahier(lang):
 
 def tuile(name, label, sous=""):
     s = f" <small>({sous})</small>" if sous else ""
-    return f'<div class="tuile"><span class="ay">{g(name)}</span><span>{label}{s}</span></div>'
+    return f'<div class="tuile"><span class="ay">{g(name)}</span><span>{label}{s}</span>{api(name)}</div>'
 
 
 def affiche(lang):
