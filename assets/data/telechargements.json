@@ -1,6 +1,6 @@
 {
-  "maj": "2026-11-05",
-  "total": 46,
+  "maj": "2026-11-09",
+  "total": 52,
   "applications": {
     "ayneha-school": {
       "total": 6,
@@ -29,7 +29,7 @@
       }
     },
     "ayneha-keyboard": {
-      "total": 3,
+      "total": 7,
       "depuis": "2026-10-19",
       "version": "2.5.0",
       "lien": "https://github.com/maigus223/ayneha-keyboard/releases/download/v2.5.0/AYNEHA-Keyboard-2.5.0.apk",
@@ -42,7 +42,7 @@
       }
     },
     "ayneha-calc": {
-      "total": 3,
+      "total": 4,
       "depuis": "2026-10-19",
       "version": "1.3.0",
       "lien": "https://github.com/maigus223/ayneha-calculator/releases/download/v1.3.0/AYNEHA-Calc-1.3.0.apk",
@@ -94,7 +94,7 @@
       }
     },
     "ayneha-margey": {
-      "total": 14,
+      "total": 15,
       "depuis": "2026-11-02",
       "version": "1.2.0",
       "lien": "https://github.com/maigus223/ayneha-margey/releases/download/v1.2.0/AYNEHA-Margey-1.2.0.apk",
