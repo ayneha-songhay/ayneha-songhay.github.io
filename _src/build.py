@@ -472,6 +472,7 @@ PIED_EN = """<footer class="pied">
         <h2>Online tools</h2>
         <ul>
           <li><a href="convertisseur.html">Latin → AYNEHA transcriber</a></li>
+          <li><a href="editeur.html">Text editor</a></li>
           <li><a href="clavier.html">Keyboard</a></li>
           <li><a href="calculatrice.html">Calculator</a></li>
           <li><a href="nombres.html">Number converter</a></li>
@@ -541,6 +542,7 @@ def pied(lang="fr", nom="index.html"):
         <h2>Outils en ligne</h2>
         <ul>
           <li><a href="convertisseur.html">Transcripteur latin → AYNEHA</a></li>
+          <li><a href="editeur.html">Éditeur de texte</a></li>
           <li><a href="clavier.html">Clavier</a></li>
           <li><a href="calculatrice.html">Calculatrice</a></li>
           <li><a href="nombres.html">Convertisseur de nombres</a></li>

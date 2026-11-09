@@ -1,0 +1,31 @@
+{
+  "name": "AYNEHA Web Editor",
+  "short_name": "AYNEHA Web Editor",
+  "description": "Éditeur de texte en écriture AYNEHA, hors ligne.",
+  "version": "1.0.9",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#06132A",
+  "theme_color": "#0B1F3A",
+  "lang": "fr",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

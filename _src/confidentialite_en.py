@@ -5,7 +5,7 @@
 #
 # Each entry produces  en/confidentialite-<id>.html
 
-MAJ = "17 October 2026"
+MAJ = "9 November 2026"
 
 CHILDREN = ("Use by children",
             "Since no personal data is collected, the app can be used without particular risk by young people, for example at school.")
@@ -145,6 +145,18 @@ WEB = [
             ("Everything stays in your browser", "The transcription is done in your browser. Your text is not sent anywhere."),
             ("Memory of your last text", "So that you find it on your next visit, your last text is kept in your browser's storage, on your device only. “Clear all” deletes it."),
             ("Copy and image", "Copying goes through your device's clipboard; the image is created by your browser and saved in your downloads."),
+            CHANGES,
+        ],
+    },
+    {
+        "id": "editeur", "nom": "AYNEHA Web Editor", "type": "Web tool", "page": "editeur.html",
+        "intro": "AYNEHA Web Editor is a text editor for the AYNEHA script that works in the browser, even offline.",
+        "sections": [
+            ("Everything stays on your device", "Your documents are written and formatted in your browser. They are not sent anywhere: no account, no server, no tracker, no advertising."),
+            ("Automatic backup", "Every 60 seconds, the editor keeps a copy of your open documents in your browser's storage, on your device only. Clearing the site's data in your browser deletes these copies."),
+            ("Name in the footer", "The name or nickname you type in the “File” menu is kept in your browser's storage, on your device only, and appears only in your own documents."),
+            ("Files, PDF and images", "“Save” creates a .ayneha file on your device. The PDF is created by your browser's print window, the image by your browser; they go to your downloads."),
+            ("Working offline", "After the first visit, the editor's files are kept by your browser so it works without a connection. They contain no personal data."),
             CHANGES,
         ],
     },

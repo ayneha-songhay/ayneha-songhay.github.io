@@ -5,7 +5,7 @@
 # Chaque entrée produit une page  confidentialite-<id>.html  dont l'adresse peut être
 # donnée aux boutiques d'applications (AppGallery...).
 
-MAJ = "17 octobre 2026"
+MAJ = "9 novembre 2026"
 
 ENFANTS = ("Utilisation par des enfants",
            "Comme aucune donnée personnelle n'est collectée, l'application peut être utilisée sans risque particulier par un public jeune, par exemple dans un cadre scolaire.")
@@ -145,6 +145,18 @@ WEB = [
             ("Tout reste dans votre navigateur", "La transcription se fait dans votre navigateur. Votre texte n'est envoyé nulle part."),
             ("Mémoire du dernier texte", "Pour le retrouver à votre prochaine visite, votre dernier texte est gardé dans le stockage de votre navigateur, sur votre appareil seulement. « Tout effacer » le supprime."),
             ("Copie et image", "La copie passe par le presse-papiers de votre appareil ; l'image est créée par votre navigateur et enregistrée dans vos téléchargements."),
+            MODIFS,
+        ],
+    },
+    {
+        "id": "editeur", "nom": "AYNEHA Web Editor", "type": "Outil web", "page": "editeur.html",
+        "intro": "AYNEHA Web Editor est un éditeur de texte en écriture AYNEHA qui fonctionne dans le navigateur, même hors connexion.",
+        "sections": [
+            ("Tout reste sur votre appareil", "Vos documents sont écrits et mis en forme dans votre navigateur. Ils ne sont envoyés nulle part : pas de compte, pas de serveur, pas de traceur, pas de publicité."),
+            ("Sauvegarde automatique", "Toutes les 60 secondes, l'éditeur garde une copie de vos documents ouverts dans le stockage de votre navigateur, sur votre appareil seulement. Effacer les données du site dans votre navigateur supprime ces copies."),
+            ("Nom en bas de page", "Le nom ou pseudo que vous écrivez dans le menu « Fichier » est gardé dans le stockage de votre navigateur, sur votre appareil seulement, et n'apparaît que dans vos propres documents."),
+            ("Fichiers, PDF et images", "« Enregistrer » crée un fichier .ayneha sur votre appareil. Le PDF est créé par la fenêtre d'impression de votre navigateur, l'image par votre navigateur ; ils vont dans vos téléchargements."),
+            ("Fonctionnement hors ligne", "Après la première ouverture, les fichiers de l'éditeur sont gardés par votre navigateur pour fonctionner sans connexion. Ils ne contiennent aucune donnée personnelle."),
             MODIFS,
         ],
     },
