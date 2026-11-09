@@ -13,6 +13,14 @@ RACINE = os.path.dirname(ICI)
 sys.path.insert(0, ICI)
 import glyphs as G  # noqa: E402
 
+# Prononciation en alphabet phonétique international (API), comme dans les livrets imprimés.
+API = {
+    "A": "a", "E": "e", "I": "i", "O": "o", "U": "u",
+    "B": "b", "P": "p", "M": "m", "F": "f", "W": "w", "D": "d", "T": "t", "N": "n", "L": "l",
+    "R": "r", "S": "s", "Z": "z", "SH": "ʃ", "TS": "tʃ", "J": "ʒ", "DJ": "dʒ", "GN": "ɲ",
+    "Y": "j", "G": "ɡ", "K": "k", "H": "h", "NG": "ŋ",
+}
+
 FONTS = "file://" + os.path.join(RACINE, "assets", "fonts")
 SORTIE = os.path.join(RACINE, "assets", "telechargements")
 
@@ -22,7 +30,7 @@ TXT = {
         "licence": "Licence CC BY-SA 4.0 - à imprimer et partager librement",
         "cahier": "Cahier de tracé AYNEHA",
         "nom": "Nom :", "date": "Date :",
-        "consigne": "Tracez chaque lettre de droite à gauche : repassez d'abord sur les lettres grises, puis écrivez-la seul dans les cases vides.",
+        "consigne": "Tracez chaque lettre de droite à gauche : repassez d'abord sur les lettres grises, puis écrivez-la seul dans les cases vides. Entre barres obliques : la prononciation en alphabet phonétique international (API).",
         "voyelles": "Les voyelles", "consonnes": "Les consonnes", "chiffres": "Les chiffres",
         "consigne_chiffres": "Les chiffres AYNEHA s'écrivent aussi de droite à gauche : 2026 s'écrit en commençant par le 2, à droite.",
         "page": "Page",
@@ -30,17 +38,17 @@ TXT = {
         "sous": "L'écriture de la langue songhay - un son, un caractère",
         "sens": "Se lit et s'écrit de droite à gauche",
         "accents": "Les 4 accents",
-        "acc": [("A", "A:n", "nasalisation", "a → ã"), ("E", "E:o", "ouverture (E et O)", "e → ɛ"),
-                ("B", "B:d", "double", "b → bb"), ("B", "B:m", "muette", "b muet")],
+        "acc": [("A", "A:n", "nasalisation", "/a/ → /ã/"), ("E", "E:o", "ouverture (E et O)", "/e/ → /ɛ/"),
+                ("B", "B:d", "double", "/b/ → /bː/"), ("B", "B:m", "muette", "b muet")],
         "ponct": "Ponctuation", "virgule": "virgule", "pv": "point-virgule",
-        "total": "27 lettres, 50 formes accentuées, 9 accents seuls, 10 chiffres et 2 signes : 98 caractères.",
+        "total": "27 lettres, 50 formes accentuées, 9 accents seuls, 10 chiffres et 2 signes : 98 caractères. Entre barres obliques : la prononciation en alphabet phonétique international (API).",
     },
     "en": {
         "credit": "Designer and creator: Mahamadou Issiaka MAIGA (MAIGUS)",
         "licence": "CC BY-SA 4.0 licence - free to print and share",
         "cahier": "AYNEHA tracing workbook",
         "nom": "Name:", "date": "Date:",
-        "consigne": "Trace each letter from right to left: first go over the grey letters, then write it on your own in the empty boxes.",
+        "consigne": "Trace each letter from right to left: first go over the grey letters, then write it on your own in the empty boxes. Between slashes: the pronunciation in the International Phonetic Alphabet (IPA).",
         "voyelles": "The vowels", "consonnes": "The consonants", "chiffres": "The digits",
         "consigne_chiffres": "AYNEHA digits are also written from right to left: 2026 starts with the 2, on the right.",
         "page": "Page",
@@ -48,10 +56,10 @@ TXT = {
         "sous": "The writing system of the Songhay language - one sound, one character",
         "sens": "Read and written from right to left",
         "accents": "The 4 diacritics",
-        "acc": [("A", "A:n", "nasalisation", "a → ã"), ("E", "E:o", "open vowel (E and O)", "e → ɛ"),
-                ("B", "B:d", "double", "b → bb"), ("B", "B:m", "silent", "silent b")],
+        "acc": [("A", "A:n", "nasalisation", "/a/ → /ã/"), ("E", "E:o", "open vowel (E and O)", "/e/ → /ɛ/"),
+                ("B", "B:d", "double", "/b/ → /bː/"), ("B", "B:m", "silent", "silent b")],
         "ponct": "Punctuation", "virgule": "comma", "pv": "semicolon",
-        "total": "27 letters, 50 accented forms, 9 standalone diacritics, 10 digits and 2 signs: 98 characters.",
+        "total": "27 letters, 50 accented forms, 9 standalone diacritics, 10 digits and 2 signs: 98 characters. Between slashes: the pronunciation in the International Phonetic Alphabet (IPA).",
     },
 }
 
@@ -59,7 +67,9 @@ CSS = f"""
 @font-face {{ font-family: "Ayneha Pro"; src: url("{FONTS}/ayneha-pro.woff2") format("woff2"); }}
 @font-face {{ font-family: "Jost"; src: url("{FONTS}/jost-latin.woff2") format("woff2"); font-weight: 300 700; }}
 @font-face {{ font-family: "Jost"; src: url("{FONTS}/jost-latin-ext.woff2") format("woff2"); font-weight: 300 700; }}
+@font-face {{ font-family: "API"; src: local("DejaVu Sans"), local("DejaVuSans"), local("Noto Sans"), local("Charis SIL"), local("Doulos SIL"); }}
 @page {{ size: A4; margin: 0; }}
+.api, .etiq small, .acc span:not(.ay) {{ font-family: "Jost", "API", sans-serif; }}
 * {{ box-sizing: border-box; }}
 html, body {{ margin: 0; }}
 body {{ font-family: "Jost", sans-serif; color: #0E1A30; -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
@@ -75,7 +85,7 @@ body {{ font-family: "Jost", sans-serif; color: #0E1A30; -webkit-print-color-adj
 h2 {{ font-size: 13pt; margin: 4mm 0 2mm; color: #0E1A30; font-weight: 600; }}
 .ligne {{ display: flex; flex-direction: row-reverse; align-items: stretch; gap: 1.6mm; margin-bottom: 2.6mm; }}
 .etiq {{ width: 15mm; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 10pt; font-weight: 600; }}
-.etiq small {{ font-weight: 400; color: #5b6780; font-size: 8.5pt; }}
+.etiq small {{ font-weight: 400; color: #0E1A30; font-size: 9pt; }}
 .case {{ flex: 1; height: 19mm; border: 0.3mm solid #C9CED6; border-radius: 1.5mm; display: grid; place-items: center; font-size: 54pt; position: relative;
         background: linear-gradient(#fff 49.6%, #E3E7EE 49.6%, #E3E7EE 50.4%, #fff 50.4%); }}
 .modele {{ color: #0E1A30; border-color: #F07C22; border-width: 0.5mm; }}
@@ -99,7 +109,7 @@ h2 {{ font-size: 13pt; margin: 4mm 0 2mm; color: #0E1A30; font-weight: 600; }}
 .tuile {{ width: 20.5mm; height: 24mm; padding: 1mm 0 2.5mm; border: 0.35mm solid #C9CED6; border-radius: 2mm; display: flex; flex-direction: column; align-items: center; justify-content: center; }}
 .tuile .ay {{ font-size: 40pt; }}
 .tuile span {{ font-size: 9pt; margin-top: 0.5mm; font-weight: 600; }}
-.tuile span small {{ font-weight: 400; color: #5b6780; }}
+.tuile span small {{ font-weight: 400; color: #0E1A30; }}
 .voy .tuile {{ border-color: #F07C22; border-width: 0.6mm; width: 26mm; height: 27mm; }}
 .voy .tuile .ay {{ font-size: 48pt; }}
 .chif .tuile {{ width: 12.2mm; height: 21mm; background: #0E1A30; border-color: #0E1A30; color: #fff; }}
@@ -123,9 +133,8 @@ def g(name):
 
 
 def nom_latin(l):
-    n = G.INFO[l][0]
-    lat = G.INFO[l][3]
-    return n, (lat if lat.lower() != n.lower() else "")
+    """Nom de la lettre et sa prononciation API entre barres obliques."""
+    return G.INFO[l][0], f"/{API[l]}/"
 
 
 def pied(t, n=None, total=None):
@@ -181,7 +190,7 @@ def cahier(lang):
 
 
 def tuile(name, label, sous=""):
-    s = f" <small>({sous})</small>" if sous else ""
+    s = f" <small class=\"api\">{sous}</small>" if sous else ""
     return f'<div class="tuile"><span class="ay">{g(name)}</span><span>{label}{s}</span></div>'
 
 
