@@ -9,6 +9,7 @@ on:
     paths:
       - "_src/**"
       - "assets/telechargements/**"
+      - "editeur/**"
   workflow_dispatch:
 
 permissions:

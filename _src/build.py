@@ -29,9 +29,11 @@ import captures as CAPTURES  # noqa: E402
 
 SITE_URL = "https://ayneha.org"
 CONTACT = "contact@ayneha.org"
-# Questions techniques sur les applications : alias du développeur
-# (à remplacer par dev@ayneha.org quand l'offre e-mail OVH le permettra).
-CONTACT_DEV = "gwokmt2q@duck.com"
+# Sur le site, tout contact passe par l'e-mail pro d'AYNEHA (décision de Maïgus, 9 nov. 2026).
+# L'alias du développeur (ALIAS_DEV) reste seulement dans les dépôts GitHub maigus223 ;
+# s'il arrive sur le site avec une copie d'outil (ex. editeur/), il est remplacé à la construction.
+CONTACT_DEV = CONTACT
+ALIAS_DEV = "gwokmt2q@duck.com"
 ANNEE = 2026
 
 NAV = [
@@ -736,7 +738,25 @@ def relier_en(src):
     return re.sub(r'(href|src)="([^"]*)"', lien, src)
 
 
+def alias_hors_du_site():
+    """Remplace l'alias du développeur par l'e-mail pro dans les outils copiés sur le site."""
+    for dossier in ("editeur",):
+        base = os.path.join(RACINE, dossier)
+        for racine, _, fichiers in os.walk(base):
+            for f in fichiers:
+                if not f.endswith((".html", ".js", ".json", ".txt")):
+                    continue
+                chemin = os.path.join(racine, f)
+                with open(chemin, encoding="utf-8") as fh:
+                    txt = fh.read()
+                if ALIAS_DEV in txt:
+                    with open(chemin, "w", encoding="utf-8") as fh:
+                        fh.write(txt.replace(ALIAS_DEV, CONTACT))
+                    print("alias remplacé :", os.path.relpath(chemin, RACINE))
+
+
 def main():
+    alias_hors_du_site()
     appliquer_releases()
     pages_dir = os.path.join(ICI, "pages")
     pages_en_dir = os.path.join(ICI, "pages-en")
