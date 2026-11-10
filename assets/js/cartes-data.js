@@ -39,5 +39,15 @@ window.AYNEHA_CARTES = [
   "pseudo": "Prince",
   "montrerLatin": true,
   "date": "2 novembre 2026"
+ },
+ {
+  "modele": "salutation",
+  "format": "carre",
+  "texte": "wa kani baani",
+  "traduction": "Bonjour",
+  "traduction_en": "Good morning",
+  "pseudo": "Blokiss",
+  "montrerLatin": true,
+  "date": "10 novembre 2026"
  }
 ];
