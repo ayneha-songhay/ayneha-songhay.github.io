@@ -14,6 +14,23 @@
 #   - logo et couverture : remplacer assets/img/apps/<id>-logo.png et <id>-couverture.jpg
 #     par les vrais fichiers (mêmes noms), puis relancer  python3 _src/build.py
 
+# Palm Store (boutique des téléphones Tecno, Infinix, itel)
+# Sous le bouton « Télécharger l'application » de chaque fiche :
+#   - "" (vide)        : étiquette grise « Bientôt sur Palm Store »
+#   - nom du paquet    : bouton « Disponible sur Palm Store » avec le lien
+#                        https://www.palmplaystore.com/detail/<paquet>?country=ML
+# Quand une application est acceptée sur Palm Store, mettre son paquet entre les guillemets.
+PALM_STORE = {
+    "ayneha-keyboard": "com.maigus.ayneha",
+    "ayneha-calc": "",         # paquet : com.maigus.aynehacalculator
+    "ayneha-horloge": "",      # paquet : com.maigus.aynehahorloge
+    "ayneha-home": "",         # paquet : com.maigus.ayneha.app
+    "ayneha-carnet": "",       # paquet : com.ayneha.carnet
+    "ayneha-numconvert": "",   # paquet : com.maigus.ayneha.converter
+    "ayneha-school": "",       # paquet : com.maigus.aynehaschool
+    "ayneha-margey": "",       # paquet : com.maigus.aynehamargey
+}
+
 CONFIDENTIALITE = "Aucun compte, aucun serveur, aucune publicité, aucun outil d'analyse. Rien de ce que vous tapez n'est enregistré ni envoyé."
 
 APPS = [

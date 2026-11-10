@@ -222,6 +222,16 @@ def boutons_app(a, en=False):
         out.append(f'<p class="petit doux compteur" data-compteur="{a["id"]}" style="margin:4px 0 0" hidden></p>')
     else:
         out.append(f'<span class="btn" aria-disabled="true">{"Download coming soon" if en else "Téléchargement bientôt disponible"}</span>')
+    # Palm Store : réglé dans _src/applications.py (PALM_STORE)
+    palm = getattr(APPS, "PALM_STORE", {})
+    if a["id"] in palm:
+        paquet = palm[a["id"]]
+        if paquet:
+            lib = "Available on Palm Store" if en else "Disponible sur Palm Store"
+            out.append(f'<p style="margin:10px 0 0;width:100%"><a class="btn btn-petit" href="https://www.palmplaystore.com/detail/{paquet}?country=ML" target="_blank" rel="noopener">{lib}</a></p>')
+        else:
+            lib = "Coming soon on Palm Store" if en else "Bientôt sur Palm Store"
+            out.append(f'<p style="margin:10px 0 0;width:100%"><span class="btn btn-petit" aria-disabled="true">{lib}</span></p>')
     return "".join(out)
 
 
