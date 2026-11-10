@@ -37,4 +37,7 @@ CARTES = [
     {"modele": "mariage", "format": "carre", "texte": "irkoy ma te hidjey bõcana",
      "traduction": "Heureux ménage", "traduction_en": "Happy marriage",
      "pseudo": "Prince", "montrerLatin": True, "date": "2 novembre 2026"},
+    {"modele": "salutation", "format": "carre", "texte": "wa kani baani",
+     "traduction": "Bonjour", "traduction_en": "Good morning",
+     "pseudo": "Blokiss", "montrerLatin": True, "date": "10 novembre 2026"},
 ]
