@@ -902,7 +902,8 @@ def main():
             chemin = os.path.normpath(os.path.join(rel, n)).replace(os.sep, "/")
             if chemin.startswith("./"):
                 chemin = chemin[2:]
-            if chemin in ("manifest.json", "version.txt", "mises-a-jour.json", "assets/data/telechargements.json", "sitemap.xml", "robots.txt", "README.md", "LICENSE", ".gitignore", "_headers", "netlify.toml") or n.startswith("."):
+            if chemin in ("manifest.json", "version.txt", "mises-a-jour.json", "assets/data/telechargements.json", "sitemap.xml", "robots.txt", "README.md", "LICENSE", ".gitignore", "_headers", "netlify.toml", "CNAME") or n.startswith("."):
+                # CNAME : non servi par GitHub Pages (404) - sa présence bloquait la mise à jour d'AYNEHA Home
                 continue
             if chemin.startswith("assets/telechargements/"):
                 continue  # fichiers à télécharger : pas besoin de les embarquer dans l'appli
