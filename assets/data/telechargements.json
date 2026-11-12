@@ -1,6 +1,6 @@
 {
-  "maj": "2026-11-09",
-  "total": 52,
+  "maj": "2026-11-12",
+  "total": 53,
   "applications": {
     "ayneha-school": {
       "total": 6,
@@ -94,7 +94,7 @@
       }
     },
     "ayneha-margey": {
-      "total": 15,
+      "total": 16,
       "depuis": "2026-11-02",
       "version": "1.2.0",
       "lien": "https://github.com/maigus223/ayneha-margey/releases/download/v1.2.0/AYNEHA-Margey-1.2.0.apk",
